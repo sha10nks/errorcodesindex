@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "85"
+shortLabel: "No reason to decline"
+summary: "This code indicates the issuer did not provide a specific decline reason in the response code mapping for the transaction."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Online Banking / Transfers (Authorization Response Codes)</span></p>
+<p class="c1"><span class="c0">CODE: 85</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(85 &mdash; No reason to decline)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the issuer did not provide a specific decline reason in the response code mapping for the transaction.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Response code 85 (&ldquo;No reason to decline&rdquo;) is used in some processing contexts to indicate that a specific decline reason was not supplied or was not mapped into a more detailed category. It represents a non-specific decline classification similar in spirit to &ldquo;do not honor,&rdquo; though the wording differs. The issuer or network recognized the request but returned a non-detailed response code outcome. This is not a funds confirmation and not a validation error like invalid card number. It indicates the decline reason is not disclosed at the response-code level to the merchant.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Processor logs showing non-specific declines</span></p>
+<p class="c1"><span class="c0">Online checkout decline reporting dashboards</span></p>
+<p class="c1"><span class="c0">Merchant support tickets where response codes are summarized</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Issuer returned a non-specific decline reason</span></p>
+<p class="c1"><span class="c0">Processor mapped issuer response into code 85 for reporting</span></p>
+<p class="c1"><span class="c0">Authorization path did not supply a detailed decline category</span></p>
+<p class="c1"><span class="c0">Risk or policy declines were reported without granular codes</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Transaction is declined</span></p>
+<p class="c1"><span class="c0">Merchant records a non-specific decline code</span></p>
+<p class="c1"><span class="c0">Retrying may succeed or fail depending on issuer-side conditions</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not a verified approval (it is still a decline outcome)</span></p>
+<p class="c1"><span class="c0">It is not insufficient funds (see 51)</span></p>
+<p class="c1"><span class="c0">It is not issuer unavailability (see 91)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">05 &mdash; Do not honor</span></p>
+<p class="c1"><span class="c0">85 &mdash; No reason to decline</span></p>
+<p class="c1"><span class="c0">62 &mdash; Restricted card</span></p>
+<p class="c1"><span class="c0">57 &mdash; Transaction not permitted</span></p>
+<p class="c1"><span class="c0">96 &mdash; System malfunction</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Different processors and networks can map non-specific issuer declines differently, so the same underlying issuer decision might appear as 05 in one environment and 85 in another. The response code does not tell the merchant whether the issue is risk-based, policy-based, or account-status-based. In incident conditions, 85 can appear alongside technical codes depending on mapping behavior. Trend analysis by issuer, channel, and merchant category is often needed to infer patterns.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review transaction attributes (channel, amount, merchant category) for pattern detection</span></p>
+<p class="c1"><span class="c0">Compare frequency of code 85 to code 05 to evaluate mapping consistency</span></p>
+<p class="c1"><span class="c0">Document the decline for reconciliation and customer support handling</span></p>
+<p class="c1"><span class="c0">Use official issuer/acquirer support channels if declines are widespread or persistent</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If non-specific declines occur repeatedly for valid-looking transactions, official issuer or processor support channels may help clarify whether risk controls or policy settings are influencing approvals.</span></p>
+</div>

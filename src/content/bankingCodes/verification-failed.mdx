@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "Verification failed"
+shortLabel: "Verification not completed"
+summary: "This status indicates a required verification step did not complete successfully, preventing the transaction or account action from proceeding."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Bank System / Generic (User-Facing Status Messages)</span></p>
+<p class="c1"><span class="c0">CODE: Verification failed</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(Verification failed &mdash; Verification not completed)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This status indicates a required verification step did not complete successfully, preventing the transaction or account action from proceeding.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">&ldquo;Verification failed&rdquo; indicates that the system required a verification step&mdash;such as identity confirmation, security confirmation, or account validation&mdash;and that step did not pass. Verification can be triggered for sensitive actions like adding a recipient, initiating a high-value transfer, changing account settings, or approving payments. This status reflects a security and eligibility gate, not a funds or settlement outcome. It does not automatically mean the user entered incorrect information; it means the system did not accept the verification result for that attempt. The failure can be due to incomplete verification, mismatched signals, or policy thresholds.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">During transfers that require additional confirmation</span></p>
+<p class="c1"><span class="c0">When enabling new payment features or adding new payees</span></p>
+<p class="c1"><span class="c0">In account onboarding or security checkpoints within banking apps</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Verification step did not complete within required time or sequence</span></p>
+<p class="c1"><span class="c0">Security checks did not meet acceptance thresholds</span></p>
+<p class="c1"><span class="c0">Required verification information was missing or inconsistent</span></p>
+<p class="c1"><span class="c0">Risk controls required additional verification not satisfied in that attempt</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The transaction or action is blocked and not processed</span></p>
+<p class="c1"><span class="c0">The system may request a new verification attempt</span></p>
+<p class="c1"><span class="c0">Some functions may remain limited until verification is completed successfully</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not a payment decline based on issuer approval</span></p>
+<p class="c1"><span class="c0">It is not a system outage by itself</span></p>
+<p class="c1"><span class="c0">It is not confirmation that a transaction posted and then reversed</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">ERR-AUTH &mdash; Authorization failed</span></p>
+<p class="c1"><span class="c0">ERR-TIMEOUT &mdash; Session timeout</span></p>
+<p class="c1"><span class="c0">Account restricted &mdash; Account permissions limited</span></p>
+<p class="c1"><span class="c0">Payment declined &mdash; Payment not approved outcome</span></p>
+<p class="c1"><span class="c0">75 &mdash; PIN tries exceeded</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Verification outcomes can vary by transaction context, device, and security posture. Some systems increase verification strictness after unusual activity, leading to sudden verification failures on actions that previously worked. In multi-step flows, a verification step can succeed but the final submission fails for other reasons; in user-facing views, this may still appear as &ldquo;verification failed&rdquo; depending on mapping. The status message usually does not disclose which verification signal failed.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review whether the platform requested a specific verification step and whether it completed fully</span></p>
+<p class="c1"><span class="c0">Check for any account notices indicating verification requirements or limitations</span></p>
+<p class="c1"><span class="c0">Confirm whether verification failure occurs for one action or across multiple actions</span></p>
+<p class="c1"><span class="c0">If verification failure persists, contact official support to clarify required verification steps for the account</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If verification failures prevent normal account use, official bank or platform support channels can clarify verification requirements and account eligibility for sensitive actions.</span></p>
+</div>

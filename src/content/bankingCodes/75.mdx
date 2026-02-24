@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "75"
+shortLabel: "PIN tries exceeded"
+summary: "This code indicates the authorization was declined because the allowable number of PIN entry attempts was exceeded."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Online Banking / Transfers (Authorization Response Codes)</span></p>
+<p class="c1"><span class="c0">CODE: 75</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(75 &mdash; PIN tries exceeded)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the authorization was declined because the allowable number of PIN entry attempts was exceeded.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Response code 75 (&ldquo;PIN tries exceeded&rdquo;) is returned when the issuer determines that too many incorrect PIN attempts have occurred, triggering a PIN retry limit. This is a security control used to reduce the risk of unauthorized access. The issuer tracks PIN validation attempts and enforces thresholds. When the threshold is exceeded, the issuer declines further PIN-required transactions until the security status changes. This code is not a funds decline and does not indicate the card is expired. It reflects a security lockout condition tied to PIN validation.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">ATM or debit PIN transaction declines</span></p>
+<p class="c1"><span class="c0">POS terminal declines for PIN-based purchases</span></p>
+<p class="c1"><span class="c0">Processor authorization logs showing response code 75</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Multiple incorrect PIN attempts occurred</span></p>
+<p class="c1"><span class="c0">Issuer security thresholds were reached</span></p>
+<p class="c1"><span class="c0">PIN validation status is locked for the account</span></p>
+<p class="c1"><span class="c0">A prior sequence of attempts triggered a temporary restriction</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">PIN-required transactions are declined</span></p>
+<p class="c1"><span class="c0">Merchant or terminal records a PIN tries exceeded response</span></p>
+<p class="c1"><span class="c0">Additional PIN attempts may continue to be rejected until issuer security status changes</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not insufficient funds (see 51)</span></p>
+<p class="c1"><span class="c0">It is not an issuer outage (see 91)</span></p>
+<p class="c1"><span class="c0">It is not a restricted card policy decline (see 62), though the practical effect may resemble restriction</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">62 &mdash; Restricted card</span></p>
+<p class="c1"><span class="c0">75 &mdash; PIN tries exceeded</span></p>
+<p class="c1"><span class="c0">57 &mdash; Transaction not permitted</span></p>
+<p class="c1"><span class="c0">91 &mdash; Issuer unavailable</span></p>
+<p class="c1"><span class="c0">85 &mdash; No reason to decline</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">PIN retry thresholds differ by issuer and may vary by transaction type. Some issuers apply separate counters for ATM withdrawals versus point-of-sale PIN purchases. In some cases, PIN lockouts can occur after a series of attempts across different channels within a short timeframe. The response code does not specify how long the lockout lasts or which attempts counted; it indicates only that the threshold was exceeded.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Record the response code and transaction type for support tracking</span></p>
+<p class="c1"><span class="c0">Avoid assuming a funds or account closure issue based solely on this code</span></p>
+<p class="c1"><span class="c0">Follow official issuer support pathways for PIN status inquiries</span></p>
+<p class="c1"><span class="c0">Monitor whether non-PIN transactions behave differently in the same period</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If PIN-related declines block expected transactions, official issuer support channels may clarify the current PIN security status and applicable thresholds.</span></p>
+</div>

@@ -1,0 +1,59 @@
+---
+
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { toCanonical } from '../utils/urls';
+
+import '../styles/theme.css';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  robots?: string;
+  schema?: unknown | unknown[];
+  fullWidth?: boolean;
+}
+
+const { title, description, canonicalPath, robots = 'index,follow', schema, fullWidth = false } = Astro.props;
+
+const canonicalUrl = toCanonical(canonicalPath ?? Astro.url.pathname);
+const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+
+    {schemas.map((obj) => (
+      <script type="application/ld+json" set:html={JSON.stringify(obj)} />
+    ))}
+  </head>
+  <body class="min-h-screen bg-brand-dark text-slate-200 selection:bg-brand-primary selection:text-white">
+    <SiteHeader currentPath={Astro.url.pathname} overlay={fullWidth} />
+    <main class={fullWidth ? "w-full" : "mx-auto max-w-6xl px-4 py-12"}>
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

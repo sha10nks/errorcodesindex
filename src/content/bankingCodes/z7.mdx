@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "Z7"
+shortLabel: "Identity verification"
+summary: "This code indicates processing is paused because identity verification is required or not yet completed."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Bank Risk &amp; Compliance (Internal Status Codes)</span></p>
+<p class="c1"><span class="c0">CODE: Z7</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(Z7 &mdash; Identity verification)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates processing is paused because identity verification is required or not yet completed.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Z7 is a status code indicating that the system requires identity verification before allowing certain transactions or account actions to proceed. Identity verification controls are used to confirm that account activity is being initiated by an authorized user and that the account profile meets eligibility requirements. This code reflects a security and compliance gate, not a funding outcome and not a network failure. It does not automatically mean the user provided incorrect information; it means the system did not accept verification as complete for the current attempt or account state. Z7 can apply to high-value transfers, new payee creation, or other sensitive actions, depending on platform policy.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">During transfer initiation requiring additional identity confirmation</span></p>
+<p class="c1"><span class="c0">When attempting to unlock account features or higher limits</span></p>
+<p class="c1"><span class="c0">In account status banners or transaction status details</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Identity verification step is incomplete or pending</span></p>
+<p class="c1"><span class="c0">Account profile requires additional verification to proceed</span></p>
+<p class="c1"><span class="c0">Security checks require step-up verification due to risk signals</span></p>
+<p class="c1"><span class="c0">Verification outcome is not yet recorded by downstream systems</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The transaction remains on hold or is blocked from submission</span></p>
+<p class="c1"><span class="c0">The system may prompt for additional verification within official flows</span></p>
+<p class="c1"><span class="c0">Status may change once verification is completed and recorded</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not an issuer availability or processing outage</span></p>
+<p class="c1"><span class="c0">It is not an insufficient funds decline</span></p>
+<p class="c1"><span class="c0">It is not a final decision that the transaction will fail</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">Verification failed &mdash; Verification not completed</span></p>
+<p class="c1"><span class="c0">Z5 &mdash; Manual review</span></p>
+<p class="c1"><span class="c0">Z3 &mdash; Compliance hold</span></p>
+<p class="c1"><span class="c0">Account restricted &mdash; Account permissions limited</span></p>
+<p class="c1"><span class="c0">ERR-AUTH &mdash; Authorization failed</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Verification requirements can be triggered by changes in device, network, location, or transaction pattern. Some systems apply verification to the account level, affecting multiple actions until completed. Others apply it only to a specific transaction. In multi-step verification flows, a verification step may complete but not synchronize immediately across systems, causing temporary &ldquo;verification required&rdquo; states. The code itself does not specify which verification method is required.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review whether the platform presents a verification checkpoint within the official flow</span></p>
+<p class="c1"><span class="c0">Check account notices for verification requirements affecting transfers or limits</span></p>
+<p class="c1"><span class="c0">Monitor whether the transaction status changes after verification completes</span></p>
+<p class="c1"><span class="c0">If the verification requirement persists unexpectedly, contact official support for clarification</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If identity verification blocks normal account activity, official support channels can confirm required verification steps and current account eligibility status.</span></p>
+</div>

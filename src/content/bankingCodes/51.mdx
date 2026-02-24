@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "51"
+shortLabel: "Insufficient funds"
+summary: "This code indicates the issuer declined the authorization because available funds or credit were insufficient for the transaction amount."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Card Payment Processing (Authorization Response Codes)</span></p>
+<p class="c1"><span class="c0">CODE: 51</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(51 &mdash; Insufficient funds)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the issuer declined the authorization because available funds or credit were insufficient for the transaction amount.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Response code 51 (&ldquo;Insufficient funds&rdquo;) is returned when the issuer determines the account does not have enough available balance (debit) or available credit (credit) to approve the authorization amount at that time. &ldquo;Available&rdquo; reflects issuer rules that consider pending authorizations, holds, and limits. This is an issuer decision about funding capacity for the specific transaction amount, not a statement that the account is closed or invalid. It does not indicate a technical processing failure; it reflects authorization outcomes based on available capacity. The same account may approve a smaller amount depending on available funds at the time of authorization.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Checkout declines shown in payment gateways</span></p>
+<p class="c1"><span class="c0">POS terminal authorization declines</span></p>
+<p class="c1"><span class="c0">Processor authorization reports listing issuer response code 51</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Available balance/credit below the authorization amount</span></p>
+<p class="c1"><span class="c0">Pending authorizations or holds reduced available capacity</span></p>
+<p class="c1"><span class="c0">Issuer limits or account controls reduced available amount</span></p>
+<p class="c1"><span class="c0">Multiple transactions posted close together affecting availability</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Authorization is declined and the transaction does not complete</span></p>
+<p class="c1"><span class="c0">Merchant records the decline reason as insufficient funds</span></p>
+<p class="c1"><span class="c0">Future attempts may be approved if availability changes</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not an invalid card number result (see 14)</span></p>
+<p class="c1"><span class="c0">It is not a generic issuer decline (see 05)</span></p>
+<p class="c1"><span class="c0">It is not an invalid amount validation issue (see 13)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">05 &mdash; Do not honor</span></p>
+<p class="c1"><span class="c0">12 &mdash; Invalid transaction</span></p>
+<p class="c1"><span class="c0">13 &mdash; Invalid amount</span></p>
+<p class="c1"><span class="c0">R01 &mdash; Insufficient funds (ACH)</span></p>
+<p class="c1"><span class="c0">51 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Issuer availability calculations can differ from the cardholder&rsquo;s perceived &ldquo;balance&rdquo; due to pending holds or posting delays. The same purchase may be declined with 51 at one moment and approved later if holds release or funds become available. Some issuers treat certain merchant categories or transaction types as requiring additional available capacity. The response code does not specify whether the insufficiency is due to balance, credit line, or internal issuer limits; it indicates only that approval was not granted due to available capacity.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review authorization logs to confirm the amount and timing of the decline</span></p>
+<p class="c1"><span class="c0">Check whether multiple authorizations or holds were present around the same time</span></p>
+<p class="c1"><span class="c0">Record the code for reconciliation and support reference</span></p>
+<p class="c1"><span class="c0">Follow official issuer/acquirer support channels if declines occur unexpectedly across many accounts</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If insufficient funds declines appear inconsistent with expected availability, official issuer support channels may clarify how available funds and holds were evaluated for the authorization.</span></p>
+</div>

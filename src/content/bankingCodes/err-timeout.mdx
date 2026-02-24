@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "ERR-TIMEOUT"
+shortLabel: "Session timeout"
+summary: "This code indicates the session expired or timed out before the transaction could be completed."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Bank System / Generic (Online Banking &amp; Payments)</span></p>
+<p class="c1"><span class="c0">CODE: ERR-TIMEOUT</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(ERR-TIMEOUT &mdash; Session timeout)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the session expired or timed out before the transaction could be completed.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">ERR-TIMEOUT appears when the system ends a user session due to inactivity, elapsed time, or a security timeout threshold. Many banking and payment systems require sessions to remain current while sensitive actions are performed. If the session expires during review, confirmation, or submission, the system may reject the request to prevent processing under an uncertain authentication state. This code reflects session-state management and security timing behavior. It does not automatically mean the payment failed permanently at the network level; it means the system did not confirm the action within the valid session window.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">After leaving a transfer or payment confirmation screen open too long</span></p>
+<p class="c1"><span class="c0">During multi-step verification flows with delayed completion</span></p>
+<p class="c1"><span class="c0">In apps or web portals when switching networks or backgrounding the app</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Session expired due to inactivity</span></p>
+<p class="c1"><span class="c0">Security timeout occurred during verification or confirmation</span></p>
+<p class="c1"><span class="c0">Network interruption delayed completion beyond allowed time</span></p>
+<p class="c1"><span class="c0">The app/browser lost state due to backgrounding or refresh</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The transaction is not submitted or is marked as not completed</span></p>
+<p class="c1"><span class="c0">The user may be prompted to sign in again</span></p>
+<p class="c1"><span class="c0">The system may return to the start of the transaction flow</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not a decline based on funds or credit availability</span></p>
+<p class="c1"><span class="c0">It is not an issuer outage code by itself</span></p>
+<p class="c1"><span class="c0">It is not confirmation that the transaction posted and then reversed</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">ERR-AUTH &mdash; Authorization failed</span></p>
+<p class="c1"><span class="c0">Verification failed &mdash; Verification step not completed</span></p>
+<p class="c1"><span class="c0">Transfer pending &mdash; Transaction awaiting status</span></p>
+<p class="c1"><span class="c0">ERR-TXN-FAILED &mdash; Transaction failed</span></p>
+<p class="c1"><span class="c0">96 &mdash; System malfunction</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Session timeouts can occur even during active use if the platform uses strict absolute session lifetimes. Some systems invalidate sessions when risk signals change (device, IP, location), which can present as a timeout-like failure. In certain flows, a transaction might be submitted but the confirmation step fails; this can create user uncertainty. The most reliable indicator is the final transaction record shown in the account history, which may update after processing delays.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Check the transaction history to confirm whether a new entry was created</span></p>
+<p class="c1"><span class="c0">Review whether the platform shows a draft, queued, or pending record</span></p>
+<p class="c1"><span class="c0">Re-authenticate and re-check the status before initiating a duplicate transaction</span></p>
+<p class="c1"><span class="c0">If uncertainty persists, use official support channels to confirm final posting status</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If timeouts frequently interrupt critical payments, official support channels may help clarify session rules, time windows, and whether certain flows require additional timing considerations.</span></p>
+</div>

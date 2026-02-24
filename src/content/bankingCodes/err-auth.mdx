@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "ERR-AUTH"
+shortLabel: "Authorization failed"
+summary: "This code indicates the system could not authorize the requested action under current security, account, or policy rules."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Bank System / Generic (Online Banking &amp; Payments)</span></p>
+<p class="c1"><span class="c0">CODE: ERR-AUTH</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(ERR-AUTH &mdash; Authorization failed)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the system could not authorize the requested action under current security, account, or policy rules.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">ERR-AUTH appears when the system cannot confirm authorization for a transaction or account action. &ldquo;Authorization&rdquo; here can refer to multiple layers: user authentication, security checks, account permissions, or transaction approval rules. The system may reject the request if it cannot validate identity signals, if the session is not trusted, or if the transaction is not permitted for the account&rsquo;s current status. This code reflects a decision that the request is not authorized to proceed at that moment. It does not automatically indicate fraud, and it does not necessarily mean the password is wrong; it indicates the authorization step did not pass.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">When approving a transfer, adding a new payee, or confirming a payment</span></p>
+<p class="c1"><span class="c0">During actions that require additional verification (step-up checks)</span></p>
+<p class="c1"><span class="c0">In admin or back-office logs for failed authorization decisions</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Security verification did not complete or was not accepted</span></p>
+<p class="c1"><span class="c0">The request did not meet account permission rules for that action</span></p>
+<p class="c1"><span class="c0">The session is not recognized as valid for sensitive actions</span></p>
+<p class="c1"><span class="c0">A risk control rejected the authorization attempt</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The transaction or action is blocked and not submitted for settlement</span></p>
+<p class="c1"><span class="c0">The system may keep the draft or require a new attempt</span></p>
+<p class="c1"><span class="c0">The user may be returned to a verification or sign-in checkpoint</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not a balance or funding outcome (it does not confirm insufficient funds)</span></p>
+<p class="c1"><span class="c0">It is not inherently a system outage or technical malfunction</span></p>
+<p class="c1"><span class="c0">It is not an indication that a payment was posted and then reversed</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">Verification failed &mdash; Verification step not completed</span></p>
+<p class="c1"><span class="c0">Account restricted &mdash; Account permissions limited</span></p>
+<p class="c1"><span class="c0">ERR-TIMEOUT &mdash; Session timeout</span></p>
+<p class="c1"><span class="c0">ERR-LIMIT &mdash; Limit exceeded</span></p>
+<p class="c1"><span class="c0">Payment declined &mdash; Payment not approved outcome</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Authorization failures can be sensitive to timing and context, especially when multiple verification steps are used. Some systems treat certain actions as &ldquo;high risk&rdquo; and apply stricter authorization thresholds. In multi-device scenarios, an authorization request may fail if the system expects confirmation from a different channel. Authorization failure codes may also appear when account status changes during a session, resulting in an authorization decision that does not match earlier attempts.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review whether the action required additional confirmation or verification</span></p>
+<p class="c1"><span class="c0">Check whether the session state changed (signed out, expired, or switched devices)</span></p>
+<p class="c1"><span class="c0">Confirm whether the same authorization failure occurs for other actions or only one transaction type</span></p>
+<p class="c1"><span class="c0">If repeated, use official support channels to confirm permission status and required verification steps</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If authorization failures persist and prevent normal account activity, some users contact their financial institution or official support channel for guidance on account permission and verification requirements.</span></p>
+</div>

@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "14"
+shortLabel: "Invalid card number"
+summary: "This code indicates the authorization was declined because the card number failed validation checks."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Card Payment Processing (Authorization Response Codes)</span></p>
+<p class="c1"><span class="c0">CODE: 14</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(14 &mdash; Invalid card number)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the authorization was declined because the card number failed validation checks.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Response code 14 (&ldquo;Invalid card number&rdquo;) is returned when the primary account number (PAN) does not pass validation or does not map to an acceptable account in the issuer/network systems. This can include incorrect digits, failed check digit validation, or a number that is not recognized as a valid card account. The code reflects card number validation, not available funds. It does not indicate whether the cardholder attempted a valid purchase; it indicates the identifier presented cannot be processed as a valid card number. The decline may occur before deeper account checks are performed.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Online checkout gateway decline messages</span></p>
+<p class="c1"><span class="c0">POS terminal declines for manual entry or chip/magstripe read issues</span></p>
+<p class="c1"><span class="c0">Processor authorization logs showing response code 14</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Card number entered incorrectly</span></p>
+<p class="c1"><span class="c0">Card number failed validation rules (such as check digit)</span></p>
+<p class="c1"><span class="c0">Card data capture produced corrupted/partial PAN</span></p>
+<p class="c1"><span class="c0">Issuer/network could not recognize the PAN as valid for authorization</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Authorization is declined immediately</span></p>
+<p class="c1"><span class="c0">Merchant system records the decline as invalid card number</span></p>
+<p class="c1"><span class="c0">A corrected or valid PAN may be required for successful authorization</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not insufficient funds (see 51)</span></p>
+<p class="c1"><span class="c0">It is not a generic issuer decline (see 05)</span></p>
+<p class="c1"><span class="c0">It is not an invalid amount response (see 13)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">05 &mdash; Do not honor</span></p>
+<p class="c1"><span class="c0">12 &mdash; Invalid transaction</span></p>
+<p class="c1"><span class="c0">13 &mdash; Invalid amount</span></p>
+<p class="c1"><span class="c0">51 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">14 &mdash; Invalid card number</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Card number validation failures can occur when data is captured incorrectly (for example, incomplete manual entry or partial read errors). Some environments mask or tokenize PANs; mismatches in token handling can surface as &ldquo;invalid card number&rdquo; depending on processor mapping. Code 14 does not describe whether other fields were correct; it isolates the PAN as the failing validation target. In some situations, the merchant may see code 14 even when the cardholder believes the number is correct, due to formatting or data capture differences.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Verify the card number handling and capture method recorded in transaction logs</span></p>
+<p class="c1"><span class="c0">Compare the failed transaction entry method with successful transactions</span></p>
+<p class="c1"><span class="c0">Document the response code for support and reconciliation</span></p>
+<p class="c1"><span class="c0">Use official processor support workflows if invalid PAN responses occur at scale</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If code 14 appears repeatedly despite validated capture processes, official processor or acquirer support channels may help identify where card data validation is failing.</span></p>
+</div>

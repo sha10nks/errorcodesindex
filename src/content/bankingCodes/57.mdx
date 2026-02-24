@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "57"
+shortLabel: "Transaction not permitted"
+summary: "This code indicates the issuer declined the authorization because the transaction type is not permitted for the account."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Card Payment Processing (Authorization Response Codes)</span></p>
+<p class="c1"><span class="c0">CODE: 57</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(57 &mdash; Transaction not permitted)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the issuer declined the authorization because the transaction type is not permitted for the account.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Response code 57 (&ldquo;Transaction not permitted&rdquo;) is returned when the issuer&rsquo;s rules do not allow the requested transaction type for the card or account. Issuers apply controls based on account configuration, card product rules, risk settings, and transaction category. This decline is not primarily about funds availability; it is about permission and policy. The code indicates the issuer recognized the request but rejected it due to account-level restrictions. It does not automatically imply the card is invalid or expired; it indicates the authorization request is outside what the issuer will permit.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Payment gateway declines for certain purchase categories or transaction flows</span></p>
+<p class="c1"><span class="c0">POS terminal declines for restricted transactions</span></p>
+<p class="c1"><span class="c0">Processor authorization logs showing response code 57</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Account product does not allow the transaction type (e.g., certain cash-like transactions)</span></p>
+<p class="c1"><span class="c0">Issuer restrictions limit specific merchant categories or channels</span></p>
+<p class="c1"><span class="c0">Account-level settings restrict certain card-present or card-not-present flows</span></p>
+<p class="c1"><span class="c0">Transaction permissions are limited due to issuer risk controls</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Authorization is declined and the transaction does not settle</span></p>
+<p class="c1"><span class="c0">Merchant sees a permissions-based decline code</span></p>
+<p class="c1"><span class="c0">Reattempting the same transaction type may result in the same decline while restrictions remain</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not an invalid amount (see 13)</span></p>
+<p class="c1"><span class="c0">It is not a generic &ldquo;do not honor&rdquo; (see 05)</span></p>
+<p class="c1"><span class="c0">It is not an issuer downtime error (see 91)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">58 &mdash; Service not allowed</span></p>
+<p class="c1"><span class="c0">62 &mdash; Restricted card</span></p>
+<p class="c1"><span class="c0">57 &mdash; Transaction not permitted</span></p>
+<p class="c1"><span class="c0">05 &mdash; Do not honor</span></p>
+<p class="c1"><span class="c0">91 &mdash; Issuer unavailable</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Issuer permission rules can differ between card-present and online transactions, and between domestic and international contexts. Some declines that appear similar to merchants may be coded as 57 or 62 depending on issuer policy mapping. The code does not specify which permission rule triggered the decline; detailed context is typically available only through issuer/acquirer support channels. In some environments, merchant configuration can influence how certain transaction types are categorized, affecting whether issuer rules allow them.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review transaction attributes recorded in authorization logs (channel, type, category)</span></p>
+<p class="c1"><span class="c0">Compare against prior successful transactions for the same account type, if available</span></p>
+<p class="c1"><span class="c0">Document the response code for support handling and reconciliation</span></p>
+<p class="c1"><span class="c0">Use official processor/acquirer support workflows when 57 occurs repeatedly for valid-looking requests</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If transaction permission declines persist, some users choose to consult the issuer or official support channel to understand account permission restrictions.</span></p>
+</div>

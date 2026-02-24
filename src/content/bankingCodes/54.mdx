@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "54"
+shortLabel: "Expired card"
+summary: "This code indicates the issuer declined the transaction because the card’s expiration date is no longer valid."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Card Payment Processing (Authorization Response Codes)</span></p>
+<p class="c1"><span class="c0">CODE: 54</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(54 &mdash; Expired card)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the issuer declined the transaction because the card&rsquo;s expiration date is no longer valid.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Response code 54 (&ldquo;Expired card&rdquo;) is returned when the issuer determines that the expiration date associated with the card is past the valid period for authorization. The issuer validates the card&rsquo;s expiry information as part of standard authorization checks. If the expiry is not current, the authorization is declined regardless of available funds. This code reflects an issuer validation outcome tied to card credential validity. It does not indicate a system outage or a merchant processing failure. It also does not imply fraud; it indicates the card credentials presented are no longer valid for use.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Online checkout decline messages indicating expiration issues</span></p>
+<p class="c1"><span class="c0">POS terminal declines during authorization</span></p>
+<p class="c1"><span class="c0">Payment gateway logs showing response code 54</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Card expiration date is past the issuer&rsquo;s valid window</span></p>
+<p class="c1"><span class="c0">Expiration date submitted does not match issuer records</span></p>
+<p class="c1"><span class="c0">Stored card credentials were not updated after card replacement</span></p>
+<p class="c1"><span class="c0">Credential capture or formatting caused an incorrect expiry value to be transmitted</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Authorization is declined and the transaction does not complete</span></p>
+<p class="c1"><span class="c0">Merchant records the decline as expired card</span></p>
+<p class="c1"><span class="c0">Subsequent attempts using the same expiry details continue to fail</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not insufficient funds (see 51)</span></p>
+<p class="c1"><span class="c0">It is not an invalid card number (see 14)</span></p>
+<p class="c1"><span class="c0">It is not a generic issuer refusal (see 05)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">14 &mdash; Invalid card number</span></p>
+<p class="c1"><span class="c0">54 &mdash; Expired card</span></p>
+<p class="c1"><span class="c0">57 &mdash; Transaction not permitted</span></p>
+<p class="c1"><span class="c0">62 &mdash; Restricted card</span></p>
+<p class="c1"><span class="c0">91 &mdash; Issuer unavailable</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Some transactions use stored credentials; if a card is reissued, the stored expiry may become outdated even if the cardholder&rsquo;s account remains active. Issuers can also enforce expiry checks differently depending on transaction type, such as recurring payments, tokenized wallets, or card-present usage. The decline indicates expiry validation failure, but does not specify whether the mismatch is due to an actual expired date or a formatting/capture issue.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Confirm the expiration date values recorded in the authorization request logs</span></p>
+<p class="c1"><span class="c0">Verify whether stored credentials were updated after a card replacement</span></p>
+<p class="c1"><span class="c0">Document the response code for support and reconciliation</span></p>
+<p class="c1"><span class="c0">Follow official processor workflows for credential update handling if relevant</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If expiry-related declines appear unexpected, official issuer or processor support channels may clarify whether the credentials on record match what was presented.</span></p>
+</div>

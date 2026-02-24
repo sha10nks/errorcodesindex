@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "65"
+shortLabel: "Activity limit exceeded"
+summary: "This code indicates the transaction was declined because an issuer-defined activity or frequency limit was exceeded."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Online Banking / Transfers (Authorization Response Codes)</span></p>
+<p class="c1"><span class="c0">CODE: 65</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(65 &mdash; Activity limit exceeded)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the transaction was declined because an issuer-defined activity or frequency limit was exceeded.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Response code 65 (&ldquo;Activity limit exceeded&rdquo;) is returned when the issuer determines that a limit related to transaction activity has been reached. This may reflect daily transaction count caps, velocity controls, cumulative limits for a time window, or other activity-based thresholds. The code is not a statement that the account has no funds; it indicates the request exceeds a frequency or activity rule. It is also not necessarily a permanent restriction. It reflects issuer risk and control logic designed to manage transaction volume and reduce abnormal patterns.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Multiple rapid transaction attempts during online checkout</span></p>
+<p class="c1"><span class="c0">Processor authorization logs showing issuer velocity declines</span></p>
+<p class="c1"><span class="c0">Payment dashboards reporting activity-based decline categories</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Too many transactions in a short time window</span></p>
+<p class="c1"><span class="c0">Issuer velocity controls triggered due to unusual activity patterns</span></p>
+<p class="c1"><span class="c0">Cumulative activity reached a daily or rolling threshold</span></p>
+<p class="c1"><span class="c0">Account policy limits transaction frequency for the channel or merchant type</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Authorization is declined</span></p>
+<p class="c1"><span class="c0">Merchant records an activity limit decline</span></p>
+<p class="c1"><span class="c0">Additional attempts may continue to fail until the activity window resets or conditions change</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not a withdrawal amount limit code (see 61), though both relate to limits</span></p>
+<p class="c1"><span class="c0">It is not insufficient funds (see 51)</span></p>
+<p class="c1"><span class="c0">It is not issuer unavailability (see 91)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">61 &mdash; Exceeds withdrawal limit</span></p>
+<p class="c1"><span class="c0">65 &mdash; Activity limit exceeded</span></p>
+<p class="c1"><span class="c0">62 &mdash; Restricted card</span></p>
+<p class="c1"><span class="c0">05 &mdash; Do not honor</span></p>
+<p class="c1"><span class="c0">96 &mdash; System malfunction</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Activity limits can be sensitive to retries and duplicate authorization attempts, which can make a legitimate checkout flow appear like high-velocity behavior. Issuers differ in how they count attempts (approved, declined, or both). The same account may approve transactions at slower intervals but decline during rapid sequences. The response code does not specify the activity threshold or reset time, only that an activity limit was exceeded.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review transaction attempts in the immediate window for high retry frequency</span></p>
+<p class="c1"><span class="c0">Compare declines across merchants and channels to determine whether limits are broad or context-specific</span></p>
+<p class="c1"><span class="c0">Document the decline code and timing for support and reconciliation</span></p>
+<p class="c1"><span class="c0">Use official issuer support channels if activity limits appear inconsistent with expected usage patterns</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If activity-limit declines block expected payments, official issuer or processor support channels may clarify whether velocity or frequency controls are active for the account.</span></p>
+</div>

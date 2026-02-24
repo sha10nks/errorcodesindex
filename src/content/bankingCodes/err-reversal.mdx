@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "ERR-REVERSAL"
+shortLabel: "Reversal required"
+summary: "This code indicates the system flagged the transaction for reversal handling due to an incomplete, conflicted, or failed processing outcome."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Bank System / Generic (Online Banking &amp; Payments)</span></p>
+<p class="c1"><span class="c0">CODE: ERR-REVERSAL</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(ERR-REVERSAL &mdash; Reversal required)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the system flagged the transaction for reversal handling due to an incomplete, conflicted, or failed processing outcome.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">ERR-REVERSAL appears when the system determines a transaction cannot remain in its current state and requires reversal logic to restore consistent balances or statuses. Reversals can occur when a transaction is partially processed, duplicated, or fails after an authorization or posting step. The code is typically used internally to communicate that a compensating action is needed to return the system to a stable state. It does not automatically mean the user has received funds back already; it means the system believes a reversal workflow is required. It also does not indicate fault by the user; it reflects processing integrity controls.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">In payment or transfer status screens that show &ldquo;reversal&rdquo; messaging</span></p>
+<p class="c1"><span class="c0">In merchant/processor logs describing failed capture requiring reversal</span></p>
+<p class="c1"><span class="c0">In bank back-office exception reports related to transaction integrity</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">A transaction was authorized but did not complete posting or capture</span></p>
+<p class="c1"><span class="c0">Duplicate submissions created conflicting states</span></p>
+<p class="c1"><span class="c0">A downstream settlement step failed after initial processing</span></p>
+<p class="c1"><span class="c0">The system detected inconsistency requiring corrective processing</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The system initiates or schedules reversal/compensation processing</span></p>
+<p class="c1"><span class="c0">The transaction may appear as reversed, voided, or canceled in history</span></p>
+<p class="c1"><span class="c0">Any holds may be released according to platform timing rules</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not the same as &ldquo;payment declined&rdquo; (declines typically occur before processing)</span></p>
+<p class="c1"><span class="c0">It is not a simple timeout; it implies a corrective action is needed</span></p>
+<p class="c1"><span class="c0">It is not confirmation of final refund timing or completion</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">Payment reversed &mdash; Transaction reversed outcome</span></p>
+<p class="c1"><span class="c0">Transfer pending &mdash; Transaction awaiting resolution</span></p>
+<p class="c1"><span class="c0">ERR-TXN-FAILED &mdash; Transaction failed</span></p>
+<p class="c1"><span class="c0">96 &mdash; System malfunction</span></p>
+<p class="c1"><span class="c0">91 &mdash; Issuer unavailable</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Reversal handling can be asynchronous, especially when multiple systems are involved (bank core, processor, network). A user may see an intermediate state where the original transaction is visible and later replaced by a reversal entry. Some systems use &ldquo;reversal required&rdquo; as an internal flag even when the user-facing status is &ldquo;processing.&rdquo; The code does not specify whether the reversal is immediate or queued; final timing depends on the platform&rsquo;s settlement and reconciliation cycles.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review transaction history for a separate reversal or adjustment entry</span></p>
+<p class="c1"><span class="c0">Check whether the transaction status changes from pending to reversed over time</span></p>
+<p class="c1"><span class="c0">Avoid assuming final balance impact until the transaction reaches a terminal status</span></p>
+<p class="c1"><span class="c0">If the state does not resolve, contact official support to confirm reconciliation status</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If the reversal-required state persists or creates balance uncertainty, official support channels can confirm whether reversal processing completed and what final status was recorded.</span></p>
+</div>

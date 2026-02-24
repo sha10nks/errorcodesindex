@@ -1,0 +1,54 @@
+---
+industry: "banking"
+code: "ERR-TXN-FAILED"
+shortLabel: "Transaction failed"
+summary: "This code indicates the transaction could not be completed and was marked as failed by the bank or payment system."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Bank System / Generic (Online Banking &amp; Payments)</span></p>
+<p class="c1"><span class="c0">CODE: ERR-TXN-FAILED</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(ERR-TXN-FAILED &mdash; Transaction failed)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the transaction could not be completed and was marked as failed by the bank or payment system.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">ERR-TXN-FAILED is a generic failure code used when a transaction does not reach a successful completion state. It typically reflects that the system attempted to process the request but did not finalize authorization, posting, or settlement. This code is often used when the system can&rsquo;t safely classify the failure into a more specific category. It represents an outcome (&ldquo;failed&rdquo;) rather than a single root cause. It does not automatically mean the account is restricted, the recipient details are wrong, or funds are unavailable, although any of those could be contributing factors depending on context.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">After submitting a bank transfer, bill payment, or card-like payment inside an app</span></p>
+<p class="c1"><span class="c0">In transaction history where the status shows &ldquo;Failed&rdquo; with a short error label</span></p>
+<p class="c1"><span class="c0">In merchant or payment processor logs for a bank-initiated payment attempt</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">A processing step failed (validation, authorization, posting, or settlement)</span></p>
+<p class="c1"><span class="c0">The request timed out or was interrupted before completion</span></p>
+<p class="c1"><span class="c0">The system received an upstream rejection without a mapped reason code</span></p>
+<p class="c1"><span class="c0">A risk or policy rule stopped completion but returned a generic failure outcome</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The transaction status is set to Failed and is not expected to complete automatically</span></p>
+<p class="c1"><span class="c0">Any reserved funds or temporary holds may be released according to system timing rules</span></p>
+<p class="c1"><span class="c0">The system may prompt the user to try again later or submit a new transaction</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not proof of insufficient funds or credit availability</span></p>
+<p class="c1"><span class="c0">It is not confirmation that the recipient account details are invalid</span></p>
+<p class="c1"><span class="c0">It is not a guarantee that a reversal or refund has already occurred</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">ERR-AUTH &mdash; Authorization failed</span></p>
+<p class="c1"><span class="c0">ERR-LIMIT &mdash; Limit exceeded</span></p>
+<p class="c1"><span class="c0">ERR-TIMEOUT &mdash; Session timeout</span></p>
+<p class="c1"><span class="c0">ERR-REVERSAL &mdash; Reversal required</span></p>
+<p class="c1"><span class="c0">Payment reversed &mdash; Transaction reversed outcome</span></p>
+<p class="c1"><span class="c0">Verification failed &mdash; Identity or security verification not completed</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Generic &ldquo;failed&rdquo; outcomes can occur when multiple systems participate in a transaction and the final failure reason is not exposed to the front end. Some systems temporarily show &ldquo;failed&rdquo; while a late status update is pending, but this is not guaranteed and depends on the platform&rsquo;s status model. A failed status can also occur after partial processing where downstream posting never completes; systems often use conservative failure states to avoid showing success when settlement is uncertain.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review the transaction record details, including timestamp, amount, and destination information</span></p>
+<p class="c1"><span class="c0">Check whether the transaction appears elsewhere as pending or completed under a different reference</span></p>
+<p class="c1"><span class="c0">Confirm whether the platform indicates any hold, temporary authorization, or duplicate attempt</span></p>
+<p class="c1"><span class="c0">If the failure repeats for the same transaction type, consider using the official support channel for clarification</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If the transaction repeatedly fails or blocks critical activity, some users choose to contact their financial institution or official support channel to confirm the processing status and any restrictions.</span></p>
+</div>

@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "Payment On Hold"
+shortLabel: "Payment paused for review"
+summary: "This status indicates the payment is temporarily paused and will not complete until a review or prerequisite step is resolved."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Payment Processing Status (User-Facing Processing States)</span></p>
+<p class="c1"><span class="c0">CODE: Payment On Hold</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(Payment On Hold &mdash; Payment paused for review)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This status indicates the payment is temporarily paused and will not complete until a review or prerequisite step is resolved.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">&ldquo;Payment On Hold&rdquo; indicates the payment has been accepted into the system but is not proceeding to completion due to a hold condition. Holds can be triggered by risk screening, compliance checks, verification requirements, operational exceptions, or policy gates. This status is an intermediate processing state, not a final decline. It does not mean the payment is guaranteed to fail, and it does not confirm that funds were settled. It indicates the system has intentionally paused processing to maintain safety or correctness. The hold may apply to the payment itself or to related account actions.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Transaction history showing a payment in &ldquo;hold&rdquo; status</span></p>
+<p class="c1"><span class="c0">Banking app banners indicating a review is in progress</span></p>
+<p class="c1"><span class="c0">Merchant or processor systems showing payments held for review</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Risk review is pending (fraud or anomaly screening)</span></p>
+<p class="c1"><span class="c0">Compliance checks are pending</span></p>
+<p class="c1"><span class="c0">Identity verification is required or incomplete</span></p>
+<p class="c1"><span class="c0">Operational exceptions require review before posting or settlement</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The payment remains paused until the hold condition resolves</span></p>
+<p class="c1"><span class="c0">The status updates to completed, returned, reversed, or failed based on the final decision</span></p>
+<p class="c1"><span class="c0">The platform may restrict additional payments depending on account-level policy</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not a confirmed decline or rejection</span></p>
+<p class="c1"><span class="c0">It is not the same as &ldquo;payment reversed&rdquo;</span></p>
+<p class="c1"><span class="c0">It is not necessarily a technical malfunction</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">Z1 &mdash; Fraud review</span></p>
+<p class="c1"><span class="c0">Z3 &mdash; Compliance hold</span></p>
+<p class="c1"><span class="c0">Z7 &mdash; Identity verification</span></p>
+<p class="c1"><span class="c0">Z5 &mdash; Manual review</span></p>
+<p class="c1"><span class="c0">Settlement Failed &mdash; Settlement did not finalize</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Hold states can vary in duration based on queue volume and policy. Some platforms hold only certain payment types (for example, new payees or unusually large amounts). A payment can remain on hold even if the user session ended successfully; the hold is typically an asynchronous backend state. In multi-system environments, an item may show &ldquo;on hold&rdquo; while downstream services evaluate it, then update later without user action.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Monitor the payment record for a terminal status update</span></p>
+<p class="c1"><span class="c0">Check whether the platform shows any notice indicating a required verification step</span></p>
+<p class="c1"><span class="c0">Avoid creating duplicate payments while the original is on hold unless clearly advised by the platform</span></p>
+<p class="c1"><span class="c0">If the hold persists beyond normal expectations, contact official support for status clarification</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If an on-hold payment is time-sensitive, official support channels can confirm whether it is queued for review and whether additional verification is required.</span></p>
+</div>

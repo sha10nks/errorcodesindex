@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import SectionLayout from '../../../layouts/SectionLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('applianceCodes');
+  const types = Array.from(new Set(entries.map((e) => e.data.applianceType))).sort();
+  return types.map((applianceType) => ({ params: { applianceType } }));
+}
+
+const { applianceType } = Astro.params;
+if (!applianceType) throw new Error('Missing applianceType');
+
+const entries = await getCollection('applianceCodes');
+const inType = entries.filter((e) => e.data.applianceType === applianceType);
+const brands = Array.from(new Set(inType.map((e) => e.data.brand))).sort();
+
+const title = `${applianceType.replace(/-/g, ' ')} error codes`; 
+const description =
+  'An index hub for this appliance type. Browse brands and models using crawlable HTML links.';
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Appliances', href: '/appliances/' },
+  { label: applianceType.replace(/-/g, ' '), href: `/appliances/${applianceType}/` },
+];
+---
+
+<SectionLayout title={title} description={description} crumbs={crumbs}>
+  {brands.length === 0 ? (
+    <p>No brands available for this appliance type yet.</p>
+  ) : (
+    <ul>
+      {brands.map((brand) => (
+        <li>
+          <a href={`/appliances/${applianceType}/${brand}/`}>{brand.replace(/-/g, ' ')}</a>
+        </li>
+      ))}
+    </ul>
+  )}
+</SectionLayout>
+

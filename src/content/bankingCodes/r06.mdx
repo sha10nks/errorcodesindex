@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "R06"
+shortLabel: "Returned per ODFI request"
+summary: "This code indicates the entry was returned at the request of the originating depository financial institution."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Return Codes (NACHA)</span></p>
+<p class="c1"><span class="c0">CODE: R06</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(R06 &mdash; Returned per ODFI request)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the entry was returned at the request of the originating depository financial institution.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">R06 is used when an entry is returned because the ODFI requested that the RDFI return it. This is not a receiver-initiated dispute code like unauthorized debit, and it is not necessarily a funds or account validation issue. Instead, it reflects an origin-side request to reverse or return an entry through approved ACH return mechanisms. The reason for the ODFI&rsquo;s request can vary and may relate to operational handling, duplicate processing concerns, or other administrative conditions. The code itself does not disclose the underlying reason; it identifies the return as ODFI-requested.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">ACH returns in bank-to-bank operational reports</span></p>
+<p class="c1"><span class="c0">Processor dashboards where an origin-side return request was initiated</span></p>
+<p class="c1"><span class="c0">Reconciliation records showing administrative returns</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">ODFI initiated a request to return an entry</span></p>
+<p class="c1"><span class="c0">An origin-side processing issue triggered a return workflow</span></p>
+<p class="c1"><span class="c0">Duplicate or erroneous origination was identified and addressed through return channels</span></p>
+<p class="c1"><span class="c0">Administrative handling required the entry to be returned</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The entry is returned with code R06</span></p>
+<p class="c1"><span class="c0">The originator&rsquo;s records reflect the item as returned per ODFI request</span></p>
+<p class="c1"><span class="c0">Follow-on handling is typically internal to the originator/ODFI workflow</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not a receiver dispute (see R05/R07/R10)</span></p>
+<p class="c1"><span class="c0">It is not an insufficient funds condition (see R01/R09)</span></p>
+<p class="c1"><span class="c0">It is not an invalid account number outcome (see R04)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">R08 &mdash; Stop payment</span></p>
+<p class="c1"><span class="c0">R03 &mdash; No account/unable to locate</span></p>
+<p class="c1"><span class="c0">R04 &mdash; Invalid account number</span></p>
+<p class="c1"><span class="c0">R05 &mdash; Unauthorized debit</span></p>
+<p class="c1"><span class="c0">R10 &mdash; Customer advises unauthorized</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Because R06 communicates a category rather than a specific defect, it can appear in varied scenarios depending on the ODFI&rsquo;s operational practices. Some originators may see R06 in the context of correcting internal posting issues, while others may rarely encounter it. In multi-party processing chains (originator &rarr; processor &rarr; ODFI), the initiating reason may be recorded in upstream logs but not visible in the return code alone.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review internal origination and exception logs associated with the entry</span></p>
+<p class="c1"><span class="c0">Confirm whether the return aligns with an intentional origin-side action</span></p>
+<p class="c1"><span class="c0">Document the return reason internally, since the code itself is non-specific</span></p>
+<p class="c1"><span class="c0">Reconcile funds movement and status updates across systems</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If the return reason is unclear, official channels at the ODFI or processor may provide the originating context tied to the request.</span></p>
+</div>

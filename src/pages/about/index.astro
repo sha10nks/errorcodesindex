@@ -1,0 +1,33 @@
+---
+import SectionLayout from '../../layouts/SectionLayout.astro';
+
+const title = 'About';
+const description =
+  'About ErrorCodesIndex.com: a static, documentation-style reference library designed for stable URLs, crawlable navigation, and long-term search usefulness.';
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about/' },
+];
+---
+
+<SectionLayout title={title} description={description} crumbs={crumbs}>
+  <h2>Purpose</h2>
+  <p>
+    ErrorCodesIndex.com is a plain-English reference library for system error codes across multiple industries. The site
+    is intentionally documentation-style: neutral wording, predictable structure, and stable internal links.
+  </p>
+
+  <h2>Editorial policy</h2>
+  <ul>
+    <li>Error-code page bodies are imported verbatim from a locked source document.</li>
+    <li>We do not rewrite, paraphrase, or invent error-code explanations.</li>
+    <li>Non-code pages may include organizational and legal information required to operate the site.</li>
+  </ul>
+
+  <h2>Site architecture</h2>
+  <p>
+    The site is built as fully static HTML with crawlable navigation. Canonical URLs, breadcrumb markup, and a
+    build-generated sitemap are used to support predictable indexing.
+  </p>
+</SectionLayout>
+

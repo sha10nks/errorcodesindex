@@ -1,0 +1,54 @@
+---
+industry: "banking"
+code: "R12"
+shortLabel: "Branch sold to another bank"
+summary: "This code indicates the receiving branch or institution relationship changed, and the entry could not be processed under the prior routing/branch structure."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Return Codes (Administrative / Compliance)</span></p>
+<p class="c1"><span class="c0">CODE: R12</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(R12 &mdash; Branch sold to another bank)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the receiving branch or institution relationship changed, and the entry could not be processed under the prior routing/branch structure.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">R12 is returned when an ACH entry is presented to a branch or institution endpoint that has been sold or transferred to another bank, making the original routing relationship no longer valid for posting the entry as presented. The return reflects a routing and ownership change rather than a funds issue or authorization dispute. It signals that the account relationship is no longer served under the same branch/institution configuration used at origination. This code does not automatically mean the account is closed; it indicates the receiving path used for the entry is no longer correct due to an institutional change. The outcome is administrative: the RDFI cannot post the entry as addressed.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">ACH returns in processor settlement and reconciliation reports</span></p>
+<p class="c1"><span class="c0">Bank operations dashboards during routing change periods</span></p>
+<p class="c1"><span class="c0">Payment failure notifications tied to bank acquisitions or branch transfers</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">The receiving branch was transferred to another bank entity</span></p>
+<p class="c1"><span class="c0">Routing information on file is outdated relative to current bank ownership</span></p>
+<p class="c1"><span class="c0">The RDFI&rsquo;s routing tables no longer recognize the branch path used in the entry</span></p>
+<p class="c1"><span class="c0">Institutional changes created a mismatch between origination details and current receiving structure</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The entry is returned with R12 through standard ACH return flows</span></p>
+<p class="c1"><span class="c0">The originator records the item as returned due to routing/branch change</span></p>
+<p class="c1"><span class="c0">Future entries using the same outdated receiving path are likely to return until updated</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not an invalid account number (see R04)</span></p>
+<p class="c1"><span class="c0">It is not a closed account confirmation (see R02)</span></p>
+<p class="c1"><span class="c0">It is not insufficient funds (see R01/R09)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">R03 &mdash; No account/unable to locate</span></p>
+<p class="c1"><span class="c0">R04 &mdash; Invalid account number</span></p>
+<p class="c1"><span class="c0">R02 &mdash; Account closed</span></p>
+<p class="c1"><span class="c0">R11 &mdash; Check truncation entry returned</span></p>
+<p class="c1"><span class="c0">R16 &mdash; Account frozen</span></p>
+<p class="c1"><span class="c0">R06 &mdash; Returned per ODFI request</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Branch sales and institutional transfers can lead to transitional periods where legacy details work intermittently depending on cutover schedules. In some cases, a branch transfer may preserve account numbers but require updated routing or receiving identifiers. Different institutions may map similar conditions to R12 or to &ldquo;unable to locate&rdquo; depending on how routing conversion is implemented. The return code does not include the new bank&rsquo;s details; it only communicates that the prior receiving relationship is no longer valid.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Verify whether the receiver&rsquo;s bank details have changed due to acquisition or branch transfer</span></p>
+<p class="c1"><span class="c0">Compare current account/routing details on file to recent successful transactions</span></p>
+<p class="c1"><span class="c0">Document the return as a routing-change outcome for reconciliation</span></p>
+<p class="c1"><span class="c0">Coordinate with your ODFI or processor to confirm updated receiving information requirements</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If a branch transfer is suspected, official bank or processor support channels may confirm whether updated routing information is required for future entries.</span></p>
+</div>

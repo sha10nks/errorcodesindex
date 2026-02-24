@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import SectionLayout from '../../../../../layouts/SectionLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('applianceCodes');
+  const keys = new Set(entries.map((e) => `${e.data.applianceType}::${e.data.brand}::${e.data.seriesOrModel}`));
+  return Array.from(keys)
+    .sort()
+    .map((key) => {
+      const [applianceType, brand, seriesOrModel] = key.split('::');
+      return { params: { applianceType, brand, seriesOrModel } };
+    });
+}
+
+const { applianceType, brand, seriesOrModel } = Astro.params;
+if (!applianceType || !brand || !seriesOrModel) throw new Error('Missing params');
+
+const entries = await getCollection('applianceCodes');
+const inModel = entries
+  .filter((e) => e.data.applianceType === applianceType && e.data.brand === brand && e.data.seriesOrModel === seriesOrModel)
+  .sort((a, b) => a.data.code.localeCompare(b.data.code, 'en', { numeric: true }));
+
+const title = `${brand.replace(/-/g, ' ')} ${seriesOrModel.replace(/-/g, ' ')} error codes`;
+const description =
+  'A model hub listing all available error codes for this appliance series or model. Links are static and crawlable.';
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Appliances', href: '/appliances/' },
+  { label: applianceType.replace(/-/g, ' '), href: `/appliances/${applianceType}/` },
+  { label: brand.replace(/-/g, ' '), href: `/appliances/${applianceType}/${brand}/` },
+  { label: seriesOrModel.replace(/-/g, ' '), href: `/appliances/${applianceType}/${brand}/${seriesOrModel}/` },
+];
+---
+
+<SectionLayout title={title} description={description} crumbs={crumbs}>
+  {inModel.length === 0 ? (
+    <p>No codes are available for this model yet.</p>
+  ) : (
+    <div class="not-prose overflow-x-auto rounded-2xl border border-brand-border bg-brand-surface shadow-card">
+      <table class="w-full border-collapse text-sm">
+        <thead class="bg-brand-dark text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
+          <tr>
+            <th class="border-b border-brand-border px-4 py-3">Code</th>
+            <th class="border-b border-brand-border px-4 py-3">Short label</th>
+            <th class="border-b border-brand-border px-4 py-3">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {inModel.map((e) => (
+            <tr class="hover:bg-brand-dark/50">
+              <td class="border-b border-brand-border px-4 py-3 font-mono text-xs text-slate-200">{e.data.code}</td>
+              <td class="border-b border-brand-border px-4 py-3 text-slate-300">{e.data.shortLabel}</td>
+              <td class="border-b border-brand-border px-4 py-3">
+                <a
+                  class="text-brand-primary hover:text-brand-accent transition-colors"
+                  href={`/appliances/${applianceType}/${brand}/${seriesOrModel}/error-codes/${e.slug.split('/').slice(-1)[0]}/`}
+                >
+                  View
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+</SectionLayout>

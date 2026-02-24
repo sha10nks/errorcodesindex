@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "Z1"
+shortLabel: "Fraud review"
+summary: "This code indicates the transaction or account activity was routed into a fraud review workflow before it can proceed."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Bank Risk &amp; Compliance (Internal Status Codes)</span></p>
+<p class="c1"><span class="c0">CODE: Z1</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(Z1 &mdash; Fraud review)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the transaction or account activity was routed into a fraud review workflow before it can proceed.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Z1 is a risk-status code that signals the system flagged an item for fraud review. In banking and payment environments, fraud review typically means the transaction or activity triggered risk signals that require additional screening or confirmation before approval, posting, or settlement. This is not necessarily an accusation of wrongdoing; it is a control state that prioritizes safety and loss prevention. A fraud review status can apply to a single transaction, a series of transactions, or broader account activity depending on how the platform scopes its controls. The code communicates that automated processing is paused or restricted while the item is evaluated.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Transaction detail views showing &ldquo;under review&rdquo; or similar status</span></p>
+<p class="c1"><span class="c0">Back-office risk dashboards monitoring flagged payments or transfers</span></p>
+<p class="c1"><span class="c0">Processor or bank logs for transactions routed to risk queues</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Risk rules detected unusual transaction patterns or attributes</span></p>
+<p class="c1"><span class="c0">The transaction matched known fraud signals or screening criteria</span></p>
+<p class="c1"><span class="c0">Account activity triggered velocity or anomaly thresholds</span></p>
+<p class="c1"><span class="c0">Additional confirmation is required under risk policy</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The transaction may remain pending or on hold while review occurs</span></p>
+<p class="c1"><span class="c0">The system may restrict completion until a review outcome is recorded</span></p>
+<p class="c1"><span class="c0">The status may later change to approved, declined, returned, or reversed depending on final processing outcome</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not a confirmed fraud determination</span></p>
+<p class="c1"><span class="c0">It is not an issuer unavailability or technical outage code</span></p>
+<p class="c1"><span class="c0">It is not a funds-availability statement</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">Z5 &mdash; Manual review</span></p>
+<p class="c1"><span class="c0">Z9 &mdash; Risk assessment</span></p>
+<p class="c1"><span class="c0">Z7 &mdash; Identity verification</span></p>
+<p class="c1"><span class="c0">Payment On Hold &mdash; Processing paused state</span></p>
+<p class="c1"><span class="c0">Settlement Failed &mdash; Finalization did not complete</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Fraud review workflows can be triggered by transaction context, device signals, location changes, or atypical amounts. Some platforms apply fraud review only to the transaction, while others temporarily restrict account-level actions until review completes. Reviews may be automated or human-in-the-loop depending on platform design. The code does not provide timing guarantees; review duration depends on queue load and policy thresholds.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review the transaction record to confirm whether it is marked as on hold or pending</span></p>
+<p class="c1"><span class="c0">Check whether multiple transactions are affected or only one item</span></p>
+<p class="c1"><span class="c0">Avoid assuming the transaction will complete until it reaches a terminal status</span></p>
+<p class="c1"><span class="c0">If the review persists or blocks critical activity, use the official support channel for status clarification</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If a fraud review status remains unresolved, official bank or platform support channels may confirm whether additional verification is required and whether processing can continue.</span></p>
+</div>

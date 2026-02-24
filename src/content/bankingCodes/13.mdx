@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "13"
+shortLabel: "Invalid amount"
+summary: "This code indicates the authorization was declined because the amount in the request was not acceptable under issuer or network rules."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Card Payment Processing (Authorization Response Codes)</span></p>
+<p class="c1"><span class="c0">CODE: 13</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(13 &mdash; Invalid amount)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the authorization was declined because the amount in the request was not acceptable under issuer or network rules.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Response code 13 (&ldquo;Invalid amount&rdquo;) is returned when the transaction amount submitted for authorization fails validation rules. This can mean the amount is outside allowable ranges, contains formatting issues, or conflicts with the merchant&rsquo;s or issuer&rsquo;s expectations for that transaction type. The code is about the amount field and how it is presented, not the account&rsquo;s available funds. It does not indicate that the card is invalid. It also does not automatically imply the amount is &ldquo;too high&rdquo; in a funds sense; it indicates the amount value is not acceptable for processing as submitted.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Merchant gateway decline logs</span></p>
+<p class="c1"><span class="c0">POS terminal decline messages</span></p>
+<p class="c1"><span class="c0">Processor reporting that categorizes declines by response code</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Amount value failed validation (formatting, precision, or allowed range)</span></p>
+<p class="c1"><span class="c0">The authorization amount was inconsistent with the transaction type</span></p>
+<p class="c1"><span class="c0">The merchant request included an amount that issuer rules reject for that context</span></p>
+<p class="c1"><span class="c0">Network validation flagged the amount field as not acceptable</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Authorization is declined and the transaction does not complete</span></p>
+<p class="c1"><span class="c0">Merchant system records the decline code associated with the amount field</span></p>
+<p class="c1"><span class="c0">Retrying with the same parameters may produce the same result</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not an insufficient funds decline (see 51)</span></p>
+<p class="c1"><span class="c0">It is not an invalid card number response (see 14)</span></p>
+<p class="c1"><span class="c0">It is not a generic issuer &ldquo;do not honor&rdquo; (see 05)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">12 &mdash; Invalid transaction</span></p>
+<p class="c1"><span class="c0">14 &mdash; Invalid card number</span></p>
+<p class="c1"><span class="c0">51 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">05 &mdash; Do not honor</span></p>
+<p class="c1"><span class="c0">13 &mdash; Invalid amount</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Some transactions involve preauthorizations, incremental authorizations, or reversals where the amount behavior differs from standard purchases. In those flows, issuer or network rules may reject amount values that are valid in other contexts. Currency handling and rounding can also influence validation in certain environments. The decline code alone does not identify which validation rule failed, so gateway logs and transaction metadata are typically needed to isolate patterns.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review the amount formatting and currency context in the authorization request logs</span></p>
+<p class="c1"><span class="c0">Compare failed requests to recent successful transactions for consistency</span></p>
+<p class="c1"><span class="c0">Document the code for reconciliation and support handling</span></p>
+<p class="c1"><span class="c0">Use official processor support channels for repeated amount-validation declines</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If invalid amount responses occur consistently for a specific transaction type, official acquirer or processor support channels may help confirm acceptable request parameters.</span></p>
+</div>

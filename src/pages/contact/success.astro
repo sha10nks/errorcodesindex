@@ -1,0 +1,22 @@
+---
+import SectionLayout from '../../layouts/SectionLayout.astro';
+
+const title = 'Message received';
+const description = 'Your message has been submitted. If a response is required, it will be sent to the email address provided.';
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Contact', href: '/contact/' },
+  { label: 'Success', href: '/contact/success/' },
+];
+---
+
+<SectionLayout title={title} description={description} crumbs={crumbs}>
+  <p>
+    Your message has been submitted successfully. If you requested a reply, we will respond using the email address you
+    provided.
+  </p>
+  <p>
+    <a href="/">Return to home</a>
+  </p>
+</SectionLayout>
+

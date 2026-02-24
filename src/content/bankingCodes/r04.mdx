@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "R04"
+shortLabel: "Invalid account number"
+summary: "This code indicates the account number provided is invalid or fails the RDFI’s account validation requirements."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Return Codes (NACHA)</span></p>
+<p class="c1"><span class="c0">CODE: R04</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(R04 &mdash; Invalid account number)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the account number provided is invalid or fails the RDFI&rsquo;s account validation requirements.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">R04 is used when the receiving institution determines the account number is invalid for posting the ACH entry. This can mean the number is the wrong length, fails internal checksum or validation rules, or otherwise does not conform to the RDFI&rsquo;s accepted account numbering structure. While similar to R03, which reflects inability to locate an account, R04 emphasizes invalidity of the account identifier as submitted. This return reflects account validation at the RDFI, not a temporary network or processing delay. It also does not imply the receiver acted in bad faith; it indicates the account identifier did not meet requirements for posting.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Bank draft or ACH debit failures in billing systems</span></p>
+<p class="c1"><span class="c0">Payment processor return code dashboards</span></p>
+<p class="c1"><span class="c0">Returned entry notifications in reconciliation files</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Account number length or format does not match RDFI requirements</span></p>
+<p class="c1"><span class="c0">Digits were entered incorrectly or truncated</span></p>
+<p class="c1"><span class="c0">Leading zeros were omitted where required</span></p>
+<p class="c1"><span class="c0">Internal account validation checks failed at the RDFI</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The entry is returned as invalid with R04</span></p>
+<p class="c1"><span class="c0">The originator records the failure and may request updated account details</span></p>
+<p class="c1"><span class="c0">Repeat attempts with the same information typically return again</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not insufficient funds (see R01)</span></p>
+<p class="c1"><span class="c0">It is not a closed account status (see R02)</span></p>
+<p class="c1"><span class="c0">It is not an authorization dispute (see R05/R10)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">R03 &mdash; No account/unable to locate</span></p>
+<p class="c1"><span class="c0">R02 &mdash; Account closed</span></p>
+<p class="c1"><span class="c0">R01 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">R07 &mdash; Authorization revoked</span></p>
+<p class="c1"><span class="c0">R08 &mdash; Stop payment</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">R04 outcomes can be sensitive to formatting rules such as leading zeros and institution-specific account numbering patterns. Some RDFIs may map certain validation failures to R03 rather than R04, so patterns can differ by institution. If an account was recently opened, timing and internal system synchronization may affect validation outcomes during early posting windows. In some cases, different SEC codes or entry contexts may interact with the RDFI&rsquo;s validation logic.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Confirm the account number was captured exactly as provided by the account holder</span></p>
+<p class="c1"><span class="c0">Review whether formatting (such as leading zeros) could affect validation</span></p>
+<p class="c1"><span class="c0">Compare against previously successful transactions for consistency</span></p>
+<p class="c1"><span class="c0">Log the return code for auditing and future prevention</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">For repeated invalid-account returns, official support channels may be able to confirm the expected account format requirements.</span></p>
+</div>

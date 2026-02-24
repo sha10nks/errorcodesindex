@@ -1,0 +1,72 @@
+---
+import SectionLayout from '../../layouts/SectionLayout.astro';
+
+const title = 'Contact';
+const description =
+  'Contact ErrorCodesIndex.com. Send corrections to navigation, report broken links, or request updates to the source import pipeline.';
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Contact', href: '/contact/' },
+];
+---
+
+<SectionLayout title={title} description={description} crumbs={crumbs}>
+  <div class="not-prose rounded-2xl border border-brand-border bg-brand-surface p-6 shadow-card">
+    <form
+      name="contact"
+      method="POST"
+      action="/contact/success/"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="space-y-4"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+
+      <p class="hidden">
+        <label>
+          Don’t fill this out if you’re human: <input name="bot-field" />
+        </label>
+      </p>
+
+      <div>
+        <label class="block text-sm font-medium text-slate-200" for="name">Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          required
+          class="mt-2 w-full rounded-xl border border-brand-border bg-brand-dark px-4 py-3 text-sm text-slate-200 placeholder:text-slate-500 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/40 focus:outline-none"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-slate-200" for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          class="mt-2 w-full rounded-xl border border-brand-border bg-brand-dark px-4 py-3 text-sm text-slate-200 placeholder:text-slate-500 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/40 focus:outline-none"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-slate-200" for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows={6}
+          class="mt-2 w-full rounded-xl border border-brand-border bg-brand-dark px-4 py-3 text-sm text-slate-200 placeholder:text-slate-500 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/40 focus:outline-none"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="rounded-full bg-brand-primary px-5 py-3 text-sm font-semibold text-brand-dark shadow-lg shadow-brand-primary/20 transition-colors hover:bg-brand-accent"
+      >
+        Send
+      </button>
+    </form>
+  </div>
+</SectionLayout>

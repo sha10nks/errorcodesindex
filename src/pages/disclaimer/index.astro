@@ -1,0 +1,38 @@
+---
+import SectionLayout from '../../layouts/SectionLayout.astro';
+
+const title = 'Disclaimer';
+const description =
+  'Disclaimer for ErrorCodesIndex.com covering informational use, accuracy limitations, and responsibility for actions taken based on reference material.';
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Disclaimer', href: '/disclaimer/' },
+];
+---
+
+<SectionLayout title={title} description={description} crumbs={crumbs}>
+  <h2>Informational reference</h2>
+  <p>
+    ErrorCodesIndex.com is provided for informational reference only. Error codes and related descriptions may vary by
+    vendor, product version, configuration, region, and time.
+  </p>
+
+  <h2>No guarantees</h2>
+  <p>
+    We do not guarantee the accuracy, completeness, or currency of any information on this site. You are responsible
+    for verifying details with official vendor documentation and your own testing.
+  </p>
+
+  <h2>Operational responsibility</h2>
+  <p>
+    Actions taken based on information found on this site are taken at your own risk. Always follow change management,
+    security, and safety procedures appropriate for your environment.
+  </p>
+
+  <h2>External links</h2>
+  <p>
+    Links to third-party sites are provided for convenience. We do not control those sites and are not responsible for
+    their content.
+  </p>
+</SectionLayout>
+

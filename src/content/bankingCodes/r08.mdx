@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "R08"
+shortLabel: "Stop payment"
+summary: "This code indicates the RDFI returned the entry because a stop payment order applies to the transaction."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Return Codes (NACHA)</span></p>
+<p class="c1"><span class="c0">CODE: R08</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(R08 &mdash; Stop payment)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the RDFI returned the entry because a stop payment order applies to the transaction.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">R08 is returned when the receiving institution applies a stop payment order that prevents the debit from being posted. Stop payment orders are typically requested by the account holder and recorded by the bank to block certain transactions under defined conditions. In ACH, the RDFI may return an entry if it matches the stop payment parameters. This code reflects a bank-applied payment block rather than a funds availability issue. It does not automatically mean the debit was unauthorized; it means the bank recognized a stop payment instruction relevant to the entry.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Returned ACH debits for recurring payments</span></p>
+<p class="c1"><span class="c0">Billing system return codes indicating payment blocked</span></p>
+<p class="c1"><span class="c0">Processor settlement reports listing stop payment returns</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Receiver placed a stop payment order with their bank</span></p>
+<p class="c1"><span class="c0">Stop payment parameters match the entry (originator, amount range, timing, or other identifiers)</span></p>
+<p class="c1"><span class="c0">The bank applied a stop payment control to the account</span></p>
+<p class="c1"><span class="c0">The debit is part of a pattern the receiver requested to block</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The entry is returned with R08</span></p>
+<p class="c1"><span class="c0">The originator receives the return and the payment status becomes returned/blocked</span></p>
+<p class="c1"><span class="c0">Additional attempts with similar characteristics may also be returned under the same stop payment control</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not insufficient funds (see R01/R09)</span></p>
+<p class="c1"><span class="c0">It is not an invalid or closed account (see R02/R03/R04)</span></p>
+<p class="c1"><span class="c0">It is not necessarily a revocation of authorization (see R07)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">R07 &mdash; Authorization revoked</span></p>
+<p class="c1"><span class="c0">R05 &mdash; Unauthorized debit</span></p>
+<p class="c1"><span class="c0">R10 &mdash; Customer advises unauthorized</span></p>
+<p class="c1"><span class="c0">R01 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">R06 &mdash; Returned per ODFI request</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Stop payment controls can be highly specific or broad depending on the bank&rsquo;s implementation and the receiver&rsquo;s instructions. Similar transactions may be treated differently if they do not match the stop payment parameters. Timing can matter: an entry may post successfully before a stop payment is placed, but be returned afterward. Some institutions may map customer instructions differently, so similar cases can appear as R07 or R10 instead.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review the return record and whether it aligns with a known customer request or status change</span></p>
+<p class="c1"><span class="c0">Document the return as a payment block event for reconciliation</span></p>
+<p class="c1"><span class="c0">Avoid assuming account closure or insufficient funds without supporting information</span></p>
+<p class="c1"><span class="c0">Follow your official dispute and customer communication workflow if applicable</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If a stop payment return is unexpected, official bank support channels may be able to confirm whether a stop payment order applies to the entry type.</span></p>
+</div>

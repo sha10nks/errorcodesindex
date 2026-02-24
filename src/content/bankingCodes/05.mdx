@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "05"
+shortLabel: "Do not honor"
+summary: "This code indicates the card issuer declined the transaction without providing a specific, publicly detailed reason."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Card Payment Processing (Authorization Response Codes)</span></p>
+<p class="c1"><span class="c0">CODE: 05</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(05 &mdash; Do not honor)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the card issuer declined the transaction without providing a specific, publicly detailed reason.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Response code 05 (&ldquo;Do not honor&rdquo;) is a general issuer decline used when the issuing bank rejects an authorization request but does not supply a more specific decline category through the response code alone. The decision is made by the issuer based on internal risk controls, account status checks, transaction attributes, and authorization rules. This code does not necessarily mean the card is invalid; it means the issuer chose not to approve the authorization at that time. It is not a network outage message and does not indicate a technical failure by itself. It represents an issuer decision outcome rather than a guaranteed explanation of the underlying cause.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Merchant payment gateway decline logs</span></p>
+<p class="c1"><span class="c0">POS terminal receipts showing &ldquo;Do not honor&rdquo;</span></p>
+<p class="c1"><span class="c0">Processor dashboards listing issuer response codes</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Issuer risk controls declined the authorization</span></p>
+<p class="c1"><span class="c0">Transaction attributes did not meet issuer approval rules</span></p>
+<p class="c1"><span class="c0">Account status or limits triggered a decline decision</span></p>
+<p class="c1"><span class="c0">Issuer provided a non-specific decline response rather than a detailed code</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The authorization is declined and the purchase does not complete</span></p>
+<p class="c1"><span class="c0">The merchant may display a generic decline message to the payer</span></p>
+<p class="c1"><span class="c0">The issuer retains control over whether subsequent attempts are approved</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not an invalid card number indication (see 14)</span></p>
+<p class="c1"><span class="c0">It is not an &ldquo;invalid amount&rdquo; response (see 13)</span></p>
+<p class="c1"><span class="c0">It is not a confirmed insufficient funds decline (see 51)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">12 &mdash; Invalid transaction</span></p>
+<p class="c1"><span class="c0">13 &mdash; Invalid amount</span></p>
+<p class="c1"><span class="c0">14 &mdash; Invalid card number</span></p>
+<p class="c1"><span class="c0">51 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">05 &mdash; Do not honor</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">&ldquo;Do not honor&rdquo; can be returned for varied reasons that are not visible to merchants in the response code. The same card may be accepted for some merchants or transaction contexts and declined for others. Timing, transaction type, and merchant category can influence issuer risk outcomes. In some cases, issuer-side system changes or elevated fraud controls can increase the frequency of non-specific declines without a change in the cardholder&rsquo;s available balance.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review the authorization log details (amount, merchant descriptor, entry method, and timestamp)</span></p>
+<p class="c1"><span class="c0">Confirm whether the decline pattern occurs across multiple attempts or only under specific conditions</span></p>
+<p class="c1"><span class="c0">Document the code for reconciliation and customer support records</span></p>
+<p class="c1"><span class="c0">If escalations are needed, follow official issuer or processor support pathways</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If the decline repeats and blocks payment completion, some users choose to contact the card issuer or official support channel for clarification on the issuer decision.</span></p>
+</div>

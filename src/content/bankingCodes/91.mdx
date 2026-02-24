@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "91"
+shortLabel: "Issuer unavailable"
+summary: "This code indicates the transaction could not be completed because the issuer was unavailable to process the authorization request."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Online Banking / Transfers (Authorization Response Codes)</span></p>
+<p class="c1"><span class="c0">CODE: 91</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(91 &mdash; Issuer unavailable)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the transaction could not be completed because the issuer was unavailable to process the authorization request.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Response code 91 (&ldquo;Issuer unavailable&rdquo;) is used when the issuer could not be reached or could not respond to the authorization request within the required timeframe. This is a system availability outcome, not a funds or permission decision. It indicates that the authorization process did not complete due to issuer-side unavailability or response failure. The code does not indicate whether the card would have been approved if the issuer were available. It also does not imply the card is invalid or restricted; it reflects a temporary processing availability problem.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Payment gateway declines during issuer outages</span></p>
+<p class="c1"><span class="c0">Card-present declines when authorization cannot be completed</span></p>
+<p class="c1"><span class="c0">Processor reports showing response code 91</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Issuer systems were temporarily unavailable</span></p>
+<p class="c1"><span class="c0">Network routing to the issuer failed or timed out</span></p>
+<p class="c1"><span class="c0">Authorization response was not received within required limits</span></p>
+<p class="c1"><span class="c0">Issuer-side maintenance or transient disruption affected availability</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Authorization is declined or marked as not completed</span></p>
+<p class="c1"><span class="c0">Merchant or processor records the decline as issuer unavailable</span></p>
+<p class="c1"><span class="c0">Subsequent attempts may succeed once issuer availability returns</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not insufficient funds (see 51)</span></p>
+<p class="c1"><span class="c0">It is not a restriction-based decline (see 62)</span></p>
+<p class="c1"><span class="c0">It is not a transaction parameter validation error (see 12/13/14)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">96 &mdash; System malfunction</span></p>
+<p class="c1"><span class="c0">91 &mdash; Issuer unavailable</span></p>
+<p class="c1"><span class="c0">05 &mdash; Do not honor</span></p>
+<p class="c1"><span class="c0">85 &mdash; No reason to decline</span></p>
+<p class="c1"><span class="c0">R06 &mdash; Returned per ODFI request</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Issuer availability issues can be short-lived and may affect only certain transaction channels or regions. Some processors retry routing automatically, while others return the code quickly based on timeout thresholds. During widespread network incidents, 91 can increase across many issuers simultaneously. The code does not differentiate between issuer downtime and certain network routing failures; it communicates that issuer response was not obtained.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Check whether declines correlate to a specific time window or region</span></p>
+<p class="c1"><span class="c0">Review processor logs for timeout or routing indicators</span></p>
+<p class="c1"><span class="c0">Document the incident pattern for reconciliation and reporting</span></p>
+<p class="c1"><span class="c0">Follow official acquirer/processor status channels for outage confirmation</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If issuer unavailability declines occur broadly, official processor or acquirer status channels may provide visibility into active incidents.</span></p>
+</div>

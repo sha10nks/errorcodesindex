@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "96"
+shortLabel: "System malfunction"
+summary: "This code indicates the transaction failed due to a system malfunction in the processing chain."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Online Banking / Transfers (Authorization Response Codes)</span></p>
+<p class="c1"><span class="c0">CODE: 96</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(96 &mdash; System malfunction)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the transaction failed due to a system malfunction in the processing chain.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Response code 96 (&ldquo;System malfunction&rdquo;) is returned when a system error prevents proper processing of the transaction. This may occur within the issuer environment, the network, the processor, or another component in the authorization path. The code reflects a technical processing failure rather than a decline decision based on funds, permissions, or card validity. It does not imply anything specific about the account status. It indicates the authorization could not be completed due to an internal error condition. The underlying defect is not specified in the response code.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Payment gateway declines categorized as system errors</span></p>
+<p class="c1"><span class="c0">Processor incident reports during degraded service periods</span></p>
+<p class="c1"><span class="c0">Transaction logs showing non-decision technical failures</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Processor or network experienced an internal error</span></p>
+<p class="c1"><span class="c0">Issuer systems returned an error response rather than an approval/decline decision</span></p>
+<p class="c1"><span class="c0">Data validation failed in a way mapped to &ldquo;malfunction&rdquo;</span></p>
+<p class="c1"><span class="c0">Temporary infrastructure issues disrupted transaction processing</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Authorization fails and does not complete</span></p>
+<p class="c1"><span class="c0">Merchant sees a technical error decline code</span></p>
+<p class="c1"><span class="c0">Subsequent attempts may succeed if the malfunction clears</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not an issuer policy decline (see 05/57/62)</span></p>
+<p class="c1"><span class="c0">It is not an expired card outcome (see 54)</span></p>
+<p class="c1"><span class="c0">It is not an insufficient funds response (see 51)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">91 &mdash; Issuer unavailable</span></p>
+<p class="c1"><span class="c0">96 &mdash; System malfunction</span></p>
+<p class="c1"><span class="c0">85 &mdash; No reason to decline</span></p>
+<p class="c1"><span class="c0">12 &mdash; Invalid transaction</span></p>
+<p class="c1"><span class="c0">R11 &mdash; Check truncation entry returned</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Code 96 can represent multiple technical failures, including intermittent defects that appear only under certain transaction types or routing paths. Some processors map a variety of internal exceptions to 96 for standardization. During widespread disruptions, 96 may increase alongside issuer unavailable responses. Because the code is non-specific, correlating by timestamp, route, and transaction type is often necessary to identify patterns.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review incident timelines and correlation across multiple transactions</span></p>
+<p class="c1"><span class="c0">Compare failure rates by processor route, issuer, or channel</span></p>
+<p class="c1"><span class="c0">Record detailed transaction identifiers for troubleshooting through official workflows</span></p>
+<p class="c1"><span class="c0">Use official processor/acquirer support escalation paths for repeated malfunctions</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If system malfunction responses persist, official processor or acquirer support channels may help identify whether an incident or configuration issue is affecting the authorization path.</span></p>
+</div>

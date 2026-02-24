@@ -1,0 +1,54 @@
+---
+industry: "banking"
+code: "R16"
+shortLabel: "Account frozen"
+summary: "This code indicates the receiving account is frozen or restricted and cannot accept the entry as presented."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Return Codes (Administrative / Compliance)</span></p>
+<p class="c1"><span class="c0">CODE: R16</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(R16 &mdash; Account frozen)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the receiving account is frozen or restricted and cannot accept the entry as presented.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">R16 is returned when the RDFI identifies the receiver&rsquo;s account as frozen, blocked, or otherwise restricted from processing the ACH entry. A &ldquo;frozen&rdquo; status generally means the bank has placed restrictions that prevent certain transactions from posting, often for administrative, compliance, legal, or risk-control reasons. This return is not a funding condition like insufficient funds, and it is not necessarily an account closure. It indicates the account cannot accept the presented entry due to the bank&rsquo;s current restrictions. The code communicates posting ineligibility tied to account status restrictions.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">ACH debit or credit returns in settlement reports</span></p>
+<p class="c1"><span class="c0">Payment processor dashboards listing account restriction returns</span></p>
+<p class="c1"><span class="c0">Bank operational files for returned entries</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">The bank applied a freeze or restriction to the account</span></p>
+<p class="c1"><span class="c0">Compliance or risk controls prevented posting of the entry</span></p>
+<p class="c1"><span class="c0">Account status changed due to internal bank review</span></p>
+<p class="c1"><span class="c0">The entry type is not permitted while the restriction is active</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The entry is returned with R16</span></p>
+<p class="c1"><span class="c0">The originator records the transaction as returned due to account restriction</span></p>
+<p class="c1"><span class="c0">Additional entries to the same account details may return again while the restriction remains</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not a closed account status (see R02)</span></p>
+<p class="c1"><span class="c0">It is not an invalid account number result (see R04)</span></p>
+<p class="c1"><span class="c0">It is not an authorization dispute (see R05/R07/R10)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">R02 &mdash; Account closed</span></p>
+<p class="c1"><span class="c0">R03 &mdash; No account/unable to locate</span></p>
+<p class="c1"><span class="c0">R04 &mdash; Invalid account number</span></p>
+<p class="c1"><span class="c0">R15 &mdash; Beneficiary deceased</span></p>
+<p class="c1"><span class="c0">R08 &mdash; Stop payment</span></p>
+<p class="c1"><span class="c0">R06 &mdash; Returned per ODFI request</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Account restriction behavior varies by institution and by transaction type. An account may accept some transaction categories but reject others depending on the restriction scope. Timing can matter: an entry may return if presented during a restriction window even if it would otherwise be valid. The return code does not specify the reason for the freeze, and originators may not be able to infer the underlying cause from R16 alone.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Log the return code and associated entry attributes for reconciliation</span></p>
+<p class="c1"><span class="c0">Confirm whether repeat entries should be paused under your internal policies</span></p>
+<p class="c1"><span class="c0">Review whether the entry type or schedule could be affected by temporary restrictions</span></p>
+<p class="c1"><span class="c0">If processing through a provider, follow the official exception-handling workflow</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If an account-freeze return is unexpected, official bank or processor support channels may be able to confirm whether restrictions apply to the entry category.</span></p>
+</div>

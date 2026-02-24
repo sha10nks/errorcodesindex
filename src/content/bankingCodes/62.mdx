@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "62"
+shortLabel: "Restricted card"
+summary: "This code indicates the issuer declined the authorization because the card/account is restricted."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Card Payment Processing (Authorization Response Codes)</span></p>
+<p class="c1"><span class="c0">CODE: 62</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(62 &mdash; Restricted card)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the issuer declined the authorization because the card/account is restricted.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Response code 62 (&ldquo;Restricted card&rdquo;) is returned when the issuer applies a restriction to the card or account that prevents the transaction from being approved. Restrictions can relate to security controls, account status flags, region limitations, channel limitations, or other issuer policies. This is not primarily a funds decline; it indicates the issuer chose not to approve due to restriction status. The code does not specify the exact restriction reason. It is also not necessarily a permanent status; restrictions can be temporary depending on issuer controls and events.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Online payment declines where issuer restrictions apply</span></p>
+<p class="c1"><span class="c0">POS terminal declines for restricted accounts</span></p>
+<p class="c1"><span class="c0">Processor logs showing response code 62</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Issuer applied a restriction due to account status or security controls</span></p>
+<p class="c1"><span class="c0">Transaction channel or region is restricted for the card</span></p>
+<p class="c1"><span class="c0">Issuer rules block the transaction based on risk or policy settings</span></p>
+<p class="c1"><span class="c0">The account is not eligible for the requested transaction flow</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Authorization is declined</span></p>
+<p class="c1"><span class="c0">The merchant records a restricted card decline</span></p>
+<p class="c1"><span class="c0">Reattempts may also be declined while restriction remains active</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not an expired card (see 54)</span></p>
+<p class="c1"><span class="c0">It is not a transaction validity error (see 12)</span></p>
+<p class="c1"><span class="c0">It is not an issuer unavailability error (see 91)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">57 &mdash; Transaction not permitted</span></p>
+<p class="c1"><span class="c0">58 &mdash; Service not allowed</span></p>
+<p class="c1"><span class="c0">62 &mdash; Restricted card</span></p>
+<p class="c1"><span class="c0">05 &mdash; Do not honor</span></p>
+<p class="c1"><span class="c0">85 &mdash; No reason to decline</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Some issuers use code 62 for broad restriction categories, while others use it for specific scenarios such as regional blocks or security flags. The same card may work for some merchants and fail for others depending on issuer policy. The response code does not disclose whether the restriction is due to security, compliance, or account standing; those details generally require issuer-side review. Merchants may also see 62 when issuer policies change temporarily during fraud event surges.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review transaction attributes (country, channel, merchant category) associated with the decline</span></p>
+<p class="c1"><span class="c0">Identify whether the restriction appears across multiple attempts and merchants</span></p>
+<p class="c1"><span class="c0">Record the code for reconciliation and support workflows</span></p>
+<p class="c1"><span class="c0">Use official issuer/acquirer support channels to clarify restriction categories if needed</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If restricted card declines prevent expected payments, some users contact the issuer or official support channel to confirm whether a restriction is active on the account.</span></p>
+</div>

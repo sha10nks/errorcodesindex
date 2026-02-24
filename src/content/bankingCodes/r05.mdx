@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "R05"
+shortLabel: "Unauthorized debit"
+summary: "This code indicates the receiver has disputed the debit as unauthorized under applicable ACH authorization rules."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Return Codes (NACHA)</span></p>
+<p class="c1"><span class="c0">CODE: R05</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(R05 &mdash; Unauthorized debit)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the receiver has disputed the debit as unauthorized under applicable ACH authorization rules.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">R05 is returned when the receiver (through the RDFI) indicates the debit was not authorized. In ACH, debits generally require proper authorization from the receiver, and the RDFI may return entries when the receiver claims authorization was not provided or not valid. This return code reflects a dispute-based authorization outcome rather than a processing error like insufficient funds. It does not automatically indicate fraud was confirmed; it indicates the receiver reported the debit as unauthorized. The return places emphasis on authorization status, recordkeeping, and appropriate use of debit authority by the originator.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Subscription or recurring debit returns</span></p>
+<p class="c1"><span class="c0">Merchant ACH return reports indicating authorization disputes</span></p>
+<p class="c1"><span class="c0">Payment processor notifications flagged as &ldquo;unauthorized&rdquo;</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Receiver reports they did not authorize the debit entry</span></p>
+<p class="c1"><span class="c0">Authorization terms do not match the debit amount, timing, or context</span></p>
+<p class="c1"><span class="c0">Authorization was never obtained or is not recognized by the receiver</span></p>
+<p class="c1"><span class="c0">Receiver requests return under unauthorized debit provisions</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The debit is returned with R05</span></p>
+<p class="c1"><span class="c0">The originator receives the return through the ODFI and updates status to returned/disputed</span></p>
+<p class="c1"><span class="c0">Additional debits to the same receiver may be subject to heightened scrutiny or further returns</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not &ldquo;authorization revoked&rdquo; (see R07)</span></p>
+<p class="c1"><span class="c0">It is not &ldquo;customer advises unauthorized&rdquo; (see R10), which is a different dispute category</span></p>
+<p class="c1"><span class="c0">It is not a stop payment instruction (see R08)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">R10 &mdash; Customer advises unauthorized</span></p>
+<p class="c1"><span class="c0">R07 &mdash; Authorization revoked</span></p>
+<p class="c1"><span class="c0">R08 &mdash; Stop payment</span></p>
+<p class="c1"><span class="c0">R06 &mdash; Returned per ODFI request</span></p>
+<p class="c1"><span class="c0">R01 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Unauthorized return categories can vary depending on the context of the debit and the receiver&rsquo;s claim. Some disputes relate to the existence of authorization, while others relate to revoked authorization or mismatched terms. The same underlying customer concern may be mapped differently by different RDFIs, leading to R05 versus R10. Timing and transaction descriptors can affect receiver recognition of a debit, which can influence dispute behavior even when authorization exists.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review internal authorization records and the debit&rsquo;s alignment with those terms</span></p>
+<p class="c1"><span class="c0">Document the return for compliance and reconciliation</span></p>
+<p class="c1"><span class="c0">Evaluate whether additional entries to the same receiver are appropriate under your policies</span></p>
+<p class="c1"><span class="c0">If this is managed through a processor, follow the official dispute-handling workflow</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">For recurring authorization disputes, some originators choose to consult their ODFI, processor, or official support channel to ensure authorization handling aligns with ACH rules.</span></p>
+</div>

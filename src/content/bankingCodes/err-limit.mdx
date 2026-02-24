@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "ERR-LIMIT"
+shortLabel: "Limit exceeded"
+summary: "This code indicates the request exceeded a configured limit for amount, frequency, or permitted transaction activity."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Bank System / Generic (Online Banking &amp; Payments)</span></p>
+<p class="c1"><span class="c0">CODE: ERR-LIMIT</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(ERR-LIMIT &mdash; Limit exceeded)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the request exceeded a configured limit for amount, frequency, or permitted transaction activity.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">ERR-LIMIT appears when the system determines a requested transaction exceeds a limit rule. Limits can apply to single-transaction amounts, daily totals, rolling time-window totals, transfer counts, or specific transaction categories. The limit may be set by the bank, by the product type, or by security and risk controls. This code reflects a policy boundary rather than a technical failure. It does not automatically mean the account lacks funds; it means the system will not process the request at that level under current rules.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">When attempting a transfer above allowed thresholds</span></p>
+<p class="c1"><span class="c0">During repeated payment attempts in a short time window</span></p>
+<p class="c1"><span class="c0">In business/admin dashboards for payment or payout limit enforcement</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Requested amount exceeds a per-transaction cap</span></p>
+<p class="c1"><span class="c0">Daily or rolling transfer limits have been reached</span></p>
+<p class="c1"><span class="c0">Velocity controls flagged repeated attempts as exceeding activity limits</span></p>
+<p class="c1"><span class="c0">A transaction category has a lower limit than standard transfers</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The request is rejected and does not proceed to settlement</span></p>
+<p class="c1"><span class="c0">The transaction remains unsubmitted or is marked as failed</span></p>
+<p class="c1"><span class="c0">The system may require a smaller amount or different scheduling (platform-dependent)</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not an &ldquo;account restricted&rdquo; status by itself</span></p>
+<p class="c1"><span class="c0">It is not a system outage or timeout</span></p>
+<p class="c1"><span class="c0">It is not a guarantee that the limit will reset immediately</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">65 &mdash; Activity limit exceeded</span></p>
+<p class="c1"><span class="c0">61 &mdash; Exceeds withdrawal limit</span></p>
+<p class="c1"><span class="c0">ERR-AUTH &mdash; Authorization failed</span></p>
+<p class="c1"><span class="c0">Transfer pending &mdash; Transaction awaiting completion</span></p>
+<p class="c1"><span class="c0">Payment declined &mdash; Payment not approved outcome</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Limit calculations may include pending transactions, meaning limits can be reached even if posted totals appear lower. Limits can differ by channel (mobile vs web), by destination type (internal vs external), and by transfer method. Some systems apply temporary tighter limits after unusual activity, which can cause limit errors to appear suddenly. The code does not specify which limit was exceeded; the relevant limit type is often visible only in account settings or internal logs.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review the amount, frequency, and timing of recent related transactions</span></p>
+<p class="c1"><span class="c0">Check whether the system shows separate limits for the specific transfer method used</span></p>
+<p class="c1"><span class="c0">Confirm whether any pending transactions are counted toward the limit</span></p>
+<p class="c1"><span class="c0">If the limit issue repeats unexpectedly, contact official support to clarify the applicable thresholds</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If limit errors block necessary transfers or payments, official bank or platform support channels may clarify limit types, reset timing, and applicable policies.</span></p>
+</div>

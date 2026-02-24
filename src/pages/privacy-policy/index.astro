@@ -1,0 +1,77 @@
+---
+import SectionLayout from '../../layouts/SectionLayout.astro';
+
+const title = 'Privacy Policy';
+const description =
+  'Privacy Policy for ErrorCodesIndex.com describing data handling, logs, cookies, advertising, and contact submissions in a static documentation site context.';
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Privacy Policy', href: '/privacy-policy/' },
+];
+---
+
+<SectionLayout title={title} description={description} crumbs={crumbs}>
+  <p>Effective date: {new Date().toISOString().slice(0, 10)}</p>
+
+  <h2>Overview</h2>
+  <p>
+    ErrorCodesIndex.com is a static reference website. We do not offer user accounts. We do not sell products.
+    Information collected is limited to what is necessary to operate the site, ensure security, and respond to inbound
+    messages.
+  </p>
+
+  <h2>Information we collect</h2>
+  <ul>
+    <li>
+      <strong>Server and security logs</strong>: IP address, user agent, timestamp, request URL, and related diagnostic
+      information that may be recorded by our hosting and CDN providers.
+    </li>
+    <li>
+      <strong>Contact form submissions</strong>: name, email address, and message content when you contact us.
+    </li>
+    <li>
+      <strong>Cookies and similar technologies</strong>: may be used by analytics or advertising services (if enabled)
+      for measurement and fraud prevention.
+    </li>
+  </ul>
+
+  <h2>How we use information</h2>
+  <ul>
+    <li>Operate and secure the website.</li>
+    <li>Respond to requests and messages you submit.</li>
+    <li>Measure site reliability and performance.</li>
+    <li>Support advertising and related compliance requirements, if advertising is enabled.</li>
+  </ul>
+
+  <h2>Advertising</h2>
+  <p>
+    We may display advertising on the site. Advertising partners may use cookies or similar identifiers to measure ad
+    performance, limit frequency, and reduce fraud. If you are located in a region with additional consent
+    requirements, ads may be served using a consent framework.
+  </p>
+
+  <h2>Third-party services</h2>
+  <p>
+    Our hosting provider and related infrastructure services (such as CDN, DNS, or security tooling) may process
+    request metadata to deliver pages and protect the site. Contact form submissions may be processed by our hosting
+    platform’s forms feature.
+  </p>
+
+  <h2>Data retention</h2>
+  <p>
+    We retain contact submissions only as long as necessary to address the request and maintain reasonable records.
+    Infrastructure logs are retained according to provider policies.
+  </p>
+
+  <h2>Your choices</h2>
+  <ul>
+    <li>You can avoid submitting personal information by not using the contact form.</li>
+    <li>You can control cookies through your browser settings and, where applicable, consent controls.</li>
+  </ul>
+
+  <h2>Contact</h2>
+  <p>
+    For privacy-related questions, use the contact page. Include “Privacy” in the message subject.
+  </p>
+</SectionLayout>
+

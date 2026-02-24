@@ -1,0 +1,71 @@
+---
+import { INDUSTRIES, LEGAL_LINKS } from '../utils/site';
+---
+
+<footer class="relative mt-20 border-t border-brand-border bg-brand-dark text-slate-400 overflow-hidden">
+  {/* Background Image & Overlay */}
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <img 
+      src="/footer BG.avif" 
+      alt="" 
+      class="h-full w-full object-cover opacity-40 mix-blend-overlay"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/95 to-brand-dark/80"></div>
+  </div>
+
+  <div class="relative z-10 mx-auto grid max-w-6xl gap-12 px-6 py-16 md:grid-cols-4">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-3 text-xl font-bold text-slate-100">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-primary text-sm font-bold text-brand-dark shadow-[0_0_15px_rgba(var(--brand-primary),0.4)]">E</span>
+        <span class="tracking-tight">ErrorCodesIndex</span>
+      </div>
+      <p class="mt-6 max-w-sm text-sm leading-relaxed text-slate-400">
+        A static reference library for system error codes across multiple industries. Built for developers, technicians, and users who need clear, structured explanations.
+      </p>
+    </div>
+
+    <div>
+      <div class="text-sm font-semibold tracking-wide text-slate-100 uppercase">Industries</div>
+      <ul class="mt-6 space-y-3 text-sm">
+        {INDUSTRIES.map((it) => {
+          return (
+            <li>
+              <a class="block text-slate-400 hover:text-brand-primary transition-colors hover:translate-x-1 duration-200" href={it.href}>
+                {it.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+
+    <div>
+      <div class="text-sm font-semibold tracking-wide text-slate-100 uppercase">Site</div>
+      <ul class="mt-6 space-y-3 text-sm">
+        {LEGAL_LINKS.map((it) => {
+          return (
+            <li>
+              <a class="block text-slate-400 hover:text-brand-primary transition-colors hover:translate-x-1 duration-200" href={it.href}>
+                {it.label}
+              </a>
+            </li>
+          );
+        })}
+        <li>
+          <a class="block text-slate-400 hover:text-brand-primary transition-colors hover:translate-x-1 duration-200" href="/sitemap.xml">Sitemap</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="relative z-10 border-t border-brand-border/50 bg-brand-dark/50 backdrop-blur-sm">
+    <div class="mx-auto max-w-6xl px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <div>&copy; {new Date().getFullYear()} ErrorCodesIndex.com. All rights reserved.</div>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-slate-300 transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-slate-300 transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>

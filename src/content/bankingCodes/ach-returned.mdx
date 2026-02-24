@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "ACH Returned"
+shortLabel: "ACH entry returned"
+summary: "This status indicates an ACH entry was returned by the receiving institution and did not complete as a successful posting."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Status (User-Facing Processing States)</span></p>
+<p class="c1"><span class="c0">CODE: ACH Returned</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(ACH Returned &mdash; ACH entry returned)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This status indicates an ACH entry was returned by the receiving institution and did not complete as a successful posting.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">&ldquo;ACH Returned&rdquo; indicates the receiving depository financial institution (RDFI) did not post the ACH entry and sent it back through the ACH network with a return reason. Returns are formal outcomes with specific return codes (such as R01, R02, or R10) that describe the category of the return. This status is a terminal processing outcome for the original entry; it means the entry did not settle as intended. It does not automatically explain why the return occurred without the associated return code. It also does not necessarily imply an authorization dispute; returns can result from funds, account status, validation, or administrative conditions.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Bank or payment app history showing a returned ACH debit or credit</span></p>
+<p class="c1"><span class="c0">Processor settlement reports listing returned entries</span></p>
+<p class="c1"><span class="c0">Reconciliation files where return reason codes are provided</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">The RDFI returned the entry with a specific return reason code</span></p>
+<p class="c1"><span class="c0">Account status or validation rules prevented posting</span></p>
+<p class="c1"><span class="c0">Authorization-related disputes triggered a return category</span></p>
+<p class="c1"><span class="c0">Administrative or compliance rules resulted in a return outcome</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The entry is marked returned and does not complete</span></p>
+<p class="c1"><span class="c0">The system may display the associated return reason code if available</span></p>
+<p class="c1"><span class="c0">Originators may treat the return as a failed payment and update account status accordingly</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not a pending state (it is a return outcome)</span></p>
+<p class="c1"><span class="c0">It is not the same as a reversal initiated after posting</span></p>
+<p class="c1"><span class="c0">It is not a guarantee that a retry will succeed</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">R01 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">R02 &mdash; Account closed</span></p>
+<p class="c1"><span class="c0">R03 &mdash; No account/unable to locate</span></p>
+<p class="c1"><span class="c0">R10 &mdash; Customer advises unauthorized</span></p>
+<p class="c1"><span class="c0">ACH Reversed &mdash; ACH entry reversed/adjusted</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Returned status timing can vary; an entry may appear pending and then later update to returned after the RDFI processes it. Some platforms show a generic &ldquo;returned&rdquo; label without disclosing the return code, even though the code exists in backend files. Returns can be re-presented as new entries depending on originator policies, but the returned entry itself remains a failed outcome. A return does not indicate whether the receiver&rsquo;s account remains eligible for future entries.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review whether a specific return code is available for the entry</span></p>
+<p class="c1"><span class="c0">Confirm whether the entry was a debit or credit, as return handling differs by context</span></p>
+<p class="c1"><span class="c0">Record the return outcome for reconciliation and audit trails</span></p>
+<p class="c1"><span class="c0">If the return reason is unclear, contact official support for return-code details</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If the return reason code is not visible, official bank or processor support channels may be able to provide the return code associated with the returned entry.</span></p>
+</div>

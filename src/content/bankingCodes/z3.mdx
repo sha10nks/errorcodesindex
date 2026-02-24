@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "Z3"
+shortLabel: "Compliance hold"
+summary: "This code indicates the transaction or account activity is temporarily held due to compliance screening or policy requirements."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Bank Risk &amp; Compliance (Internal Status Codes)</span></p>
+<p class="c1"><span class="c0">CODE: Z3</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(Z3 &mdash; Compliance hold)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the transaction or account activity is temporarily held due to compliance screening or policy requirements.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Z3 signals that the item is in a compliance hold state, meaning the system paused processing to complete compliance checks. Compliance screening can include internal policy validation, regulatory screening, sanctions-related checks, or other eligibility requirements depending on the platform and jurisdiction. This is an administrative control state, not a payment network error. It does not automatically imply wrongdoing; it indicates that processing cannot proceed until the relevant screening step is completed or resolved. The hold may apply to a specific transaction or to a broader set of account actions depending on scope.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Transaction status messages showing &ldquo;on hold&rdquo; or &ldquo;under review&rdquo;</span></p>
+<p class="c1"><span class="c0">Bank operations dashboards tracking compliance queues</span></p>
+<p class="c1"><span class="c0">Payment processor logs indicating compliance screening delays</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Compliance screening flagged the transaction for additional checks</span></p>
+<p class="c1"><span class="c0">Policy rules require review for certain transaction types or destinations</span></p>
+<p class="c1"><span class="c0">Account status or profile triggered additional compliance validation</span></p>
+<p class="c1"><span class="c0">Screening systems returned a &ldquo;hold&rdquo; decision pending further confirmation</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Processing pauses and the transaction does not settle immediately</span></p>
+<p class="c1"><span class="c0">The status may remain pending/on hold until a compliance outcome is recorded</span></p>
+<p class="c1"><span class="c0">Final outcomes may include completion, return, reversal, or cancellation depending on resolution</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not a fraud confirmation (though both are risk controls)</span></p>
+<p class="c1"><span class="c0">It is not an insufficient funds condition</span></p>
+<p class="c1"><span class="c0">It is not a system malfunction by itself</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">Z5 &mdash; Manual review</span></p>
+<p class="c1"><span class="c0">Z9 &mdash; Risk assessment</span></p>
+<p class="c1"><span class="c0">Payment On Hold &mdash; Processing paused state</span></p>
+<p class="c1"><span class="c0">ACH Returned &mdash; Returned outcome</span></p>
+<p class="c1"><span class="c0">Settlement Failed &mdash; Finalization did not complete</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Compliance holds can be sensitive to transaction details, beneficiary/destination information, and account configuration. Some systems apply holds only for specific corridors or transaction types, leading to inconsistent behavior across different transfers. Holds may be resolved automatically if screening clears, or may require manual review in certain cases. The code does not disclose what triggered the hold; it indicates only that compliance processing is incomplete.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review the transaction details and status messages for &ldquo;hold&rdquo; indicators</span></p>
+<p class="c1"><span class="c0">Monitor for a status update to a terminal state before assuming completion</span></p>
+<p class="c1"><span class="c0">Avoid initiating duplicate transactions if the original remains on hold</span></p>
+<p class="c1"><span class="c0">If the hold persists beyond normal expectations, contact official support for status confirmation</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If a compliance hold blocks time-sensitive transfers, official support channels can confirm whether additional information or verification is required to proceed.</span></p>
+</div>

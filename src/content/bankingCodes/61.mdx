@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "61"
+shortLabel: "Exceeds withdrawal limit"
+summary: "This code indicates the issuer declined the request because it exceeded the account’s permitted withdrawal or transaction limit."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Card Payment Processing (Authorization Response Codes)</span></p>
+<p class="c1"><span class="c0">CODE: 61</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(61 &mdash; Exceeds withdrawal limit)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the issuer declined the request because it exceeded the account&rsquo;s permitted withdrawal or transaction limit.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Response code 61 (&ldquo;Exceeds withdrawal limit&rdquo;) is returned when an authorization would exceed an issuer-defined limit for the account. Depending on transaction context, this can represent cash withdrawal limits, daily spending caps, per-transaction thresholds, or other issuer-imposed boundaries. The issuer uses internal rules to evaluate limits that may not be visible to the merchant. This code is not a statement that the account has no funds; it indicates the request exceeds a limit rule. It also does not indicate a system error; it is an issuer policy decision outcome.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">ATM or cash-like transaction declines</span></p>
+<p class="c1"><span class="c0">Payment gateway logs for high-amount transactions flagged by issuer limits</span></p>
+<p class="c1"><span class="c0">Processor reports listing response code 61</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Transaction amount exceeds per-transaction limit</span></p>
+<p class="c1"><span class="c0">Daily or rolling limits were reached before this request</span></p>
+<p class="c1"><span class="c0">Issuer-imposed limits apply to the transaction type or channel</span></p>
+<p class="c1"><span class="c0">Account controls restrict withdrawals or cash-equivalent activity</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Authorization is declined</span></p>
+<p class="c1"><span class="c0">Transaction does not complete</span></p>
+<p class="c1"><span class="c0">Further attempts at the same level may also be declined until limits reset or change</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not insufficient funds (see 51)</span></p>
+<p class="c1"><span class="c0">It is not a restricted card status (see 62)</span></p>
+<p class="c1"><span class="c0">It is not an issuer system outage (see 91)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">65 &mdash; Activity limit exceeded</span></p>
+<p class="c1"><span class="c0">62 &mdash; Restricted card</span></p>
+<p class="c1"><span class="c0">61 &mdash; Exceeds withdrawal limit</span></p>
+<p class="c1"><span class="c0">51 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">05 &mdash; Do not honor</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Limit evaluations can include pending authorizations, making a request appear to exceed limits even when posted totals look lower. Different transaction types may have separate limits, so the same amount may be accepted as a purchase but declined as a cash-like transaction. Issuer-specific interpretation of &ldquo;withdrawal limit&rdquo; can also lead to this code appearing outside traditional ATM contexts. The response code does not specify which limit category was exceeded.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review authorization logs to confirm transaction type, channel, and amount</span></p>
+<p class="c1"><span class="c0">Identify whether multiple authorizations occurred close together</span></p>
+<p class="c1"><span class="c0">Record the decline code for reconciliation and customer support reference</span></p>
+<p class="c1"><span class="c0">Use official issuer support channels if limit-based declines appear inconsistent with expected account controls</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If limit declines occur unexpectedly, some users contact the issuer or official support channel to confirm which limit rule applied to the transaction.</span></p>
+</div>

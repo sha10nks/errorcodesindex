@@ -1,17 +1,428 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import { websiteSchema } from '../utils/schema';
 
+const title = 'The Reference Empire of System Error Codes';
+const description =
+  'A structured reference library covering healthcare, finance, gaming, appliances, and digital infrastructure.';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title={title} description={description} schema={websiteSchema()} fullWidth={true}>
+  
+  {/* Hero Section */}
+  <section class="relative min-h-screen flex items-end pb-24 md:pb-32 overflow-hidden">
+    {/* Background Image & Overlay */}
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1920&auto=format&fit=crop" 
+        alt="Digital infrastructure and circuit network background" 
+        class="h-full w-full object-cover opacity-60"
+      />
+      {/* Gradient Overlay for readability */}
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/90 to-brand-dark/30"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/80 via-transparent to-transparent"></div>
+    </div>
+
+    {/* Matrix Rain Canvas */}
+    <canvas id="matrix-canvas" class="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none"></canvas>
+
+    {/* Hero Content */}
+    <div class="relative z-10 w-full mx-auto max-w-7xl px-6 grid lg:grid-cols-12 gap-12 items-end" id="hero-content">
+      {/* Left: Text Content */}
+      <div class="lg:col-span-7 space-y-8">
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white leading-tight cursor-default">
+          <span class="scramble-text" data-text="The Reference Empire of">The Reference Empire of</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-accent scramble-text" data-text="System Error Codes">System Error Codes</span>
+        </h1>
+        <p class="text-lg md:text-xl leading-relaxed text-slate-300 max-w-2xl border-l-4 border-brand-primary/50 pl-6">
+          When systems speak in codes, we translate. A structured reference library covering healthcare, finance,
+          gaming, appliances, and digital infrastructure — built to explain what error codes mean and what typically
+          happens next.
+        </p>
+      </div>
+
+      {/* Right: CTA Buttons */}
+      <div class="lg:col-span-5 flex flex-col sm:flex-row gap-4 lg:justify-end pb-2">
+        <Button href="#find-a-code" variant="primary" size="lg" class="shadow-glow btn-shine">
+          Start Searching
+        </Button>
+        <Button href="#browse-industries" variant="secondary" size="lg" class="btn-shine">
+          Browse Industries
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  {/* Main Content Container */}
+  <div class="mx-auto max-w-6xl px-4 py-24 space-y-32">
+    
+    {/* Search Section */}
+    <section id="find-a-code" class="scroll-mt-32">
+      <div class="mx-auto max-w-2xl text-center mb-12">
+          <h2 class="text-3xl font-bold text-white">Find a code</h2>
+          <p class="mt-3 text-slate-400 text-lg">
+          Search our build-time JSON index. Instant results, fully crawlable.
+          </p>
+      </div>
+
+      <div class="mx-auto max-w-3xl rounded-2xl border border-brand-border bg-brand-surface p-8 shadow-2xl relative overflow-hidden group">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+        
+        <label class="sr-only" for="q">Search</label>
+        <div class="relative z-10">
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-5">
+              <svg class="h-6 w-6 text-slate-500 group-focus-within:text-brand-primary transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+              </svg>
+          </div>
+          <input
+              id="q"
+              name="q"
+              type="search"
+              placeholder="Example: E01, 0x80070005, ORA-12514"
+              class="block w-full rounded-xl border border-brand-border bg-brand-dark py-5 pl-14 pr-6 text-lg text-slate-200 placeholder-slate-500 shadow-sm focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/20 focus:outline-none transition-all duration-300 search-input"
+              autocomplete="off"
+          />
+        </div>
+
+        <div id="search-status" class="mt-3 text-xs text-slate-500 font-mono pl-1" aria-live="polite"></div>
+        <div id="search-results" class="mt-4 hidden rounded-xl border border-brand-border bg-brand-dark shadow-inner max-h-96 overflow-y-auto custom-scrollbar relative z-10" role="region" aria-label="Search results">
+          <ul class="divide-y divide-brand-border"></ul>
+        </div>
+
+        <noscript>
+          <div class="mt-4 rounded-lg bg-yellow-900/20 p-4 text-sm text-yellow-200 border border-yellow-900/50">Search results require JavaScript. Browsing by industry remains fully crawlable.</div>
+        </noscript>
+      </div>
+    </section>
+
+    {/* Industries Grid */}
+    <section id="browse-industries" class="scroll-mt-32">
+      <div class="flex items-end justify-between border-b border-brand-border pb-6 mb-12">
+          <h2 class="text-3xl font-bold text-white">Industries</h2>
+          <span class="text-sm text-slate-500 hidden md:block">Select a category to explore</span>
+      </div>
+      
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <a class="group relative overflow-hidden rounded-2xl border border-brand-border bg-brand-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:border-brand-primary/50 hover:shadow-glow" href="/healthcare/">
+          <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
+          <div class="relative">
+              <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-accent/10 text-brand-accent group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors shadow-inner">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                  </svg>
+              </div>
+              <div class="text-lg font-bold text-slate-100 group-hover:text-white">Healthcare</div>
+              <div class="mt-2 text-sm text-slate-500 group-hover:text-slate-400 leading-relaxed">Diagnosis, claims, EHR, and clinical system codes.</div>
+          </div>
+        </a>
+
+        <a class="group relative overflow-hidden rounded-2xl border border-brand-border bg-brand-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:border-brand-primary/50 hover:shadow-glow" href="/irs-tax/">
+          <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
+          <div class="relative">
+              <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-secondary/10 text-brand-secondary group-hover:bg-brand-secondary group-hover:text-brand-dark transition-colors shadow-inner">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+              </div>
+              <div class="text-lg font-bold text-slate-100 group-hover:text-white">IRS / Tax</div>
+              <div class="mt-2 text-sm text-slate-500 group-hover:text-slate-400 leading-relaxed">Filing, payment, identity, and transcript errors.</div>
+          </div>
+        </a>
+
+        <a class="group relative overflow-hidden rounded-2xl border border-brand-border bg-brand-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:border-brand-primary/50 hover:shadow-glow" href="/banking/">
+          <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
+          <div class="relative">
+               <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary group-hover:bg-brand-primary group-hover:text-brand-dark transition-colors shadow-inner">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+                  </svg>
+              </div>
+              <div class="text-lg font-bold text-slate-100 group-hover:text-white">Banking</div>
+              <div class="mt-2 text-sm text-slate-500 group-hover:text-slate-400 leading-relaxed">Cards, transfers, processors, and payment systems.</div>
+          </div>
+        </a>
+
+        <a class="group relative overflow-hidden rounded-2xl border border-brand-border bg-brand-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:border-brand-primary/50 hover:shadow-glow" href="/gaming/">
+          <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
+          <div class="relative">
+               <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-muted/10 text-brand-accent group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors shadow-inner">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+                  </svg>
+              </div>
+              <div class="text-lg font-bold text-slate-100 group-hover:text-white">Gaming</div>
+              <div class="mt-2 text-sm text-slate-500 group-hover:text-slate-400 leading-relaxed">Launchers, consoles, network, and account errors.</div>
+          </div>
+        </a>
+
+        <a class="group relative overflow-hidden rounded-2xl border border-brand-border bg-brand-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:border-brand-primary/50 hover:shadow-glow" href="/appliances/">
+          <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
+          <div class="relative">
+               <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-muted/10 text-brand-secondary group-hover:bg-brand-secondary group-hover:text-brand-dark transition-colors shadow-inner">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
+                  </svg>
+              </div>
+              <div class="text-lg font-bold text-slate-100 group-hover:text-white">Appliances</div>
+              <div class="mt-2 text-sm text-slate-500 group-hover:text-slate-400 leading-relaxed">Model-specific error codes with deep hierarchy hubs.</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    {/* Top Code Collections */}
+    <section>
+      <div class="flex items-end justify-between border-b border-brand-border pb-6 mb-8">
+          <h2 class="text-2xl font-bold text-white">Top Code Collections</h2>
+          <span class="text-sm text-slate-500 hidden md:block">Semantic references from our database</span>
+      </div>
+      
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {['Healthcare', 'IRS / Tax', 'Banking', 'Gaming', 'Appliances'].map((label) => (
+          <section class="rounded-xl border border-brand-border bg-brand-surface p-6 shadow-sm hover:border-brand-primary/30 transition-colors">
+            <h3 class="text-base font-bold text-slate-100">{label}</h3>
+            <div class="mt-4 text-sm text-slate-500 leading-relaxed">
+              Full comprehensive tables for {label.toLowerCase()} codes will populate here after the build process completes.
+            </div>
+          </section>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script type="module">
+  // Text Scramble Effect
+  class TextScramble {
+    constructor(el) {
+      this.el = el;
+      this.chars = '!<>-_\\/[]{}—=+*^?#________';
+      this.update = this.update.bind(this);
+    }
+
+    setText(newText) {
+      const oldText = this.el.innerText;
+      const length = Math.max(oldText.length, newText.length);
+      const promise = new Promise((resolve) => this.resolve = resolve);
+      this.queue = [];
+      for (let i = 0; i < length; i++) {
+        const from = oldText[i] || '';
+        const to = newText[i] || '';
+        const start = Math.floor(Math.random() * 10);
+        const end = start + Math.floor(Math.random() * 10);
+        this.queue.push({ from, to, start, end });
+      }
+      cancelAnimationFrame(this.frameRequest);
+      this.frame = 0;
+      this.update();
+      return promise;
+    }
+
+    update() {
+      let output = '';
+      let complete = 0;
+      for (let i = 0, n = this.queue.length; i < n; i++) {
+        let { from, to, start, end, char } = this.queue[i];
+        if (this.frame >= end) {
+          complete++;
+          output += to;
+        } else if (this.frame >= start) {
+          if (!char || Math.random() < 0.28) {
+            char = this.randomChar();
+            this.queue[i].char = char;
+          }
+          output += `<span class="text-brand-primary/50">${char}</span>`;
+        } else {
+          output += from;
+        }
+      }
+      this.el.innerHTML = output;
+      if (complete === this.queue.length) {
+        this.resolve();
+      } else {
+        this.frameRequest = requestAnimationFrame(this.update);
+        this.frame++;
+      }
+    }
+
+    randomChar() {
+      return this.chars[Math.floor(Math.random() * this.chars.length)];
+    }
+  }
+
+  // Initialize Scramble Effect
+  const phrases = document.querySelectorAll('.scramble-text');
+  phrases.forEach(el => {
+    const fx = new TextScramble(el);
+    const originalText = el.getAttribute('data-text') || el.innerText;
+    
+    // Scramble on load
+    setTimeout(() => {
+        fx.setText(originalText);
+    }, 200);
+
+    // Scramble on hover
+    el.addEventListener('mouseenter', () => {
+      fx.setText(originalText);
+    });
+  });
+
+  // Button Shine Effect
+  const shineButtons = document.querySelectorAll('.btn-shine');
+  shineButtons.forEach(btn => {
+    // Add animate class on load
+    btn.classList.add('animate-shine');
+    // Remove after animation completes to allow hover effect
+    setTimeout(() => {
+        btn.classList.remove('animate-shine');
+    }, 1500);
+  });
+
+  // Search Logic
+  const input = document.getElementById('q');
+  const status = document.getElementById('search-status');
+  const resultsWrap = document.getElementById('search-results');
+  const resultsList = resultsWrap?.querySelector('ul');
+
+  let index = null;
+  let loading = null;
+
+  const setStatus = (msg) => {
+    if (status) status.textContent = msg;
+  };
+
+  const setResults = (items) => {
+    if (!resultsWrap || !resultsList) return;
+    resultsList.innerHTML = '';
+    if (!items.length) {
+      resultsWrap.classList.add('hidden');
+      return;
+    }
+    resultsWrap.classList.remove('hidden');
+    for (const it of items) {
+      const li = document.createElement('li');
+      li.className = 'px-4 py-3 hover:bg-brand-surface transition-colors cursor-pointer group';
+      const a = document.createElement('a');
+      a.href = it.url;
+      a.className = 'block text-sm text-slate-300 group-hover:text-white';
+      a.innerHTML = `<div class="flex items-center justify-between"><span class="font-mono text-xs font-bold text-brand-primary bg-brand-primary/10 px-2 py-1 rounded">${it.code}</span><span class="text-xs text-slate-500">${it.industry}</span></div><div class="mt-1 text-slate-400 group-hover:text-slate-200">${it.shortLabel}</div>`;
+      li.appendChild(a);
+      resultsList.appendChild(li);
+    }
+  };
+
+  const loadIndex = async () => {
+    if (index) return index;
+    if (!loading) {
+      loading = fetch('/search-index.json')
+        .then((r) => r.json())
+        .then((data) => {
+          index = Array.isArray(data?.items) ? data.items : [];
+          return index;
+        })
+        .catch(() => {
+          index = [];
+          return index;
+        });
+    }
+    return loading;
+  };
+
+  const normalize = (s) => String(s || '').toLowerCase().trim();
+
+  const search = async () => {
+    const q = normalize(input?.value);
+    if (!q) {
+      setStatus('');
+      setResults([]);
+      return;
+    }
+    setStatus('Searching…');
+    const items = await loadIndex();
+    const matches = items
+      .filter((it) => {
+        const hay = `${it.code} ${it.shortLabel} ${it.industry} ${it.applianceType || ''} ${it.brand || ''} ${it.seriesOrModel || ''}`;
+        return normalize(hay).includes(q);
+      })
+      .slice(0, 12);
+    setStatus(matches.length ? `${matches.length} result(s)` : 'No matches');
+    setResults(matches);
+  };
+
+  if (input) {
+    input.addEventListener('input', () => {
+      window.clearTimeout(input.__t);
+      input.__t = window.setTimeout(search, 100);
+    });
+  }
+
+  // Matrix Rain Effect
+  const canvas = document.getElementById('matrix-canvas');
+  // Use the section itself as the trigger area
+  const heroSection = document.getElementById('hero-content')?.parentElement; 
+  
+  if (canvas && heroSection) {
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let drops = [];
+    const fontSize = 14;
+    const chars = "0123456789ABCDEF"; 
+    let animationId;
+    let isRunning = false;
+
+    const resize = () => {
+      width = canvas.width = heroSection.offsetWidth;
+      height = canvas.height = heroSection.offsetHeight;
+      const columns = Math.ceil(width / fontSize);
+      const newDrops = [];
+      for (let i = 0; i < columns; i++) {
+        newDrops[i] = 1;
+      }
+      drops = newDrops;
+    };
+
+    const draw = () => {
+      // Fade out previous frame
+      // Using black with low opacity to create trail effect
+      // In mix-blend-screen, black becomes transparent
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.fillStyle = '#10d061'; // brand-primary
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+      animationId = requestAnimationFrame(draw);
+    };
+
+    const startAnimation = () => {
+      if (!isRunning) {
+        isRunning = true;
+        draw();
+      }
+    };
+
+    const stopAnimation = () => {
+      if (isRunning) {
+        isRunning = false;
+        cancelAnimationFrame(animationId);
+      }
+    };
+
+    window.addEventListener('resize', resize);
+    resize();
+    
+    heroSection.addEventListener('mouseenter', startAnimation);
+    heroSection.addEventListener('mouseleave', stopAnimation);
+  }
+</script>

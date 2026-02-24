@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "R10"
+shortLabel: "Customer advises unauthorized"
+summary: "This code indicates the receiver advised their bank that the debit entry was unauthorized, prompting the RDFI to return it."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Return Codes (NACHA)</span></p>
+<p class="c1"><span class="c0">CODE: R10</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(R10 &mdash; Customer advises unauthorized)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the receiver advised their bank that the debit entry was unauthorized, prompting the RDFI to return it.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">R10 is an unauthorized return category indicating the receiver, through the RDFI, has reported the debit as unauthorized. It is commonly used in contexts where the receiver asserts they did not authorize the transaction or that it did not align with what they authorized. This code reflects a dispute-driven return outcome rather than a processing failure such as insufficient funds or invalid account information. It does not, by itself, confirm intent or wrongdoing by any party; it records the receiver&rsquo;s unauthorized claim. The return signals that the debit is not accepted for settlement under the receiver&rsquo;s reported authorization status.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">ACH return reports for consumer debits</span></p>
+<p class="c1"><span class="c0">Subscription payment failures flagged as disputed/unauthorized</span></p>
+<p class="c1"><span class="c0">Processor notifications identifying unauthorized return categories</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Receiver states they did not authorize the debit</span></p>
+<p class="c1"><span class="c0">Receiver does not recognize the originator or transaction context</span></p>
+<p class="c1"><span class="c0">Authorization terms are disputed (amount, timing, or frequency mismatch)</span></p>
+<p class="c1"><span class="c0">Receiver requests return under unauthorized debit provisions</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The debit is returned with R10 through normal ACH return flows</span></p>
+<p class="c1"><span class="c0">The originator receives the return via the ODFI and updates status to returned/disputed</span></p>
+<p class="c1"><span class="c0">Further debit attempts may result in additional unauthorized returns if the underlying dispute remains</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not &ldquo;authorization revoked&rdquo; (see R07), which implies prior authorization existed and was withdrawn</span></p>
+<p class="c1"><span class="c0">It is not a stop payment instruction (see R08)</span></p>
+<p class="c1"><span class="c0">It is not a funds availability issue (see R01/R09)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">R05 &mdash; Unauthorized debit</span></p>
+<p class="c1"><span class="c0">R07 &mdash; Authorization revoked</span></p>
+<p class="c1"><span class="c0">R08 &mdash; Stop payment</span></p>
+<p class="c1"><span class="c0">R06 &mdash; Returned per ODFI request</span></p>
+<p class="c1"><span class="c0">R01 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Unauthorized return mapping can differ by RDFI and by how the receiver describes the issue, which can lead to R05 versus R10 in similar situations. Some unauthorized claims relate to recognition and disclosure rather than the presence of a signed authorization, and the return code alone does not capture these details. Timing of dispute submission and processing windows can influence when the return appears in originator reporting. Repeated unauthorized returns can occur if recurring debits continue after a dispute is raised.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review internal authorization records and transaction descriptors associated with the debit</span></p>
+<p class="c1"><span class="c0">Document the return for reconciliation and compliance tracking</span></p>
+<p class="c1"><span class="c0">Follow your established dispute-handling workflow for unauthorized returns</span></p>
+<p class="c1"><span class="c0">Avoid assuming the underlying cause beyond what the return code communicates</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">For recurring unauthorized returns, official guidance from the ODFI, processor, or bank support channels may help clarify the appropriate authorization documentation and handling process.</span></p>
+</div>

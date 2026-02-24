@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "R02"
+shortLabel: "Account closed"
+summary: "This code indicates the RDFI returned the entry because the receiving account is closed."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Return Codes (NACHA)</span></p>
+<p class="c1"><span class="c0">CODE: R02</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(R02 &mdash; Account closed)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the RDFI returned the entry because the receiving account is closed.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">R02 is used when the receiving institution identifies that the account number provided corresponds to an account that has been closed. In ACH processing, the RDFI is responsible for determining whether the receiver account can accept the entry. A closed account cannot settle the debit (or credit, depending on context), so the entry is returned. This return code reflects account status at the RDFI, not a network outage or temporary posting delay. It does not automatically indicate the routing number is invalid; it indicates the specific account is not open and eligible to receive the entry.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Returned ACH payments shown in payment processor reports</span></p>
+<p class="c1"><span class="c0">Billing platform notifications for failed bank drafts</span></p>
+<p class="c1"><span class="c0">Originator reconciliation files indicating account status returns</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">The receiver closed the account before the entry was processed</span></p>
+<p class="c1"><span class="c0">The originator used outdated bank account details</span></p>
+<p class="c1"><span class="c0">An account was converted or migrated and the old account number is no longer active</span></p>
+<p class="c1"><span class="c0">The RDFI&rsquo;s records indicate the account is no longer open for ACH activity</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The entry is returned with R02 and the originator is notified via standard ACH return flows</span></p>
+<p class="c1"><span class="c0">The payment status is updated to returned/failed</span></p>
+<p class="c1"><span class="c0">Further entries to the same account details are likely to return again unless details change</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not &ldquo;no account found&rdquo; (see R03)</span></p>
+<p class="c1"><span class="c0">It is not an invalid account number format issue (see R04)</span></p>
+<p class="c1"><span class="c0">It is not a stop payment request (see R08)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">R03 &mdash; No account/unable to locate</span></p>
+<p class="c1"><span class="c0">R04 &mdash; Invalid account number</span></p>
+<p class="c1"><span class="c0">R01 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">R10 &mdash; Customer advises unauthorized</span></p>
+<p class="c1"><span class="c0">R07 &mdash; Authorization revoked</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Some institutions distinguish between &ldquo;closed&rdquo; and &ldquo;unable to locate,&rdquo; which can lead to R02 versus R03 depending on how the RDFI maps account status. If an account is recently closed, timing may affect which return code is used for entries presented near the closure date. Account number reuse policies vary; a number that was previously valid may later be reissued or reserved, but the RDFI&rsquo;s return reason will reflect current eligibility.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Verify that the account information on file is current and complete</span></p>
+<p class="c1"><span class="c0">Review whether the receiver recently changed bank accounts</span></p>
+<p class="c1"><span class="c0">Confirm whether the payment attempt should be redirected to updated payment instructions</span></p>
+<p class="c1"><span class="c0">Document the return code for reconciliation and audit trails</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If the closed-account return is unexpected, some users choose to contact their financial institution or official support channel to confirm current account eligibility for ACH entries.</span></p>
+</div>

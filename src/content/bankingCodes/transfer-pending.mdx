@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "Transfer pending"
+shortLabel: "Transfer awaiting completion"
+summary: "This status indicates the transfer has been initiated but has not reached a final completed or failed state."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Bank System / Generic (User-Facing Status Messages)</span></p>
+<p class="c1"><span class="c0">CODE: Transfer pending</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(Transfer pending &mdash; Transfer awaiting completion)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This status indicates the transfer has been initiated but has not reached a final completed or failed state.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">&ldquo;Transfer pending&rdquo; is a user-facing status indicating the system has accepted the transfer request for processing, but final posting or settlement has not completed. Many transfer types involve staged processing: validation, queuing, network submission, and final posting. A pending status typically means the transfer is in progress, awaiting confirmation from downstream systems, or waiting for a scheduled processing window. This is not necessarily an error; it is an intermediate state. It does not guarantee the transfer will complete successfully, and it does not automatically mean the system is malfunctioning.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Bank app transfer history entries labeled &ldquo;Pending&rdquo;</span></p>
+<p class="c1"><span class="c0">Online banking screens showing scheduled or queued transfers</span></p>
+<p class="c1"><span class="c0">Internal dashboards showing transfers in processing queues</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">The transfer is queued for processing in a batch window</span></p>
+<p class="c1"><span class="c0">External network confirmation is not yet received</span></p>
+<p class="c1"><span class="c0">Additional verification or compliance checks are pending</span></p>
+<p class="c1"><span class="c0">Downstream processing is delayed due to system load or timing</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Status eventually changes to completed, failed, or reversed depending on outcome</span></p>
+<p class="c1"><span class="c0">Funds may be held or earmarked while pending (system-dependent)</span></p>
+<p class="c1"><span class="c0">Notifications may be generated when the transfer reaches a final state</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not confirmation the transfer is completed</span></p>
+<p class="c1"><span class="c0">It is not the same as a decline or rejection outcome</span></p>
+<p class="c1"><span class="c0">It is not proof that the transfer was reversed or refunded</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">ERR-TIMEOUT &mdash; Session timeout</span></p>
+<p class="c1"><span class="c0">ERR-TXN-FAILED &mdash; Transaction failed</span></p>
+<p class="c1"><span class="c0">ERR-REVERSAL &mdash; Reversal required</span></p>
+<p class="c1"><span class="c0">Payment reversed &mdash; Transaction reversed outcome</span></p>
+<p class="c1"><span class="c0">91 &mdash; Issuer unavailable</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Pending durations vary by transfer method and by processing calendars. Some systems show pending immediately after initiation even when the transfer is still in internal validation. A transfer can also remain pending if the platform is waiting for a reconciliation file or downstream acknowledgment. In certain cases, multiple status updates can occur (pending &rarr; processing &rarr; completed) without visible error codes. The authoritative state is the final status recorded by the bank&rsquo;s transaction ledger.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Monitor the transfer record for status changes to a terminal state</span></p>
+<p class="c1"><span class="c0">Check whether the platform indicates an expected processing window</span></p>
+<p class="c1"><span class="c0">Avoid submitting duplicate transfers while the original remains pending unless clearly indicated as failed</span></p>
+<p class="c1"><span class="c0">If the pending state persists beyond normal expectations, contact official support to confirm processing status</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If a transfer remains pending unusually long or affects balances, official bank support channels can confirm whether the transfer is still in process or requires follow-up.</span></p>
+</div>

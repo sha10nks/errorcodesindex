@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "ACH Pending"
+shortLabel: "ACH entry in progress"
+summary: "This status indicates an ACH entry has been initiated and is awaiting completion through processing, posting, or settlement stages."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Status (User-Facing Processing States)</span></p>
+<p class="c1"><span class="c0">CODE: ACH Pending</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(ACH Pending &mdash; ACH entry in progress)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This status indicates an ACH entry has been initiated and is awaiting completion through processing, posting, or settlement stages.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">&ldquo;ACH Pending&rdquo; is a processing status indicating that an ACH transaction has been accepted for processing but has not reached a final completed or returned state. ACH processing often runs in batches and can involve multiple stages, including submission, network transmission, RDFI posting, and reconciliation updates. A pending state typically means the system is waiting for a downstream acknowledgment or posting event. This is not inherently an error; it is an intermediate state. It does not guarantee completion and does not indicate that the entry has been returned.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Bank or payment app transfer history showing ACH entries in progress</span></p>
+<p class="c1"><span class="c0">Processor dashboards where ACH items are queued for settlement</span></p>
+<p class="c1"><span class="c0">Back-office reconciliation views tracking ACH batch statuses</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">The ACH entry is in a batch processing window</span></p>
+<p class="c1"><span class="c0">Downstream posting acknowledgment is not yet received</span></p>
+<p class="c1"><span class="c0">Reconciliation files are pending for final status updates</span></p>
+<p class="c1"><span class="c0">Processing delays occurred due to timing, cutoffs, or system load</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Status changes to completed/posted, returned, or reversed depending on outcome</span></p>
+<p class="c1"><span class="c0">Funds may be held or reserved based on platform policies while pending</span></p>
+<p class="c1"><span class="c0">Notifications may be generated when the entry reaches a terminal state</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not proof of successful settlement</span></p>
+<p class="c1"><span class="c0">It is not the same as &ldquo;ACH Returned&rdquo;</span></p>
+<p class="c1"><span class="c0">It is not confirmation that a reversal has occurred</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">ACH Returned &mdash; ACH entry returned</span></p>
+<p class="c1"><span class="c0">ACH Reversed &mdash; ACH entry reversed/adjusted</span></p>
+<p class="c1"><span class="c0">R01 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">R03 &mdash; No account/unable to locate</span></p>
+<p class="c1"><span class="c0">Settlement Failed &mdash; Settlement did not finalize</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Pending durations depend on processing calendars, cutoff times, and the specific ACH flow used. Some systems display &ldquo;pending&rdquo; immediately upon initiation even before network submission, while others show it only after submission. A pending entry can move to returned status after processing if the RDFI rejects it. The most reliable indication of completion is the final posting status shown in official transaction records.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Monitor the transaction record for a terminal status update</span></p>
+<p class="c1"><span class="c0">Check whether the platform provides expected processing time windows for ACH activity</span></p>
+<p class="c1"><span class="c0">Avoid initiating duplicate entries while the original remains pending unless clearly marked failed</span></p>
+<p class="c1"><span class="c0">If pending persists unusually long, contact official support for confirmation of processing state</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If an ACH entry remains pending beyond normal windows, official bank or processor support channels can confirm whether it is still in process or awaiting reconciliation.</span></p>
+</div>

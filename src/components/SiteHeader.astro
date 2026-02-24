@@ -1,0 +1,117 @@
+---
+import { INDUSTRIES } from '../utils/site';
+
+export interface Props {
+  currentPath: string;
+  overlay?: boolean;
+}
+
+const { currentPath, overlay = false } = Astro.props;
+
+// Base classes
+const baseHeaderClass = "fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out border-b";
+
+// Initial state classes (server-side rendered)
+const initialClass = overlay 
+  ? "border-transparent bg-transparent backdrop-blur-none" 
+  : "border-brand-border bg-brand-dark/80 backdrop-blur-md";
+
+const linkClass = "text-slate-300 hover:text-white transition-colors hover:bg-white/5 px-3 py-2 rounded-lg";
+---
+
+<header id="site-header" class={`${baseHeaderClass} ${initialClass}`} data-overlay={overlay}>
+  <div class="mx-auto flex max-w-7xl items-center px-6 py-4 md:py-5 transition-all duration-300" id="header-container">
+    {/* Logo */}
+    <a href="/" class="flex items-center gap-3 text-lg font-semibold text-slate-100 hover:text-white transition-colors mr-12 group">
+      <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary text-base font-bold text-brand-dark shadow-[0_0_15px_rgba(var(--brand-primary),0.4)] group-hover:scale-105 transition-transform duration-300">
+        E
+      </span>
+      <span class="tracking-tight group-hover:text-white transition-colors">ErrorCodesIndex</span>
+    </a>
+
+    {/* Desktop Navigation - Left Aligned */}
+    <nav aria-label="Primary" class="hidden items-center gap-2 text-sm font-medium md:flex">
+      <a href="/about/" class={linkClass}>About</a>
+      
+      <details class="group relative">
+        <summary class={`flex cursor-pointer list-none items-center gap-1 ${linkClass}`}>
+          <span>Industries</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 transition-transform group-open:rotate-180 opacity-70">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="absolute left-0 top-full mt-2 w-56 origin-top-left rounded-xl border border-brand-border bg-brand-surface/95 backdrop-blur-xl p-1 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+          <ul class="space-y-1">
+            {INDUSTRIES.map((it) => (
+              <li>
+                <a class="block rounded-lg px-4 py-2 text-sm text-slate-300 hover:bg-brand-primary/10 hover:text-brand-primary transition-colors" href={it.href}>
+                  {it.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </details>
+      
+      <a href="/contact/" class={linkClass}>Contact</a>
+    </nav>
+
+    {/* Mobile Menu Trigger - Right Aligned */}
+    <details class="relative md:hidden group ml-auto">
+      <summary class="flex cursor-pointer list-none items-center justify-center rounded-lg border border-brand-border bg-brand-surface/50 backdrop-blur px-3 py-2 text-sm text-slate-300 hover:bg-brand-border hover:text-white transition-colors">
+        Menu
+      </summary>
+      <div class="absolute right-0 top-full mt-2 w-64 origin-top-right rounded-xl border border-brand-border bg-brand-surface/95 backdrop-blur-xl p-2 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+        <ul class="space-y-1">
+          <li>
+            <a class="block rounded-lg px-4 py-2 text-sm text-slate-300 hover:bg-brand-primary/10 hover:text-brand-primary transition-colors" href="/about/">About</a>
+          </li>
+          <li class="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Industries</li>
+          {INDUSTRIES.map((it) => (
+            <li>
+              <a class="block rounded-lg px-4 py-2 text-sm text-slate-300 hover:bg-brand-primary/10 hover:text-brand-primary transition-colors" href={it.href}>
+                {it.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a class="block rounded-lg px-4 py-2 text-sm text-slate-300 hover:bg-brand-primary/10 hover:text-brand-primary transition-colors" href="/contact/">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const container = document.getElementById('header-container');
+  const isOverlay = header?.dataset.overlay === 'true';
+
+  const updateHeader = () => {
+    if (!header || !container) return;
+    const scrolled = window.scrollY > 20;
+
+    if (scrolled) {
+      header.classList.add('bg-brand-dark/90', 'backdrop-blur-xl', 'border-brand-border', 'shadow-lg');
+      header.classList.remove('border-transparent', 'bg-transparent', 'backdrop-blur-none', 'bg-brand-dark/80', 'backdrop-blur-md');
+      container.classList.remove('py-6');
+      container.classList.add('py-4');
+    } else {
+      container.classList.remove('py-4');
+      container.classList.add('py-6');
+      
+      if (isOverlay) {
+        header.classList.add('border-transparent', 'bg-transparent', 'backdrop-blur-none');
+        header.classList.remove('bg-brand-dark/90', 'backdrop-blur-xl', 'border-brand-border', 'shadow-lg');
+      } else {
+        header.classList.add('border-brand-border', 'bg-brand-dark/80', 'backdrop-blur-md');
+        header.classList.remove('bg-brand-dark/90', 'backdrop-blur-xl', 'shadow-lg');
+      }
+    }
+  };
+
+  window.addEventListener('scroll', updateHeader);
+  // Initial check
+  updateHeader();
+</script>

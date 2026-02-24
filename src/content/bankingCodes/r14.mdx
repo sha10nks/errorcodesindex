@@ -1,0 +1,54 @@
+---
+industry: "banking"
+code: "R14"
+shortLabel: "Invalid individual ID"
+summary: "This code indicates the individual identification information in the ACH entry was deemed invalid by the receiving institution’s processing rules."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Return Codes (Administrative / Compliance)</span></p>
+<p class="c1"><span class="c0">CODE: R14</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(R14 &mdash; Invalid individual ID)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the individual identification information in the ACH entry was deemed invalid by the receiving institution&rsquo;s processing rules.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">R14 is returned when the RDFI determines that the individual identifier included with the entry does not meet required validation rules or is not acceptable for posting. ACH entries often include an &ldquo;Individual Identification Number&rdquo; (or comparable identifier field) used for internal matching, posting controls, or compliance screening. When that identifier is missing, malformed, or fails the RDFI&rsquo;s acceptance criteria, the entry may be returned with R14. This is an administrative/validation outcome, not a funds availability result. It does not necessarily mean the account number is invalid; it indicates a related identity/identifier field did not validate for processing.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">ACH return files for payroll, bill pay, or consumer debits</span></p>
+<p class="c1"><span class="c0">Processor dashboards showing administrative returns</span></p>
+<p class="c1"><span class="c0">Back-office reports where entry-level identifiers are logged</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Individual ID field is missing or formatted incorrectly</span></p>
+<p class="c1"><span class="c0">Identifier fails receiving bank validation requirements</span></p>
+<p class="c1"><span class="c0">The identifier does not match the receiving bank&rsquo;s internal posting or screening expectations</span></p>
+<p class="c1"><span class="c0">Data mapping or file generation issues produced an invalid ID value</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The entry is returned with R14</span></p>
+<p class="c1"><span class="c0">The originator receives the return and marks the transaction as failed/returned</span></p>
+<p class="c1"><span class="c0">Subsequent entries with the same identifier pattern may return again until corrected upstream</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not a closed account status (see R02)</span></p>
+<p class="c1"><span class="c0">It is not an invalid account number result (see R04)</span></p>
+<p class="c1"><span class="c0">It is not an unauthorized debit claim (see R05/R10)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">R03 &mdash; No account/unable to locate</span></p>
+<p class="c1"><span class="c0">R04 &mdash; Invalid account number</span></p>
+<p class="c1"><span class="c0">R11 &mdash; Check truncation entry returned</span></p>
+<p class="c1"><span class="c0">R12 &mdash; Branch sold to another bank</span></p>
+<p class="c1"><span class="c0">R16 &mdash; Account frozen</span></p>
+<p class="c1"><span class="c0">R06 &mdash; Returned per ODFI request</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Validation strictness can differ by RDFI and by entry context, meaning the same upstream data may pass at one bank and fail at another. Some institutions may treat certain identifiers as optional, while others require them for specific entry classes. In multi-system workflows, the &ldquo;individual ID&rdquo; may be populated by a middleware processor or payroll platform, and returns may spike after configuration changes. The return code does not specify which rule failed, so upstream logging is often needed to isolate formatting or mapping issues.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review the entry&rsquo;s individual ID field and confirm it conforms to your origination specification</span></p>
+<p class="c1"><span class="c0">Compare against prior successful entries to detect formatting differences</span></p>
+<p class="c1"><span class="c0">Record the return code and associated entry metadata for reconciliation</span></p>
+<p class="c1"><span class="c0">If using a processor, follow the official exception workflow to validate required identifier fields</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If R14 returns persist across multiple receivers, official guidance from your processor or ODFI may help confirm the expected identifier format for your use case.</span></p>
+</div>

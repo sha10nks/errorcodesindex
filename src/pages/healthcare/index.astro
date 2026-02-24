@@ -1,0 +1,27 @@
+---
+import SectionLayout from '../../layouts/SectionLayout.astro';
+
+const title = 'Healthcare Error Codes Directory';
+const description =
+  'A reference for medical, insurance, and claim-related error codes including denial reasons, eligibility failures, and authorization codes.';
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Healthcare', href: '/healthcare/' },
+];
+---
+
+<SectionLayout title={title} description={description} crumbs={crumbs}>
+  <div class="not-prose mt-8 grid gap-6 sm:grid-cols-2">
+    <div class="relative overflow-hidden rounded-2xl border border-brand-border bg-brand-surface p-8 shadow-card transition-all hover:-translate-y-1 hover:border-brand-primary/50 hover:shadow-glow group">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
+        <h3 class="relative text-xl font-bold text-slate-100 group-hover:text-white mb-2">Full Error Code Index</h3>
+        <p class="relative text-sm text-slate-400 mb-6">Access the complete list of healthcare error codes, denial reasons, and processing signals.</p>
+        <a href="/healthcare/error-codes/" class="relative inline-flex items-center gap-2 text-sm font-semibold text-brand-primary group-hover:text-brand-accent transition-colors">
+            View All Codes 
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 transition-transform group-hover:translate-x-1">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+            </svg>
+        </a>
+    </div>
+  </div>
+</SectionLayout>

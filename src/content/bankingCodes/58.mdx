@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "58"
+shortLabel: "Service not allowed"
+summary: "This code indicates the issuer declined the authorization because the requested service or transaction feature is not allowed for the account."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Card Payment Processing (Authorization Response Codes)</span></p>
+<p class="c1"><span class="c0">CODE: 58</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(58 &mdash; Service not allowed)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the issuer declined the authorization because the requested service or transaction feature is not allowed for the account.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Response code 58 (&ldquo;Service not allowed&rdquo;) is returned when the issuer determines that a particular service capability or transaction feature requested is not enabled or permitted for the card/account. While similar to &ldquo;transaction not permitted,&rdquo; this code often reflects a restriction tied to a specific service dimension of the transaction flow rather than a broad category prohibition. The issuer recognizes the request but rejects it due to service eligibility rules. This is not a funds-related decline and does not indicate a system outage. It indicates the request falls outside the account&rsquo;s allowed service profile.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Authorization declines for specialized transaction services</span></p>
+<p class="c1"><span class="c0">Payment gateway logs for online processing flows</span></p>
+<p class="c1"><span class="c0">Processor dashboards showing response code 58</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">The account does not support the requested transaction service feature</span></p>
+<p class="c1"><span class="c0">Issuer service rules block the authorization in that channel</span></p>
+<p class="c1"><span class="c0">Account-level restrictions limit access to certain merchant or service types</span></p>
+<p class="c1"><span class="c0">Service capability is disabled due to issuer policy or risk controls</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Authorization is declined</span></p>
+<p class="c1"><span class="c0">Merchant system records a service restriction decline</span></p>
+<p class="c1"><span class="c0">Similar attempts may continue to be declined until the eligibility condition changes</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not an expired card outcome (see 54)</span></p>
+<p class="c1"><span class="c0">It is not a funds decline (see 51)</span></p>
+<p class="c1"><span class="c0">It is not an issuer availability problem (see 91)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">57 &mdash; Transaction not permitted</span></p>
+<p class="c1"><span class="c0">62 &mdash; Restricted card</span></p>
+<p class="c1"><span class="c0">58 &mdash; Service not allowed</span></p>
+<p class="c1"><span class="c0">05 &mdash; Do not honor</span></p>
+<p class="c1"><span class="c0">96 &mdash; System malfunction</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Issuer mapping between 57 and 58 varies, and two issuers may represent the same underlying restriction using different response codes. The decline code alone does not specify which service feature is not allowed. Merchant-side transaction routing and category coding can influence how the issuer interprets the request. In some cases, the issuer may allow standard purchases but restrict certain features, leading to 58 in niche payment flows.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review transaction metadata to understand which service or channel was used</span></p>
+<p class="c1"><span class="c0">Compare the decline pattern across different transaction types or channels</span></p>
+<p class="c1"><span class="c0">Log the response code for reconciliation and support workflows</span></p>
+<p class="c1"><span class="c0">Use official acquirer/processor support channels to validate the transaction classification if needed</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If service restriction declines repeat for the same transaction flow, official issuer or processor support channels may clarify the account&rsquo;s service eligibility rules.</span></p>
+</div>

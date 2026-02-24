@@ -1,0 +1,54 @@
+---
+industry: "banking"
+code: "R11"
+shortLabel: "Check truncation entry returned"
+summary: "This code indicates the RDFI returned an ACH entry identified as a check truncation-related item that could not be processed as presented."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Return Codes (Administrative / Compliance)</span></p>
+<p class="c1"><span class="c0">CODE: R11</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(R11 &mdash; Check truncation entry returned)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the RDFI returned an ACH entry identified as a check truncation-related item that could not be processed as presented.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">R11 is an ACH return reason code used for entries associated with check truncation processing that the receiving institution cannot accept or post. In practical terms, it indicates the RDFI determined that the entry&rsquo;s context or attributes do not meet the requirements for settlement under the check truncation framework or related handling rules. This is an administrative return category rather than a funds-availability result like insufficient funds. It also differs from account status returns such as closed or invalid accounts, because the issue is tied to entry type or processing eligibility. The code signals that the item was not processed as a valid payable entry under the relevant check truncation handling category.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Bank or processor return files for specialized ACH entry types</span></p>
+<p class="c1"><span class="c0">Back-office reconciliation reports for returned items</span></p>
+<p class="c1"><span class="c0">Operational exception dashboards for ACH administrative returns</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Entry type or classification is not acceptable for the receiving bank&rsquo;s check truncation handling</span></p>
+<p class="c1"><span class="c0">The entry was routed or coded in a way the RDFI cannot process under truncation rules</span></p>
+<p class="c1"><span class="c0">An administrative mismatch exists between the entry&rsquo;s details and the receiving bank&rsquo;s allowed processing paths</span></p>
+<p class="c1"><span class="c0">The receiving bank&rsquo;s systems flagged the item as ineligible or improperly formatted for truncation-related settlement</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The entry is returned through the ACH network with return reason R11</span></p>
+<p class="c1"><span class="c0">The originator and ODFI receive the return and mark the item as failed/returned</span></p>
+<p class="c1"><span class="c0">The return is logged as an administrative/processing eligibility outcome rather than a funds dispute</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not an insufficient funds determination (see R01/R09)</span></p>
+<p class="c1"><span class="c0">It is not an invalid account number outcome (see R04)</span></p>
+<p class="c1"><span class="c0">It is not an authorization dispute (see R05/R07/R10)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">R12 &mdash; Branch sold to another bank</span></p>
+<p class="c1"><span class="c0">R14 &mdash; Invalid individual ID</span></p>
+<p class="c1"><span class="c0">R03 &mdash; No account/unable to locate</span></p>
+<p class="c1"><span class="c0">R04 &mdash; Invalid account number</span></p>
+<p class="c1"><span class="c0">R06 &mdash; Returned per ODFI request</span></p>
+<p class="c1"><span class="c0">R16 &mdash; Account frozen</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Administrative return codes can reflect institution-specific processing capabilities and how entry types are interpreted in the RDFI&rsquo;s systems. Similar entries may post successfully at one institution and return at another if eligibility rules differ. In multi-step processing chains, the visible return code may not reveal the precise internal validation rule that triggered the return, so upstream origination metadata often holds the most useful context. Timing around system updates or routing table changes can also influence whether a given entry is accepted.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review the entry class, identifiers, and origination metadata associated with the returned item</span></p>
+<p class="c1"><span class="c0">Confirm whether the entry type aligns with the intended processing method and destination</span></p>
+<p class="c1"><span class="c0">Record the return as an administrative eligibility outcome for audit and reconciliation</span></p>
+<p class="c1"><span class="c0">Consult your payment processor or ODFI for clarification on how this entry type is supported</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If this return repeats for similar entries, official support channels at the ODFI or processor may clarify required formatting and eligibility expectations for truncation-related handling.</span></p>
+</div>

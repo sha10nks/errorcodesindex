@@ -1,0 +1,54 @@
+---
+industry: "banking"
+code: "R15"
+shortLabel: "Beneficiary deceased"
+summary: "This code indicates the receiving institution returned the entry because records show the receiver/beneficiary is deceased."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Return Codes (Administrative / Compliance)</span></p>
+<p class="c1"><span class="c0">CODE: R15</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(R15 &mdash; Beneficiary deceased)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the receiving institution returned the entry because records show the receiver/beneficiary is deceased.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">R15 is returned when the RDFI indicates that the receiver (often in contexts involving benefits, entitlements, or recurring payments) is recorded as deceased, making the posting of certain entries inappropriate or restricted. This return code is primarily administrative and compliance-driven. It does not communicate a funds issue or an account number formatting issue; it indicates the receiving institution has a status record that prevents posting under applicable policies. The presence of R15 does not necessarily mean every transaction type would be blocked universally, but it signals that the receiving institution is returning the entry based on the beneficiary status in its records. The return reflects a sensitive status condition rather than a technical processing failure.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">ACH credit returns related to benefits or structured payments</span></p>
+<p class="c1"><span class="c0">Bank operational returns for accounts with restricted status</span></p>
+<p class="c1"><span class="c0">Processor return files flagged as administrative/compliance outcomes</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">RDFI records indicate the receiver/beneficiary is deceased</span></p>
+<p class="c1"><span class="c0">Account status was updated due to official reporting or internal compliance handling</span></p>
+<p class="c1"><span class="c0">The entry type is restricted for posting under deceased beneficiary controls</span></p>
+<p class="c1"><span class="c0">The receiving institution applied a status-based return rule</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The entry is returned through ACH with R15</span></p>
+<p class="c1"><span class="c0">The originator&rsquo;s systems mark the transaction as returned and typically stop automated continuation to the same receiver details</span></p>
+<p class="c1"><span class="c0">The return may trigger additional internal review within the originator&rsquo;s reconciliation processes</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not insufficient funds (see R01/R09)</span></p>
+<p class="c1"><span class="c0">It is not a closed account return (see R02), though both can occur in different contexts</span></p>
+<p class="c1"><span class="c0">It is not an authorization dispute code (see R05/R07/R10)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">R02 &mdash; Account closed</span></p>
+<p class="c1"><span class="c0">R16 &mdash; Account frozen</span></p>
+<p class="c1"><span class="c0">R03 &mdash; No account/unable to locate</span></p>
+<p class="c1"><span class="c0">R12 &mdash; Branch sold to another bank</span></p>
+<p class="c1"><span class="c0">R06 &mdash; Returned per ODFI request</span></p>
+<p class="c1"><span class="c0">R14 &mdash; Invalid individual ID</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Status-based returns can be influenced by how institutions update records and apply posting restrictions. Some entries may be returned even if the account remains open, depending on the institution&rsquo;s compliance approach. The return code does not provide details on documentation or timing of the status update. In some cases, the beneficiary status may be associated with a specific payment program or posting rule rather than the account&rsquo;s general ability to receive other credits. Because of the sensitive nature of this return, originators often treat repeat attempts cautiously.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Record the return code and entry details for reconciliation and audit purposes</span></p>
+<p class="c1"><span class="c0">Confirm whether your internal records require status review or additional verification processes</span></p>
+<p class="c1"><span class="c0">Ensure automated retries do not proceed without appropriate internal checks</span></p>
+<p class="c1"><span class="c0">Coordinate through official program, processor, or ODFI workflows for next handling steps</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">For status-based returns, official channels tied to the payment program or the ODFI may provide the appropriate handling pathway for returned entries.</span></p>
+</div>

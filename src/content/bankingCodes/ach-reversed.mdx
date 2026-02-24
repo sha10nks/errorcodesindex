@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "ACH Reversed"
+shortLabel: "ACH entry reversed/adjusted"
+summary: "This status indicates an ACH entry was reversed or adjusted through a corrective process after initiation or posting."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Status (User-Facing Processing States)</span></p>
+<p class="c1"><span class="c0">CODE: ACH Reversed</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(ACH Reversed &mdash; ACH entry reversed/adjusted)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This status indicates an ACH entry was reversed or adjusted through a corrective process after initiation or posting.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">&ldquo;ACH Reversed&rdquo; indicates a corrective action was applied to undo or adjust the effect of an ACH entry. Unlike &ldquo;returned,&rdquo; which is a receiving-bank refusal to post the entry, a reversal typically reflects a compensating action intended to restore consistency or correct an error after processing steps have occurred. Reversals can be associated with operational corrections, duplicate handling, or reconciliation requirements, depending on system design. This status indicates the original entry&rsquo;s effect was not retained as-is. It does not specify whether the reversal was immediate or the time it takes for balances to reflect the change.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Transaction history showing an ACH entry followed by a reversal/adjustment indicator</span></p>
+<p class="c1"><span class="c0">Processor dashboards recording reversal or correction events</span></p>
+<p class="c1"><span class="c0">Back-office reconciliation reports for corrected ACH items</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">An entry required correction after initiation due to processing integrity rules</span></p>
+<p class="c1"><span class="c0">Duplicate or conflicting records triggered a compensating adjustment</span></p>
+<p class="c1"><span class="c0">A downstream posting inconsistency required reversal handling</span></p>
+<p class="c1"><span class="c0">Operational workflows applied a reversal to correct an earlier state</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The transaction record may show a reversal or adjustment entry</span></p>
+<p class="c1"><span class="c0">Funds impacts are updated according to platform reconciliation timing</span></p>
+<p class="c1"><span class="c0">The original entry is not treated as a final successful settlement outcome</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not the same as &ldquo;ACH Returned,&rdquo; which reflects RDFI return reasons</span></p>
+<p class="c1"><span class="c0">It is not necessarily a sign of fraud or dispute</span></p>
+<p class="c1"><span class="c0">It is not a guarantee of immediate balance availability</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">ERR-REVERSAL &mdash; Reversal required</span></p>
+<p class="c1"><span class="c0">ACH Returned &mdash; ACH entry returned</span></p>
+<p class="c1"><span class="c0">Transfer pending &mdash; Transfer awaiting completion</span></p>
+<p class="c1"><span class="c0">Settlement Failed &mdash; Settlement did not finalize</span></p>
+<p class="c1"><span class="c0">R06 &mdash; Returned per ODFI request</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Some platforms use &ldquo;reversal&rdquo; to describe multiple corrective actions, including voids, adjustments, and compensation entries. A reversal can occur even when the user did not request cancellation, depending on system reconciliation needs. Timing depends on batch cycles and ledger updates. In some cases, a reversal appears as a separate ledger entry; in others, the original transaction is updated to a reversed status without a new entry.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review transaction history to identify the reversal reference and any related entry IDs</span></p>
+<p class="c1"><span class="c0">Confirm whether the original entry remains visible as pending or is marked reversed</span></p>
+<p class="c1"><span class="c0">Monitor for final balance adjustments after reconciliation</span></p>
+<p class="c1"><span class="c0">If reversal status is unclear, contact official support to confirm the final ledger state</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If an ACH reversal creates uncertainty about final posting, official bank or processor support channels can confirm whether reconciliation completed and what final outcome was recorded.</span></p>
+</div>

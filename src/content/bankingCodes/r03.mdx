@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "R03"
+shortLabel: "No account/unable to locate"
+summary: "This code indicates the RDFI could not locate an account matching the information provided."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Return Codes (NACHA)</span></p>
+<p class="c1"><span class="c0">CODE: R03</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(R03 &mdash; No account/unable to locate)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the RDFI could not locate an account matching the information provided.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">R03 is returned when the receiving bank cannot match the account number to an existing account, or cannot locate the account in a way that permits posting the entry. This may be due to incorrect account information, account conversion issues, or the RDFI&rsquo;s internal validation rules. The key distinction is that the RDFI does not recognize the account as a valid target for posting. This return reflects the bank&rsquo;s inability to locate the account, not necessarily a &ldquo;closed account&rdquo; determination. It also does not automatically indicate the routing number is wrong; it indicates the account-level match failed at the RDFI.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">ACH return reports for debits or credits</span></p>
+<p class="c1"><span class="c0">Merchant dashboards showing &ldquo;no account found&rdquo; returns</span></p>
+<p class="c1"><span class="c0">Payment reconciliation files for bank-to-bank transfers</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Account number provided does not match any account at the RDFI</span></p>
+<p class="c1"><span class="c0">Transcription errors in account details (missing digits, swapped digits)</span></p>
+<p class="c1"><span class="c0">Account was converted to a new format and the old number is no longer recognized</span></p>
+<p class="c1"><span class="c0">RDFI validation rules reject the account as not eligible for ACH posting</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The entry is returned with R03</span></p>
+<p class="c1"><span class="c0">The originator receives the return and updates the transaction status</span></p>
+<p class="c1"><span class="c0">Subsequent entries using the same account information will likely return again</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not a closed account confirmation (see R02)</span></p>
+<p class="c1"><span class="c0">It is not a general invalid format designation (see R04)</span></p>
+<p class="c1"><span class="c0">It is not an authorization dispute (see R05/R10)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">R04 &mdash; Invalid account number</span></p>
+<p class="c1"><span class="c0">R02 &mdash; Account closed</span></p>
+<p class="c1"><span class="c0">R01 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">R06 &mdash; Returned per ODFI request</span></p>
+<p class="c1"><span class="c0">R07 &mdash; Authorization revoked</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Some RDFIs use R03 for accounts that exist but are not eligible to accept certain entry types, depending on internal mapping. The same account details may behave differently across entry classes or processing windows. When account migrations occur (such as institutional conversions), older account formats may temporarily fail matching, producing R03 until updated details are used. Differences in leading zeros handling can also create matching problems.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Reconfirm the account number length and completeness in internal records</span></p>
+<p class="c1"><span class="c0">Verify that the account details correspond to the intended RDFI and receiver</span></p>
+<p class="c1"><span class="c0">Compare recent successful transactions to identify formatting differences</span></p>
+<p class="c1"><span class="c0">Record the return code for reconciliation and trend monitoring</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If the account cannot be located despite verified details, official bank support channels may be able to clarify eligibility and matching requirements.</span></p>
+</div>

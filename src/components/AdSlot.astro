@@ -1,0 +1,14 @@
+---
+export interface Props {
+  slot: 'after-summary' | 'mid-content' | 'near-bottom';
+}
+
+const { slot } = Astro.props;
+---
+
+<div class="my-8 rounded-xl border border-brand-border bg-brand-surface px-6 py-8 text-center text-sm text-slate-500 shadow-sm" data-ad-slot={slot}>
+  <span class="block text-xs uppercase tracking-wider opacity-50 mb-2">Advertisement</span>
+  <div class="h-32 w-full rounded-lg bg-brand-dark/50 flex items-center justify-center border border-dashed border-brand-border/50">
+    <span class="text-slate-600">Ad Space ({slot})</span>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "Payment declined"
+shortLabel: "Payment not approved"
+summary: "This status indicates the payment attempt was not approved and did not complete successfully."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Bank System / Generic (User-Facing Status Messages)</span></p>
+<p class="c1"><span class="c0">CODE: Payment declined</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(Payment declined &mdash; Payment not approved)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This status indicates the payment attempt was not approved and did not complete successfully.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">&ldquo;Payment declined&rdquo; is a generic user-facing outcome used when a payment attempt is rejected by an issuer, bank, or internal risk/policy engine. It signals that the payment did not reach an approved authorization or could not proceed to completion. Declines can occur for many reasons, including issuer decisions, account permissions, risk controls, or transaction parameter issues. This message is intentionally broad and often appears when the underlying system reason is not shown to the user. It does not automatically mean the account is closed, the card is invalid, or funds are insufficient. It also does not confirm that a technical malfunction occurred; it simply indicates the payment was not approved.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Checkout screens in banking apps, wallets, or merchant payment pages</span></p>
+<p class="c1"><span class="c0">Transaction history entries labeled &ldquo;Declined&rdquo;</span></p>
+<p class="c1"><span class="c0">Processor or merchant dashboards summarizing payer outcomes</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Issuer or bank rejected the authorization request</span></p>
+<p class="c1"><span class="c0">Risk controls blocked the transaction based on transaction attributes</span></p>
+<p class="c1"><span class="c0">Account permissions or restrictions prevented approval</span></p>
+<p class="c1"><span class="c0">Validation of transaction parameters failed and mapped to a generic decline</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The payment attempt ends without settlement</span></p>
+<p class="c1"><span class="c0">The transaction may appear as declined in history with limited details</span></p>
+<p class="c1"><span class="c0">A new payment attempt may be required if the payer tries again</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not proof of insufficient funds (that is a specific category in many systems)</span></p>
+<p class="c1"><span class="c0">It is not confirmation of a successful payment followed by reversal</span></p>
+<p class="c1"><span class="c0">It is not, by itself, evidence of fraud or account compromise</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">05 &mdash; Do not honor</span></p>
+<p class="c1"><span class="c0">51 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">54 &mdash; Expired card</span></p>
+<p class="c1"><span class="c0">ERR-AUTH &mdash; Authorization failed</span></p>
+<p class="c1"><span class="c0">ERR-LIMIT &mdash; Limit exceeded</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Some systems show &ldquo;declined&rdquo; when the issuer provides a non-specific response code, and the exact reason is not exposed. Declines can also occur due to channel differences; a payment may decline online but succeed in another channel depending on issuer rules. In some cases, a decline may be recorded even if an earlier attempt placed a temporary hold; the final posted transaction record is the authoritative reference.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review the transaction details shown (amount, merchant, channel, time) for patterns</span></p>
+<p class="c1"><span class="c0">Check whether the platform provides a specific decline code alongside the generic message</span></p>
+<p class="c1"><span class="c0">Confirm whether repeated declines occur only for a specific merchant or transaction type</span></p>
+<p class="c1"><span class="c0">If needed, contact official support for clarification on the decline category</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If declines are recurring and prevent normal payments, some users consult their issuer, bank, or official support channel to confirm whether restrictions or risk controls are affecting approvals.</span></p>
+</div>

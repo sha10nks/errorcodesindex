@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "12"
+shortLabel: "Invalid transaction"
+summary: "This code indicates the issuer or network rejected the authorization because the transaction type or parameters were not acceptable as presented."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Card Payment Processing (Authorization Response Codes)</span></p>
+<p class="c1"><span class="c0">CODE: 12</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(12 &mdash; Invalid transaction)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the issuer or network rejected the authorization because the transaction type or parameters were not acceptable as presented.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Response code 12 (&ldquo;Invalid transaction&rdquo;) is returned when the authorization request is not valid for processing under the issuer&rsquo;s or network&rsquo;s rules for that transaction type. This can relate to the transaction category, the method of authorization, or how the merchant system submitted the request. The code indicates a mismatch between expected transaction structure and what was presented, rather than a lack of funds. It is not a statement about the cardholder&rsquo;s account balance. It also does not automatically imply the card is invalid; it indicates the transaction itself was not acceptable for authorization in that form.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Payment gateway logs for declined authorizations</span></p>
+<p class="c1"><span class="c0">POS terminal decline messages showing &ldquo;Invalid transaction&rdquo;</span></p>
+<p class="c1"><span class="c0">Processor reporting dashboards listing response codes</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Transaction type not permitted for the account or merchant configuration</span></p>
+<p class="c1"><span class="c0">Authorization request parameters did not match expected standards</span></p>
+<p class="c1"><span class="c0">Entry method or transaction category was rejected by issuer rules</span></p>
+<p class="c1"><span class="c0">Network or issuer validation flagged the request as not processable</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">Authorization is declined and the transaction does not settle</span></p>
+<p class="c1"><span class="c0">Merchant system may record a technical decline category</span></p>
+<p class="c1"><span class="c0">Subsequent attempts may continue to fail if the request structure remains unchanged</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not a specific invalid card number response (see 14)</span></p>
+<p class="c1"><span class="c0">It is not an insufficient funds outcome (see 51)</span></p>
+<p class="c1"><span class="c0">It is not a generic issuer risk decline (see 05)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">05 &mdash; Do not honor</span></p>
+<p class="c1"><span class="c0">13 &mdash; Invalid amount</span></p>
+<p class="c1"><span class="c0">14 &mdash; Invalid card number</span></p>
+<p class="c1"><span class="c0">51 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">12 &mdash; Invalid transaction</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">&ldquo;Invalid transaction&rdquo; can be used when an issuer expects a different transaction flow (for example, certain authorization types, reversals, or specialized merchant categories). Merchant-side configuration differences can influence the likelihood of this response. The same card may be approved for standard retail purchases but return 12 in unusual transaction flows. Some processors also map certain network validation failures into code 12 for reporting consistency.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review the transaction attributes recorded by the gateway (type, entry method, and merchant category)</span></p>
+<p class="c1"><span class="c0">Compare against successfully approved transactions to identify differences in request structure</span></p>
+<p class="c1"><span class="c0">Document the decline code for support and reconciliation</span></p>
+<p class="c1"><span class="c0">Follow official processor support workflows if repeated invalid transaction declines occur</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If code 12 occurs repeatedly for a specific transaction type, official processor or acquirer support channels may help confirm acceptable authorization parameters.</span></p>
+</div>

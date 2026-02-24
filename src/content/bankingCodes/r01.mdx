@@ -1,0 +1,54 @@
+---
+industry: "banking"
+code: "R01"
+shortLabel: "Insufficient funds"
+summary: "This code indicates the receiving account did not have enough available balance to cover the ACH debit entry at the time it was presented."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Return Codes (NACHA)</span></p>
+<p class="c1"><span class="c0">CODE: R01</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(R01 &mdash; Insufficient funds)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the receiving account did not have enough available balance to cover the ACH debit entry at the time it was presented.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">R01 is returned by the receiving depository financial institution (RDFI) when an ACH debit cannot be paid due to insufficient available funds in the receiver&rsquo;s account. &ldquo;Available&rdquo; typically means the balance that can be used after accounting for holds, pending items, and internal availability rules. This return is a payment outcome at the time of presentment, not a statement about the account&rsquo;s long-term status. It does not automatically mean the account is closed or invalid. It also does not imply fraud; it indicates the debit could not be settled due to the funding condition when processed.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Payment failure notifications for bank drafts, bill pay, or subscriptions</span></p>
+<p class="c1"><span class="c0">Merchant or payroll admin dashboards showing ACH return status</span></p>
+<p class="c1"><span class="c0">Bank or payment processor reports for returned debit entries</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Available balance was below the debit amount at posting time</span></p>
+<p class="c1"><span class="c0">Funds were present but not yet available (holds, pending transactions, or availability windows)</span></p>
+<p class="c1"><span class="c0">Multiple debits posted close together, reducing availability before this item was processed</span></p>
+<p class="c1"><span class="c0">The account has a limit or internal rule that reduced available funds for ACH debits</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The debit entry is returned through the ACH network with return reason R01</span></p>
+<p class="c1"><span class="c0">The originator (via the originating depository financial institution, ODFI) receives the return and updates the payment status to failed/returned</span></p>
+<p class="c1"><span class="c0">Depending on the originator&rsquo;s policies, the debit may be re-initiated as a new entry at a later time</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not confirmation that the account is closed (see R02)</span></p>
+<p class="c1"><span class="c0">It is not an invalid account number result (see R04)</span></p>
+<p class="c1"><span class="c0">It is not an unauthorized debit determination (see R05/R10)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">R09 &mdash; Uncollected funds</span></p>
+<p class="c1"><span class="c0">R02 &mdash; Account closed</span></p>
+<p class="c1"><span class="c0">R03 &mdash; No account/unable to locate</span></p>
+<p class="c1"><span class="c0">R04 &mdash; Invalid account number</span></p>
+<p class="c1"><span class="c0">R10 &mdash; Customer advises unauthorized</span></p>
+<p class="c1"><span class="c0">R08 &mdash; Stop payment</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Insufficient funds outcomes can be affected by posting order and timing differences across institutions. Some accounts may show a positive &ldquo;ledger&rdquo; balance while still having insufficient &ldquo;available&rdquo; funds due to holds. The same account may accept a similar debit on a different day depending on deposit availability windows. In some cases, an account-level setting may restrict ACH debits even when funds exist, which can create patterns that resemble insufficient funds returns.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review the return record details and posting date/time for the attempted debit</span></p>
+<p class="c1"><span class="c0">Check whether multiple debits were attempted around the same period</span></p>
+<p class="c1"><span class="c0">Confirm whether funds availability rules or holds could have affected the available balance</span></p>
+<p class="c1"><span class="c0">If this is a recurring debit, consider verifying status with the official account holder or support channel</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If the return repeats and blocks payment completion, some users choose to consult their financial institution or official support channel for clarification on availability and posting behavior.</span></p>
+</div>

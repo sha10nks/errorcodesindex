@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "Z5"
+shortLabel: "Manual review"
+summary: "This code indicates the item requires human review before the system will allow completion or final posting."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Bank Risk &amp; Compliance (Internal Status Codes)</span></p>
+<p class="c1"><span class="c0">CODE: Z5</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(Z5 &mdash; Manual review)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the item requires human review before the system will allow completion or final posting.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Z5 is a workflow status indicating that automated processing has routed the transaction or activity to a manual review queue. Manual review may be used when automated checks cannot confidently approve or reject the item, or when policy requires human confirmation. This status is common in scenarios involving higher-risk patterns, account changes, or exceptions where automated rules are intentionally conservative. Z5 is not a final outcome; it is a processing state. It does not automatically imply fraud or compliance violations; it indicates the system requires a human decision or confirmation before proceeding.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Transaction details showing &ldquo;manual review&rdquo; or &ldquo;under review&rdquo;</span></p>
+<p class="c1"><span class="c0">Internal operations dashboards for exception handling</span></p>
+<p class="c1"><span class="c0">Processor logs indicating review queue routing</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Automated checks produced an inconclusive risk result</span></p>
+<p class="c1"><span class="c0">Policy requires manual review for certain thresholds or transaction types</span></p>
+<p class="c1"><span class="c0">Identity signals or account data require confirmation</span></p>
+<p class="c1"><span class="c0">Previous related issues increased review sensitivity</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The transaction remains pending or on hold</span></p>
+<p class="c1"><span class="c0">Processing continues only after a review decision is recorded</span></p>
+<p class="c1"><span class="c0">Final status updates may result in completion, decline, return, or reversal depending on outcome</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not an approval or completion</span></p>
+<p class="c1"><span class="c0">It is not a system outage indicator</span></p>
+<p class="c1"><span class="c0">It is not a guarantee the item will be rejected</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">Z1 &mdash; Fraud review</span></p>
+<p class="c1"><span class="c0">Z3 &mdash; Compliance hold</span></p>
+<p class="c1"><span class="c0">Z9 &mdash; Risk assessment</span></p>
+<p class="c1"><span class="c0">Payment On Hold &mdash; Processing paused state</span></p>
+<p class="c1"><span class="c0">Settlement Failed &mdash; Finalization did not complete</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Manual review queues can introduce variable timing because resolution depends on staffing, queue volume, and policy. Some platforms batch manual reviews during business hours, while others run continuously. A manual review may apply to a single transaction while leaving the account otherwise operational, or it may restrict additional actions until the review completes. The code does not reveal what factors triggered review; it indicates only the processing pathway.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Monitor the transaction record for status changes to a final outcome</span></p>
+<p class="c1"><span class="c0">Check whether other transactions are also held, indicating broader review scope</span></p>
+<p class="c1"><span class="c0">Avoid duplicating the same transaction while it remains in review</span></p>
+<p class="c1"><span class="c0">If the status persists, contact official support for review status updates</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If manual review delays create uncertainty, official bank or platform support channels may confirm whether the item is queued and whether additional verification is required.</span></p>
+</div>

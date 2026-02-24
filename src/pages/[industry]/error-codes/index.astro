@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import SectionLayout from '../../../layouts/SectionLayout.astro';
+import { INDUSTRIES } from '../../../utils/site';
+import { breadcrumbSchema, collectionPageSchema } from '../../../utils/schema';
+
+export async function getStaticPaths() {
+  const industries = ['healthcare', 'irs-tax', 'banking', 'gaming'];
+  return industries.map((industry) => ({ params: { industry } }));
+}
+
+const { industry } = Astro.params;
+if (!industry) throw new Error('Missing industry param');
+
+const industryMeta = INDUSTRIES.find((i) => i.key === industry);
+if (!industryMeta || industryMeta.key === 'appliances') throw new Error('Unsupported industry');
+
+const collectionName =
+  industry === 'healthcare'
+    ? 'healthcareCodes'
+    : industry === 'irs-tax'
+      ? 'irsTaxCodes'
+      : industry === 'banking'
+        ? 'bankingCodes'
+        : 'gamingCodes';
+
+const entries = await getCollection(collectionName);
+const sorted = entries
+  .slice()
+  .sort((a, b) => a.data.code.localeCompare(b.data.code, 'en', { numeric: true }));
+
+const title = `${industryMeta.label} Error Codes Directory`;
+const description = `Browse a complete index of ${industryMeta.label.toLowerCase()} error codes. Each page uses a stable canonical URL and verbatim source content.`;
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: industryMeta.label, href: industryMeta.href },
+  { label: 'Error Codes', href: `/${industry}/error-codes/` },
+];
+
+const canonicalPath = `/${industry}/error-codes/`;
+const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
+const schema = [breadcrumbSchema(crumbs, canonicalUrl), collectionPageSchema({ name: title, canonicalUrl })];
+---
+
+<SectionLayout title={title} description={description} crumbs={crumbs} canonicalPath={canonicalPath} schema={schema}>
+  {sorted.length === 0 ? (
+    <p>
+      No codes have been imported yet. Run the build-time import pipeline to populate this directory from the locked
+      Google Doc.
+    </p>
+  ) : (
+    <div class="not-prose overflow-x-auto rounded-2xl border border-brand-border bg-brand-surface shadow-card">
+      <table class="w-full border-collapse text-sm">
+        <thead class="bg-brand-dark text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
+          <tr>
+            <th class="border-b border-brand-border px-4 py-3">Code</th>
+            <th class="border-b border-brand-border px-4 py-3">Short label</th>
+            <th class="border-b border-brand-border px-4 py-3">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sorted.map((e) => (
+            <tr class="hover:bg-brand-dark/50">
+              <td class="border-b border-brand-border px-4 py-3 font-mono text-xs text-slate-200">{e.data.code}</td>
+              <td class="border-b border-brand-border px-4 py-3 text-slate-300">{e.data.shortLabel}</td>
+              <td class="border-b border-brand-border px-4 py-3">
+                <a class="text-brand-primary hover:text-brand-accent transition-colors" href={`/${industry}/error-codes/${e.slug}/`}>
+                  View
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+</SectionLayout>

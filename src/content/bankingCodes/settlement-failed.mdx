@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "Settlement Failed"
+shortLabel: "Settlement did not complete"
+summary: "This status indicates the transaction did not finalize successfully during settlement or reconciliation processing."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Settlement &amp; Reconciliation (User-Facing Processing States)</span></p>
+<p class="c1"><span class="c0">CODE: Settlement Failed</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(Settlement Failed &mdash; Settlement did not complete)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This status indicates the transaction did not finalize successfully during settlement or reconciliation processing.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">&ldquo;Settlement Failed&rdquo; indicates that a transaction could not complete the final settlement step where funds movement and ledger posting are finalized. Settlement is the stage where a successful authorization or initiation becomes a completed, reconciled transaction. A failure at this stage can occur due to downstream rejections, reconciliation mismatches, network issues, or operational exceptions. This status indicates a late-stage failure, not necessarily an initial decline. It does not guarantee that funds were captured or transferred; it indicates finalization did not succeed under expected rules. The final outcome may involve reversal, return, or correction depending on system design.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Merchant or bank dashboards showing settlement outcomes</span></p>
+<p class="c1"><span class="c0">Transaction histories where a payment moved from processing to settlement failure</span></p>
+<p class="c1"><span class="c0">Back-office reconciliation tools tracking failed settlement batches</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Downstream settlement step encountered an operational exception</span></p>
+<p class="c1"><span class="c0">Reconciliation files or acknowledgments did not match expected results</span></p>
+<p class="c1"><span class="c0">A network or processing system failed during finalization</span></p>
+<p class="c1"><span class="c0">Policy or compliance checks triggered a late-stage block</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The transaction may be marked failed and removed from completion queues</span></p>
+<p class="c1"><span class="c0">A reversal or correction process may be initiated to restore consistent balances</span></p>
+<p class="c1"><span class="c0">The final status may later update to reversed, returned, or corrected depending on reconciliation outcomes</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not the same as &ldquo;payment declined&rdquo; (which happens earlier)</span></p>
+<p class="c1"><span class="c0">It is not guaranteed to resolve instantly</span></p>
+<p class="c1"><span class="c0">It is not an explanation of the exact underlying cause without supporting logs</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">ERR-REVERSAL &mdash; Reversal required</span></p>
+<p class="c1"><span class="c0">Payment reversed &mdash; Payment canceled/undone</span></p>
+<p class="c1"><span class="c0">ACH Returned &mdash; ACH entry returned</span></p>
+<p class="c1"><span class="c0">96 &mdash; System malfunction</span></p>
+<p class="c1"><span class="c0">Payment On Hold &mdash; Payment paused for review</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Settlement failures can be intermittent and may cluster around batch windows or system incidents. Some platforms temporarily mark items as settlement failed while reconciliation is incomplete, later updating the status when final files arrive. In multi-party payment chains, one system may show settlement failure while another shows processing, creating temporary inconsistency until synchronization completes. The status message typically does not specify whether funds were held, partially moved, or fully reversed.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review the transaction record for follow-on reversal or adjustment entries</span></p>
+<p class="c1"><span class="c0">Monitor whether the status changes after reconciliation cycles</span></p>
+<p class="c1"><span class="c0">Document the timing and transaction identifiers for support escalation</span></p>
+<p class="c1"><span class="c0">If settlement failures repeat, consult official support channels to confirm whether an incident or configuration issue is affecting settlement</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If settlement failures create persistent uncertainty about posting or balances, official bank or processor support channels can confirm the final ledger outcome and reconciliation status.</span></p>
+</div>

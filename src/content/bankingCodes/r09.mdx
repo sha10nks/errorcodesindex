@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "R09"
+shortLabel: "Uncollected funds"
+summary: "This code indicates there were funds in the account, but they were not collected/available for the ACH debit at the time of presentment."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: ACH Return Codes (NACHA)</span></p>
+<p class="c1"><span class="c0">CODE: R09</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(R09 &mdash; Uncollected funds)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates there were funds in the account, but they were not collected/available for the ACH debit at the time of presentment.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">R09 is returned when the RDFI determines that although the account may show a balance, the funds are not collected or available to cover the debit. This commonly relates to deposit availability rules, holds, or items that have not cleared. The key distinction from R01 is that R09 emphasizes uncollected or unavailable funds rather than simply &ldquo;insufficient funds.&rdquo; This return is still a funding outcome at the time of presentment, not a long-term account status statement. It does not automatically indicate the account is closed or invalid.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">ACH debit failure reports for bill pay or subscriptions</span></p>
+<p class="c1"><span class="c0">Processor dashboards showing returned debit entries</span></p>
+<p class="c1"><span class="c0">Bank settlement files with detailed return reason codes</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Deposits credited but not yet collected/available</span></p>
+<p class="c1"><span class="c0">Holds or availability windows reduced available funds</span></p>
+<p class="c1"><span class="c0">Pending transactions reduced usable balance at posting time</span></p>
+<p class="c1"><span class="c0">Internal bank rules classified the deficiency as uncollected rather than insufficient</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The debit is returned through ACH with R09</span></p>
+<p class="c1"><span class="c0">The originator records the debit as returned due to funds availability classification</span></p>
+<p class="c1"><span class="c0">A subsequent debit may succeed if presented when funds are collected/available</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not an invalid account number issue (see R04)</span></p>
+<p class="c1"><span class="c0">It is not a closed account status (see R02)</span></p>
+<p class="c1"><span class="c0">It is not an authorization dispute (see R05/R10)</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">R01 &mdash; Insufficient funds</span></p>
+<p class="c1"><span class="c0">R02 &mdash; Account closed</span></p>
+<p class="c1"><span class="c0">R03 &mdash; No account/unable to locate</span></p>
+<p class="c1"><span class="c0">R08 &mdash; Stop payment</span></p>
+<p class="c1"><span class="c0">R10 &mdash; Customer advises unauthorized</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Banks differ in how they classify funding-related returns, so similar scenarios may be returned as R01 at one institution and R09 at another. Posting order and cutoff times can influence whether funds are considered collected. Some transactions may appear to &ldquo;fail despite a balance&rdquo; when holds and pending items reduce availability. Repeated R09 patterns can indicate consistent timing mismatches rather than a persistent lack of funds.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review the posting timeline and whether deposits were subject to availability holds</span></p>
+<p class="c1"><span class="c0">Confirm whether multiple debits posted around the same time affected available funds</span></p>
+<p class="c1"><span class="c0">Record the return pattern to identify timing-related issues</span></p>
+<p class="c1"><span class="c0">Follow standard reconciliation processes for returned entries</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If uncollected funds returns occur frequently, some users consult their bank or official support channel to understand funds availability, timing and classification.</span></p>
+</div>

@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "Payment reversed"
+shortLabel: "Payment canceled/undone"
+summary: "This status indicates the system reversed the payment, undoing the original transaction outcome through a corrective or cancellation process."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Bank System / Generic (User-Facing Status Messages)</span></p>
+<p class="c1"><span class="c0">CODE: Payment reversed</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(Payment reversed &mdash; Payment canceled/undone)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This status indicates the system reversed the payment, undoing the original transaction outcome through a corrective or cancellation process.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">&ldquo;Payment reversed&rdquo; indicates that a payment previously initiated or posted was subsequently undone through a reversal mechanism. Reversals can occur when a transaction fails after partial processing, when duplicates are detected, when settlement cannot be finalized, or when a corrective action is required to restore consistency. A reversal is not the same as a decline; declines generally happen before approval. A reversal indicates the transaction entered processing and then a compensating action was applied. This status does not automatically specify timing for balance updates; it indicates the payment was not retained as a final successful transaction.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Transaction history showing a payment followed by a reversal entry</span></p>
+<p class="c1"><span class="c0">Merchant or processor reporting with &ldquo;reversed/voided&rdquo; outcomes</span></p>
+<p class="c1"><span class="c0">Bank app notifications referencing reversed payments or adjusted balances</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Posting or settlement could not be finalized</span></p>
+<p class="c1"><span class="c0">Duplicate processing was detected and corrected</span></p>
+<p class="c1"><span class="c0">A downstream rejection occurred after initial authorization</span></p>
+<p class="c1"><span class="c0">Internal reconciliation required a compensating reversal</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The payment is marked as reversed/voided in transaction history</span></p>
+<p class="c1"><span class="c0">Any holds may be released according to system timing rules</span></p>
+<p class="c1"><span class="c0">The balance impact is adjusted to reflect the reversal outcome</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not a simple &ldquo;payment declined&rdquo; outcome</span></p>
+<p class="c1"><span class="c0">It is not confirmation of immediate funds availability in all cases</span></p>
+<p class="c1"><span class="c0">It is not, by itself, evidence of wrongdoing or fraud</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">ERR-REVERSAL &mdash; Reversal required</span></p>
+<p class="c1"><span class="c0">ERR-TXN-FAILED &mdash; Transaction failed</span></p>
+<p class="c1"><span class="c0">Transfer pending &mdash; Transfer awaiting completion</span></p>
+<p class="c1"><span class="c0">96 &mdash; System malfunction</span></p>
+<p class="c1"><span class="c0">91 &mdash; Issuer unavailable</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Reversal records can appear as separate entries or as a status update on the original transaction, depending on platform design. Some systems show a pending reversal state before finalizing. Reversal timing can be influenced by settlement cycles, batch processing windows, and reconciliation file availability. In multi-party transactions, a reversal may be initiated by one system while another shows intermediate status until synchronization completes.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Review transaction history for the reversal entry and any associated reference identifiers</span></p>
+<p class="c1"><span class="c0">Confirm whether the original payment remains in a pending state or is replaced by the reversal record</span></p>
+<p class="c1"><span class="c0">Avoid repeating the same payment until the reversal reaches a final recorded state if duplication risk exists</span></p>
+<p class="c1"><span class="c0">Contact official support if the reversal is unexpected or leaves uncertainty about final balances</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If a payment reversal is unexpected or unclear, official bank or payment support channels can confirm the final transaction status and reconciliation outcome.</span></p>
+</div>

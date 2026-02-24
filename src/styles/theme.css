@@ -1,0 +1,41 @@
+:root {
+  color-scheme: dark;
+
+  --palette-1: #fdfdfd;
+  --palette-2: #98fec1;
+  --palette-3: #d4e2dd;
+  --palette-4: #81cda3;
+  --palette-5: #10d061;
+  --palette-6: #4b4c57;
+
+  --bg: 11 15 20;
+  --surface-1: 21 27 35;
+  --surface-2: 30 31 36;
+
+  --border: 75 76 87;
+
+  --text: 212 226 221;
+  --text-muted: 129 205 163;
+
+  --brand-primary: 16 208 97;
+  --brand-secondary: 129 205 163;
+  --brand-accent: 152 254 193;
+  --brand-neutral: 75 76 87;
+
+  --success: 16 208 97;
+  --warning: 152 254 193;
+  --danger: 75 76 87;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: 253 253 253;
+  --surface-1: 253 253 253;
+  --surface-2: 212 226 221;
+
+  --border: 75 76 87;
+
+  --text: 11 15 20;
+  --text-muted: 75 76 87;
+}

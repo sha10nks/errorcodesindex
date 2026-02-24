@@ -1,0 +1,53 @@
+---
+industry: "banking"
+code: "Z9"
+shortLabel: "Risk assessment"
+summary: "This code indicates the transaction is undergoing risk assessment before the system decides whether it can proceed."
+lastmod: "2026-02-24T09:18:55.752Z"
+source: "google-doc"
+sourceDocId: "1o9sKjxyBhrNQRxHcyXMq9toYPLqSEgn8kXWqmzQjX1U"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Banking / ACH / Payment Failures</span></p>
+<p class="c1"><span class="c0">SYSTEM: Bank Risk &amp; Compliance (Internal Status Codes)</span></p>
+<p class="c1"><span class="c0">CODE: Z9</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(Z9 &mdash; Risk assessment)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">This code indicates the transaction is undergoing risk assessment before the system decides whether it can proceed.</span></p>
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">Z9 is a processing status that signals a risk assessment step is being applied to the transaction or action. Risk assessment can include automated scoring, anomaly detection, policy checks, and contextual evaluation such as device and behavioral signals. The system uses this step to determine whether the request meets safety thresholds for authorization, posting, or settlement. This code is not a specific failure; it represents a risk-evaluation state that may resolve to approval, decline, hold, return, or reversal depending on outcome. It does not indicate the presence or absence of funds.</span></p>
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">In transaction detail screens showing risk review states</span></p>
+<p class="c1"><span class="c0">In internal monitoring tools that track payment pipeline stages</span></p>
+<p class="c1"><span class="c0">In audit logs or processor reporting for risk-scored transactions</span></p>
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Risk engine scoring is required for the transaction type or amount</span></p>
+<p class="c1"><span class="c0">Unusual activity triggered enhanced risk assessment</span></p>
+<p class="c1"><span class="c0">Policy rules require risk screening before settlement</span></p>
+<p class="c1"><span class="c0">The system is waiting for risk decision signals from downstream services</span></p>
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The transaction may remain pending briefly while risk assessment completes</span></p>
+<p class="c1"><span class="c0">The status updates to a terminal outcome once a decision is recorded</span></p>
+<p class="c1"><span class="c0">The system may route the item to manual review if risk scoring is inconclusive</span></p>
+<p class="c1"><span class="c0">What this code is NOT</span></p>
+<p class="c1"><span class="c0">It is not an issuer decline decision</span></p>
+<p class="c1"><span class="c0">It is not a confirmation of fraud</span></p>
+<p class="c1"><span class="c0">It is not a technical malfunction by itself</span></p>
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">Z1 &mdash; Fraud review</span></p>
+<p class="c1"><span class="c0">Z5 &mdash; Manual review</span></p>
+<p class="c1"><span class="c0">Z3 &mdash; Compliance hold</span></p>
+<p class="c1"><span class="c0">Payment On Hold &mdash; Processing paused state</span></p>
+<p class="c1"><span class="c0">ERR-TXN-FAILED &mdash; Transaction failed</span></p>
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Risk assessment timing can vary depending on system load and whether multiple services contribute to the final risk decision. Some platforms evaluate risk continuously, meaning a transaction might move from risk assessment to hold or manual review without a visible intermediate reason. The code does not reveal the risk factors evaluated. In some cases, risk assessment may occur after initial acceptance of a request, resulting in delayed holds or reversals if risk thresholds are not met.</span></p>
+<p class="c1"><span class="c0">Optional next actions</span></p>
+<p class="c1"><span class="c0">Monitor the transaction status for progression to a final outcome</span></p>
+<p class="c1"><span class="c0">Check whether other transactions are also delayed, indicating broader risk screening activity</span></p>
+<p class="c1"><span class="c0">Avoid initiating duplicate transfers while the original remains in risk assessment</span></p>
+<p class="c1"><span class="c0">If the state persists, contact official support to confirm whether additional verification is needed</span></p>
+<p class="c1"><span class="c0">External help (optional)</span></p>
+<p class="c1"><span class="c0">If risk assessment states repeatedly delay routine transactions, official support channels may clarify whether account-level risk controls or verification requirements are influencing processing.</span></p>
+</div>
