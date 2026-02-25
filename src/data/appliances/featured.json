@@ -1,0 +1,82 @@
+[
+  {
+    "code": "4E",
+    "title": "Water supply error",
+    "description": "Samsung washer error indicating water supply issues. Check water inlet hoses and water pressure.",
+    "category": "Samsung Washer",
+    "publishDate": "2024-02-20",
+    "url": "/appliances/washer/samsung-washer/error-codes/4e/"
+  },
+  {
+    "code": "5E",
+    "title": "Water drain error",
+    "description": "Samsung washer error indicating drainage problems. Check drain hose for clogs or kinks.",
+    "category": "Samsung Washer",
+    "publishDate": "2024-02-18",
+    "url": "/appliances/washer/samsung-washer/error-codes/5e/"
+  },
+  {
+    "code": "LE",
+    "title": "Motor error",
+    "description": "LG washer error indicating motor issues. May require motor replacement or control board repair.",
+    "category": "LG Washer",
+    "publishDate": "2024-02-15",
+    "url": "/appliances/washer/lg-washer/error-codes/le/"
+  },
+  {
+    "code": "OE",
+    "title": "Drain error",
+    "description": "LG washer error indicating drainage issues. Check drain pump filter and drain hose.",
+    "category": "LG Washer",
+    "publishDate": "2024-02-12",
+    "url": "/appliances/washer/lg-washer/error-codes/oe/"
+  },
+  {
+    "code": "F21",
+    "title": "Long drain error",
+    "description": "Whirlpool washer error indicating slow drainage. Clean drain pump and check for obstructions.",
+    "category": "Whirlpool Washer",
+    "publishDate": "2024-02-10",
+    "url": "/appliances/washer/maytag-washer/error-codes/f21/"
+  },
+  {
+    "code": "E15",
+    "title": "Water in base pan",
+    "description": "Bosch dishwasher error indicating water leakage into base pan. Check for leaks and clear water.",
+    "category": "Bosch Dishwasher",
+    "publishDate": "2024-02-08",
+    "url": "/appliances/dishwasher/bosch-dishwasher/error-codes/e15/"
+  },
+  {
+    "code": "E24",
+    "title": "Drain error",
+    "description": "Bosch dishwasher error indicating drainage problems. Check drain hose and air gap.",
+    "category": "Bosch Dishwasher",
+    "publishDate": "2024-02-05",
+    "url": "/appliances/dishwasher/bosch-dishwasher/error-codes/e24/"
+  },
+  {
+    "code": "ER-IF",
+    "title": "Ice maker fan error",
+    "description": "Frigidaire refrigerator error indicating ice maker fan issues. Check fan motor and connections.",
+    "category": "Frigidaire Refrigerator",
+    "publishDate": "2024-02-03",
+    "url": "/appliances/refrigerator/frigidaire-refrigerator/error-codes/er-if/"
+  },
+  {
+    "code": "SY-EF",
+    "title": "Evaporator fan error",
+    "description": "Frigidaire refrigerator error indicating evaporator fan problems. Check fan motor and wiring.",
+    "category": "Frigidaire Refrigerator",
+    "publishDate": "2024-02-01",
+    "url": "/appliances/refrigerator/frigidaire-refrigerator/error-codes/sy-ef/"
+  },
+  {
+    "code": "F01",
+    "title": "Main control board error",
+    "description": "Maytag washer error indicating control board failure. May require board replacement.",
+    "category": "Maytag Washer",
+    "publishDate": "2024-01-28",
+    "url": "/appliances/washer/maytag-washer/error-codes/f01/"
+  }
+]

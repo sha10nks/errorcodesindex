@@ -3,31 +3,145 @@ import SectionLayout from '../../layouts/SectionLayout.astro';
 
 const title = 'About';
 const description =
-  'About ErrorCodesIndex.com: a static, documentation-style reference library designed for stable URLs, crawlable navigation, and long-term search usefulness.';
+  'ErrorCodesIndex.com is a documentation-style reference project for system error codes with a structured index, stable URLs, and a neutrality-first publishing approach.';
 const crumbs = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about/' },
 ];
+
+const effectiveDate = new Date().toISOString().slice(0, 10);
 ---
 
 <SectionLayout title={title} description={description} crumbs={crumbs}>
-  <h2>Purpose</h2>
-  <p>
-    ErrorCodesIndex.com is a plain-English reference library for system error codes across multiple industries. The site
-    is intentionally documentation-style: neutral wording, predictable structure, and stable internal links.
-  </p>
+  <div class="not-prose mx-auto max-w-[900px]">
+    <div class="rounded-2xl border border-brand-border bg-brand-surface p-6 shadow-card">
+      <div class="text-xs font-semibold uppercase tracking-wide text-slate-400">Project note</div>
+      <div class="mt-2 font-mono text-sm text-slate-200">Updated: {effectiveDate}</div>
+      <div class="mt-3 text-sm text-slate-400">
+        ErrorCodesIndex.com is run as an independent documentation project. It is designed to be readable, linkable,
+        and stable.
+      </div>
+    </div>
+  </div>
 
-  <h2>Editorial policy</h2>
-  <ul>
-    <li>Error-code page bodies are imported verbatim from a locked source document.</li>
-    <li>We do not rewrite, paraphrase, or invent error-code explanations.</li>
-    <li>Non-code pages may include organizational and legal information required to operate the site.</li>
-  </ul>
+  <div class="mx-auto max-w-[900px]">
+    <h2>Mission</h2>
+    <p>
+      Error codes are a compressed language used by software, devices, and service platforms. They are often surfaced
+      without context, and official references are frequently scattered across product pages, PDFs, and fragmented
+      support threads. The mission of ErrorCodesIndex.com is straightforward: provide a structured index of error codes
+      and publish documentation-style pages that explain what a code typically means and what usually happens next.
+    </p>
+    <p>
+      We focus on clarity and consistency. The goal is not to replace vendor documentation, support desks, or
+      professional service. The goal is to make the first five minutes of troubleshooting less ambiguous.
+    </p>
 
-  <h2>Site architecture</h2>
-  <p>
-    The site is built as fully static HTML with crawlable navigation. Canonical URLs, breadcrumb markup, and a
-    build-generated sitemap are used to support predictable indexing.
-  </p>
+    <hr />
+
+    <h2>Documentation Philosophy</h2>
+    <p>
+      This site is written as reference documentation, not as a marketing page and not as a conversational assistant.
+      That influences the structure of every page:
+    </p>
+    <ul>
+      <li>
+        <strong>Stable structure</strong>: pages follow repeatable sections (meaning, common causes, typical steps).
+      </li>
+      <li>
+        <strong>Low ambiguity</strong>: we prefer concrete statements with scope, and we avoid promises.
+      </li>
+      <li>
+        <strong>Scan-first formatting</strong>: headings, short paragraphs, and bullet lists where they help.
+      </li>
+      <li>
+        <strong>Vendor-first truth</strong>: official manuals and advisories override any summary here.
+      </li>
+    </ul>
+    <p>
+      When a code is known to vary by model, region, firmware, or provider, we try to call that out explicitly.
+    </p>
+
+    <hr />
+
+    <h2>Source Import Pipeline</h2>
+    <p>
+      ErrorCodesIndex.com is built around a source-import publishing workflow. Content for many pages is authored and
+      maintained in a locked source document, then compiled into the site at build time. This approach helps with:
+    </p>
+    <ul>
+      <li>
+        <strong>Consistency</strong>: pages share a predictable structure and vocabulary.
+      </li>
+      <li>
+        <strong>Reviewability</strong>: changes can be audited at the source level before publication.
+      </li>
+      <li>
+        <strong>Deterministic builds</strong>: the published site is generated from a fixed input set.
+      </li>
+    </ul>
+    <p>
+      The site also adds navigation, indexing metadata, and internal cross-links to make content discoverable. Those
+      additions are editorial and structural; they are not meant to change the underlying meaning of vendor terms.
+    </p>
+
+    <hr />
+
+    <h2>Neutrality and Independence</h2>
+    <p>
+      This project is independent. We do not claim affiliation with any vendor referenced on the site. Brand names and
+      trademarks are used for identification and navigation only.
+    </p>
+    <p>
+      Neutrality matters for a reference library. Where there are multiple plausible interpretations of a code, we aim
+      to present common meanings, point to official references when available, and avoid framing that pressures a user
+      into a single course of action.
+    </p>
+
+    <hr />
+
+    <h2>Structured Architecture and Crawlability</h2>
+    <p>
+      The site is designed to be crawlable and linkable. Pages use stable, readable URLs and a consistent hierarchy.
+      That hierarchy is part of the product: it makes it possible to browse by industry, model family, and specific
+      code.
+    </p>
+    <p>
+      We publish static pages and avoid requiring JavaScript to read core content. Search is implemented as an
+      enhancement for speed and convenience, while the underlying navigation remains accessible.
+    </p>
+
+    <hr />
+
+    <h2>Long-Term Archiving Strategy</h2>
+    <p>
+      Error codes have a long tail: codes remain searchable years after a product is discontinued or a platform is
+      replaced. A major design goal is keeping URLs stable so references do not rot. When pages must move, the intent
+      is to preserve canonical paths whenever possible and keep internal linking coherent.
+    </p>
+    <p>
+      If a code becomes obsolete or superseded, we prefer to keep the page and annotate it rather than delete it.
+      Removal is reserved for cases that require takedown or where content is clearly harmful.
+    </p>
+
+    <hr />
+
+    <h2>Corrections and Takedown Requests</h2>
+    <p>
+      If you believe a page is inaccurate, incomplete, or should be corrected, send the URL and the specific issue via
+      <a href="/contact/">/contact/</a>. If you represent a rights holder and believe content should be removed, include
+      enough detail to identify the material and explain the request.
+    </p>
+
+    <hr />
+
+    <h2>Related Legal Pages</h2>
+    <ul>
+      <li><a href="/privacy-policy/">Privacy Policy</a></li>
+      <li><a href="/terms-of-use/">Terms of Use</a></li>
+      <li><a href="/disclaimer/">Disclaimer</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </div>
 </SectionLayout>
 

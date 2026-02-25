@@ -1,10 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../../../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../../../../../components/Breadcrumbs.astro';
-import AdSlot from '../../../../../../components/AdSlot.astro';
-import { breadcrumbSchema, webPageSchema } from '../../../../../../utils/schema';
-import { pickRelatedSlugs } from '../../../../../../utils/related';
+import { breadcrumbSchema, techArticleSchema } from '../../../../../../utils/schema';
+import { pickRelatedEntries } from '../../../../../../utils/related';
+import { parseAuthoritySectionsFromBody } from '../../../../../../utils/authority';
+import ErrorCodeDetailLayout from '../../../../../../components/ErrorCodeDetailLayout.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('applianceCodes');
@@ -31,10 +30,11 @@ const entries = await getCollection('applianceCodes');
 const entry = entries.find((e) => e.id === entryId);
 if (!entry) throw new Error('Missing entry');
 
-const { Content } = await entry.render();
+const pageTitle = `${entry.data.code} — Meaning (Appliances Error Code)`;
 
-const pageTitle = `${entry.data.code} Meaning – Appliances Error Code`;
-const description = `Official reference for ${entry.data.code} appliance error code. Includes verbatim source content and related codes within the appliance directory.`;
+const parsed = parseAuthoritySectionsFromBody(entry.body);
+const summaryText = (entry.data.summary || parsed.whatMeans[0] || entry.data.shortLabel).trim();
+const description = summaryText.length > 10 ? summaryText : `What ${entry.data.code} means for appliances.`;
 
 const canonicalPath = `/appliances/${applianceType}/${brand}/${seriesOrModel}/error-codes/${codeSlug}/`;
 const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
@@ -48,94 +48,66 @@ const crumbs = [
   { label: entry.data.code, href: canonicalPath },
 ];
 
-const sameModel = entries.filter(
-  (e) => e.data.applianceType === applianceType && e.data.brand === brand && e.data.seriesOrModel === seriesOrModel
-);
+const currentText = `${entry.data.shortLabel} ${entry.data.summary || ''} ${(parsed.whatMeans[0] || '').slice(0, 220)}`;
+const relatedEntries = pickRelatedEntries(entries as any, {
+  industryKey: 'appliances',
+  currentSlug: entry.slug,
+  currentCode: entry.data.code,
+  currentText,
+  mentionedCodes: parsed.mentionedRelatedCodes,
+  appliance: { applianceType, brand, seriesOrModel },
+  max: 8,
+});
 
-const relatedSlugs = pickRelatedSlugs(sameModel.map((e) => e.slug), entry.slug);
-const schema = [breadcrumbSchema(crumbs, canonicalUrl), webPageSchema({ name: pageTitle, canonicalUrl, dateModified: entry.data.lastmod })];
+const relatedItems = relatedEntries.map((rel: any) => {
+  const relCodeSlug = rel.slug.split('/').slice(-1)[0];
+  return {
+    code: rel.data.code,
+    shortLabel: rel.data.shortLabel,
+    url: `/appliances/${rel.data.applianceType}/${rel.data.brand}/${rel.data.seriesOrModel}/error-codes/${relCodeSlug}/`,
+  };
+});
+
+const schema = [
+  breadcrumbSchema(crumbs, canonicalUrl),
+  techArticleSchema({
+    headline: `${entry.data.code} — ${entry.data.shortLabel}`,
+    description,
+    canonicalUrl,
+    industryLabel: 'Appliances',
+    code: entry.data.code,
+    dateModified: entry.data.lastmod,
+    keywords: [entry.data.code, 'Appliances', applianceType, brand],
+  }),
+];
+
+const lastUpdatedLabel = new Date(entry.data.lastmod).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
 ---
 
-<BaseLayout title={pageTitle} description={description} canonicalPath={canonicalPath} schema={schema}>
-  <div class="space-y-8">
-    <Breadcrumbs items={crumbs} />
-
-    <header class="space-y-6 border-b border-brand-border pb-8">
-      <div>
-        <div class="mb-2 inline-flex items-center rounded-full border border-brand-border bg-brand-surface px-3 py-1 text-xs font-medium text-slate-400">
-            Appliances Error Code
-        </div>
-        <h1 class="text-4xl font-extrabold tracking-tight text-white md:text-5xl">
-            <span class="text-brand-primary">{entry.data.code}</span>
-            <span class="mx-3 text-slate-600 font-light">|</span>
-            <span class="text-slate-200">{entry.data.shortLabel}</span>
-        </h1>
-      </div>
-      
-      <div class="grid gap-4 rounded-xl border border-brand-border bg-brand-surface/50 p-6 text-sm text-slate-400 md:grid-cols-3">
-        <div>
-          <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Appliance Path</div>
-          <div class="text-slate-200 font-mono text-xs break-all opacity-80">/appliances/{applianceType}/{brand}/{seriesOrModel}/</div>
-        </div>
-        <div>
-          <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Navigate Up</div>
-          <div class="flex flex-wrap gap-2 text-xs">
-            <a class="rounded bg-brand-dark px-2 py-1 text-brand-primary hover:text-white transition-colors" href={`/appliances/${applianceType}/${brand}/${seriesOrModel}/`}>Model</a>
-            <a class="rounded bg-brand-dark px-2 py-1 text-brand-primary hover:text-white transition-colors" href={`/appliances/${applianceType}/${brand}/`}>Brand</a>
-            <a class="rounded bg-brand-dark px-2 py-1 text-brand-primary hover:text-white transition-colors" href={`/appliances/${applianceType}/`}>Type</a>
-          </div>
-        </div>
-        <div>
-          <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Last Updated</div>
-          <div class="text-slate-200 font-medium">{new Date(entry.data.lastmod).toLocaleDateString()}</div>
-        </div>
-      </div>
-    </header>
-
-    {entry.data.summary ? (
-      <section class="rounded-xl border-l-4 border-brand-primary bg-brand-surface p-6 shadow-md">
-        <h2 class="text-sm font-bold uppercase tracking-wide text-brand-primary mb-2">Summary</h2>
-        <p class="text-lg text-slate-200 leading-relaxed">{entry.data.summary}</p>
-      </section>
-    ) : null}
-
-    <AdSlot slot="after-summary" />
-
-    <article class="prose prose-invert prose-slate max-w-none prose-headings:text-white prose-a:text-brand-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-brand-accent prose-code:bg-brand-surface prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none">
-      <Content />
-    </article>
-
-    <AdSlot slot="mid-content" />
-
-    <section class="mt-12 rounded-xl border border-brand-border bg-brand-surface p-8 shadow-card">
-      <h2 class="text-xl font-bold text-white mb-6">Related Codes</h2>
-      {relatedSlugs.length === 0 ? (
-        <div class="text-sm text-slate-500">No related codes available.</div>
-      ) : (
-        <ul class="grid gap-4 sm:grid-cols-2">
-          {relatedSlugs.map((slug) => {
-            const rel = sameModel.find((e) => e.slug === slug);
-            if (!rel) return null;
-            const relCodeSlug = rel.slug.split('/').slice(-1)[0];
-            return (
-              <li>
-                <a
-                  class="group block rounded-lg border border-brand-border bg-brand-dark p-4 hover:border-brand-primary/50 hover:shadow-glow transition-all"
-                  href={`/appliances/${applianceType}/${brand}/${seriesOrModel}/error-codes/${relCodeSlug}/`}
-                >
-                  <div class="flex items-center justify-between mb-2">
-                    <span class="font-mono text-sm font-bold text-brand-primary group-hover:text-white transition-colors">{rel.data.code}</span>
-                    <span class="text-xs text-slate-600 group-hover:text-slate-500">Code</span>
-                  </div>
-                  <div class="text-sm text-slate-400 group-hover:text-slate-200 line-clamp-2">{rel.data.shortLabel}</div>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      )}
-    </section>
-
-    <AdSlot slot="near-bottom" />
-  </div>
-</BaseLayout>
+<ErrorCodeDetailLayout
+  pageTitle={pageTitle}
+  description={description}
+  canonicalPath={canonicalPath}
+  crumbs={crumbs}
+  schema={schema}
+  industryLabel="Appliances"
+  industryBadge="Appliances Error Code"
+  code={entry.data.code}
+  shortLabel={entry.data.shortLabel}
+  sectionLabel={parsed.sectionLabel}
+  systemLabel={parsed.systemLabel}
+  lastUpdatedLabel={lastUpdatedLabel}
+  summary={summaryText}
+  whatMeans={parsed.whatMeans}
+  whereSeen={parsed.whereSeen}
+  whyAppears={parsed.whyAppears}
+  happensNext={parsed.happensNext}
+  notThis={parsed.notThis}
+  troubleshooting={parsed.troubleshooting}
+  notes={parsed.notes}
+  relatedItems={relatedItems}
+/>

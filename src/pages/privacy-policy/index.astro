@@ -3,75 +3,178 @@ import SectionLayout from '../../layouts/SectionLayout.astro';
 
 const title = 'Privacy Policy';
 const description =
-  'Privacy Policy for ErrorCodesIndex.com describing data handling, logs, cookies, advertising, and contact submissions in a static documentation site context.';
+  'How ErrorCodesIndex.com handles request logs, analytics/cookies, contact submissions, and operational security for a static documentation website.';
 const crumbs = [
   { label: 'Home', href: '/' },
   { label: 'Privacy Policy', href: '/privacy-policy/' },
 ];
+
+const effectiveDate = new Date().toISOString().slice(0, 10);
 ---
 
 <SectionLayout title={title} description={description} crumbs={crumbs}>
-  <p>Effective date: {new Date().toISOString().slice(0, 10)}</p>
+  <div class="not-prose mx-auto max-w-[900px]">
+    <div class="rounded-2xl border border-brand-border bg-brand-surface p-6 shadow-card">
+      <div class="text-xs font-semibold uppercase tracking-wide text-slate-400">Effective date</div>
+      <div class="mt-2 font-mono text-sm text-slate-200">{effectiveDate}</div>
+      <div class="mt-3 text-sm text-slate-400">
+        This policy applies to browsing and using the public pages of ErrorCodesIndex.com.
+      </div>
+    </div>
+  </div>
 
-  <h2>Overview</h2>
-  <p>
-    ErrorCodesIndex.com is a static reference website. We do not offer user accounts. We do not sell products.
-    Information collected is limited to what is necessary to operate the site, ensure security, and respond to inbound
-    messages.
-  </p>
+  <div class="mx-auto max-w-[900px]">
+    <h2>Overview</h2>
+    <p>
+      ErrorCodesIndex.com is a static reference website. The site does not provide user accounts, subscriptions, or
+      logins. We do not process payments. Most visitors can read pages without providing any information directly.
+    </p>
+    <p>
+      Like any website delivered through modern hosting infrastructure, limited technical data is processed to serve
+      pages, protect the site, and measure reliability. This policy describes what data is involved, why it exists, and
+      what control you have.
+    </p>
 
-  <h2>Information we collect</h2>
-  <ul>
-    <li>
-      <strong>Server and security logs</strong>: IP address, user agent, timestamp, request URL, and related diagnostic
-      information that may be recorded by our hosting and CDN providers.
-    </li>
-    <li>
-      <strong>Contact form submissions</strong>: name, email address, and message content when you contact us.
-    </li>
-    <li>
-      <strong>Cookies and similar technologies</strong>: may be used by analytics or advertising services (if enabled)
-      for measurement and fraud prevention.
-    </li>
-  </ul>
+    <hr />
 
-  <h2>How we use information</h2>
-  <ul>
-    <li>Operate and secure the website.</li>
-    <li>Respond to requests and messages you submit.</li>
-    <li>Measure site reliability and performance.</li>
-    <li>Support advertising and related compliance requirements, if advertising is enabled.</li>
-  </ul>
+    <h2>Information We Collect</h2>
+    <h3>1) Request and security logs</h3>
+    <p>
+      Our hosting, CDN, and security providers may record request metadata when you load a page. Typical fields include:
+    </p>
+    <ul>
+      <li>IP address (often stored in provider logs)</li>
+      <li>User agent and basic device/browser information</li>
+      <li>Timestamp, request URL/path, and HTTP status</li>
+      <li>Referrer header (if your browser sends one)</li>
+      <li>Performance and security signals (rate limiting, bot detection, error traces)</li>
+    </ul>
+    <p>
+      This information is used for operational security and debugging. It is not used to create a profile of you across
+      unrelated websites.
+    </p>
 
-  <h2>Advertising</h2>
-  <p>
-    We may display advertising on the site. Advertising partners may use cookies or similar identifiers to measure ad
-    performance, limit frequency, and reduce fraud. If you are located in a region with additional consent
-    requirements, ads may be served using a consent framework.
-  </p>
+    <h3>2) Contact form submissions</h3>
+    <p>
+      If you submit the contact form, we receive the fields you provide (typically name, email address, and message).
+      The content of your message may include additional information you choose to share.
+    </p>
+    <p>
+      Do not send sensitive personal data (for example: government IDs, financial account numbers, medical records,
+      passwords, or authentication tokens). This site is not designed for confidential communications.
+    </p>
 
-  <h2>Third-party services</h2>
-  <p>
-    Our hosting provider and related infrastructure services (such as CDN, DNS, or security tooling) may process
-    request metadata to deliver pages and protect the site. Contact form submissions may be processed by our hosting
-    platform’s forms feature.
-  </p>
+    <h3>3) Cookies and similar identifiers</h3>
+    <p>
+      We may use cookies or similar technologies for limited purposes such as traffic measurement, fraud prevention,
+      and (if enabled) advertising delivery and frequency control. The specific cookies depend on which services are
+      enabled in the current deployment.
+    </p>
 
-  <h2>Data retention</h2>
-  <p>
-    We retain contact submissions only as long as necessary to address the request and maintain reasonable records.
-    Infrastructure logs are retained according to provider policies.
-  </p>
+    <hr />
 
-  <h2>Your choices</h2>
-  <ul>
-    <li>You can avoid submitting personal information by not using the contact form.</li>
-    <li>You can control cookies through your browser settings and, where applicable, consent controls.</li>
-  </ul>
+    <h2>How Data Is Used</h2>
+    <ul>
+      <li>Deliver pages and assets reliably via hosting/CDN infrastructure.</li>
+      <li>Protect the site from abuse (automated scraping, attacks, excessive traffic).</li>
+      <li>Diagnose errors, broken routes, and performance regressions.</li>
+      <li>Respond to contact submissions and track follow-ups when needed.</li>
+      <li>Measure aggregate usage (for example: which categories are visited most).</li>
+    </ul>
 
-  <h2>Contact</h2>
-  <p>
-    For privacy-related questions, use the contact page. Include “Privacy” in the message subject.
-  </p>
+    <hr />
+
+    <h2>Log Data &amp; Analytics</h2>
+    <p>
+      If analytics is enabled, it is used to understand aggregate behavior (page views, referral sources, and
+      high-level geography derived from IP). Analytics is not intended to identify individual visitors.
+    </p>
+    <p>
+      Some providers may process IP addresses and user agents for deduplication, security, and abuse prevention. Where
+      possible, we prefer settings that minimize retention and limit unnecessary identifiers.
+    </p>
+
+    <hr />
+
+    <h2>Cookies &amp; Tracking</h2>
+    <p>
+      Cookies can be used for session integrity, rate limiting, and (if enabled) advertising measurement. Depending on
+      your region, you may see consent prompts provided by a consent framework.
+    </p>
+    <ul>
+      <li>You can block or delete cookies in your browser settings.</li>
+      <li>Blocking cookies may reduce functionality (for example: consent preferences or anti-abuse measures).</li>
+      <li>Some browsers offer “Do Not Track” signals; handling varies by provider.</li>
+    </ul>
+
+    <hr />
+
+    <h2>Data Retention</h2>
+    <p>
+      Retention is driven by operational need and provider defaults.
+    </p>
+    <ul>
+      <li>
+        <strong>Contact submissions</strong>: retained only as long as needed to address the request and maintain basic
+        administrative records.
+      </li>
+      <li>
+        <strong>Infrastructure logs</strong>: retained according to hosting/CDN/security provider policies.
+      </li>
+    </ul>
+
+    <hr />
+
+    <h2>Third-Party Links</h2>
+    <p>
+      Pages may link to third-party sites (for example: vendor documentation or official references). We do not control
+      those sites. Their privacy practices apply when you leave ErrorCodesIndex.com.
+    </p>
+
+    <hr />
+
+    <h2>Security Practices</h2>
+    <p>
+      We use common web security controls provided by modern hosting infrastructure (TLS, CDN caching, request
+      filtering, and rate limiting). No website can guarantee absolute security; you should treat public web forms as
+      non-confidential.
+    </p>
+
+    <hr />
+
+    <h2>Children’s Privacy</h2>
+    <p>
+      The site is a general reference resource and is not directed to children. We do not knowingly collect personal
+      information from children through the site.
+    </p>
+
+    <hr />
+
+    <h2>Jurisdiction</h2>
+    <p>
+      ErrorCodesIndex.com is operated as an informational website. Privacy requirements differ by region. If you are
+      subject to a specific legal framework (for example: GDPR/UK GDPR, CCPA/CPRA), you can contact us to request
+      clarification about data handling and retention.
+    </p>
+
+    <hr />
+
+    <h2>Changes to This Policy</h2>
+    <p>
+      We may update this policy to reflect operational changes (for example: enabling/disabling analytics providers,
+      changes to hosting, or updates to the contact process). The effective date at the top indicates the current
+      version.
+    </p>
+
+    <hr />
+
+    <h2>Contact Information</h2>
+    <p>
+      For privacy-related questions or removal requests, use the contact form at <a href="/contact/">/contact/</a>. If
+      your request concerns a specific page, include the URL in your message.
+    </p>
+    <p>
+      Related pages: <a href="/terms-of-use/">Terms of Use</a> and <a href="/disclaimer/">Disclaimer</a>.
+    </p>
+  </div>
 </SectionLayout>
-

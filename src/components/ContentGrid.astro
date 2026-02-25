@@ -1,0 +1,167 @@
+---
+export interface Props {
+  recentItems: Array<{
+    code: string;
+    title: string;
+    description: string;
+    category: string;
+    publishDate: string;
+    url: string;
+  }>;
+  featuredItems: Array<{
+    code: string;
+    title: string;
+    description: string;
+    category: string;
+    publishDate: string;
+    url: string;
+  }>;
+  layout: 'two-column' | 'stacked';
+}
+
+const { recentItems, featuredItems, layout } = Astro.props;
+
+const hasRecent = recentItems.length > 0;
+const hasFeatured = featuredItems.length > 0;
+
+const gridClass = layout === 'two-column' && hasRecent && hasFeatured
+  ? 'lg:grid lg:grid-cols-2 lg:gap-8'
+  : '';
+
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    month: 'short', 
+    day: 'numeric', 
+    year: 'numeric' 
+  });
+};
+---
+
+<div class={`content-grid ${gridClass}`}>
+  {hasRecent && (
+    <div class={`recent-section ${hasFeatured ? 'mb-8 lg:mb-0' : ''}`}>
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold text-slate-100">Recently Indexed</h2>
+        <span class="text-sm text-slate-400">{recentItems.length} codes</span>
+      </div>
+
+      <div class="space-y-4">
+        {recentItems.map((item) => (
+          <article class="code-card group relative overflow-hidden rounded-xl border border-brand-border bg-brand-surface p-5 transition-all hover:border-brand-primary hover:shadow-glow hover:-translate-y-0.5">
+            <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+            <div class="relative">
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <div class="flex-1 min-w-0">
+                  <h3 class="code-card-title text-lg font-semibold text-slate-100 group-hover:text-white mb-1">
+                    <a href={item.url} class="hover:text-brand-primary transition-colors break-words">
+                      {item.code} - {item.title}
+                    </a>
+                  </h3>
+                  <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-slate-400">
+                    <span class="inline-flex items-center px-2 py-1 rounded-md bg-brand-surface/50 text-xs font-medium text-slate-300">
+                      {item.category}
+                    </span>
+                    <span>{formatDate(item.publishDate)}</span>
+                  </div>
+                </div>
+                <svg class="w-5 h-5 text-slate-500 group-hover:text-brand-primary transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </div>
+
+              <p class="code-card-desc text-sm text-slate-400 leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {hasFeatured && (
+    <div class="featured-section">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold text-slate-100">Common / Featured</h2>
+        <span class="text-sm text-slate-400">{featuredItems.length} codes</span>
+      </div>
+
+      <div class="space-y-4">
+        {featuredItems.map((item) => (
+          <article class="code-card group relative overflow-hidden rounded-xl border border-brand-border bg-brand-surface p-5 transition-all hover:border-brand-primary hover:shadow-glow hover:-translate-y-0.5">
+            <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+            <div class="relative">
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <div class="flex-1 min-w-0">
+                  <h3 class="code-card-title text-lg font-semibold text-slate-100 group-hover:text-white mb-1">
+                    <a href={item.url} class="hover:text-brand-primary transition-colors break-words">
+                      {item.code} - {item.title}
+                    </a>
+                  </h3>
+                  <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-slate-400">
+                    <span class="inline-flex items-center px-2 py-1 rounded-md bg-brand-surface/50 text-xs font-medium text-slate-300">
+                      {item.category}
+                    </span>
+                    <span class="text-brand-accent">★ Featured</span>
+                  </div>
+                </div>
+                <svg class="w-5 h-5 text-slate-500 group-hover:text-brand-primary transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </div>
+
+              <p class="code-card-desc text-sm text-slate-400 leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  .code-card {
+    position: relative;
+    border-left: 3px solid transparent;
+  }
+  
+  .code-card:hover {
+    border-left-color: #10b981;
+  }
+
+  .code-card-desc {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
+  .code-card-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+  
+  .content-grid {
+    max-width: 100%;
+  }
+  
+  @media (max-width: 1023px) {
+    .content-grid {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .recent-section,
+    .featured-section {
+      min-height: 400px;
+    }
+  }
+</style>

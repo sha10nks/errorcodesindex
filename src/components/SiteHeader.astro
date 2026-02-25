@@ -23,10 +23,15 @@ const linkClass = "text-slate-300 hover:text-white transition-colors hover:bg-wh
   <div class="mx-auto flex max-w-7xl items-center px-6 py-4 md:py-5 transition-all duration-300" id="header-container">
     {/* Logo */}
     <a href="/" class="flex items-center gap-3 text-lg font-semibold text-slate-100 hover:text-white transition-colors mr-12 group">
-      <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary text-base font-bold text-brand-dark shadow-[0_0_15px_rgba(var(--brand-primary),0.4)] group-hover:scale-105 transition-transform duration-300">
-        E
-      </span>
-      <span class="tracking-tight group-hover:text-white transition-colors">ErrorCodesIndex</span>
+      <img 
+        src="/Logo.svg" 
+        alt="ErrorCodesIndex" 
+        class="h-9 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+        width="200"
+        height="56"
+        loading="eager"
+        decoding="async"
+      />
     </a>
 
     {/* Desktop Navigation - Left Aligned */}
@@ -57,33 +62,81 @@ const linkClass = "text-slate-300 hover:text-white transition-colors hover:bg-wh
     </nav>
 
     {/* Mobile Menu Trigger - Right Aligned */}
-    <details class="relative md:hidden group ml-auto">
-      <summary class="flex cursor-pointer list-none items-center justify-center rounded-lg border border-brand-border bg-brand-surface/50 backdrop-blur px-3 py-2 text-sm text-slate-300 hover:bg-brand-border hover:text-white transition-colors">
-        Menu
-      </summary>
-      <div class="absolute right-0 top-full mt-2 w-64 origin-top-right rounded-xl border border-brand-border bg-brand-surface/95 backdrop-blur-xl p-2 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-        <ul class="space-y-1">
+    <button
+      id="mobile-menu-trigger"
+      class="ml-auto flex items-center justify-center rounded-lg border border-brand-border bg-brand-surface/50 backdrop-blur px-3 py-2 text-slate-300 hover:bg-brand-border hover:text-white transition-colors md:hidden"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu-overlay"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
+
+    {/* Mobile Menu Overlay */}
+    <div
+      id="mobile-menu-backdrop"
+      class="fixed inset-0 z-[90] bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
+      aria-hidden="true"
+    ></div>
+
+    <div
+      id="mobile-menu-overlay"
+      class="fixed top-0 right-0 z-[100] h-[100dvh] w-[90vw] max-w-[360px] flex flex-col bg-brand-dark border-l border-brand-border shadow-2xl transition-transform duration-300 translate-x-full md:hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site Navigation"
+    >
+      <div class="flex items-center justify-between px-6 py-5 border-b border-brand-border/50 bg-brand-dark flex-shrink-0">
+        <span class="text-lg font-bold text-slate-100">Menu</span>
+        <button
+          id="mobile-menu-close"
+          class="rounded-lg p-2 text-slate-400 hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary"
+          aria-label="Close menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <nav class="flex-1 overflow-y-auto overflow-x-hidden px-6 py-6 overscroll-contain">
+        <ul class="space-y-6 pb-20">
           <li>
-            <a class="block rounded-lg px-4 py-2 text-sm text-slate-300 hover:bg-brand-primary/10 hover:text-brand-primary transition-colors" href="/about/">About</a>
+            <a href="/about/" class="block py-2 text-lg font-medium text-slate-300 hover:text-brand-primary transition-colors focus:outline-none focus:text-brand-primary">About</a>
           </li>
-          <li class="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Industries</li>
-          {INDUSTRIES.map((it) => (
-            <li>
-              <a class="block rounded-lg px-4 py-2 text-sm text-slate-300 hover:bg-brand-primary/10 hover:text-brand-primary transition-colors" href={it.href}>
-                {it.label}
-              </a>
-            </li>
-          ))}
+          
+          <li class="space-y-3">
+            <div class="text-xs font-bold uppercase tracking-widest text-slate-500">Industries</div>
+            <ul class="space-y-2 pl-4 border-l border-brand-border/50">
+              {INDUSTRIES.map((it) => (
+                <li>
+                  <a href={it.href} class="block py-2 text-base text-slate-300 hover:text-brand-primary transition-colors focus:outline-none focus:text-brand-primary">
+                    {it.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </li>
+
           <li>
-            <a class="block rounded-lg px-4 py-2 text-sm text-slate-300 hover:bg-brand-primary/10 hover:text-brand-primary transition-colors" href="/contact/">Contact</a>
+            <a href="/contact/" class="block py-2 text-lg font-medium text-slate-300 hover:text-brand-primary transition-colors focus:outline-none focus:text-brand-primary">Contact</a>
           </li>
         </ul>
+      </nav>
+      
+      <div class="p-6 border-t border-brand-border/50 bg-brand-surface/30 flex-shrink-0">
+        <p class="text-xs text-slate-500 text-center">
+          © {new Date().getFullYear()} ErrorCodesIndex. All rights reserved.
+        </p>
       </div>
-    </details>
+    </div>
   </div>
 </header>
 
 <script>
+  // Header Scroll Logic
   const header = document.getElementById('site-header');
   const container = document.getElementById('header-container');
   const isOverlay = header?.dataset.overlay === 'true';
@@ -112,6 +165,83 @@ const linkClass = "text-slate-300 hover:text-white transition-colors hover:bg-wh
   };
 
   window.addEventListener('scroll', updateHeader);
-  // Initial check
   updateHeader();
+
+  // Mobile Menu Logic
+  const menuTrigger = document.getElementById('mobile-menu-trigger');
+  const menuClose = document.getElementById('mobile-menu-close');
+  const menuOverlay = document.getElementById('mobile-menu-overlay');
+  const menuBackdrop = document.getElementById('mobile-menu-backdrop');
+  
+  // Focus Trap Logic
+  const focusableElementsString = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  let firstFocusableElement: HTMLElement | null = null;
+  let lastFocusableElement: HTMLElement | null = null;
+
+  function trapFocus(e: KeyboardEvent) {
+    if (e.key === 'Tab') {
+      if (e.shiftKey) { // Shift + Tab
+        if (document.activeElement === firstFocusableElement) {
+          e.preventDefault();
+          lastFocusableElement?.focus();
+        }
+      } else { // Tab
+        if (document.activeElement === lastFocusableElement) {
+          e.preventDefault();
+          firstFocusableElement?.focus();
+        }
+      }
+    }
+  }
+
+  function toggleMenu() {
+    if (!menuOverlay || !menuBackdrop || !menuTrigger) return;
+    const isClosed = menuOverlay.classList.contains('translate-x-full');
+    
+    if (isClosed) {
+      // Open Menu
+      menuOverlay.classList.remove('translate-x-full');
+      menuBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden'; // Lock scroll
+      menuTrigger.setAttribute('aria-expanded', 'true');
+      
+      // Setup Focus Trap
+      const focusableContent = menuOverlay.querySelectorAll(focusableElementsString);
+      if (focusableContent.length) {
+        firstFocusableElement = focusableContent[0] as HTMLElement;
+        lastFocusableElement = focusableContent[focusableContent.length - 1] as HTMLElement;
+        firstFocusableElement.focus();
+        document.addEventListener('keydown', trapFocus);
+      }
+    } else {
+      // Close Menu
+      menuOverlay.classList.add('translate-x-full');
+      menuBackdrop.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = ''; // Unlock scroll
+      menuTrigger.setAttribute('aria-expanded', 'false');
+      menuTrigger.focus(); // Return focus
+      document.removeEventListener('keydown', trapFocus);
+    }
+  }
+
+  menuTrigger?.addEventListener('click', toggleMenu);
+  menuClose?.addEventListener('click', toggleMenu);
+  menuBackdrop?.addEventListener('click', toggleMenu);
+  
+  // ESC to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menuOverlay?.classList.contains('translate-x-full')) {
+      toggleMenu();
+    }
+  });
+  
+  // Close menu when clicking links
+  const menuLinks = menuOverlay?.querySelectorAll('a');
+  menuLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+       if (!menuOverlay?.classList.contains('translate-x-full')) {
+         toggleMenu();
+       }
+    });
+  });
 </script>

@@ -1,0 +1,82 @@
+[
+  {
+    "code": "05",
+    "title": "Do not honor",
+    "description": "The card issuer is declining the transaction for an unspecified reason. The customer should contact their card issuer.",
+    "category": "Authorization",
+    "publishDate": "2024-02-20",
+    "url": "/banking/error-codes/05/"
+  },
+  {
+    "code": "51",
+    "title": "Insufficient funds",
+    "description": "The card has insufficient funds to complete the transaction.",
+    "category": "Authorization",
+    "publishDate": "2024-02-15",
+    "url": "/banking/error-codes/51/"
+  },
+  {
+    "code": "14",
+    "title": "Invalid card number",
+    "description": "The card number entered is invalid. Verify the card number and try again.",
+    "category": "Authorization",
+    "publishDate": "2024-02-18",
+    "url": "/banking/error-codes/14/"
+  },
+  {
+    "code": "54",
+    "title": "Expired card",
+    "description": "The card has expired. The customer needs to use a different card.",
+    "category": "Authorization",
+    "publishDate": "2024-02-12",
+    "url": "/banking/error-codes/54/"
+  },
+  {
+    "code": "12",
+    "title": "Invalid transaction",
+    "description": "The transaction type is invalid for this card or merchant.",
+    "category": "Authorization",
+    "publishDate": "2024-02-08",
+    "url": "/banking/error-codes/12/"
+  },
+  {
+    "code": "61",
+    "title": "Exceeds withdrawal limit",
+    "description": "The transaction amount exceeds the card's withdrawal limit.",
+    "category": "Authorization",
+    "publishDate": "2024-02-10",
+    "url": "/banking/error-codes/61/"
+  },
+  {
+    "code": "91",
+    "title": "Issuer unavailable",
+    "description": "The card issuer is temporarily unavailable. Try the transaction again later.",
+    "category": "Network",
+    "publishDate": "2024-02-05",
+    "url": "/banking/error-codes/91/"
+  },
+  {
+    "code": "R01",
+    "title": "Insufficient funds",
+    "description": "The bank account has insufficient funds for the ACH transaction.",
+    "category": "ACH Return",
+    "publishDate": "2024-02-03",
+    "url": "/banking/error-codes/r01/"
+  },
+  {
+    "code": "R02",
+    "title": "Account closed",
+    "description": "The bank account has been closed.",
+    "category": "ACH Return",
+    "publishDate": "2024-02-01",
+    "url": "/banking/error-codes/r02/"
+  },
+  {
+    "code": "R03",
+    "title": "No account/unable to locate account",
+    "description": "The bank account number does not correspond to an existing account.",
+    "category": "ACH Return",
+    "publishDate": "2024-01-28",
+    "url": "/banking/error-codes/r03/"
+  }
+]

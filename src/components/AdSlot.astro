@@ -1,14 +1,20 @@
 ---
 export interface Props {
   slot: 'after-summary' | 'mid-content' | 'near-bottom';
+  height?: number;
 }
 
-const { slot } = Astro.props;
+const { slot, height = 260 } = Astro.props;
 ---
 
-<div class="my-8 rounded-xl border border-brand-border bg-brand-surface px-6 py-8 text-center text-sm text-slate-500 shadow-sm" data-ad-slot={slot}>
-  <span class="block text-xs uppercase tracking-wider opacity-50 mb-2">Advertisement</span>
-  <div class="h-32 w-full rounded-lg bg-brand-dark/50 flex items-center justify-center border border-dashed border-brand-border/50">
-    <span class="text-slate-600">Ad Space ({slot})</span>
+<div class="my-10" data-ad-slot={slot} style={`--ad-h:${height}px;`}>
+  <div class="mx-auto max-w-3xl rounded-2xl border border-brand-border bg-brand-surface px-6 py-6 text-center shadow-card">
+    <div class="flex items-center justify-between">
+      <span class="text-xs uppercase tracking-wider text-slate-500">Advertisement</span>
+      <span class="text-xs text-slate-600">{slot}</span>
+    </div>
+    <div class="mt-4 w-full rounded-xl bg-brand-dark/50 border border-dashed border-brand-border/50 flex items-center justify-center" style="height: var(--ad-h);">
+      <span class="text-slate-600 text-sm">Ad Space</span>
+    </div>
   </div>
 </div>

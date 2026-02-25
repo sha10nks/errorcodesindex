@@ -1,0 +1,98 @@
+[
+  {
+    "code": "WS-37368-7",
+    "title": "Your PlayStation Network account has been suspended",
+    "description": "Your PSN account has been temporarily suspended due to violations of the Terms of Service.",
+    "category": "PlayStation Network",
+    "publishDate": "2024-02-20",
+    "url": "/gaming/error-codes/ws-37368-7/"
+  },
+  {
+    "code": "CE-34878-0",
+    "title": "Application has crashed",
+    "description": "The game or application has crashed. This is a general error for PlayStation 4 crashes.",
+    "category": "PlayStation Console",
+    "publishDate": "2024-02-18",
+    "url": "/gaming/error-codes/ce-34878-0/"
+  },
+  {
+    "code": "0x803F8001",
+    "title": "Do you own this game or app?",
+    "description": "Xbox error indicating the game or app license cannot be verified. Check your Xbox Live subscription.",
+    "category": "Xbox Console",
+    "publishDate": "2024-02-12",
+    "url": "/gaming/error-codes/0x803f8001/"
+  },
+  {
+    "code": "Error Code 100",
+    "title": "Steam is having trouble connecting to the Steam servers",
+    "description": "Steam cannot connect to its servers. Check your internet connection and Steam server status.",
+    "category": "Steam Platform",
+    "publishDate": "2024-02-08",
+    "url": "/gaming/error-codes/error-code-100/"
+  },
+  {
+    "code": "NP-31805-7",
+    "title": "Cannot connect to server",
+    "description": "Unable to connect to the PlayStation Network servers. Check your internet connection.",
+    "category": "PlayStation Network",
+    "publishDate": "2024-02-15",
+    "url": "/gaming/error-codes/np-31805-7/"
+  },
+  {
+    "code": "0x87DD0006",
+    "title": "Sign-in is blocked",
+    "description": "Unable to sign in to Xbox Live. This may be due to account issues or service problems.",
+    "category": "Xbox Live",
+    "publishDate": "2024-02-10",
+    "url": "/gaming/error-codes/0x87dd0006/"
+  },
+  {
+    "code": "SU-30746-0",
+    "title": "System software update error",
+    "description": "The PlayStation system software update failed. Try updating again or contact support.",
+    "category": "PlayStation System",
+    "publishDate": "2024-02-05",
+    "url": "/gaming/error-codes/su-30746-0/"
+  },
+  {
+    "code": "0xC000007B",
+    "title": "Application was unable to start correctly",
+    "description": "Windows error indicating the game cannot start due to missing or corrupted system files.",
+    "category": "Windows System",
+    "publishDate": "2024-02-01",
+    "url": "/gaming/error-codes/0xc000007b/"
+  },
+  {
+    "code": "Error Code 200",
+    "title": "Steam must be online to update",
+    "description": "Steam needs an internet connection to update games. Check your connection and Steam settings.",
+    "category": "Steam Platform",
+    "publishDate": "2024-01-28",
+    "url": "/gaming/error-codes/error-code-200/"
+  },
+  {
+    "code": "WS-37403-7",
+    "title": "Connection to server failed",
+    "description": "Failed to connect to PlayStation Network servers. Check PSN status and your connection.",
+    "category": "PlayStation Network",
+    "publishDate": "2024-02-03",
+    "url": "/gaming/error-codes/ws-37403-7/"
+  },
+  {
+    "code": "0x80070005",
+    "title": "Access is denied",
+    "description": "Windows error indicating permission issues. Run the game as administrator or check file permissions.",
+    "category": "Windows System",
+    "publishDate": "2024-01-22",
+    "url": "/gaming/error-codes/0x80070005/"
+  },
+  {
+    "code": "Error Code 300",
+    "title": "Steam is not connected to the internet",
+    "description": "Steam cannot detect an internet connection. Check your network settings and firewall.",
+    "category": "Steam Platform",
+    "publishDate": "2024-01-20",
+    "url": "/gaming/error-codes/error-code-300/"
+  }
+]

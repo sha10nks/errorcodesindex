@@ -43,3 +43,38 @@ export function webPageSchema(opts: { name: string; canonicalUrl: string; dateMo
     ...(opts.dateModified ? { dateModified: opts.dateModified } : {}),
   };
 }
+
+export function techArticleSchema(opts: {
+  headline: string;
+  description: string;
+  canonicalUrl: string;
+  industryLabel: string;
+  code: string;
+  dateModified?: string;
+  keywords?: string[];
+}) {
+  const org = {
+    '@type': 'Organization',
+    name: SITE.name,
+    url: SITE.baseUrl,
+  };
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: opts.headline,
+    description: opts.description,
+    author: org,
+    publisher: org,
+    mainEntityOfPage: opts.canonicalUrl,
+    articleSection: opts.industryLabel,
+    ...(opts.dateModified ? { dateModified: opts.dateModified } : {}),
+    ...(opts.keywords && opts.keywords.length ? { keywords: opts.keywords.join(', ') } : {}),
+    mainEntity: {
+      '@type': 'DefinedTerm',
+      name: opts.code,
+      description: opts.description,
+      inDefinedTermSet: opts.industryLabel,
+    },
+  };
+}

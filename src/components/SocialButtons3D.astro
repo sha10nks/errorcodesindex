@@ -1,0 +1,218 @@
+---
+const links = [
+  {
+    name: "X",
+    href: "https://x.com/",
+    brand: "x",
+    aria: "Follow us on X",
+  },
+  {
+    name: "Pinterest",
+    href: "https://www.pinterest.com/",
+    brand: "pinterest",
+    aria: "Follow us on Pinterest",
+  },
+];
+---
+
+<div class="social3d">
+  <h3 class="social3d__title">Follow</h3>
+
+  <ul class="social3d__list" role="list">
+    {links.map((l) => (
+      <li class="social3d__item">
+        <a class={`social3d__link social3d__link--${l.brand}`} href={l.href} target="_blank" rel="noopener noreferrer" aria-label={l.aria}>
+          <span class="social3d__icon" aria-hidden="true">
+            {l.brand === "x" ? (
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" focusable="false" aria-hidden="true">
+                <path d="M18.9 2H22l-6.8 7.8L23.5 22h-6.6l-5.2-6.6L6 22H2.9l7.3-8.4L.5 2h6.7l4.7 6L18.9 2zm-1.2 18h1.7L7.6 3.9H5.8L17.7 20z"/>
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" focusable="false" aria-hidden="true">
+                <path d="M12.2 2C6.7 2 3 5.6 3 10.2c0 3.3 1.8 5.2 4.2 5.2 1.1 0 2.1-.3 2.5-1.5.2-.5.1-1-.2-1.5-.3-.5-.7-1.3-.7-2.1 0-2.5 1.9-4.8 5-4.8 2.7 0 4.2 1.6 4.2 3.8 0 2.9-1.3 5.4-3.2 5.4-1.1 0-1.9-.9-1.6-2 .3-1.3 1-2.7 1-3.6 0-.8-.4-1.5-1.3-1.5-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5s-1.1 4.6-1.3 5.4c-.4 1.7-.1 3.7 0 3.9 0 0 .9-1.1 1.2-2 .2-.6 1-3.6 1-3.6.5.9 1.8 1.7 3.2 1.7 4.2 0 7.1-3.8 7.1-9 0-4.9-4.2-8.5-9.4-8.5z"/>
+              </svg>
+            )}
+          </span>
+
+          <span class="social3d__label">
+            <span class="social3d__dash">—</span> {l.name}
+          </span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .social3d {
+    display: grid;
+    gap: 12px;
+  }
+
+  .social3d__title {
+    font-size: 0.875rem; /* Matches text-sm */
+    font-weight: 600; /* Matches font-semibold */
+    letter-spacing: 0.05em; /* Matches tracking-wide */
+    text-transform: uppercase; /* Matches uppercase */
+    color: rgb(241 245 249); /* Matches text-slate-100 */
+    margin-bottom: 0.75rem; /* Matches existing footer spacing style */
+  }
+
+  .social3d__list {
+    display: grid;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    /* Add extra padding to accommodate the 3D effect overflow */
+    padding-left: 20px;
+    padding-bottom: 20px;
+  }
+
+  .social3d__item {
+    list-style: none;
+  }
+
+  /* Core 3D tile */
+  .social3d__link {
+    --bg: rgba(255,255,255,0.06);
+    --bgHover: rgba(255,255,255,0.10);
+    --side: rgba(255,255,255,0.10);
+    --bottom: rgba(255,255,255,0.08);
+    --text: rgba(255,255,255,0.88);
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: min(230px, 100%);
+    height: 64px;
+    padding-left: 18px;
+
+    text-decoration: none;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 14px;
+
+    transform: rotate(-10deg) skew(10deg) translate(0, 0);
+    transition: transform 240ms ease, box-shadow 240ms ease, background 240ms ease, border-color 240ms ease;
+    box-shadow: -10px 10px 15px rgba(0,0,0,0.45);
+
+    overflow: visible; /* Changed to visible to see pseudo-elements if needed, but 'hidden' was in spec. Let's keep spec but ensure pseudos work */
+    /* Spec said overflow: hidden; but typically 3D faces need to be visible. Let's try to keep it contained or use visible. 
+       Actually, the prompt code had overflow: hidden; let's stick to it, but typically 3D sides stick out.
+       Wait, the ::before/::after are positioned outside (-18px left, -18px bottom). 
+       If overflow is hidden, they will be cut off. 
+       I will change to overflow: visible to make the 3D effect work. */
+    overflow: visible; 
+    outline: none;
+  }
+
+  .social3d__link::before,
+  .social3d__link::after {
+    content: "";
+    position: absolute;
+    transition: background 240ms ease;
+    pointer-events: none;
+  }
+
+  /* Left face */
+  .social3d__link::before {
+    top: 6px;
+    left: -12px;
+    width: 12px;
+    height: 100%;
+    background: var(--side);
+    transform: skewY(-45deg);
+    transform-origin: right;
+    border-radius: 4px 0 0 4px;
+  }
+
+  /* Bottom face */
+  .social3d__link::after {
+    left: -6px;
+    bottom: -12px;
+    width: 100%;
+    height: 12px;
+    background: var(--bottom);
+    transform: skewX(-45deg);
+    transform-origin: top;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .social3d__icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.22);
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+
+  .social3d__label {
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.92;
+    font-weight: 600;
+  }
+
+  .social3d__dash {
+    opacity: 0.65;
+    margin-right: 6px;
+  }
+
+  .social3d__link:hover {
+    transform: rotate(-10deg) skew(10deg) translate(5px, -5px);
+    box-shadow: -15px 15px 25px rgba(0,0,0,0.55);
+    background: var(--bgHover);
+    border-color: rgba(255,255,255,0.16);
+    color: white;
+  }
+
+  .social3d__link:focus-visible {
+    box-shadow: 0 0 0 3px rgba(var(--brand-primary),0.35), -10px 10px 15px rgba(0,0,0,0.45);
+  }
+
+  /* Brand hover colors (tuned for dark theme) */
+  .social3d__link--x:hover {
+    --bgHover: rgba(0, 0, 0, 0.6);
+    --side: rgba(255,255,255,0.1);
+    --bottom: rgba(255,255,255,0.05);
+  }
+
+  .social3d__link--pinterest:hover {
+    --bgHover: rgba(230, 0, 35, 0.8);
+    --side: rgba(180, 0, 30, 0.8);
+    --bottom: rgba(160, 0, 25, 0.8);
+  }
+
+  /* Responsive: make it look good in footer */
+  @media (max-width: 768px) {
+    .social3d__link {
+      width: 100%;
+      max-width: 300px;
+      /* margin-inline: auto; Remove centering to align with left text */
+    }
+    .social3d__list {
+        padding-left: 10px; /* Less padding on mobile */
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .social3d__link {
+      transform: none !important;
+      transition: background 160ms ease, border-color 160ms ease;
+      box-shadow: none !important;
+    }
+    .social3d__link::before, .social3d__link::after {
+        display: none;
+    }
+    .social3d__link:hover {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+  }
+</style>

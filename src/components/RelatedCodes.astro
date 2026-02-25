@@ -1,0 +1,40 @@
+---
+export type RelatedItem = {
+  code: string;
+  shortLabel: string;
+  url: string;
+};
+
+export interface Props {
+  title?: string;
+  items: RelatedItem[];
+}
+
+const { title = 'Related Codes', items } = Astro.props;
+---
+
+<section class="rounded-2xl border border-brand-border bg-brand-surface p-8 shadow-card">
+  <div class="flex items-end justify-between gap-6 mb-6">
+    <h2 class="text-2xl font-bold text-white">{title}</h2>
+    <div class="text-xs text-slate-500">{items.length} links</div>
+  </div>
+
+  {items.length === 0 ? (
+    <div class="text-sm text-slate-500">No related codes available.</div>
+  ) : (
+    <ul class="grid gap-4 sm:grid-cols-2">
+      {items.map((it) => (
+        <li>
+          <a class="group block rounded-xl border border-brand-border bg-brand-dark p-5 hover:border-brand-primary/50 hover:shadow-glow transition-all" href={it.url}>
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-mono text-sm font-bold text-brand-primary group-hover:text-white transition-colors">{it.code}</span>
+              <span class="text-xs text-slate-600 group-hover:text-slate-500">Code</span>
+            </div>
+            <div class="text-sm text-slate-400 group-hover:text-slate-200 line-clamp-2">{it.shortLabel}</div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+</section>
+

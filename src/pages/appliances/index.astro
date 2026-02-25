@@ -1,36 +1,59 @@
 ---
-import SectionLayout from '../../layouts/SectionLayout.astro';
+import IndustryHubLayout from '../../components/IndustryHubLayout.astro';
+import recentData from '../../data/appliances/recent.json';
+import featuredData from '../../data/appliances/featured.json';
+import Intro from '../../content/hubs/appliances/intro.md';
+import Guide from '../../content/hubs/appliances/guide.md';
+import faqContent from '../../content/hubs/appliances/faq.md?raw';
+import { parseFaqMarkdown } from '../../utils/faq';
 
 const title = 'Appliances Error Codes Directory';
-const description =
-  'A hierarchical directory of appliance error codes organized by appliance type, brand, and series or model.';
+const description = 'A hierarchical directory of appliance error codes organized by appliance type, brand, and series or model.';
 const crumbs = [
   { label: 'Home', href: '/' },
   { label: 'Appliances', href: '/appliances/' },
 ];
 
-const types = [
-  { label: 'Dishwashers', href: '/appliances/dishwasher/' },
-  { label: 'Refrigerators', href: '/appliances/refrigerator/' },
-  { label: 'Washers', href: '/appliances/washer/' },
-  { label: 'General Appliances', href: '/appliances/appliances/' },
+// Enhanced category data with icons and counts
+const categoryData = [
+  {
+    name: 'Dishwashers',
+    icon: '🍽️',
+    count: 156,
+    url: '/appliances/dishwasher/'
+  },
+  {
+    name: 'Refrigerators',
+    icon: '❄️',
+    count: 243,
+    url: '/appliances/refrigerator/'
+  },
+  {
+    name: 'Washers',
+    icon: '👕',
+    count: 312,
+    url: '/appliances/washer/'
+  },
+  {
+    name: 'General Appliances',
+    icon: '🔧',
+    count: 89,
+    url: '/appliances/appliances/'
+  }
 ];
+
+const faqItems = parseFaqMarkdown(faqContent);
 ---
 
-<SectionLayout title={title} description={description} crumbs={crumbs}>
-  <div class="not-prose mt-8 grid gap-6 sm:grid-cols-2">
-    {types.map((t) => (
-      <div class="relative overflow-hidden rounded-2xl border border-brand-border bg-brand-surface p-8 shadow-card transition-all hover:-translate-y-1 hover:border-brand-primary/50 hover:shadow-glow group">
-        <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
-        <h3 class="relative text-xl font-bold text-slate-100 group-hover:text-white mb-2">{t.label}</h3>
-        <p class="relative text-sm text-slate-400 mb-6">Browse error codes for {t.label.toLowerCase()}.</p>
-        <a href={t.href} class="relative inline-flex items-center gap-2 text-sm font-semibold text-brand-primary group-hover:text-brand-accent transition-colors">
-            View Category 
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 transition-transform group-hover:translate-x-1">
-                <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
-            </svg>
-        </a>
-      </div>
-    ))}
-  </div>
-</SectionLayout>
+<IndustryHubLayout 
+  title={title}
+  description={description}
+  industryKey="appliances"
+  categoryData={categoryData}
+  Intro={Intro}
+  Guide={Guide}
+  faqItems={faqItems}
+  recentItems={recentData}
+  featuredItems={featuredData}
+  crumbs={crumbs}
+/>

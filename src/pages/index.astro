@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/ui/Button.astro';
+import LiveIndexFeed from '../components/LiveIndexFeed.astro';
 import { websiteSchema } from '../utils/schema';
 
 const title = 'The Reference Empire of System Error Codes';
@@ -15,7 +16,7 @@ const description =
     {/* Background Image & Overlay */}
     <div class="absolute inset-0 z-0">
       <img 
-        src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1920&auto=format&fit=crop" 
+        src="/home%20page%20background.avif" 
         alt="Digital infrastructure and circuit network background" 
         class="h-full w-full object-cover opacity-60"
       />
@@ -58,18 +59,18 @@ const description =
     
     {/* Search Section */}
     <section id="find-a-code" class="scroll-mt-32">
-      <div class="mx-auto max-w-2xl text-center mb-12">
-          <h2 class="text-3xl font-bold text-white">Find a code</h2>
-          <p class="mt-3 text-slate-400 text-lg">
-          Search our build-time JSON index. Instant results, fully crawlable.
+      <div class="mx-auto max-w-2xl text-center mb-16">
+          <h2 class="text-3xl font-bold text-white tracking-tight">Find your error code</h2>
+          <p class="mt-4 text-slate-400 text-lg">
+          Instantly search our comprehensive database of system error codes.
           </p>
       </div>
 
-      <div class="mx-auto max-w-3xl rounded-2xl border border-brand-border bg-brand-surface p-8 shadow-2xl relative overflow-hidden group">
-        <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+      <div class="mx-auto max-w-[750px] w-full rounded-2xl border border-brand-border/50 bg-brand-surface/80 p-2 shadow-[0_8px_30px_rgb(0,0,0,0.2)] backdrop-blur-sm relative group transition-all duration-300 hover:shadow-[0_8px_30px_rgba(16,208,97,0.1)] hover:border-brand-primary/20">
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-primary/10 via-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"></div>
         
-        <label class="sr-only" for="q">Search</label>
-        <div class="relative z-10">
+        <label class="sr-only" for="q">Search Error Codes</label>
+        <div class="relative flex items-center">
           <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-5">
               <svg class="h-6 w-6 text-slate-500 group-focus-within:text-brand-primary transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
@@ -79,15 +80,28 @@ const description =
               id="q"
               name="q"
               type="search"
-              placeholder="Example: E01, 0x80070005, ORA-12514"
-              class="block w-full rounded-xl border border-brand-border bg-brand-dark py-5 pl-14 pr-6 text-lg text-slate-200 placeholder-slate-500 shadow-sm focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/20 focus:outline-none transition-all duration-300 search-input"
+              placeholder="Search code (e.g. E01, 0x800...)"
+              aria-label="Search error codes"
+              class="block w-full h-[60px] rounded-xl border-none bg-brand-dark/50 py-4 pl-14 pr-32 text-lg text-slate-100 placeholder-slate-500/80 shadow-inner focus:ring-2 focus:ring-brand-primary/50 focus:bg-brand-dark transition-all duration-300 search-input tracking-wide"
               autocomplete="off"
           />
+          <div class="absolute right-2 top-1/2 -translate-y-1/2">
+             <button type="submit" class="hidden sm:flex items-center justify-center h-11 px-6 rounded-lg bg-brand-primary text-brand-dark font-bold text-sm tracking-wide hover:bg-brand-accent hover:shadow-[0_0_15px_rgba(16,208,97,0.4)] transition-all duration-300 transform active:scale-95">
+                SEARCH
+             </button>
+             <button type="submit" class="sm:hidden flex items-center justify-center h-11 w-11 rounded-lg bg-brand-primary text-brand-dark hover:bg-brand-accent transition-all duration-300" aria-label="Submit Search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                  <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+                </svg>
+             </button>
+          </div>
         </div>
 
-        <div id="search-status" class="mt-3 text-xs text-slate-500 font-mono pl-1" aria-live="polite"></div>
-        <div id="search-results" class="mt-4 hidden rounded-xl border border-brand-border bg-brand-dark shadow-inner max-h-96 overflow-y-auto custom-scrollbar relative z-10" role="region" aria-label="Search results">
-          <ul class="divide-y divide-brand-border"></ul>
+        <div id="search-status" class="mt-3 text-xs text-slate-500 font-mono pl-2 opacity-0 transition-opacity duration-300" aria-live="polite"></div>
+        
+        {/* Search Results Dropdown */}
+        <div id="search-results" class="absolute left-0 right-0 top-full mt-4 hidden rounded-xl border border-brand-border bg-brand-dark shadow-[0_20px_40px_rgba(0,0,0,0.6)] max-h-96 overflow-y-auto custom-scrollbar z-50 transform origin-top transition-all duration-200 scale-95 opacity-0" role="region" aria-label="Search results">
+          <ul class="divide-y divide-brand-border/50"></ul>
         </div>
 
         <noscript>
@@ -96,100 +110,129 @@ const description =
       </div>
     </section>
 
+    <LiveIndexFeed />
+
     {/* Industries Grid */}
-    <section id="browse-industries" class="scroll-mt-32">
+    <section id="browse-industries" class="scroll-mt-32 max-w-6xl mx-auto">
       <div class="flex items-end justify-between border-b border-brand-border pb-6 mb-12">
           <h2 class="text-3xl font-bold text-white">Industries</h2>
           <span class="text-sm text-slate-500 hidden md:block">Select a category to explore</span>
       </div>
       
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-        <a class="group relative overflow-hidden rounded-2xl border border-brand-border bg-brand-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:border-brand-primary/50 hover:shadow-glow" href="/healthcare/">
-          <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
-          <div class="relative">
-              <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-accent/10 text-brand-accent group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors shadow-inner">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+        <a class="holo-card block p-6 lg:p-7 min-h-[200px] group aspect-square flex flex-col justify-center" href="/healthcare/">
+          <div class="relative z-10 text-center">
+              <div class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-accent/10 text-brand-accent group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors shadow-inner">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                   </svg>
               </div>
-              <div class="text-lg font-bold text-slate-100 group-hover:text-white">Healthcare</div>
-              <div class="mt-2 text-sm text-slate-500 group-hover:text-slate-400 leading-relaxed">Diagnosis, claims, EHR, and clinical system codes.</div>
+              <div class="text-xl font-bold text-slate-100 group-hover:text-white">Healthcare</div>
+              <div class="mt-3 text-sm text-slate-500 group-hover:text-slate-400 leading-relaxed max-w-[200px] mx-auto">Diagnosis, claims, EHR, and clinical system codes.</div>
           </div>
         </a>
 
-        <a class="group relative overflow-hidden rounded-2xl border border-brand-border bg-brand-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:border-brand-primary/50 hover:shadow-glow" href="/irs-tax/">
-          <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
-          <div class="relative">
-              <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-secondary/10 text-brand-secondary group-hover:bg-brand-secondary group-hover:text-brand-dark transition-colors shadow-inner">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <a class="holo-card block p-6 lg:p-7 min-h-[200px] group aspect-square flex flex-col justify-center" href="/irs-tax/">
+          <div class="relative z-10 text-center">
+              <div class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-secondary/10 text-brand-secondary group-hover:bg-brand-secondary group-hover:text-brand-dark transition-colors shadow-inner">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                   </svg>
               </div>
-              <div class="text-lg font-bold text-slate-100 group-hover:text-white">IRS / Tax</div>
-              <div class="mt-2 text-sm text-slate-500 group-hover:text-slate-400 leading-relaxed">Filing, payment, identity, and transcript errors.</div>
+              <div class="text-xl font-bold text-slate-100 group-hover:text-white">IRS / Tax</div>
+              <div class="mt-3 text-sm text-slate-500 group-hover:text-slate-400 leading-relaxed max-w-[200px] mx-auto">Filing, payment, identity, and transcript errors.</div>
           </div>
         </a>
 
-        <a class="group relative overflow-hidden rounded-2xl border border-brand-border bg-brand-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:border-brand-primary/50 hover:shadow-glow" href="/banking/">
-          <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
-          <div class="relative">
-               <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary group-hover:bg-brand-primary group-hover:text-brand-dark transition-colors shadow-inner">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <a class="holo-card block p-6 lg:p-7 min-h-[200px] group aspect-square flex flex-col justify-center" href="/banking/">
+          <div class="relative z-10 text-center">
+               <div class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-primary/10 text-brand-primary group-hover:bg-brand-primary group-hover:text-brand-dark transition-colors shadow-inner">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
                   </svg>
               </div>
-              <div class="text-lg font-bold text-slate-100 group-hover:text-white">Banking</div>
-              <div class="mt-2 text-sm text-slate-500 group-hover:text-slate-400 leading-relaxed">Cards, transfers, processors, and payment systems.</div>
+              <div class="text-xl font-bold text-slate-100 group-hover:text-white">Banking</div>
+              <div class="mt-3 text-sm text-slate-500 group-hover:text-slate-400 leading-relaxed max-w-[200px] mx-auto">Cards, transfers, processors, and payment systems.</div>
           </div>
         </a>
 
-        <a class="group relative overflow-hidden rounded-2xl border border-brand-border bg-brand-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:border-brand-primary/50 hover:shadow-glow" href="/gaming/">
-          <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
-          <div class="relative">
-               <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-muted/10 text-brand-accent group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors shadow-inner">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <a class="holo-card block p-6 lg:p-7 min-h-[200px] group aspect-square flex flex-col justify-center" href="/gaming/">
+          <div class="relative z-10 text-center">
+               <div class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-muted/10 text-brand-accent group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors shadow-inner">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
                   </svg>
               </div>
-              <div class="text-lg font-bold text-slate-100 group-hover:text-white">Gaming</div>
-              <div class="mt-2 text-sm text-slate-500 group-hover:text-slate-400 leading-relaxed">Launchers, consoles, network, and account errors.</div>
+              <div class="text-xl font-bold text-slate-100 group-hover:text-white">Gaming</div>
+              <div class="mt-3 text-sm text-slate-500 group-hover:text-slate-400 leading-relaxed max-w-[200px] mx-auto">Launchers, consoles, network, and account errors.</div>
           </div>
         </a>
 
-        <a class="group relative overflow-hidden rounded-2xl border border-brand-border bg-brand-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:border-brand-primary/50 hover:shadow-glow" href="/appliances/">
-          <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
-          <div class="relative">
-               <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-muted/10 text-brand-secondary group-hover:bg-brand-secondary group-hover:text-brand-dark transition-colors shadow-inner">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <a class="holo-card block p-6 lg:p-7 min-h-[200px] group aspect-square flex flex-col justify-center" href="/appliances/">
+          <div class="relative z-10 text-center">
+               <div class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-muted/10 text-brand-secondary group-hover:bg-brand-secondary group-hover:text-brand-dark transition-colors shadow-inner">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
                   </svg>
               </div>
-              <div class="text-lg font-bold text-slate-100 group-hover:text-white">Appliances</div>
-              <div class="mt-2 text-sm text-slate-500 group-hover:text-slate-400 leading-relaxed">Model-specific error codes with deep hierarchy hubs.</div>
+              <div class="text-xl font-bold text-slate-100 group-hover:text-white">Appliances</div>
+              <div class="mt-3 text-sm text-slate-500 group-hover:text-slate-400 leading-relaxed max-w-[200px] mx-auto">Model-specific error codes with deep hierarchy hubs.</div>
           </div>
         </a>
       </div>
     </section>
 
-    {/* Top Code Collections */}
-    <section>
-      <div class="flex items-end justify-between border-b border-brand-border pb-6 mb-8">
-          <h2 class="text-2xl font-bold text-white">Top Code Collections</h2>
-          <span class="text-sm text-slate-500 hidden md:block">Semantic references from our database</span>
-      </div>
-      
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {['Healthcare', 'IRS / Tax', 'Banking', 'Gaming', 'Appliances'].map((label) => (
-          <section class="rounded-xl border border-brand-border bg-brand-surface p-6 shadow-sm hover:border-brand-primary/30 transition-colors">
-            <h3 class="text-base font-bold text-slate-100">{label}</h3>
-            <div class="mt-4 text-sm text-slate-500 leading-relaxed">
-              Full comprehensive tables for {label.toLowerCase()} codes will populate here after the build process completes.
+    {/* About & Disclaimer Section */}
+    <section id="about-eci" class="scroll-mt-32 border-t border-brand-border/60 pt-16">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+        <div>
+          <h2 class="text-2xl font-bold text-white tracking-tight mb-6">Our Mission</h2>
+          <div class="space-y-4 text-slate-300 leading-relaxed text-lg">
+            <p>
+              When systems speak in codes, we translate. ErrorCodesIndex.com turns opaque identifiers into practical explanations. We compile code families across healthcare, finance, gaming, and infrastructure into a consistent, searchable format.
+            </p>
+            <p class="text-slate-400 text-base">
+              Our static-first approach prioritizes speed and SEO. Every page is designed for scanability—focusing on plain language, context, and clear next steps.
+            </p>
+            <ul class="pt-2 space-y-2 text-base text-slate-400">
+              <li class="flex items-center gap-3">
+                <span class="h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
+                <span>Structured pages with clear resolutions</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
+                <span>Standardized cross-industry formatting</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
+                <span>Fast, stable build-time search index</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-bold text-white tracking-tight mb-6">Disclaimer</h2>
+          <div class="rounded-2xl bg-brand-surface/40 p-8 border border-brand-border/40">
+            <p class="text-slate-300 leading-relaxed mb-4">
+              ErrorCodesIndex.com is an independent library. All trademarks and identifiers belong to their respective owners. We are not affiliated with or endorsed by any featured brands. Content is for educational purposes only.
+            </p>
+            <p class="text-sm text-slate-400 mb-6">
+              If you believe content infringes rights or needs correction, contact us for prompt review. We respect takedown requests and aim to cite official sources.
+            </p>
+            <div class="flex flex-wrap gap-2 text-[11px] uppercase tracking-wider font-semibold text-slate-500">
+              <span class="px-3 py-1 rounded-full border border-brand-border/60">Not official docs</span>
+              <span class="px-3 py-1 rounded-full border border-brand-border/60">Educational only</span>
+              <span class="px-3 py-1 rounded-full border border-brand-border/60">Respectful corrections</span>
             </div>
-          </section>
-        ))}
+          </div>
+        </div>
       </div>
     </section>
+
+
+
   </div>
 </BaseLayout>
 
@@ -285,12 +328,22 @@ const description =
   const status = document.getElementById('search-status');
   const resultsWrap = document.getElementById('search-results');
   const resultsList = resultsWrap?.querySelector('ul');
+  const searchSection = document.getElementById('find-a-code');
+  const submitButtons = searchSection?.querySelectorAll('button[type="submit"]') || [];
 
   let index = null;
   let loading = null;
 
   const setStatus = (msg) => {
-    if (status) status.textContent = msg;
+    if (!status) return;
+    status.textContent = msg;
+    if (msg) {
+      status.classList.remove('opacity-0');
+      status.classList.add('opacity-100');
+    } else {
+      status.classList.add('opacity-0');
+      status.classList.remove('opacity-100');
+    }
   };
 
   const setResults = (items) => {
@@ -298,16 +351,24 @@ const description =
     resultsList.innerHTML = '';
     if (!items.length) {
       resultsWrap.classList.add('hidden');
+      resultsWrap.classList.remove('scale-100', 'opacity-100');
+      resultsWrap.classList.add('scale-95', 'opacity-0');
       return;
     }
     resultsWrap.classList.remove('hidden');
+    // Small delay to allow display:block to apply before transition
+    requestAnimationFrame(() => {
+        resultsWrap.classList.remove('scale-95', 'opacity-0');
+        resultsWrap.classList.add('scale-100', 'opacity-100');
+    });
+
     for (const it of items) {
       const li = document.createElement('li');
-      li.className = 'px-4 py-3 hover:bg-brand-surface transition-colors cursor-pointer group';
+      li.className = 'px-5 py-4 hover:bg-brand-surface/50 transition-colors cursor-pointer group first:rounded-t-xl last:rounded-b-xl';
       const a = document.createElement('a');
       a.href = it.url;
       a.className = 'block text-sm text-slate-300 group-hover:text-white';
-      a.innerHTML = `<div class="flex items-center justify-between"><span class="font-mono text-xs font-bold text-brand-primary bg-brand-primary/10 px-2 py-1 rounded">${it.code}</span><span class="text-xs text-slate-500">${it.industry}</span></div><div class="mt-1 text-slate-400 group-hover:text-slate-200">${it.shortLabel}</div>`;
+      a.innerHTML = `<div class="flex items-center justify-between mb-1"><span class="font-mono text-xs font-bold text-brand-primary bg-brand-primary/10 px-2 py-1 rounded border border-brand-primary/20">${it.code}</span><span class="text-xs text-slate-500 uppercase tracking-wider">${it.industry}</span></div><div class="text-slate-400 group-hover:text-slate-200 font-medium">${it.shortLabel}</div>`;
       li.appendChild(a);
       resultsList.appendChild(li);
     }
@@ -337,6 +398,11 @@ const description =
     if (!q) {
       setStatus('');
       setResults([]);
+      if (resultsWrap) {
+          resultsWrap.classList.add('hidden');
+          resultsWrap.classList.remove('scale-100', 'opacity-100');
+          resultsWrap.classList.add('scale-95', 'opacity-0');
+      }
       return;
     }
     setStatus('Searching…');
@@ -356,6 +422,26 @@ const description =
       window.clearTimeout(input.__t);
       input.__t = window.setTimeout(search, 100);
     });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        search();
+      }
+    });
+  }
+
+  submitButtons.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      search();
+    });
+  });
+
+  const initialQuery = new URLSearchParams(window.location.search).get('q');
+  if (input && initialQuery) {
+    input.value = initialQuery;
+    search();
   }
 
   // Matrix Rain Effect
@@ -424,5 +510,28 @@ const description =
     
     heroSection.addEventListener('mouseenter', startAnimation);
     heroSection.addEventListener('mouseleave', stopAnimation);
+  }
+
+  // Holographic Card Mouse Tracking
+  const holoCards = document.querySelectorAll('.holo-card');
+  if (holoCards.length > 0) {
+    // Only enable on non-touch devices for performance
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (!isTouch) {
+        document.addEventListener('mousemove', (e) => {
+            requestAnimationFrame(() => {
+                holoCards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    // Optimization: only update if visible in viewport
+                    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+                    
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mx', `${x}px`);
+                    card.style.setProperty('--my', `${y}px`);
+                });
+            });
+        });
+    }
   }
 </script>

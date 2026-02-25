@@ -1,0 +1,64 @@
+---
+export interface Props {
+  adSlot: string;
+  height?: number;
+  responsive?: boolean;
+}
+
+const { adSlot, height = 280, responsive = true } = Astro.props;
+
+const desktopHeight = height;
+const mobileHeight = responsive ? Math.max(250, Math.floor(height * 0.82)) : height;
+---
+
+<div class="ad-container mx-auto my-8" data-ad-slot={adSlot}>
+  <div class="ad-block relative rounded-xl border border-brand-border bg-brand-surface p-6 text-center">
+    <div class="ad-label absolute top-3 right-3">
+      <span class="text-xs text-slate-500 font-medium">Sponsored</span>
+    </div>
+    
+    <div
+      class="ad-content flex items-center justify-center"
+      style={`--ad-desktop-height:${desktopHeight}px; --ad-mobile-height:${mobileHeight}px;`}
+    >
+      <div class="ad-placeholder text-slate-500">
+        <p class="text-sm font-medium">Advertisement</p>
+        <p class="text-xs text-slate-400 mt-1">Ad slot: {adSlot}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .ad-container {
+    max-width: 728px;
+  }
+  
+  .ad-block {
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ad-block:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: #374151;
+  }
+
+  .ad-content {
+    min-height: var(--ad-mobile-height);
+  }
+  
+  @media (max-width: 767px) {
+    .ad-container {
+      max-width: 100%;
+      margin-left: -1rem;
+      margin-right: -1rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .ad-content {
+      min-height: var(--ad-desktop-height);
+    }
+  }
+</style>

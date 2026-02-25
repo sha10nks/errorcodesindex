@@ -1,0 +1,167 @@
+---
+export interface Props {
+  prefixes: string[];
+  industryKey: string;
+  filterFunction?: string;
+}
+
+const { prefixes, industryKey, filterFunction } = Astro.props;
+
+const prefixToQuery = (prefix: string) => {
+  if (prefix === 'CARC/RARC') return 'CARC';
+  if (prefix === 'R0-') return 'R0';
+  if (prefix === 'Numeric Codes') return '';
+  return prefix;
+};
+
+const getPrefixUrl = (prefix: string) => {
+  if (industryKey === 'appliances') {
+    const map: Record<string, string> = {
+      Dishwashers: '/appliances/dishwasher/',
+      Refrigerators: '/appliances/refrigerator/',
+      Washers: '/appliances/washer/',
+      'General Appliances': '/appliances/appliances/',
+    };
+    return map[prefix] ?? '/appliances/#browse-by-category';
+  }
+
+  const q = prefixToQuery(prefix);
+  const base = `/${industryKey}/error-codes/`;
+  if (!q) return `${base}#code-index`;
+  return `${base}?q=${encodeURIComponent(q)}#code-index`;
+};
+
+const getPrefixDescription = (prefix: string) => {
+  const descriptions = {
+    'healthcare': {
+      'EOB': 'Explanation of Benefits codes',
+      'CO-': 'Contractual obligations',
+      'PR-': 'Patient responsibility',
+      'OA-': 'Other adjustments',
+      'PI-': 'Payer initiated',
+      'CARC/RARC': 'Claim adjustment reason codes'
+    },
+    'irs-tax': {
+      'CP-': 'Computer paragraph notices',
+      'LT-': 'Letter notices',
+      'TC-': 'Transaction codes',
+      '1040': 'Individual tax forms',
+      'W-2': 'Wage and tax statements',
+      '1099': 'Miscellaneous income forms'
+    },
+    'banking': {
+      '05': 'Do not honor',
+      '12': 'Invalid transaction',
+      '14': 'Invalid card number',
+      '51': 'Insufficient funds',
+      '54': 'Expired card',
+      '91': 'Issuer unavailable',
+      'R0-': 'ACH return codes'
+    },
+    'gaming': {
+      'WS-': 'Web service errors',
+      'NP-': 'Network platform',
+      'SU-': 'System update',
+      'CE-': 'Console error',
+      'Numeric Codes': 'General numeric codes'
+    },
+    'appliances': {
+      'Dishwashers': 'Dishwasher error codes by brand and model',
+      'Refrigerators': 'Refrigerator diagnostic and service codes',
+      'Washers': 'Washer error codes and troubleshooting',
+      'General Appliances': 'Cross-brand appliance diagnostic codes'
+    }
+  };
+  
+  return descriptions[industryKey]?.[prefix] || `${prefix} error codes`;
+};
+---
+
+<div class="quick-nav-container">
+  <h2 class="text-2xl font-bold text-slate-100 mb-6">Quick Navigation</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+    {prefixes.map((prefix) => (
+      <a 
+        href={getPrefixUrl(prefix)}
+        class="prefix-chip group relative overflow-hidden rounded-lg border border-brand-border bg-brand-surface p-4 text-center transition-all hover:border-brand-primary hover:shadow-glow hover:-translate-y-0.5"
+        title={getPrefixDescription(prefix)}
+      >
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div class="relative">
+          <div class="text-sm font-semibold text-slate-100 group-hover:text-white mb-1 leading-snug break-words">
+            {prefix}
+          </div>
+          <div class="text-xs text-slate-400 group-hover:text-slate-300 leading-snug break-words">
+            {getPrefixDescription(prefix)}
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+  
+  {filterFunction && (
+    <div class="mt-6">
+      <div class="flex items-center gap-3">
+        <input 
+          type="text" 
+          id="prefix-filter"
+          placeholder="Filter codes by prefix..."
+          class="flex-1 rounded-lg border border-brand-border bg-brand-surface px-4 py-2 text-slate-100 placeholder-slate-500 focus:border-brand-primary focus:outline-none focus:ring-1 focus:ring-brand-primary"
+        />
+        <button 
+          id="clear-filter"
+          class="rounded-lg border border-brand-border bg-brand-surface px-4 py-2 text-slate-300 hover:border-brand-primary hover:text-slate-100 transition-colors"
+        >
+          Clear
+        </button>
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  .prefix-chip {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    word-break: break-word;
+  }
+  
+  .quick-nav-container {
+    max-width: 100%;
+  }
+  
+  @media (max-width: 767px) {
+    .prefix-chip {
+      min-height: 70px;
+      padding: 0.75rem;
+    }
+  }
+</style>
+
+{filterFunction && (
+  <script define:vars={{ filterFunction }}>
+    const filterInput = document.getElementById('prefix-filter');
+    const clearButton = document.getElementById('clear-filter');
+    const chips = document.querySelectorAll('.prefix-chip');
+    
+    function filterChips() {
+      const query = filterInput.value.toLowerCase();
+      
+      chips.forEach(chip => {
+        const text = chip.textContent.toLowerCase();
+        const isVisible = text.includes(query);
+        chip.style.display = isVisible ? 'flex' : 'none';
+      });
+    }
+    
+    filterInput.addEventListener('input', filterChips);
+    
+    clearButton.addEventListener('click', () => {
+      filterInput.value = '';
+      filterChips();
+      filterInput.focus();
+    });
+  </script>
+)}

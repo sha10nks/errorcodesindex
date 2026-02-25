@@ -34,6 +34,8 @@ const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/svg+xml" href="/Favicon.svg" />
+    <link rel="apple-touch-icon" href="/Favicon.svg" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -51,9 +53,20 @@ const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
   </head>
   <body class="min-h-screen bg-brand-dark text-slate-200 selection:bg-brand-primary selection:text-white">
     <SiteHeader currentPath={Astro.url.pathname} overlay={fullWidth} />
-    <main class={fullWidth ? "w-full" : "mx-auto max-w-6xl px-4 py-12"}>
+    <main class={fullWidth ? "w-full" : "mx-auto max-w-6xl px-4 pt-32 pb-12 md:pt-40 md:pb-16"}>
       <slot />
     </main>
     <SiteFooter />
+    <div class="relative border-t border-brand-border/50 bg-gradient-to-b from-neutral-950 via-neutral-950 to-black overflow-hidden">
+      <div class="relative z-10 mx-auto max-w-6xl px-6 py-10 md:py-12 flex items-center justify-center">
+        <img
+          src="/Logo.svg"
+          alt="ErrorCodesIndex logo"
+          class="w-full max-w-[900px] h-auto max-h-[110px] md:max-h-[140px] lg:max-h-[210px] object-contain opacity-100 drop-shadow-[0_0_20px_rgba(16,208,97,0.15)]"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
   </body>
 </html>

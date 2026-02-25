@@ -1,0 +1,136 @@
+---
+export interface Props {
+  items: Array<{
+    question: string;
+    answerHtml: string;
+  }>;
+}
+
+const { items } = Astro.props;
+---
+
+<div class="faq-container">
+  <h2 class="text-2xl font-bold text-slate-100 mb-8">Frequently Asked Questions</h2>
+  
+  <div class="space-y-4">
+    {items.map((item, index) => (
+      <details 
+        class="faq-item group rounded-xl border border-brand-border bg-brand-surface/50 open:bg-brand-surface open:shadow-card"
+        data-faq-item={index}
+      >
+        <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+          <h3 class="text-lg font-semibold text-slate-100 group-open:text-white">
+            {item.question}
+          </h3>
+          <div class="flex-shrink-0 ml-4">
+            <svg 
+              class="w-5 h-5 text-slate-400 group-hover:text-brand-primary transition-transform group-open:rotate-180" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </summary>
+        
+        <div class="px-5 pb-5 pt-0">
+          <div class="prose prose-invert prose-slate prose-sm max-w-none">
+            <div set:html={item.answerHtml} />
+          </div>
+        </div>
+      </details>
+    ))}
+  </div>
+</div>
+
+<style>
+  /* Remove default details marker */
+  details > summary::marker {
+    display: none;
+  }
+  
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq-container {
+    max-width: 100%;
+  }
+  
+  .faq-item {
+    transition: all 0.2s ease;
+  }
+  
+  .faq-item:hover {
+    border-color: #374151;
+  }
+  
+  .faq-item[open] {
+    border-color: #10b981;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+  }
+  
+  /* Smooth opening animation */
+  details > summary {
+    list-style: none;
+    position: relative;
+  }
+  
+  details[open] > summary {
+    border-bottom: 1px solid #374151;
+    margin-bottom: 1rem;
+  }
+  
+  details > div {
+    animation: slideDown 0.2s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Focus styles for accessibility */
+  summary:focus-visible {
+    outline: 2px solid #10b981;
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+</style>
+
+<script>
+  // Enhanced FAQ functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('details[data-faq-item]');
+    
+    faqItems.forEach(item => {
+      const summary = item.querySelector('summary');
+      
+      // Add keyboard navigation
+      summary.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          item.open = !item.open;
+        }
+      });
+      
+      // Close other items when one opens (optional behavior)
+      item.addEventListener('toggle', () => {
+        if (item.open) {
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item && otherItem.open) {
+              otherItem.open = false;
+            }
+          });
+        }
+      });
+    });
+  });
+</script>

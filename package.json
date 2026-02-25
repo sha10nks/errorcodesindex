@@ -4,8 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro dev",
-    "sync:gdoc": "node scripts/sync-google-doc.mjs",
-    "build": "node scripts/sync-google-doc.mjs && cross-env ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "build": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro preview",
     "astro": "astro"
   },

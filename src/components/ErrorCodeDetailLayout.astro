@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import AdSlot from './AdSlot.astro';
+import RelatedCodes, { type RelatedItem } from './RelatedCodes.astro';
+
+export interface Props {
+  pageTitle: string;
+  description: string;
+  canonicalPath: string;
+  crumbs: Array<{ label: string; href: string }>;
+  schema: unknown | unknown[];
+
+  industryLabel: string;
+  industryBadge: string;
+  code: string;
+  shortLabel: string;
+  sectionLabel?: string;
+  systemLabel?: string;
+  lastUpdatedLabel: string;
+
+  summary: string;
+  whatMeans: string[];
+  whereSeen: string[];
+  whyAppears: string[];
+  happensNext: string[];
+  notThis: string[];
+  troubleshooting: string[];
+  notes: string[];
+
+  relatedItems: RelatedItem[];
+}
+
+const {
+  pageTitle,
+  description,
+  canonicalPath,
+  crumbs,
+  schema,
+  industryLabel,
+  industryBadge,
+  code,
+  shortLabel,
+  sectionLabel,
+  systemLabel,
+  lastUpdatedLabel,
+  summary,
+  whatMeans,
+  whereSeen,
+  whyAppears,
+  happensNext,
+  notThis,
+  troubleshooting,
+  notes,
+  relatedItems,
+} = Astro.props;
+
+const splitParagraphs = (text: string): string[] => {
+  const t = (text || '').replace(/\s+/g, ' ').trim();
+  if (!t) return [];
+  const sentences = t.split(/(?<=[.!?])\s+/g).filter(Boolean);
+  if (sentences.length <= 2) return [t];
+  const mid = Math.max(2, Math.ceil(sentences.length / 2));
+  const p1 = sentences.slice(0, mid).join(' ').trim();
+  const p2 = sentences.slice(mid).join(' ').trim();
+  return [p1, p2].filter(Boolean);
+};
+
+const summaryParagraphs = splitParagraphs(summary).slice(0, 2);
+const meaningParagraphs = (whatMeans.length ? whatMeans : splitParagraphs(summary)).slice(0, 4);
+---
+
+<BaseLayout title={pageTitle} description={description} canonicalPath={canonicalPath} schema={schema}>
+  <div class="space-y-10">
+    <Breadcrumbs items={crumbs} />
+
+    <header class="space-y-6 border-b border-brand-border pb-10">
+      <div class="space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <div class="inline-flex items-center rounded-full border border-brand-border bg-brand-surface px-3 py-1 text-xs font-medium text-slate-400">
+            {industryBadge}
+          </div>
+          {sectionLabel ? (
+            <div class="text-xs text-slate-500">{sectionLabel}</div>
+          ) : null}
+          {systemLabel ? (
+            <div class="text-xs text-slate-600">{systemLabel}</div>
+          ) : null}
+        </div>
+
+        <h1 class="text-4xl font-extrabold tracking-tight text-white md:text-5xl">
+          <span class="text-brand-primary">{code}</span>
+          <span class="mx-3 text-slate-600 font-light">|</span>
+          <span class="text-slate-200">{shortLabel}</span>
+        </h1>
+      </div>
+
+      <div class="grid gap-4 rounded-2xl border border-brand-border bg-brand-surface/50 p-6 text-sm text-slate-400 md:grid-cols-3">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Industry</div>
+          <div class="text-slate-200 font-medium">{industryLabel}</div>
+        </div>
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Canonical</div>
+          <div class="text-slate-200 font-mono text-xs break-all">{canonicalPath}</div>
+        </div>
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Last Updated</div>
+          <div class="text-slate-200 font-medium">{lastUpdatedLabel}</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="rounded-2xl border-l-4 border-brand-primary bg-brand-surface p-6 shadow-card">
+      <div class="text-sm font-bold uppercase tracking-wide text-brand-primary mb-2">Summary</div>
+      <div class="space-y-3">
+        {summaryParagraphs.map((p) => (
+          <p class="text-base md:text-lg text-slate-200 leading-relaxed">{p}</p>
+        ))}
+      </div>
+    </section>
+
+    <AdSlot slot="after-summary" />
+
+    <section class="space-y-10">
+      <section>
+        <h2 class="text-2xl font-bold text-white mb-4">What This Code Means</h2>
+        <div class="prose prose-invert prose-slate max-w-3xl prose-a:text-brand-primary prose-a:no-underline hover:prose-a:underline">
+          {meaningParagraphs.map((p) => (
+            <p>{p}</p>
+          ))}
+        </div>
+      </section>
+
+      {whereSeen.length ? (
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Where Users Usually See This Code</h2>
+          <ul class="max-w-3xl space-y-2 text-slate-300">
+            {whereSeen.map((it) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-2 h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
+                <span>{it}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {whyAppears.length ? (
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Why This Code Appears</h2>
+          <ul class="max-w-3xl space-y-2 text-slate-300">
+            {whyAppears.map((it) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-2 h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
+                <span>{it}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {happensNext.length ? (
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">What Typically Happens Next</h2>
+          <ul class="max-w-3xl space-y-2 text-slate-300">
+            {happensNext.map((it) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-2 h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
+                <span>{it}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {notThis.length ? (
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">What This Code Is Not</h2>
+          <ul class="max-w-3xl space-y-2 text-slate-300">
+            {notThis.slice(0, 6).map((it) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-2 h-1.5 w-1.5 rounded-full bg-slate-600"></span>
+                <span>{it}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {troubleshooting.length ? (
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Troubleshooting Checklist</h2>
+          <ul class="max-w-3xl space-y-2 text-slate-300">
+            {troubleshooting.slice(0, 10).map((it) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded border border-brand-border bg-brand-surface text-xs text-slate-500">□</span>
+                <span>{it}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {notes.length ? (
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Notes And Edge Cases</h2>
+          <div class="max-w-3xl space-y-3 text-slate-300 leading-relaxed">
+            {notes.slice(0, 6).map((p) => (
+              <p>{p}</p>
+            ))}
+          </div>
+        </section>
+      ) : null}
+    </section>
+
+    <RelatedCodes title="Related Codes" items={relatedItems} />
+
+    <AdSlot slot="near-bottom" />
+  </div>
+</BaseLayout>
+

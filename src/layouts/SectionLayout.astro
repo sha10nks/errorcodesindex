@@ -9,15 +9,16 @@ export interface Props {
   crumbs: BreadcrumbItem[];
   canonicalPath?: string;
   schema?: unknown | unknown[];
+  robots?: string;
 }
 
-const { title, description, crumbs, canonicalPath, schema } = Astro.props;
+const { title, description, crumbs, canonicalPath, schema, robots } = Astro.props;
 const canonicalUrl = new URL(canonicalPath ?? Astro.url.pathname, Astro.site).toString();
 const effectiveSchema = schema ?? breadcrumbSchema(crumbs, canonicalUrl);
 
 ---
 
-<BaseLayout title={title} description={description} canonicalPath={canonicalPath} schema={effectiveSchema}>
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} schema={effectiveSchema} robots={robots}>
   <div class="space-y-8">
     <Breadcrumbs items={crumbs} />
     <header class="space-y-4 border-b border-brand-border pb-8">

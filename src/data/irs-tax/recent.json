@@ -1,0 +1,122 @@
+[
+  {
+    "code": "CP14",
+    "title": "Notice of tax due and demand for payment",
+    "description": "You owe money on unpaid taxes. This notice shows the amount of tax, interest, and penalties you owe.",
+    "category": "Computer Paragraph Notice",
+    "publishDate": "2024-02-20",
+    "url": "/irs-tax/error-codes/cp14-notice/"
+  },
+  {
+    "code": "CP05",
+    "title": "Your refund is being reviewed",
+    "description": "The IRS is reviewing your tax return and holding your refund until the review is complete.",
+    "category": "Computer Paragraph Notice",
+    "publishDate": "2024-02-18",
+    "url": "/irs-tax/error-codes/cp05-notice/"
+  },
+  {
+    "code": "Tax Topic 152",
+    "title": "Refund information",
+    "description": "Your refund is being processed. This is a normal part of the refund process and doesn't indicate a problem.",
+    "category": "Processing Status",
+    "publishDate": "2024-02-15",
+    "url": "/irs-tax/error-codes/tax-topic-152/"
+  },
+  {
+    "code": "TC 570",
+    "title": "Additional liability pending",
+    "description": "An additional liability is pending on your account. This may indicate an audit or adjustment.",
+    "category": "Transaction Code",
+    "publishDate": "2024-02-12",
+    "url": "/irs-tax/error-codes/570/"
+  },
+  {
+    "code": "CP21",
+    "title": "Balance due on amended return",
+    "description": "You owe money based on changes made to your tax return. This notice shows the amount you owe.",
+    "category": "Computer Paragraph Notice",
+    "publishDate": "2024-02-10",
+    "url": "/irs-tax/error-codes/cp21-notice/"
+  },
+  {
+    "code": "Code 846",
+    "title": "Refund issued",
+    "description": "Your refund has been approved and is being issued. This indicates your refund is on its way.",
+    "category": "Transaction Code",
+    "publishDate": "2024-02-08",
+    "url": "/irs-tax/error-codes/846/"
+  },
+  {
+    "code": "CP12",
+    "title": "Changes to your return",
+    "description": "The IRS made changes to your tax return and you're getting a different refund amount.",
+    "category": "Computer Paragraph Notice",
+    "publishDate": "2024-02-05",
+    "url": "/irs-tax/error-codes/cp12-notice/"
+  },
+  {
+    "code": "Code 971",
+    "title": "Notice issued",
+    "description": "A notice has been issued regarding your tax return. Check your mail for details.",
+    "category": "Transaction Code",
+    "publishDate": "2024-02-03",
+    "url": "/irs-tax/error-codes/971/"
+  },
+  {
+    "code": "CP24",
+    "title": "Changes to your return due to Earned Income Credit",
+    "description": "The IRS made changes to your Earned Income Credit and you're getting a different refund amount.",
+    "category": "Computer Paragraph Notice",
+    "publishDate": "2024-02-01",
+    "url": "/irs-tax/error-codes/cp24-notice/"
+  },
+  {
+    "code": "Code 150",
+    "title": "Return filed and tax liability assessed",
+    "description": "Your tax return has been processed and your tax liability has been assessed.",
+    "category": "Transaction Code",
+    "publishDate": "2024-01-28",
+    "url": "/irs-tax/error-codes/150/"
+  },
+  {
+    "code": "Code 766",
+    "title": "Credit to your account",
+    "description": "A credit has been applied to your account, which may increase your refund.",
+    "category": "Transaction Code",
+    "publishDate": "2024-01-25",
+    "url": "/irs-tax/error-codes/766/"
+  },
+  {
+    "code": "Code 768",
+    "title": "Earned Income Credit",
+    "description": "Earned Income Credit has been applied to your account, which may increase your refund.",
+    "category": "Transaction Code",
+    "publishDate": "2024-01-22",
+    "url": "/irs-tax/error-codes/768/"
+  },
+  {
+    "code": "Code 290",
+    "title": "Additional tax assessed",
+    "description": "Additional tax has been assessed on your account, which may reduce your refund.",
+    "category": "Transaction Code",
+    "publishDate": "2024-01-20",
+    "url": "/irs-tax/error-codes/290/"
+  },
+  {
+    "code": "Code 424",
+    "title": "Examination request indicator",
+    "description": "Your return has been selected for examination (audit). You will receive a notice with details.",
+    "category": "Transaction Code",
+    "publishDate": "2024-01-18",
+    "url": "/irs-tax/error-codes/424/"
+  },
+  {
+    "code": "Code 810",
+    "title": "Refund freeze",
+    "description": "Your refund has been frozen. This may be due to outstanding debts or additional review requirements.",
+    "category": "Transaction Code",
+    "publishDate": "2024-01-15",
+    "url": "/irs-tax/error-codes/810/"
+  }
+]

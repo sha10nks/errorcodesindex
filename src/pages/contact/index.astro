@@ -13,11 +13,12 @@ const crumbs = [
 <SectionLayout title={title} description={description} crumbs={crumbs}>
   <div class="not-prose rounded-2xl border border-brand-border bg-brand-surface p-6 shadow-card">
     <form
+      id="contact-form"
       name="contact"
       method="POST"
-      action="/contact/success/"
+      action="/thanks/"
       data-netlify="true"
-      netlify-honeypot="bot-field"
+      data-netlify-honeypot="bot-field"
       class="space-y-4"
     >
       <input type="hidden" name="form-name" value="contact" />
@@ -28,6 +29,13 @@ const crumbs = [
         </label>
       </p>
 
+      <div
+        id="contact-error-summary"
+        class="hidden rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200"
+        role="alert"
+        aria-live="polite"
+      ></div>
+
       <div>
         <label class="block text-sm font-medium text-slate-200" for="name">Name</label>
         <input
@@ -35,8 +43,12 @@ const crumbs = [
           name="name"
           type="text"
           required
+          minlength="2"
+          maxlength="80"
+          aria-describedby="name-error"
           class="mt-2 w-full rounded-xl border border-brand-border bg-brand-dark px-4 py-3 text-sm text-slate-200 placeholder:text-slate-500 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/40 focus:outline-none"
         />
+        <p id="name-error" class="mt-2 hidden text-xs text-red-200"></p>
       </div>
 
       <div>
@@ -46,8 +58,11 @@ const crumbs = [
           name="email"
           type="email"
           required
+          maxlength="120"
+          aria-describedby="email-error"
           class="mt-2 w-full rounded-xl border border-brand-border bg-brand-dark px-4 py-3 text-sm text-slate-200 placeholder:text-slate-500 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/40 focus:outline-none"
         />
+        <p id="email-error" class="mt-2 hidden text-xs text-red-200"></p>
       </div>
 
       <div>
@@ -56,17 +71,133 @@ const crumbs = [
           id="message"
           name="message"
           required
+          minlength="10"
+          maxlength="4000"
           rows={6}
+          aria-describedby="message-error"
           class="mt-2 w-full rounded-xl border border-brand-border bg-brand-dark px-4 py-3 text-sm text-slate-200 placeholder:text-slate-500 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/40 focus:outline-none"
         ></textarea>
+        <p id="message-error" class="mt-2 hidden text-xs text-red-200"></p>
+        <p class="mt-2 text-xs text-slate-500">Avoid including passwords, tokens, or sensitive personal data.</p>
       </div>
 
       <button
         type="submit"
+        id="contact-submit"
         class="rounded-full bg-brand-primary px-5 py-3 text-sm font-semibold text-brand-dark shadow-lg shadow-brand-primary/20 transition-colors hover:bg-brand-accent"
       >
         Send
       </button>
     </form>
+
+    <script is:inline>
+      (() => {
+        const form = document.getElementById('contact-form')
+        const submitBtn = document.getElementById('contact-submit')
+        const summary = document.getElementById('contact-error-summary')
+
+        if (!form || !(form instanceof HTMLFormElement)) return
+        if (!submitBtn || !(submitBtn instanceof HTMLButtonElement)) return
+        if (!summary) return
+
+        const nameInput = form.querySelector('#name')
+        const emailInput = form.querySelector('#email')
+        const messageInput = form.querySelector('#message')
+        const nameError = document.getElementById('name-error')
+        const emailError = document.getElementById('email-error')
+        const messageError = document.getElementById('message-error')
+
+        if (!(nameInput instanceof HTMLInputElement)) return
+        if (!(emailInput instanceof HTMLInputElement)) return
+        if (!(messageInput instanceof HTMLTextAreaElement)) return
+        if (!nameError || !emailError || !messageError) return
+
+        const setFieldError = (el, errEl, message) => {
+          if (message) {
+            el.setAttribute('aria-invalid', 'true')
+            errEl.textContent = message
+            errEl.classList.remove('hidden')
+            el.classList.add('border-red-500/40', 'focus:border-red-500/60', 'focus:ring-red-500/30')
+            el.classList.remove('border-brand-border', 'focus:border-brand-primary', 'focus:ring-brand-primary/40')
+            return
+          }
+
+          el.removeAttribute('aria-invalid')
+          errEl.textContent = ''
+          errEl.classList.add('hidden')
+          el.classList.remove('border-red-500/40', 'focus:border-red-500/60', 'focus:ring-red-500/30')
+          el.classList.add('border-brand-border')
+        }
+
+        const validate = () => {
+          const errors = []
+
+          const name = nameInput.value.trim()
+          const email = emailInput.value.trim()
+          const message = messageInput.value.trim()
+
+          if (name.length < 2) {
+            errors.push('Name is required.')
+            setFieldError(nameInput, nameError, 'Enter your name (at least 2 characters).')
+          } else {
+            setFieldError(nameInput, nameError, '')
+          }
+
+          if (!email) {
+            errors.push('Email is required.')
+            setFieldError(emailInput, emailError, 'Enter your email address.')
+          } else if (!emailInput.checkValidity()) {
+            errors.push('Email address is invalid.')
+            setFieldError(emailInput, emailError, 'Enter a valid email address.')
+          } else {
+            setFieldError(emailInput, emailError, '')
+          }
+
+          if (message.length < 10) {
+            errors.push('Message is required.')
+            setFieldError(messageInput, messageError, 'Enter a message (at least 10 characters).')
+          } else {
+            setFieldError(messageInput, messageError, '')
+          }
+
+          if (errors.length) {
+            summary.textContent = 'Please fix the highlighted fields before sending.'
+            summary.classList.remove('hidden')
+            return false
+          }
+
+          summary.textContent = ''
+          summary.classList.add('hidden')
+          return true
+        }
+
+        const refreshSubmitState = () => {
+          const ok = validate()
+          submitBtn.disabled = !ok
+          submitBtn.classList.toggle('opacity-60', !ok)
+          submitBtn.classList.toggle('cursor-not-allowed', !ok)
+        }
+
+        ;['input', 'blur'].forEach((evt) => {
+          nameInput.addEventListener(evt, refreshSubmitState)
+          emailInput.addEventListener(evt, refreshSubmitState)
+          messageInput.addEventListener(evt, refreshSubmitState)
+        })
+
+        refreshSubmitState()
+
+        form.addEventListener('submit', (e) => {
+          const ok = validate()
+          if (!ok) {
+            e.preventDefault()
+            return
+          }
+
+          submitBtn.disabled = true
+          submitBtn.textContent = 'Sending…'
+          submitBtn.classList.add('opacity-80', 'cursor-wait')
+        })
+      })()
+    </script>
   </div>
 </SectionLayout>

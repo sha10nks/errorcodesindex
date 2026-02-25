@@ -1,11 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import AdSlot from '../../../components/AdSlot.astro';
 import { INDUSTRIES } from '../../../utils/site';
-import { breadcrumbSchema, webPageSchema } from '../../../utils/schema';
-import { pickRelatedSlugs } from '../../../utils/related';
+import { breadcrumbSchema, techArticleSchema } from '../../../utils/schema';
+import { pickRelatedEntries } from '../../../utils/related';
+import { parseAuthoritySectionsFromBody } from '../../../utils/authority';
+import ErrorCodeDetailLayout from '../../../components/ErrorCodeDetailLayout.astro';
 
 export async function getStaticPaths() {
   const industries = ['healthcare', 'irs-tax', 'banking', 'gaming'];
@@ -39,10 +38,11 @@ const entries = await getCollection(collectionName);
 const entry = entries.find((e) => e.id === entryId || e.slug === codeSlug);
 if (!entry) throw new Error('Missing entry');
 
-const { Content } = await entry.render();
+const pageTitle = `${entry.data.code} — Meaning (${industryMeta.label} Error Code)`;
 
-const pageTitle = `${entry.data.code} Meaning – ${industryMeta.label} Error Code`;
-const description = `Official reference for ${entry.data.code} (${industryMeta.label}). Includes verbatim source content and related ${industryMeta.label.toLowerCase()} codes.`;
+const parsed = parseAuthoritySectionsFromBody(entry.body);
+const summaryText = (entry.data.summary || parsed.whatMeans[0] || entry.data.shortLabel).trim();
+const description = summaryText.length > 10 ? summaryText : `What ${entry.data.code} means in ${industryMeta.label}.`;
 
 const crumbs = [
   { label: 'Home', href: '/' },
@@ -53,82 +53,63 @@ const crumbs = [
 
 const canonicalPath = `/${industry}/error-codes/${entry.slug}/`;
 const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
-const relatedSlugs = pickRelatedSlugs(entries.map((e) => e.slug), entry.slug);
-const schema = [breadcrumbSchema(crumbs, canonicalUrl), webPageSchema({ name: pageTitle, canonicalUrl, dateModified: entry.data.lastmod })];
+
+const currentText = `${entry.data.shortLabel} ${entry.data.summary || ''} ${(parsed.whatMeans[0] || '').slice(0, 220)}`;
+const relatedEntries = pickRelatedEntries(entries as any, {
+  industryKey: industry,
+  currentSlug: entry.slug,
+  currentCode: entry.data.code,
+  currentText,
+  mentionedCodes: parsed.mentionedRelatedCodes,
+  max: 8,
+});
+
+const relatedItems = relatedEntries.map((rel: any) => ({
+  code: rel.data.code,
+  shortLabel: rel.data.shortLabel,
+  url: `/${industry}/error-codes/${rel.slug}/`,
+}));
+
+const schema = [
+  breadcrumbSchema(crumbs, canonicalUrl),
+  techArticleSchema({
+    headline: `${entry.data.code} — ${entry.data.shortLabel}`,
+    description,
+    canonicalUrl,
+    industryLabel: industryMeta.label,
+    code: entry.data.code,
+    dateModified: entry.data.lastmod,
+    keywords: [entry.data.code, industryMeta.label, industry],
+  }),
+];
+
+const lastUpdatedLabel = new Date(entry.data.lastmod).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
 ---
 
-<BaseLayout title={pageTitle} description={description} canonicalPath={canonicalPath} schema={schema}>
-  <div class="space-y-8">
-    <Breadcrumbs items={crumbs} />
-
-    <header class="space-y-6 border-b border-brand-border pb-8">
-      <div>
-        <div class="mb-2 inline-flex items-center rounded-full border border-brand-border bg-brand-surface px-3 py-1 text-xs font-medium text-slate-400">
-            {industryMeta.label} Error Code
-        </div>
-        <h1 class="text-4xl font-extrabold tracking-tight text-white md:text-5xl">
-            <span class="text-brand-primary">{entry.data.code}</span>
-            <span class="mx-3 text-slate-600 font-light">|</span>
-            <span class="text-slate-200">{entry.data.shortLabel}</span>
-        </h1>
-      </div>
-      
-      <div class="grid gap-4 rounded-xl border border-brand-border bg-brand-surface/50 p-6 text-sm text-slate-400 md:grid-cols-3">
-        <div>
-          <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Industry</div>
-          <div class="text-slate-200 font-medium">{industryMeta.label}</div>
-        </div>
-        <div>
-          <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Canonical URL</div>
-          <div class="text-slate-200 font-mono text-xs break-all">{canonicalPath}</div>
-        </div>
-        <div>
-          <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Last Updated</div>
-          <div class="text-slate-200 font-medium">{new Date(entry.data.lastmod).toLocaleDateString()}</div>
-        </div>
-      </div>
-    </header>
-
-    {entry.data.summary ? (
-      <section class="rounded-xl border-l-4 border-brand-primary bg-brand-surface p-6 shadow-md">
-        <h2 class="text-sm font-bold uppercase tracking-wide text-brand-primary mb-2">Summary</h2>
-        <p class="text-lg text-slate-200 leading-relaxed">{entry.data.summary}</p>
-      </section>
-    ) : null}
-
-    <AdSlot slot="after-summary" />
-
-    <article class="prose prose-invert prose-slate max-w-none prose-headings:text-white prose-a:text-brand-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-brand-accent prose-code:bg-brand-surface prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none">
-      <Content />
-    </article>
-
-    <AdSlot slot="mid-content" />
-
-    <section class="mt-12 rounded-xl border border-brand-border bg-brand-surface p-8 shadow-card">
-      <h2 class="text-xl font-bold text-white mb-6">Related {industryMeta.label} Codes</h2>
-      {relatedSlugs.length === 0 ? (
-        <div class="text-sm text-slate-500">No related codes available.</div>
-      ) : (
-        <ul class="grid gap-4 sm:grid-cols-2">
-          {relatedSlugs.map((slug) => {
-            const rel = entries.find((e) => e.slug === slug);
-            if (!rel) return null;
-            return (
-              <li>
-                <a class="group block rounded-lg border border-brand-border bg-brand-dark p-4 hover:border-brand-primary/50 hover:shadow-glow transition-all" href={`/${industry}/error-codes/${rel.slug}/`}>
-                  <div class="flex items-center justify-between mb-2">
-                    <span class="font-mono text-sm font-bold text-brand-primary group-hover:text-white transition-colors">{rel.data.code}</span>
-                    <span class="text-xs text-slate-600 group-hover:text-slate-500">Code</span>
-                  </div>
-                  <div class="text-sm text-slate-400 group-hover:text-slate-200 line-clamp-2">{rel.data.shortLabel}</div>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      )}
-    </section>
-
-    <AdSlot slot="near-bottom" />
-  </div>
-</BaseLayout>
+<ErrorCodeDetailLayout
+  pageTitle={pageTitle}
+  description={description}
+  canonicalPath={canonicalPath}
+  crumbs={crumbs}
+  schema={schema}
+  industryLabel={industryMeta.label}
+  industryBadge={`${industryMeta.label} Error Code`}
+  code={entry.data.code}
+  shortLabel={entry.data.shortLabel}
+  sectionLabel={parsed.sectionLabel}
+  systemLabel={parsed.systemLabel}
+  lastUpdatedLabel={lastUpdatedLabel}
+  summary={summaryText}
+  whatMeans={parsed.whatMeans}
+  whereSeen={parsed.whereSeen}
+  whyAppears={parsed.whyAppears}
+  happensNext={parsed.happensNext}
+  notThis={parsed.notThis}
+  troubleshooting={parsed.troubleshooting}
+  notes={parsed.notes}
+  relatedItems={relatedItems}
+/>

@@ -2,7 +2,7 @@
 import SectionLayout from '../../layouts/SectionLayout.astro';
 
 const title = 'Message received';
-const description = 'Your message has been submitted. If a response is required, it will be sent to the email address provided.';
+const description = 'Confirmation that your contact message was submitted.';
 const crumbs = [
   { label: 'Home', href: '/' },
   { label: 'Contact', href: '/contact/' },
@@ -10,13 +10,30 @@ const crumbs = [
 ];
 ---
 
-<SectionLayout title={title} description={description} crumbs={crumbs}>
-  <p>
-    Your message has been submitted successfully. If you requested a reply, we will respond using the email address you
-    provided.
-  </p>
-  <p>
-    <a href="/">Return to home</a>
-  </p>
+<SectionLayout title={title} description={description} crumbs={crumbs} robots="noindex,follow">
+  <div class="not-prose mx-auto max-w-[900px]">
+    <div class="rounded-2xl border border-brand-border bg-brand-surface p-8 shadow-card">
+      <div class="text-sm font-semibold text-slate-100">Thanks — your message is in the queue.</div>
+      <p class="mt-3 text-sm leading-relaxed text-slate-400">
+        If a response is required, it will be sent to the email address you provided. Response time depends on volume.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a
+          href="/"
+          class="inline-flex items-center justify-center rounded-full bg-brand-primary px-5 py-3 text-sm font-semibold text-brand-dark shadow-lg shadow-brand-primary/20 transition-colors hover:bg-brand-accent"
+        >
+          Return to Homepage
+        </a>
+        <a
+          href="/contact/"
+          class="inline-flex items-center justify-center rounded-full border border-brand-border bg-brand-dark px-5 py-3 text-sm font-semibold text-slate-200 transition-colors hover:border-brand-primary/40"
+        >
+          Send another message
+        </a>
+      </div>
+      <p class="mt-6 text-xs text-slate-500">
+        For corrections, include the exact page URL and the code you’re referring to.
+      </p>
+    </div>
+  </div>
 </SectionLayout>
-

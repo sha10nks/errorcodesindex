@@ -1,0 +1,82 @@
+[
+  {
+    "code": "CO-16",
+    "title": "Claim lacks information needed for adjudication",
+    "description": "The claim is missing required information such as diagnosis codes, procedure codes, or supporting documentation.",
+    "category": "Contractual Obligation",
+    "publishDate": "2024-01-28",
+    "url": "/healthcare/error-codes/co-16/"
+  },
+  {
+    "code": "PR-1",
+    "title": "Deductible amount",
+    "description": "The amount applied to the patient's annual deductible. This is the patient's responsibility to pay.",
+    "category": "Patient Responsibility",
+    "publishDate": "2024-02-08",
+    "url": "/healthcare/error-codes/pr-1/"
+  },
+  {
+    "code": "CO-50",
+    "title": "Non-covered services because this is not deemed a 'medical necessity'",
+    "description": "The service is not covered because it is not considered medically necessary by the payer's criteria.",
+    "category": "Contractual Obligation",
+    "publishDate": "2024-02-05",
+    "url": "/healthcare/error-codes/co-50/"
+  },
+  {
+    "code": "CO-197",
+    "title": "Precertification/authorization absent",
+    "description": "Precertification, prior authorization, or referral is required but was not obtained before services were rendered.",
+    "category": "Contractual Obligation",
+    "publishDate": "2024-02-10",
+    "url": "/healthcare/error-codes/co-197/"
+  },
+  {
+    "code": "PR-96",
+    "title": "Non-covered charge(s)",
+    "description": "Charges are not covered by the patient's insurance plan. These may be excluded services or procedures.",
+    "category": "Patient Responsibility",
+    "publishDate": "2024-02-18",
+    "url": "/healthcare/error-codes/pr-96/"
+  },
+  {
+    "code": "CO-109",
+    "title": "Claim/service not covered by this payer/contractor",
+    "description": "The claim or service is not covered by the payer or contractor. You must send the claim to the correct payer or contractor.",
+    "category": "Contractual Obligation",
+    "publishDate": "2024-02-20",
+    "url": "/healthcare/error-codes/co-109/"
+  },
+  {
+    "code": "OA-23",
+    "title": "Payment adjusted due to procedure overlap",
+    "description": "The payment has been reduced because the reported procedure overlaps with another procedure on the same date of service.",
+    "category": "Other Adjustments",
+    "publishDate": "2024-02-15",
+    "url": "/healthcare/error-codes/oa-23/"
+  },
+  {
+    "code": "PI-97",
+    "title": "The benefit for this service is included in the payment for another service",
+    "description": "Payment for this service is bundled with another service and is not separately reimbursable.",
+    "category": "Payer Initiated",
+    "publishDate": "2024-02-01",
+    "url": "/healthcare/error-codes/pi-97/"
+  },
+  {
+    "code": "CO-29",
+    "title": "The time limit for filing has expired",
+    "description": "The claim was submitted after the payer's deadline for claim submission has passed.",
+    "category": "Contractual Obligation",
+    "publishDate": "2024-01-22",
+    "url": "/healthcare/error-codes/co-29/"
+  },
+  {
+    "code": "PI-204",
+    "title": "Service not covered under patient's current benefit plan",
+    "description": "This service is specifically excluded from coverage under the patient's current benefit plan.",
+    "category": "Payer Initiated",
+    "publishDate": "2024-02-12",
+    "url": "/healthcare/error-codes/pi-204/"
+  }
+]

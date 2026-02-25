@@ -3,36 +3,148 @@ import SectionLayout from '../../layouts/SectionLayout.astro';
 
 const title = 'Disclaimer';
 const description =
-  'Disclaimer for ErrorCodesIndex.com covering informational use, accuracy limitations, and responsibility for actions taken based on reference material.';
+  'Important limitations for using ErrorCodesIndex.com as a reference: not professional advice, vendor documentation controls, and no guarantee of accuracy.';
 const crumbs = [
   { label: 'Home', href: '/' },
   { label: 'Disclaimer', href: '/disclaimer/' },
 ];
+
+const effectiveDate = new Date().toISOString().slice(0, 10);
 ---
 
 <SectionLayout title={title} description={description} crumbs={crumbs}>
-  <h2>Informational reference</h2>
-  <p>
-    ErrorCodesIndex.com is provided for informational reference only. Error codes and related descriptions may vary by
-    vendor, product version, configuration, region, and time.
-  </p>
+  <div class="not-prose mx-auto max-w-[900px]">
+    <div class="rounded-2xl border border-brand-border bg-brand-surface p-6 shadow-card">
+      <div class="text-xs font-semibold uppercase tracking-wide text-slate-400">Effective date</div>
+      <div class="mt-2 font-mono text-sm text-slate-200">{effectiveDate}</div>
+      <div class="mt-3 text-sm text-slate-400">Read this page before relying on information from the site.</div>
+    </div>
+  </div>
 
-  <h2>No guarantees</h2>
-  <p>
-    We do not guarantee the accuracy, completeness, or currency of any information on this site. You are responsible
-    for verifying details with official vendor documentation and your own testing.
-  </p>
+  <div class="mx-auto max-w-[900px]">
+    <h2>Informational Purpose Only</h2>
+    <p>
+      ErrorCodesIndex.com is a reference library. It exists to help you locate error codes, see common interpretations,
+      and understand typical next steps. It is not official documentation.
+    </p>
+    <p>
+      Error codes can vary by vendor, device model, firmware/software version, configuration, region, and date.
+      A code that means one thing in one context can mean something else in another.
+    </p>
 
-  <h2>Operational responsibility</h2>
-  <p>
-    Actions taken based on information found on this site are taken at your own risk. Always follow change management,
-    security, and safety procedures appropriate for your environment.
-  </p>
+    <hr />
 
-  <h2>External links</h2>
-  <p>
-    Links to third-party sites are provided for convenience. We do not control those sites and are not responsible for
-    their content.
-  </p>
+    <h2>No Professional Advice</h2>
+    <p>
+      Content on this site does not constitute professional advice. That includes (but is not limited to) legal,
+      medical, tax, financial, cybersecurity, or safety advice.
+    </p>
+    <p>
+      You are responsible for choosing qualified professionals when a situation requires it.
+    </p>
+
+    <hr />
+
+    <h2>Accuracy Limitations</h2>
+    <p>
+      We aim to keep pages consistent and well structured, but we do not guarantee accuracy, completeness, or
+      currency.
+    </p>
+    <ul>
+      <li>Some pages describe typical causes, not definitive causes.</li>
+      <li>Some pages reference vendor terms that change over time.</li>
+      <li>Some codes are reused or overloaded across product lines.</li>
+    </ul>
+    <p>
+      Even when a code identifier is correct, the resolution path can differ based on environment. Network conditions,
+      service outages, user permissions, and account state often change the meaning of “the same” code. Treat pages as
+      a starting point, not a conclusion.
+    </p>
+
+    <hr />
+
+    <h2>Vendor Documentation Supremacy</h2>
+    <p>
+      If there is any conflict between this site and official documentation from the vendor, manufacturer, or service
+      operator, the official documentation controls.
+    </p>
+    <p>
+      When troubleshooting, always cross-check:
+    </p>
+    <ul>
+      <li>official manuals and service bulletins</li>
+      <li>release notes and firmware/patch documentation</li>
+      <li>support advisories and incident communications</li>
+    </ul>
+
+    <hr />
+
+    <h2>User Responsibility</h2>
+    <p>
+      You are responsible for your actions and decisions. If you apply any steps suggested by a page, do so under your
+      own policies and safety controls.
+    </p>
+    <ul>
+      <li>Use change management and backups where appropriate.</li>
+      <li>Follow your organization’s security procedures.</li>
+      <li>Do not run commands or apply fixes you do not understand.</li>
+      <li>For appliances and physical systems, follow safety instructions and qualified service guidance.</li>
+    </ul>
+    <p>
+      Some categories on this site reference systems with real-world impact (for example: healthcare claims, banking
+      transactions, or home appliances). If a failure affects safety, compliance, or money movement, stop and consult
+      the appropriate official channel.
+    </p>
+
+    <hr />
+
+    <h2>No Endorsement</h2>
+    <p>
+      Links, product mentions, and brand names are included for identification. They should not be interpreted as an
+      endorsement or as an official relationship.
+    </p>
+
+    <hr />
+
+    <h2>No Guarantee Clause</h2>
+    <p>
+      We do not guarantee outcomes. Troubleshooting results depend on context. A fix that works for one environment
+      may fail or cause harm in another.
+    </p>
+
+    <hr />
+
+    <h2>External Links</h2>
+    <p>
+      Links to third-party sites are provided for convenience. We do not control those sites and are not responsible
+      for their content or policies.
+    </p>
+
+    <hr />
+
+    <h2>Reporting Errors</h2>
+    <p>
+      If you report a correction, include:
+    </p>
+    <ul>
+      <li>the exact URL</li>
+      <li>the error code shown on the system</li>
+      <li>vendor/model/version context if available</li>
+      <li>the specific sentence or section that is incorrect</li>
+    </ul>
+    <p>
+      This helps us verify changes and avoid breaking stable content for other contexts.
+    </p>
+
+    <hr />
+
+    <h2>Contact</h2>
+    <p>
+      If you believe a page needs correction (broken route, incorrect label, missing context), contact us at
+      <a href="/contact/">/contact/</a> with the affected URL.
+    </p>
+    <p>
+      Related pages: <a href="/terms-of-use/">Terms of Use</a> and <a href="/privacy-policy/">Privacy Policy</a>.
+    </p>
+  </div>
 </SectionLayout>
-
