@@ -50,6 +50,16 @@ const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
     {schemas.map((obj) => (
       <script type="application/ld+json" set:html={JSON.stringify(obj)} />
     ))}
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FF0SS01S7L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-FF0SS01S7L');
+    </script>
   </head>
   <body class="min-h-screen bg-brand-dark text-slate-200 selection:bg-brand-primary selection:text-white">
     <SiteHeader currentPath={Astro.url.pathname} overlay={fullWidth} />
