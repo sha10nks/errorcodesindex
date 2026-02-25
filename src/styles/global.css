@@ -25,7 +25,6 @@ body {
 }
 
 main.w-full > section:first-of-type {
-  align-items: flex-start;
   padding-top: var(--eci-nav-height-desktop);
 }
 
