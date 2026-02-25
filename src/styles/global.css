@@ -15,6 +15,31 @@ body {
   color: rgb(var(--text));
 }
 
+:root {
+  --eci-nav-height-desktop: 100px;
+  --eci-nav-height-mobile: 120px;
+}
+
+#site-header {
+  z-index: 50;
+}
+
+main.w-full > section:first-of-type {
+  align-items: flex-start;
+  padding-top: var(--eci-nav-height-desktop);
+}
+
+#hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+@media (max-width: 767px) {
+  main.w-full > section:first-of-type {
+    padding-top: var(--eci-nav-height-mobile);
+  }
+}
+
 a {
   color: rgb(var(--brand-primary));
   text-decoration: none;
