@@ -1,0 +1,43 @@
+---
+industry: "systems"
+subcategory: "bios-uefi"
+code: "DISK BOOT FAILURE"
+shortLabel: "Boot device not bootable"
+summary: "The selected disk does not contain a valid boot record for the current boot mode." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: BIOS / UEFI</p>
+<p>CODE: DISK BOOT FAILURE</p>
+<p>Title</p>
+<p>(DISK BOOT FAILURE &mdash; Boot device not bootable)</p>
+<p>One-sentence summary</p>
+<p>The selected disk does not contain a valid boot record for the current boot mode.</p>
+<p>What this code means</p>
+<p>Disk boot failure indicates the system attempted to boot from a disk that does not have a valid bootloader/boot record that matches the configured boot mode. This can occur with newly installed disks, cloned disks, or after partition changes.</p>
+<p>Where users usually see this code</p>
+<p>After installing a new drive</p>
+<p>After cloning or imaging a disk</p>
+<p>Why this code usually appears</p>
+<p>Boot record missing or corrupted</p>
+<p>UEFI/Legacy mode mismatch</p>
+<p>Incorrect boot order</p>
+<p>What typically happens next</p>
+<p>System cannot boot until boot configuration is repaired</p>
+<p>What this code is NOT</p>
+<p>It is not a BIOS password prompt</p>
+<p>It is not a CPU fan warning</p>
+<p>Troubleshooting checklist</p>
+<p>Confirm boot order and boot mode</p>
+<p>Use official recovery media to rebuild boot configuration</p>
+<p>Back up data before partition/boot repairs</p>
+<p>Related error codes</p>
+<p>INVALID PARTITION TABLE — Boot partition issue</p>
+<p>BOOTMGR IS MISSING — Boot loader missing</p>
+<p>Notes and edge cases</p>
+<p>Some systems require specific EFI entries in firmware; resetting firmware settings can remove those entries.</p>
+</div>
+

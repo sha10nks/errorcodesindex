@@ -2,10 +2,11 @@
 export interface Props {
   prefixes: string[];
   industryKey: string;
+  basePath?: string;
   filterFunction?: string;
 }
 
-const { prefixes, industryKey, filterFunction } = Astro.props;
+const { prefixes, industryKey, basePath, filterFunction } = Astro.props;
 
 const prefixToQuery = (prefix: string) => {
   if (prefix === 'CARC/RARC') return 'CARC';
@@ -26,7 +27,7 @@ const getPrefixUrl = (prefix: string) => {
   }
 
   const q = prefixToQuery(prefix);
-  const base = `/${industryKey}/error-codes/`;
+  const base = basePath ?? `/${industryKey}/error-codes/`;
   if (!q) return `${base}#code-index`;
   return `${base}?q=${encodeURIComponent(q)}#code-index`;
 };
@@ -70,6 +71,14 @@ const getPrefixDescription = (prefix: string) => {
       'Refrigerators': 'Refrigerator diagnostic and service codes',
       'Washers': 'Washer error codes and troubleshooting',
       'General Appliances': 'Cross-brand appliance diagnostic codes'
+    },
+    'systems': {
+      '0x': 'Hexadecimal system codes',
+      'Error': 'Message-style errors',
+      'B200': 'Printer device codes',
+      'DHCP': 'Network configuration',
+      'TPM': 'Security and boot checks',
+      'POST': 'Firmware diagnostics'
     }
   };
   

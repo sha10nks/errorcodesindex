@@ -1,0 +1,41 @@
+---
+industry: "systems"
+subcategory: "security-systems"
+code: "0xC0000070"
+shortLabel: "Invalid workstation"
+summary: "The account is not allowed to log on from the workstation or host it attempted to access." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Security Systems</p>
+<p>CODE: 0xC0000070</p>
+<p>Title</p>
+<p>(0xC0000070 &mdash; Invalid workstation)</p>
+<p>One-sentence summary</p>
+<p>The account is not allowed to log on from the workstation or host it attempted to access.</p>
+<p>What this code means</p>
+<p>0xC0000070 indicates a logon restriction based on allowed workstations/hosts. Credentials may be valid, but the account policy prevents use from the current source machine.</p>
+<p>Where users usually see this code</p>
+<p>Windows domain logon restrictions</p>
+<p>RDP/SMB authentication attempts</p>
+<p>Why this code usually appears</p>
+<p>Account has an “allowed workstations” list configured</p>
+<p>Service/account moved to a new host without policy updates</p>
+<p>What typically happens next</p>
+<p>Logon fails until policy allows the source host</p>
+<p>What this code is NOT</p>
+<p>It is not a password error</p>
+<p>It is not proof of malware</p>
+<p>Troubleshooting checklist</p>
+<p>Review account workstation restrictions and update if appropriate</p>
+<p>Confirm the source hostname is as expected</p>
+<p>Related error codes</p>
+<p>0xC000006F — Invalid logon hours</p>
+<p>0xC000015B — Logon type not granted</p>
+<p>Notes and edge cases</p>
+<p>Misconfigured workstation restrictions can block legitimate automation when hosts are replaced.</p>
+</div>
+

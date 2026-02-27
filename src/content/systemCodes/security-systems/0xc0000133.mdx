@@ -1,0 +1,43 @@
+---
+industry: "systems"
+subcategory: "security-systems"
+code: "0xC0000133"
+shortLabel: "Time difference at domain controller"
+summary: "Authentication failed because the client and domain controller times differ beyond allowed limits." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Security Systems</p>
+<p>CODE: 0xC0000133</p>
+<p>Title</p>
+<p>(0xC0000133 &mdash; Time difference at domain controller)</p>
+<p>One-sentence summary</p>
+<p>Authentication failed because the client and domain controller times differ beyond allowed limits.</p>
+<p>What this code means</p>
+<p>0xC0000133 is commonly associated with Kerberos authentication failing due to clock skew. Time synchronization is required for ticket validation; if the client time differs too much from the domain controller, authentication can be rejected.</p>
+<p>Where users usually see this code</p>
+<p>Domain logon failures</p>
+<p>Kerberos-based SSO failures</p>
+<p>Why this code usually appears</p>
+<p>Incorrect time/time zone on the client</p>
+<p>NTP/time sync not functioning</p>
+<p>VM time drift</p>
+<p>What typically happens next</p>
+<p>Users cannot authenticate until time is corrected</p>
+<p>What this code is NOT</p>
+<p>It is not a password mistake</p>
+<p>It is not an account disable indicator</p>
+<p>Troubleshooting checklist</p>
+<p>Verify system time and time zone</p>
+<p>Restore time synchronization (domain time/NTP)</p>
+<p>Check virtualization host time configuration</p>
+<p>Related error codes</p>
+<p>0xC000006D — Logon failure</p>
+<p>0xC000006A — Wrong password</p>
+<p>Notes and edge cases</p>
+<p>Time skew issues can break many services at once; fixing the underlying time source is the durable solution.</p>
+</div>
+

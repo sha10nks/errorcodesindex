@@ -40,6 +40,7 @@ export const GET: APIRoute = async ({ site }) => {
     '/gaming/',
     '/gaming/error-codes/',
     '/appliances/',
+    '/systems/',
   ];
 
   const healthcare = await getCollection('healthcareCodes');
@@ -47,6 +48,7 @@ export const GET: APIRoute = async ({ site }) => {
   const banking = await getCollection('bankingCodes');
   const gaming = await getCollection('gamingCodes');
   const appliances = await getCollection('applianceCodes');
+  const systems = await getCollection('systemCodes');
 
   const urls: Array<{ loc: string; lastmod: string }> = [];
   for (const p of staticPaths) {
@@ -94,6 +96,32 @@ export const GET: APIRoute = async ({ site }) => {
     urls.push({ loc: `${base}/appliances/${t}/${b}/${m}/`, lastmod: isoDate() });
   }
 
+  const systemSubcategories = new Set<string>([
+    'operating-systems',
+    'business-systems',
+    'pos-systems',
+    'security-systems',
+    'printers',
+    'routers',
+    'pos-terminals',
+    'smart-devices',
+    'bios-uefi',
+    'embedded-systems',
+  ]);
+
+  for (const sub of Array.from(systemSubcategories).sort()) {
+    urls.push({ loc: `${base}/systems/${sub}/`, lastmod: isoDate() });
+    urls.push({ loc: `${base}/systems/${sub}/error-codes/`, lastmod: isoDate() });
+  }
+
+  for (const e of systems) {
+    const codeSlug = e.slug.split('/').slice(-1)[0];
+    urls.push({
+      loc: `${base}/systems/${e.data.subcategory}/error-codes/${codeSlug}/`,
+      lastmod: isoDate(e.data.lastmod),
+    });
+  }
+
   const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
     .map((u) => urlTag(u.loc, u.lastmod))
     .join('\n')}\n</urlset>\n`;
@@ -104,4 +132,3 @@ export const GET: APIRoute = async ({ site }) => {
     },
   });
 };
-

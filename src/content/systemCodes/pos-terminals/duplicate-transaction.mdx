@@ -1,0 +1,42 @@
+---
+industry: "systems"
+subcategory: "pos-terminals"
+code: "DUPLICATE"
+shortLabel: "Duplicate transaction"
+summary: "The terminal/processor detected a potential duplicate transaction and blocked it to prevent double-charging." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: POS Terminals</p>
+<p>CODE: DUPLICATE</p>
+<p>Title</p>
+<p>(DUPLICATE &mdash; Duplicate transaction)</p>
+<p>One-sentence summary</p>
+<p>The terminal/processor detected a potential duplicate transaction and blocked it to prevent double-charging.</p>
+<p>What this code means</p>
+<p>Duplicate transaction messages occur when the processor or terminal detects a repeated authorization attempt that matches a recent transaction (same amount/card/merchant/time window). This is intended to prevent accidental double charges.</p>
+<p>Where users usually see this code</p>
+<p>Immediately retrying after a timeout</p>
+<p>Cashier resubmits the same sale</p>
+<p>Why this code usually appears</p>
+<p>Previous transaction outcome was not confirmed</p>
+<p>Duplicate prevention window is active</p>
+<p>What typically happens next</p>
+<p>Terminal blocks the second attempt</p>
+<p>Merchant should verify the first transaction’s final status</p>
+<p>What this code is NOT</p>
+<p>It is not proof the customer was charged twice</p>
+<p>It is not a “declined” card status</p>
+<p>Troubleshooting checklist</p>
+<p>Check terminal history/batch to confirm whether the original transaction completed</p>
+<p>If the status is unknown, contact the processor before retrying</p>
+<p>Related error codes</p>
+<p>REVERSAL — Reversal required</p>
+<p>TIMEOUT — Transaction timeout</p>
+<p>Notes and edge cases</p>
+<p>Duplicate detection rules vary by processor; some allow override only through support.</p>
+</div>
+

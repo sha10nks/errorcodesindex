@@ -1,0 +1,45 @@
+---
+industry: "systems"
+subcategory: "embedded-systems"
+code: "MEMMANAGE"
+shortLabel: "Memory management fault"
+summary: "A Cortex-M memory protection fault occurred due to an invalid memory access or region violation." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Embedded Systems</p>
+<p>CODE: MEMMANAGE</p>
+<p>Title</p>
+<p>(MEMMANAGE &mdash; Memory management fault)</p>
+<p>One-sentence summary</p>
+<p>A Cortex-M memory protection fault occurred due to an invalid memory access or region violation.</p>
+<p>What this code means</p>
+<p>MemManage faults are raised on many Cortex‑M systems when the CPU detects an illegal memory access, such as executing from a forbidden region or violating memory protection settings (MPU). It is more specific than a generic HardFault when enabled.</p>
+<p>Where users usually see this code</p>
+<p>Firmware logs or debug consoles</p>
+<p>Crash dumps with fault handler output</p>
+<p>During startup or peripheral initialization</p>
+<p>Why this code usually appears</p>
+<p>Null/invalid pointer dereference</p>
+<p>Stack corruption leading to invalid return address</p>
+<p>MPU region misconfiguration</p>
+<p>What typically happens next</p>
+<p>The device may reset or enter a fault handler loop</p>
+<p>What this code is NOT</p>
+<p>It is not a network connectivity issue</p>
+<p>It is not safe to perform hardware repair guesses based on fault names</p>
+<p>Troubleshooting checklist</p>
+<p>Capture the fault status registers and stack trace if available</p>
+<p>Review recent firmware changes around memory access and MPU configuration</p>
+<p>Isolate suspect peripherals if the crash correlates with I/O</p>
+<p>Related error codes</p>
+<p>HARDFAULT — CPU fault exception</p>
+<p>BUSFAULT — Bus fault exception</p>
+<p>USAGEFAULT — Usage fault exception</p>
+<p>Notes and edge cases</p>
+<p>Some devices mask MemManage faults into HardFault if the MPU or fault handlers are not enabled.</p>
+</div>
+

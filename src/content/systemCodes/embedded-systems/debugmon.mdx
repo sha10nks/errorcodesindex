@@ -1,0 +1,41 @@
+---
+industry: "systems"
+subcategory: "embedded-systems"
+code: "DEBUGMON"
+shortLabel: "Debug monitor exception"
+summary: "A debug monitor exception occurred, typically in debug builds or when a debug event triggers an exception." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Embedded Systems</p>
+<p>CODE: DEBUGMON</p>
+<p>Title</p>
+<p>(DEBUGMON &mdash; Debug monitor exception)</p>
+<p>One-sentence summary</p>
+<p>A debug monitor exception occurred, typically in debug builds or when a debug event triggers an exception.</p>
+<p>What this code means</p>
+<p>Debug monitor exceptions are used on some Cortex‑M systems for debugging features (breakpoints, watchpoints, debug events). Seeing it in production logs is uncommon and may indicate a debug feature was enabled, or a crash reporter captured an unexpected debug exception.</p>
+<p>Where users usually see this code</p>
+<p>Development/test firmware logs</p>
+<p>Devices with debug features enabled</p>
+<p>Why this code usually appears</p>
+<p>Watchpoint/breakpoint triggered</p>
+<p>Debug exception configuration enabled inadvertently</p>
+<p>What typically happens next</p>
+<p>Device may halt (in debug) or reset (in production watchdog scenarios)</p>
+<p>What this code is NOT</p>
+<p>It is not a normal user-facing device error</p>
+<p>It is not a network service error</p>
+<p>Troubleshooting checklist</p>
+<p>Confirm whether the firmware build is a production build</p>
+<p>Review debug configuration and exception handlers</p>
+<p>Related error codes</p>
+<p>HARDFAULT — CPU fault exception</p>
+<p>USAGEFAULT — Usage fault exception</p>
+<p>Notes and edge cases</p>
+<p>Some crash loggers report the exception name even when the original trigger was elsewhere; correlate with full logs.</p>
+</div>
+

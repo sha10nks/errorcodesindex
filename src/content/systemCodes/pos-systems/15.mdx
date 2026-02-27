@@ -1,0 +1,47 @@
+---
+industry: "systems"
+subcategory: "pos-systems"
+code: "15"
+shortLabel: "No such issuer"
+summary: "The card issuer could not be identified or the routing information was not recognized." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: POS Systems</p>
+<p>CODE: 15</p>
+<p>Title</p>
+<p>(15 &mdash; No such issuer)</p>
+<p>One-sentence summary</p>
+<p>The card issuer could not be identified or the routing information was not recognized.</p>
+<p>What this code means</p>
+<p>Response code 15 indicates the authorization request could not be routed to a valid issuer. This can happen when the issuer identification data is not recognized, when the card number is invalid, or when the acquiring/processor routing tables do not recognize the issuer.</p>
+<p>Where users usually see this code</p>
+<p>New payment methods or unusual card ranges</p>
+<p>Mis-keyed manual entry transactions</p>
+<p>Routing or configuration issues at the processor</p>
+<p>Why this code usually appears</p>
+<p>Incorrect card number or entry error</p>
+<p>Issuer routing not supported by the processor/acquirer</p>
+<p>Configuration issue with card network support</p>
+<p>What typically happens next</p>
+<p>The transaction is declined</p>
+<p>Merchant may need to use a different acquirer or enable additional card networks</p>
+<p>What this code is NOT</p>
+<p>It is not an insufficient funds decline</p>
+<p>It is not a POS device malfunction code</p>
+<p>Troubleshooting checklist</p>
+<p>Re-check card entry method and number</p>
+<p>Try chip/tap instead of manual entry where possible</p>
+<p>Confirm the merchant account supports the card network/type</p>
+<p>Escalate to processor support if the card is valid but routing fails</p>
+<p>Related error codes</p>
+<p>14 — Invalid card number</p>
+<p>12 — Invalid transaction</p>
+<p>03 — Invalid merchant</p>
+<p>Notes and edge cases</p>
+<p>Some processors return similar codes for unsupported card products; consult processor-specific mappings.</p>
+</div>
+

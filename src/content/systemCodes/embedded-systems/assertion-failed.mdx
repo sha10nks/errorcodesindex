@@ -1,0 +1,52 @@
+---
+industry: "systems"
+subcategory: "embedded-systems"
+code: "ASSERTION FAILED"
+shortLabel: "Runtime assertion"
+summary: "A runtime safety check triggered and halted or reset the system."
+lastmod: "2026-02-27T20:30:06.358Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Embedded Systems</p>
+<p>CODE: ASSERTION FAILED</p>
+<p>Title</p>
+<p>(ASSERTION FAILED &mdash; Runtime assertion)</p>
+<p>One-sentence summary</p>
+<p>A runtime safety check triggered and halted or reset the system.</p>
+<p>What this code means</p>
+<p>“Assertion failed” indicates a runtime check detected an invalid state and triggered a controlled halt or reset. In embedded systems this often protects against unsafe operation and points to a logic or state machine issue.</p>
+<p>Where users usually see this code</p>
+<p>Device status screens or logs</p>
+<p>During startup or initialization sequences</p>
+<p>While interacting with sensors, buses, or storage</p>
+<p>After firmware updates or configuration changes</p>
+<p>Why this code usually appears</p>
+<p>A safety check or assertion failed</p>
+<p>The system restarted due to watchdog or power conditions</p>
+<p>A bus, peripheral, or storage operation failed</p>
+<p>A resource limit was reached (memory/stack)</p>
+<p>What typically happens next</p>
+<p>The device may reboot or enter a fault state</p>
+<p>A diagnostic message is logged</p>
+<p>Service intervention may be required for field equipment</p>
+<p>What this code is NOT</p>
+<p>It is not always user-repairable</p>
+<p>It is not safe to perform electrical repairs based on guesses</p>
+<p>Troubleshooting checklist</p>
+<p>Capture the full log output, including any stack trace or code</p>
+<p>Confirm firmware version and recent configuration changes</p>
+<p>Check power stability and environmental conditions</p>
+<p>Isolate peripherals and buses if the fault indicates I/O</p>
+<p>Use vendor diagnostics and service manuals for the exact model</p>
+<p>Escalate when the fault is recurring or safety-critical</p>
+<p>Related error codes</p>
+<p>GURU MEDITATION ERROR — Runtime panic</p>
+<p>HARDFAULT — CPU fault exception</p>
+<p>WATCHDOG RESET — Watchdog triggered</p>
+<p>BROWNOUT RESET — Undervoltage event</p>
+<p>Notes and edge cases</p>
+<p>Embedded error identifiers are frequently product-specific; the exact device documentation is critical.</p>
+</div>

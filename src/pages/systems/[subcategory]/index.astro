@@ -1,0 +1,135 @@
+---
+import { getCollection } from 'astro:content';
+import IndustryHubLayout from '../../../components/IndustryHubLayout.astro';
+import { parseFaqMarkdown } from '../../../utils/faq';
+
+export async function getStaticPaths() {
+  return [
+    { params: { subcategory: 'operating-systems' } },
+    { params: { subcategory: 'business-systems' } },
+    { params: { subcategory: 'pos-systems' } },
+    { params: { subcategory: 'security-systems' } },
+    { params: { subcategory: 'printers' } },
+    { params: { subcategory: 'routers' } },
+    { params: { subcategory: 'pos-terminals' } },
+    { params: { subcategory: 'smart-devices' } },
+    { params: { subcategory: 'bios-uefi' } },
+    { params: { subcategory: 'embedded-systems' } },
+  ];
+}
+
+const SUBS: Record<string, { name: string; description: string; prefixes: string[] }> = {
+  'operating-systems': {
+    name: 'Operating Systems',
+    description: 'OS-level errors for updates, installation, boot, and runtime failures, including common hexadecimal codes.',
+    prefixes: ['0x8007', '0x800F', '0x8024', '0xC000', '0x8000', '0x8007'],
+  },
+  'business-systems': {
+    name: 'Business Systems',
+    description: 'Commonly searched business software error codes and workflow failures, mapped to safe troubleshooting steps.',
+    prefixes: ['H', 'PS', '6000', '-6', '3371', '6123'],
+  },
+  'pos-systems': {
+    name: 'POS Systems',
+    description: 'Point-of-sale system errors across checkout, sync, configuration, and operational workflows.',
+    prefixes: ['Error', 'Sync', 'Login', 'Update', 'Network'],
+  },
+  'security-systems': {
+    name: 'Security Systems',
+    description: 'Authentication, policy, and security enforcement errors with conservative, log-first troubleshooting guidance.',
+    prefixes: ['0xC000', '0x8009', '0x8007', 'TPM', 'Secure'],
+  },
+  'printers': {
+    name: 'Printers',
+    description: 'Printer error codes from common device families and service conditions, organized for fast identification.',
+    prefixes: ['49', '50', '79', 'B200', '5B00', 'U052'],
+  },
+  'routers': {
+    name: 'Routers',
+    description: 'Router and connectivity errors, including common WAN/PPP, DNS, and DHCP-related failures.',
+    prefixes: ['Error 651', 'Error 678', 'Error 691', 'DNS', 'DHCP'],
+  },
+  'pos-terminals': {
+    name: 'POS Terminals',
+    description: 'Card-present terminal errors and device prompts during authorization, settlement, and configuration.',
+    prefixes: ['Declined', 'Timeout', 'Batch', 'TID', 'Update'],
+  },
+  'smart-devices': {
+    name: 'Smart Devices',
+    description: 'Smart-device setup and connectivity errors during pairing, onboarding, and firmware updates.',
+    prefixes: ['Setup', 'Pair', 'Wi‑Fi', 'Update', 'Auth'],
+  },
+  'bios-uefi': {
+    name: 'BIOS / UEFI',
+    description: 'Firmware and boot diagnostics including POST codes, Secure Boot/TPM messages, and startup failures.',
+    prefixes: ['POST', 'TPM', 'Secure Boot', 'Beep', '0x'],
+  },
+  'embedded-systems': {
+    name: 'Embedded Systems',
+    description: 'Embedded and firmware-driven system errors for specialized devices, controllers, and kiosks.',
+    prefixes: ['Error', 'Fault', 'Code', 'Status', 'E'],
+  },
+};
+
+const { subcategory } = Astro.params;
+if (!subcategory) throw new Error('Missing subcategory');
+const meta = SUBS[subcategory];
+if (!meta) throw new Error('Unsupported subcategory');
+
+const entries = (await getCollection('systemCodes')).filter((e) => e.data.subcategory === subcategory);
+const byLastmodDesc = entries
+  .slice()
+  .sort((a, b) => Date.parse(b.data.lastmod) - Date.parse(a.data.lastmod));
+
+const toGridItem = (e: any) => {
+  const codeSlug = e.slug.split('/').slice(-1)[0];
+  return {
+    code: e.data.code,
+    title: e.data.shortLabel,
+    description: e.data.summary || e.data.shortLabel,
+    category: meta.name,
+    publishDate: e.data.lastmod,
+    url: `/systems/${subcategory}/error-codes/${codeSlug}/`,
+  };
+};
+
+const recentItems = byLastmodDesc.slice(0, 18).map(toGridItem);
+const featuredItems = byLastmodDesc.slice(0, 12).map(toGridItem);
+
+const introModules = import.meta.glob('/src/content/hubs/systems/*/intro.md');
+const guideModules = import.meta.glob('/src/content/hubs/systems/*/guide.md');
+const faqModules = import.meta.glob('/src/content/hubs/systems/*/faq.md', { query: '?raw', import: 'default' });
+
+const introKey = `/src/content/hubs/systems/${subcategory}/intro.md`;
+const guideKey = `/src/content/hubs/systems/${subcategory}/guide.md`;
+const faqKey = `/src/content/hubs/systems/${subcategory}/faq.md`;
+
+const Intro = (await (introModules[introKey] as any)?.())?.default;
+const Guide = (await (guideModules[guideKey] as any)?.())?.default;
+const faqContent = (await (faqModules[faqKey] as any)?.()) as string;
+const faqItems = parseFaqMarkdown(faqContent || '');
+
+const title = `${meta.name} Error Codes`;
+const description = meta.description;
+
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Systems & Devices', href: '/systems/' },
+  { label: meta.name, href: `/systems/${subcategory}/` },
+];
+---
+
+<IndustryHubLayout
+  title={title}
+  description={description}
+  industryKey="systems"
+  prefixesOverride={meta.prefixes}
+  quickNavBasePath={`/systems/${subcategory}/error-codes/`}
+  Intro={Intro}
+  Guide={Guide}
+  faqItems={faqItems}
+  recentItems={recentItems}
+  featuredItems={featuredItems}
+  crumbs={crumbs}
+/>
+

@@ -1,0 +1,41 @@
+---
+industry: "systems"
+subcategory: "security-systems"
+code: "0xC000006F"
+shortLabel: "Invalid logon hours"
+summary: "The user is not permitted to log on at this time based on account restrictions." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Security Systems</p>
+<p>CODE: 0xC000006F</p>
+<p>Title</p>
+<p>(0xC000006F &mdash; Invalid logon hours)</p>
+<p>One-sentence summary</p>
+<p>The user is not permitted to log on at this time based on account restrictions.</p>
+<p>What this code means</p>
+<p>0xC000006F indicates an authentication failure due to logon time restrictions configured on the account. The credentials may be correct, but policy prevents access at the current time.</p>
+<p>Where users usually see this code</p>
+<p>Domain authentication failures</p>
+<p>RDP/SMB access attempts under restricted accounts</p>
+<p>Why this code usually appears</p>
+<p>Account has permitted logon hours configured</p>
+<p>Time zone mismatch in policy expectation</p>
+<p>What typically happens next</p>
+<p>Logon is denied until within permitted hours or policy is changed</p>
+<p>What this code is NOT</p>
+<p>It is not necessarily a wrong password</p>
+<p>It is not an account lockout indicator</p>
+<p>Troubleshooting checklist</p>
+<p>Review account restrictions and allowed logon hours</p>
+<p>Confirm system time/time zone is correct</p>
+<p>Related error codes</p>
+<p>0xC0000070 — Invalid workstation</p>
+<p>0xC000015B — Logon type not granted</p>
+<p>Notes and edge cases</p>
+<p>Service accounts with strict restrictions can cause repeated failures when scheduled jobs run outside allowed windows.</p>
+</div>
+

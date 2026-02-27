@@ -1,0 +1,43 @@
+---
+industry: "systems"
+subcategory: "embedded-systems"
+code: "MALLOC FAILED"
+shortLabel: "Heap allocation failed"
+summary: "A dynamic memory allocation failed because the heap is exhausted or fragmented." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Embedded Systems</p>
+<p>CODE: MALLOC FAILED</p>
+<p>Title</p>
+<p>(MALLOC FAILED &mdash; Heap allocation failed)</p>
+<p>One-sentence summary</p>
+<p>A dynamic memory allocation failed because the heap is exhausted or fragmented.</p>
+<p>What this code means</p>
+<p>“malloc failed” indicates the firmware attempted to allocate memory dynamically and the allocator could not satisfy the request. In embedded systems this often happens due to limited RAM, memory fragmentation, or leaks over time.</p>
+<p>Where users usually see this code</p>
+<p>Devices that use dynamic allocation for buffers</p>
+<p>Wi‑Fi/stack-heavy firmware workloads</p>
+<p>Why this code usually appears</p>
+<p>Heap exhaustion due to high memory demand</p>
+<p>Memory leak</p>
+<p>Fragmentation from frequent allocate/free patterns</p>
+<p>What typically happens next</p>
+<p>Operation fails, device may reset, or enters safe mode depending on firmware design</p>
+<p>What this code is NOT</p>
+<p>It is not a hardware sensor failure by itself</p>
+<p>It is not necessarily a power issue</p>
+<p>Troubleshooting checklist</p>
+<p>Capture memory usage metrics and logs</p>
+<p>Review recent changes that increased buffer sizes or features</p>
+<p>Reduce allocation churn or use static buffers where appropriate</p>
+<p>Related error codes</p>
+<p>OUT OF MEMORY — Memory limit reached</p>
+<p>STACK OVERFLOW — Stack exhaustion</p>
+<p>Notes and edge cases</p>
+<p>Some RTOS systems provide heap diagnostics; use them to identify fragmentation and leaks.</p>
+</div>
+

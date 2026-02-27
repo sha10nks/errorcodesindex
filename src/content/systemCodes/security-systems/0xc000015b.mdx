@@ -1,0 +1,43 @@
+---
+industry: "systems"
+subcategory: "security-systems"
+code: "0xC000015B"
+shortLabel: "Logon type not granted"
+summary: "The account is not allowed to log on using the requested logon type (e.g., RDP, service, network)." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Security Systems</p>
+<p>CODE: 0xC000015B</p>
+<p>Title</p>
+<p>(0xC000015B &mdash; Logon type not granted)</p>
+<p>One-sentence summary</p>
+<p>The account is not allowed to log on using the requested logon type (e.g., RDP, service, network).</p>
+<p>What this code means</p>
+<p>0xC000015B indicates a policy restriction that denies the requested logon type. For example, an account may be blocked from interactive logon, remote desktop logon, or “log on as a service” depending on local or domain policy.</p>
+<p>Where users usually see this code</p>
+<p>RDP login failures</p>
+<p>Service startup failures when the service account lacks “log on as a service”</p>
+<p>Why this code usually appears</p>
+<p>User rights assignment policy does not permit that logon type</p>
+<p>Group policy changed</p>
+<p>Account moved to different group/OU</p>
+<p>What typically happens next</p>
+<p>Authentication fails until rights are granted appropriately</p>
+<p>What this code is NOT</p>
+<p>It is not always a wrong password</p>
+<p>It is not a network outage</p>
+<p>Troubleshooting checklist</p>
+<p>Identify the logon type (service, RDP, network) being attempted</p>
+<p>Review user rights assignment and group policy</p>
+<p>Grant the minimal required rights following your security policy</p>
+<p>Related error codes</p>
+<p>0xC000006F — Invalid logon hours</p>
+<p>0xC0000070 — Invalid workstation</p>
+<p>Notes and edge cases</p>
+<p>Over-granting logon rights is a security risk; apply least privilege.</p>
+</div>
+

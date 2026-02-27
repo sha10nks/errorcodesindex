@@ -1,0 +1,42 @@
+---
+industry: "systems"
+subcategory: "pos-terminals"
+code: "MAC ERROR"
+shortLabel: "Message authentication error"
+summary: "The terminal or host detected a message authentication (MAC) validation failure." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: POS Terminals</p>
+<p>CODE: MAC ERROR</p>
+<p>Title</p>
+<p>(MAC ERROR &mdash; Message authentication error)</p>
+<p>One-sentence summary</p>
+<p>The terminal or host detected a message authentication (MAC) validation failure.</p>
+<p>What this code means</p>
+<p>MAC errors in payment environments indicate that a cryptographic message authentication check failed. This can occur when terminal keys are not synchronized with the host, when a message was corrupted in transit, or when security configuration is inconsistent.</p>
+<p>Where users usually see this code</p>
+<p>During secure transactions requiring MAC validation</p>
+<p>After key injection or key rotation events</p>
+<p>Why this code usually appears</p>
+<p>Terminal keys are missing, expired, or incorrect</p>
+<p>Host and terminal key sets are out of sync</p>
+<p>Communication corruption or protocol mismatch</p>
+<p>What typically happens next</p>
+<p>Transaction fails and terminal may require key reload</p>
+<p>What this code is NOT</p>
+<p>It is not a customer card decline reason</p>
+<p>It is not safe to attempt security repairs without vendor guidance</p>
+<p>Troubleshooting checklist</p>
+<p>Confirm terminal keys are loaded and current</p>
+<p>Contact processor/vendor for key reload procedures</p>
+<p>Related error codes</p>
+<p>KEYS NOT LOADED — Terminal key state issue</p>
+<p>HOST UNAVAILABLE — Host connection issue</p>
+<p>Notes and edge cases</p>
+<p>Key handling is compliance-sensitive; follow certified procedures provided by your processor/vendor.</p>
+</div>
+

@@ -1,0 +1,43 @@
+---
+industry: "systems"
+subcategory: "bios-uefi"
+code: "INVALID PARTITION TABLE"
+shortLabel: "Boot partition issue"
+summary: "The system found an invalid or non-bootable partition table on the selected drive." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: BIOS / UEFI</p>
+<p>CODE: INVALID PARTITION TABLE</p>
+<p>Title</p>
+<p>(INVALID PARTITION TABLE &mdash; Boot partition issue)</p>
+<p>One-sentence summary</p>
+<p>The system found an invalid or non-bootable partition table on the selected drive.</p>
+<p>What this code means</p>
+<p>This message indicates the firmware/bootloader detected a partition table state that prevents booting. It can occur after disk cloning, partition edits, drive corruption, or when boot mode (UEFI vs Legacy) does not match the disk format.</p>
+<p>Where users usually see this code</p>
+<p>After cloning a disk or changing partitions</p>
+<p>After an unexpected shutdown during disk writes</p>
+<p>Why this code usually appears</p>
+<p>Partition table corruption</p>
+<p>Boot mode mismatch (UEFI/Legacy)</p>
+<p>Incorrect active/boot partition state (legacy systems)</p>
+<p>What typically happens next</p>
+<p>The machine cannot boot until disk structure is repaired</p>
+<p>What this code is NOT</p>
+<p>It is not an OS application crash</p>
+<p>It is not a CPU/GPU failure indicator</p>
+<p>Troubleshooting checklist</p>
+<p>Verify firmware boot mode matches the disk (GPT/MBR)</p>
+<p>Use official recovery media to run disk/boot repair tools</p>
+<p>Back up important data before partition repairs</p>
+<p>Related error codes</p>
+<p>BOOTMGR IS MISSING — Boot loader missing</p>
+<p>OPERATING SYSTEM NOT FOUND — No OS detected</p>
+<p>Notes and edge cases</p>
+<p>Modern UEFI systems rely on an EFI System Partition; deleting or misplacing it can break boot.</p>
+</div>
+

@@ -1,0 +1,51 @@
+---
+industry: "systems"
+subcategory: "operating-systems"
+code: "0x8007045D"
+shortLabel: "I/O device error"
+summary: "Windows reported an input/output error while reading from or writing to a device." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Operating Systems</p>
+<p>CODE: 0x8007045D</p>
+<p>Title</p>
+<p>(0x8007045D &mdash; I/O device error)</p>
+<p>One-sentence summary</p>
+<p>Windows reported an input/output error while reading from or writing to a device.</p>
+<p>What this code means</p>
+<p>0x8007045D indicates that Windows could not complete a read/write operation due to an I/O failure. It often appears when accessing external drives, network storage, installation media, or when the filesystem/device returns an error during transfer.</p>
+<p>Where users usually see this code</p>
+<p>Copy operations to/from USB drives or SD cards</p>
+<p>Installer or update steps reading from media</p>
+<p>Backups and restore workflows</p>
+<p>System logs related to storage or device access</p>
+<p>Why this code usually appears</p>
+<p>Bad sectors or filesystem corruption on the storage device</p>
+<p>Loose/unstable cable or port causing intermittent disconnects</p>
+<p>Driver/controller issues for the storage interface</p>
+<p>Power or sleep events interrupting a long transfer</p>
+<p>What typically happens next</p>
+<p>The transfer/install fails and may partially complete</p>
+<p>Retries may fail at the same point if the device error is persistent</p>
+<p>What this code is NOT</p>
+<p>It is not always a permanent hardware failure</p>
+<p>It is not a network authentication error</p>
+<p>Troubleshooting checklist</p>
+<p>Try a different USB port/cable and avoid hubs for testing</p>
+<p>Reboot and retry with a smaller test copy to isolate the failure point</p>
+<p>Check disk health and filesystem integrity using Windows tools</p>
+<p>If the device is removable, test it on another machine to confirm whether the device is the source</p>
+<p>Replace the media if errors repeat or integrity checks fail</p>
+<p>Related error codes</p>
+<p>0x80070570 — File is corrupted</p>
+<p>0x80070002 — File not found</p>
+<p>0x80070643 — Installation failed</p>
+<p>0x80070005 — Access denied</p>
+<p>Notes and edge cases</p>
+<p>Large transfers can expose marginal cables or power issues that don’t show up with small files.</p>
+</div>
+

@@ -1,0 +1,44 @@
+---
+industry: "systems"
+subcategory: "embedded-systems"
+code: "USAGEFAULT"
+shortLabel: "Usage fault exception"
+summary: "The CPU detected an illegal instruction, undefined state, or invalid execution condition." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Embedded Systems</p>
+<p>CODE: USAGEFAULT</p>
+<p>Title</p>
+<p>(USAGEFAULT &mdash; Usage fault exception)</p>
+<p>One-sentence summary</p>
+<p>The CPU detected an illegal instruction, undefined state, or invalid execution condition.</p>
+<p>What this code means</p>
+<p>Usage faults on Cortex‑M style systems can occur when the CPU executes an undefined instruction, divides by zero (if trapped), or enters an invalid state. It often points to corrupted code flow, stack issues, or jumping to an invalid address.</p>
+<p>Where users usually see this code</p>
+<p>Crash logs during runtime</p>
+<p>After firmware updates or new feature rollouts</p>
+<p>Why this code usually appears</p>
+<p>Function pointer/callback points to invalid memory</p>
+<p>Stack corruption changed the return address</p>
+<p>Binary built for the wrong CPU/ABI settings</p>
+<p>What typically happens next</p>
+<p>Device resets or enters a fault handler loop</p>
+<p>What this code is NOT</p>
+<p>It is not a network or cloud service error</p>
+<p>It is not necessarily hardware failure</p>
+<p>Troubleshooting checklist</p>
+<p>Capture PC/LR values and stack trace if available</p>
+<p>Validate firmware build settings for the target MCU</p>
+<p>Review recent code changes around interrupts, callbacks, and stack usage</p>
+<p>Related error codes</p>
+<p>ILLEGAL INSTRUCTION — Illegal instruction trap</p>
+<p>STACK OVERFLOW — Stack exhaustion</p>
+<p>HARDFAULT — CPU fault exception</p>
+<p>Notes and edge cases</p>
+<p>UsageFault may be masked into HardFault if fault configuration differs by firmware.</p>
+</div>
+

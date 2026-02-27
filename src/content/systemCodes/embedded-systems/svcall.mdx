@@ -1,0 +1,42 @@
+---
+industry: "systems"
+subcategory: "embedded-systems"
+code: "SVCALL"
+shortLabel: "Supervisor call"
+summary: "A supervisor call handler was invoked; in RTOS systems this can be part of normal operation or indicate a fault if unexpected." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Embedded Systems</p>
+<p>CODE: SVCALL</p>
+<p>Title</p>
+<p>(SVCALL &mdash; Supervisor call)</p>
+<p>One-sentence summary</p>
+<p>A supervisor call handler was invoked; in RTOS systems this can be part of normal operation or indicate a fault if unexpected.</p>
+<p>What this code means</p>
+<p>SVC (supervisor call) is used by some operating systems/RTOS kernels to request privileged operations. Seeing it as an “error” usually means the system trapped in or reported the SVC handler unexpectedly, which can indicate misconfigured privilege mode, stack issues, or incorrect exception handling.</p>
+<p>Where users usually see this code</p>
+<p>RTOS-based devices with crash reporting</p>
+<p>During context switching or system calls</p>
+<p>Why this code usually appears</p>
+<p>Kernel/RTOS exception reporting surfaced an SVC event</p>
+<p>Stack corruption or invalid return flow</p>
+<p>Incorrect privilege configuration</p>
+<p>What typically happens next</p>
+<p>Device may reset or enter a fault mode</p>
+<p>What this code is NOT</p>
+<p>It is not a user-facing “app error code”</p>
+<p>It is not a networking error</p>
+<p>Troubleshooting checklist</p>
+<p>Capture stack trace and exception context</p>
+<p>Review RTOS configuration and recent changes around system calls/interrupt priorities</p>
+<p>Related error codes</p>
+<p>HARDFAULT — CPU fault exception</p>
+<p>USAGEFAULT — Usage fault exception</p>
+<p>Notes and edge cases</p>
+<p>In some debug builds, SVC may be used intentionally; correlate with firmware logging level and build type.</p>
+</div>
+

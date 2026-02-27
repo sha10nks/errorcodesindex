@@ -1,0 +1,52 @@
+---
+industry: "systems"
+subcategory: "pos-terminals"
+code: "DECLINED"
+shortLabel: "Issuer declined"
+summary: "The terminal indicates the payment was not approved by the issuer."
+lastmod: "2026-02-27T20:30:06.358Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: POS Terminals</p>
+<p>CODE: DECLINED</p>
+<p>Title</p>
+<p>(DECLINED &mdash; Issuer declined)</p>
+<p>One-sentence summary</p>
+<p>The terminal indicates the payment was not approved by the issuer.</p>
+<p>What this code means</p>
+<p>“DECLINED” on a POS terminal indicates the payment was not approved. The terminal typically does not expose the issuer’s internal reason to the merchant, so the authoritative details are in the processor record and the cardholder’s issuer communication.</p>
+<p>Where users usually see this code</p>
+<p>Card-present checkout prompts</p>
+<p>Settlement and batch close operations</p>
+<p>Terminal pairing and configuration screens</p>
+<p>During terminal software or key updates</p>
+<p>Why this code usually appears</p>
+<p>A payment decision was returned by the issuer/processor</p>
+<p>Connectivity prevented reaching the host</p>
+<p>Device configuration or keys were incomplete</p>
+<p>A local device state blocked completion (paper out, update required)</p>
+<p>What typically happens next</p>
+<p>The terminal displays a prompt and aborts the flow</p>
+<p>The POS may ask to retry or use a different method</p>
+<p>Final status must be confirmed in the processor record</p>
+<p>What this code is NOT</p>
+<p>It is not always a decline</p>
+<p>It is not safe to re-run a card without checking for duplicates</p>
+<p>Troubleshooting checklist</p>
+<p>Determine whether the message is a decline or a technical failure</p>
+<p>Confirm connectivity (Ethernet/Wi‑Fi/cellular) and signal quality</p>
+<p>Check for required updates or key loading status</p>
+<p>Confirm batch/settlement state if the error appears at close</p>
+<p>Verify merchant configuration identifiers (TID/MID) if shown</p>
+<p>Escalate with logs/receipts to the terminal vendor or processor</p>
+<p>Related error codes</p>
+<p>CALL ISSUER — Issuer contact required</p>
+<p>COMMUNICATION ERROR — Host communication failed</p>
+<p>HOST UNAVAILABLE — Host unreachable</p>
+<p>TIMEOUT — Request timed out</p>
+<p>Notes and edge cases</p>
+<p>Terminal prompts vary by device and processor; the most reliable source of truth is the processor’s final record.</p>
+</div>

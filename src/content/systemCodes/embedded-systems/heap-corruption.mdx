@@ -1,0 +1,42 @@
+---
+industry: "systems"
+subcategory: "embedded-systems"
+code: "HEAP CORRUPTION"
+shortLabel: "Allocator state corrupted"
+summary: "The memory allocator detected corrupted heap metadata, often from out-of-bounds writes or invalid frees." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Embedded Systems</p>
+<p>CODE: HEAP CORRUPTION</p>
+<p>Title</p>
+<p>(HEAP CORRUPTION &mdash; Allocator state corrupted)</p>
+<p>One-sentence summary</p>
+<p>The memory allocator detected corrupted heap metadata, often from out-of-bounds writes or invalid frees.</p>
+<p>What this code means</p>
+<p>Heap corruption indicates allocator metadata has been damaged. In embedded systems this is frequently caused by buffer overruns, use-after-free bugs, or double free conditions. The failure may occur far from the original bug site.</p>
+<p>Where users usually see this code</p>
+<p>Debug builds with heap checking</p>
+<p>Crash logs that include allocator assertions</p>
+<p>Why this code usually appears</p>
+<p>Out-of-bounds writes to a heap buffer</p>
+<p>Use-after-free access</p>
+<p>Invalid or double free</p>
+<p>What typically happens next</p>
+<p>Device crashes or resets when allocator detects corruption</p>
+<p>What this code is NOT</p>
+<p>It is not a stable “user action” error</p>
+<p>It is not a power supply warning by itself</p>
+<p>Troubleshooting checklist</p>
+<p>Capture logs around the first allocator assertion</p>
+<p>Enable memory sanitization/debug options in development where possible</p>
+<p>Review buffer handling and bounds checks</p>
+<p>Related error codes</p>
+<p>DOUBLE FREE — Memory freed twice</p>
+<p>STACK OVERFLOW — Stack exhaustion</p>
+<p>Notes and edge cases</p>
+<p>In constrained devices, memory bugs can look like random resets; improving logging helps isolate the root cause.</p>
+</div>

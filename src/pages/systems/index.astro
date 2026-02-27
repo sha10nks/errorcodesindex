@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+import IndustryHubLayout from '../../components/IndustryHubLayout.astro';
+import Intro from '../../content/hubs/systems/intro.md';
+import Guide from '../../content/hubs/systems/guide.md';
+import faqContent from '../../content/hubs/systems/faq.md?raw';
+import { parseFaqMarkdown } from '../../utils/faq';
+
+const title = 'Systems & Devices Error Codes Directory';
+const description = 'A directory of real-world system and device error codes, organized by subcategory with detailed code pages.';
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Systems & Devices', href: '/systems/' },
+];
+
+const SUBCATEGORIES: Array<{ key: string; name: string; icon: string; url: string }> = [
+  { key: 'operating-systems', name: 'Operating Systems', icon: '🖥️', url: '/systems/operating-systems/' },
+  { key: 'business-systems', name: 'Business Systems', icon: '🏢', url: '/systems/business-systems/' },
+  { key: 'pos-systems', name: 'POS Systems', icon: '🧾', url: '/systems/pos-systems/' },
+  { key: 'security-systems', name: 'Security Systems', icon: '🛡️', url: '/systems/security-systems/' },
+  { key: 'printers', name: 'Printers', icon: '🖨️', url: '/systems/printers/' },
+  { key: 'routers', name: 'Routers', icon: '📶', url: '/systems/routers/' },
+  { key: 'pos-terminals', name: 'POS Terminals', icon: '💳', url: '/systems/pos-terminals/' },
+  { key: 'smart-devices', name: 'Smart Devices', icon: '🏠', url: '/systems/smart-devices/' },
+  { key: 'bios-uefi', name: 'BIOS / UEFI', icon: '⚙️', url: '/systems/bios-uefi/' },
+  { key: 'embedded-systems', name: 'Embedded Systems', icon: '🔩', url: '/systems/embedded-systems/' },
+];
+
+const entries = await getCollection('systemCodes');
+const counts = new Map<string, number>();
+for (const e of entries) {
+  const k = e.data.subcategory;
+  counts.set(k, (counts.get(k) ?? 0) + 1);
+}
+
+const categoryData = SUBCATEGORIES.map((s) => ({
+  name: s.name,
+  icon: s.icon,
+  count: counts.get(s.key) ?? 0,
+  url: s.url,
+}));
+
+const byLastmodDesc = entries
+  .slice()
+  .sort((a, b) => Date.parse(b.data.lastmod) - Date.parse(a.data.lastmod));
+
+const toGridItem = (e: any) => {
+  const codeSlug = e.slug.split('/').slice(-1)[0];
+  const subcategory = e.data.subcategory;
+  const sub = SUBCATEGORIES.find((s) => s.key === subcategory);
+  return {
+    code: e.data.code,
+    title: e.data.shortLabel,
+    description: e.data.summary || e.data.shortLabel,
+    category: sub?.name ?? 'Systems & Devices',
+    publishDate: e.data.lastmod,
+    url: `/systems/${subcategory}/error-codes/${codeSlug}/`,
+  };
+};
+
+const recentItems = byLastmodDesc.slice(0, 18).map(toGridItem);
+
+const featuredWanted: Array<{ subcategory: string; slug: string }> = [
+  { subcategory: 'operating-systems', slug: '0x80070005' },
+  { subcategory: 'operating-systems', slug: '0x800f081f' },
+  { subcategory: 'printers', slug: 'b200' },
+  { subcategory: 'printers', slug: '49-service-error' },
+  { subcategory: 'routers', slug: 'error-651' },
+  { subcategory: 'security-systems', slug: '0xc000006d' },
+];
+
+const featuredItems = featuredWanted
+  .map((w) => entries.find((e) => e.data.subcategory === w.subcategory && e.slug.split('/').slice(-1)[0] === w.slug))
+  .filter(Boolean)
+  .slice(0, 12)
+  .map(toGridItem);
+
+const faqItems = parseFaqMarkdown(faqContent);
+---
+
+<IndustryHubLayout
+  title={title}
+  description={description}
+  industryKey="systems"
+  categoryData={categoryData}
+  showQuickNav={false}
+  Intro={Intro}
+  Guide={Guide}
+  faqItems={faqItems}
+  recentItems={recentItems}
+  featuredItems={featuredItems}
+  crumbs={crumbs}
+/>
+

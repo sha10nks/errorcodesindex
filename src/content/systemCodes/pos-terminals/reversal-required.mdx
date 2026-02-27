@@ -1,0 +1,44 @@
+---
+industry: "systems"
+subcategory: "pos-terminals"
+code: "REVERSAL"
+shortLabel: "Reversal required"
+summary: "The processor indicates a reversal/void is required to correct an incomplete or errored transaction state." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: POS Terminals</p>
+<p>CODE: REVERSAL</p>
+<p>Title</p>
+<p>(REVERSAL &mdash; Reversal required)</p>
+<p>One-sentence summary</p>
+<p>The processor indicates a reversal/void is required to correct an incomplete or errored transaction state.</p>
+<p>What this code means</p>
+<p>Reversal-required messages occur when a previous authorization attempt left the system in an inconsistent state (for example, host response was not received). The terminal/processor may attempt an automatic reversal, or prompt for a void/reversal to avoid duplicate charges.</p>
+<p>Where users usually see this code</p>
+<p>After a timeout or communication interruption</p>
+<p>When retrying a transaction immediately</p>
+<p>Why this code usually appears</p>
+<p>Host response was interrupted</p>
+<p>Terminal lost connectivity mid-transaction</p>
+<p>Duplicate prevention logic triggered</p>
+<p>What typically happens next</p>
+<p>Terminal performs or requests a reversal</p>
+<p>Merchant may be instructed not to retry until reversal completes</p>
+<p>What this code is NOT</p>
+<p>It is not always a true double-charge</p>
+<p>It is not a customer card decline</p>
+<p>Troubleshooting checklist</p>
+<p>Follow terminal prompts for reversal/void</p>
+<p>Check the batch/transaction log to confirm final state</p>
+<p>If uncertain, contact processor support with the transaction timestamp</p>
+<p>Related error codes</p>
+<p>TIMEOUT — Transaction timeout</p>
+<p>COMMUNICATION ERROR — Connectivity issue</p>
+<p>Notes and edge cases</p>
+<p>Reversal behavior varies by processor; do not repeatedly retry without confirming the previous outcome.</p>
+</div>
+

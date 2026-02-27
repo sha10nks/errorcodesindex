@@ -1,0 +1,50 @@
+---
+industry: "systems"
+subcategory: "business-systems"
+code: "6190, 816"
+shortLabel: "Company file locked or in use"
+summary: "The company file is being used, locked, or the lock state is inconsistent in a multi-user environment." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Business Systems</p>
+<p>CODE: 6190, 816</p>
+<p>Title</p>
+<p>(6190, 816 &mdash; Company file locked or in use)</p>
+<p>One-sentence summary</p>
+<p>The company file is being used, locked, or the lock state is inconsistent in a multi-user environment.</p>
+<p>What this code means</p>
+<p>6190, 816 is commonly associated with company file access problems caused by lock state conflicts. It may appear when the host or workstation believes the file is in use, when lock files are stale, or when multi-user hosting is misconfigured.</p>
+<p>Where users usually see this code</p>
+<p>Opening a company file stored on a server</p>
+<p>Switching into multi-user mode</p>
+<p>After a power loss or abrupt shutdown on the host</p>
+<p>Why this code usually appears</p>
+<p>Stale lock files after a crash</p>
+<p>Incorrect hosting settings or multiple hosts enabled</p>
+<p>Permissions prevent lock file creation/update</p>
+<p>Network instability causing lock state desync</p>
+<p>What typically happens next</p>
+<p>Users are blocked from opening the file until lock state is resolved</p>
+<p>Host restart or official diagnostics may be required</p>
+<p>What this code is NOT</p>
+<p>It is not always a corrupted company file</p>
+<p>It is not an internet-only issue</p>
+<p>Troubleshooting checklist</p>
+<p>Confirm only one machine is configured as the host</p>
+<p>Ensure all users exit the file cleanly and restart host/workstations</p>
+<p>Verify the share allows creating and updating lock/temp files</p>
+<p>Check for power/sleep policies that interrupt host services</p>
+<p>Use the vendor’s multi-user troubleshooting flow for your product</p>
+<p>Related error codes</p>
+<p>6189-83 — Company file cannot be opened</p>
+<p>6144-82 — Company file access error</p>
+<p>H202 — Multi-user hosting issue</p>
+<p>H505 — Hosting configuration issue</p>
+<p>Notes and edge cases</p>
+<p>Some environments require UNC paths and consistent name resolution; mixed DNS/NetBIOS can trigger lock issues.</p>
+</div>
+

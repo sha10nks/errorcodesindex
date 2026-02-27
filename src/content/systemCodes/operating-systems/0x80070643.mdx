@@ -1,0 +1,52 @@
+---
+industry: "systems"
+subcategory: "operating-systems"
+code: "0x80070643"
+shortLabel: "Installation failed"
+summary: "A Windows installer or update component reported a fatal error and could not complete the install." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Operating Systems</p>
+<p>CODE: 0x80070643</p>
+<p>Title</p>
+<p>(0x80070643 &mdash; Installation failed)</p>
+<p>One-sentence summary</p>
+<p>A Windows installer or update component reported a fatal error and could not complete the install.</p>
+<p>What this code means</p>
+<p>0x80070643 is a generic Windows installation failure code that can appear when installing updates, .NET components, security updates, or MSI-based apps. It typically means the installer encountered an unrecoverable error and aborted.</p>
+<p>Where users usually see this code</p>
+<p>Windows Update history entries</p>
+<p>Installer dialogs for MSI/MSP packages</p>
+<p>Microsoft Store or app install/repair flows</p>
+<p>Setup logs (CBS, WindowsUpdate, MSI logs)</p>
+<p>Why this code usually appears</p>
+<p>A prerequisite component is missing or inconsistent</p>
+<p>A servicing stack/component store issue blocks the update</p>
+<p>Files are locked by a running process or security software</p>
+<p>Permissions or policy restrictions prevent install steps</p>
+<p>What typically happens next</p>
+<p>The update/app install is rolled back</p>
+<p>Windows records a failure in update/install logs</p>
+<p>Retrying may succeed after prerequisite repair</p>
+<p>What this code is NOT</p>
+<p>It is not a specific diagnosis by itself</p>
+<p>It is not proof of hardware failure</p>
+<p>Troubleshooting checklist</p>
+<p>Restart and retry to clear temporary file locks</p>
+<p>Check for pending reboot state and complete it</p>
+<p>Run built-in update troubleshooter or repair tools appropriate to the context</p>
+<p>Review the closest log (WindowsUpdate.log/CBS.log/MSI log) for the first underlying error</p>
+<p>If the failure is tied to a specific KB/app, use the vendor’s official install/repair guidance</p>
+<p>Related error codes</p>
+<p>0x800f081f — Source files could not be found</p>
+<p>0x80073712 — Component store corruption</p>
+<p>0x80070005 — Access denied</p>
+<p>0x80070490 — Element not found</p>
+<p>Notes and edge cases</p>
+<p>Installation failures are highly context-dependent; the log source matters more than the numeric code alone.</p>
+</div>
+

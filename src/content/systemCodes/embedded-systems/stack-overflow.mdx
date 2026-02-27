@@ -1,0 +1,52 @@
+---
+industry: "systems"
+subcategory: "embedded-systems"
+code: "STACK OVERFLOW"
+shortLabel: "Stack exhaustion"
+summary: "A task or thread exceeded its stack allocation and entered a fault state."
+lastmod: "2026-02-27T20:30:06.358Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Embedded Systems</p>
+<p>CODE: STACK OVERFLOW</p>
+<p>Title</p>
+<p>(STACK OVERFLOW &mdash; Stack exhaustion)</p>
+<p>One-sentence summary</p>
+<p>A task or thread exceeded its stack allocation and entered a fault state.</p>
+<p>What this code means</p>
+<p>A “stack overflow” indicates a task/thread exceeded its stack allocation. It often results from deep recursion, large local allocations, or unexpected call paths that increase stack usage beyond limits.</p>
+<p>Where users usually see this code</p>
+<p>Device status screens or logs</p>
+<p>During startup or initialization sequences</p>
+<p>While interacting with sensors, buses, or storage</p>
+<p>After firmware updates or configuration changes</p>
+<p>Why this code usually appears</p>
+<p>A safety check or assertion failed</p>
+<p>The system restarted due to watchdog or power conditions</p>
+<p>A bus, peripheral, or storage operation failed</p>
+<p>A resource limit was reached (memory/stack)</p>
+<p>What typically happens next</p>
+<p>The device may reboot or enter a fault state</p>
+<p>A diagnostic message is logged</p>
+<p>Service intervention may be required for field equipment</p>
+<p>What this code is NOT</p>
+<p>It is not always user-repairable</p>
+<p>It is not safe to perform electrical repairs based on guesses</p>
+<p>Troubleshooting checklist</p>
+<p>Capture the full log output, including any stack trace or code</p>
+<p>Confirm firmware version and recent configuration changes</p>
+<p>Check power stability and environmental conditions</p>
+<p>Isolate peripherals and buses if the fault indicates I/O</p>
+<p>Use vendor diagnostics and service manuals for the exact model</p>
+<p>Escalate when the fault is recurring or safety-critical</p>
+<p>Related error codes</p>
+<p>GURU MEDITATION ERROR — Runtime panic</p>
+<p>HARDFAULT — CPU fault exception</p>
+<p>WATCHDOG RESET — Watchdog triggered</p>
+<p>BROWNOUT RESET — Undervoltage event</p>
+<p>Notes and edge cases</p>
+<p>Embedded error identifiers are frequently product-specific; the exact device documentation is critical.</p>
+</div>

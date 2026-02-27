@@ -1,0 +1,121 @@
+---
+import { getCollection } from 'astro:content';
+import { breadcrumbSchema, techArticleSchema } from '../../../../utils/schema';
+import { pickRelatedEntries } from '../../../../utils/related';
+import { parseAuthoritySectionsFromBody } from '../../../../utils/authority';
+import ErrorCodeDetailLayout from '../../../../components/ErrorCodeDetailLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('systemCodes');
+  return entries.map((e) => {
+    const codeSlug = e.slug.split('/').slice(-1)[0];
+    return {
+      params: { subcategory: e.data.subcategory, codeSlug },
+      props: { entryId: e.id },
+    };
+  });
+}
+
+const SUB_LABELS: Record<string, string> = {
+  'operating-systems': 'Operating Systems',
+  'business-systems': 'Business Systems',
+  'pos-systems': 'POS Systems',
+  'security-systems': 'Security Systems',
+  printers: 'Printers',
+  routers: 'Routers',
+  'pos-terminals': 'POS Terminals',
+  'smart-devices': 'Smart Devices',
+  'bios-uefi': 'BIOS / UEFI',
+  'embedded-systems': 'Embedded Systems',
+};
+
+const { subcategory, codeSlug } = Astro.params;
+const { entryId } = Astro.props;
+if (!subcategory || !codeSlug) throw new Error('Missing route params');
+const label = SUB_LABELS[subcategory];
+if (!label) throw new Error('Unsupported subcategory');
+
+const entries = (await getCollection('systemCodes')).filter((e) => e.data.subcategory === subcategory);
+const entry = entries.find((e) => e.id === entryId || e.slug.split('/').slice(-1)[0] === codeSlug);
+if (!entry) throw new Error('Missing entry');
+
+const pageTitle = `${entry.data.code} — Meaning (${label} Error Code)`;
+
+const parsed = parseAuthoritySectionsFromBody(entry.body);
+const summaryText = (entry.data.summary || parsed.whatMeans[0] || entry.data.shortLabel).trim();
+const description = summaryText.length > 10 ? summaryText : `What ${entry.data.code} means in ${label}.`;
+
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Systems & Devices', href: '/systems/' },
+  { label, href: `/systems/${subcategory}/` },
+  { label: 'Error Codes', href: `/systems/${subcategory}/error-codes/` },
+  { label: entry.data.code, href: `/systems/${subcategory}/error-codes/${codeSlug}/` },
+];
+
+const canonicalPath = `/systems/${subcategory}/error-codes/${codeSlug}/`;
+const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
+
+const currentText = `${entry.data.shortLabel} ${entry.data.summary || ''} ${(parsed.whatMeans[0] || '').slice(0, 220)}`;
+const relatedEntries = pickRelatedEntries(entries as any, {
+  industryKey: 'systems',
+  currentSlug: entry.slug,
+  currentCode: entry.data.code,
+  currentText,
+  mentionedCodes: parsed.mentionedRelatedCodes,
+  max: 8,
+});
+
+const relatedItems = relatedEntries.map((rel: any) => {
+  const relCodeSlug = rel.slug.split('/').slice(-1)[0];
+  return {
+    code: rel.data.code,
+    shortLabel: rel.data.shortLabel,
+    url: `/systems/${subcategory}/error-codes/${relCodeSlug}/`,
+  };
+});
+
+const schema = [
+  breadcrumbSchema(crumbs, canonicalUrl),
+  techArticleSchema({
+    headline: `${entry.data.code} — ${entry.data.shortLabel}`,
+    description,
+    canonicalUrl,
+    industryLabel: 'Systems & Devices',
+    code: entry.data.code,
+    dateModified: entry.data.lastmod,
+    keywords: [entry.data.code, label, 'systems', subcategory],
+  }),
+];
+
+const lastUpdatedLabel = new Date(entry.data.lastmod).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<ErrorCodeDetailLayout
+  pageTitle={pageTitle}
+  description={description}
+  canonicalPath={canonicalPath}
+  crumbs={crumbs}
+  schema={schema}
+  industryLabel="Systems & Devices"
+  industryBadge={`${label} Error Code`}
+  code={entry.data.code}
+  shortLabel={entry.data.shortLabel}
+  sectionLabel={parsed.sectionLabel}
+  systemLabel={parsed.systemLabel}
+  lastUpdatedLabel={lastUpdatedLabel}
+  summary={summaryText}
+  whatMeans={parsed.whatMeans}
+  whereSeen={parsed.whereSeen}
+  whyAppears={parsed.whyAppears}
+  happensNext={parsed.happensNext}
+  notThis={parsed.notThis}
+  troubleshooting={parsed.troubleshooting}
+  notes={parsed.notes}
+  relatedItems={relatedItems}
+/>
+

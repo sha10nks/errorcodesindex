@@ -1,0 +1,44 @@
+---
+industry: "systems"
+subcategory: "pos-systems"
+code: "04"
+shortLabel: "Pick up card"
+summary: "The issuer indicates the card should be retained and the transaction should not proceed." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: POS Systems</p>
+<p>CODE: 04</p>
+<p>Title</p>
+<p>(04 &mdash; Pick up card)</p>
+<p>One-sentence summary</p>
+<p>The issuer indicates the card should be retained and the transaction should not proceed.</p>
+<p>What this code means</p>
+<p>Response code 04 is an issuer instruction that the card should be picked up/retained (where permitted) and the transaction declined. Modern POS environments often cannot retain cards; in practice, it is treated as a hard decline requiring the cardholder to contact their bank.</p>
+<p>Where users usually see this code</p>
+<p>High-risk authorizations</p>
+<p>Card status issues reported by the issuer</p>
+<p>Why this code usually appears</p>
+<p>Issuer flagged the card status (lost/stolen/suspected compromise)</p>
+<p>Issuer risk rules triggered a retain instruction</p>
+<p>What typically happens next</p>
+<p>The transaction is declined</p>
+<p>Merchant is instructed to request another payment method</p>
+<p>What this code is NOT</p>
+<p>It is not a terminal configuration problem</p>
+<p>It is not a connectivity issue</p>
+<p>Troubleshooting checklist</p>
+<p>Do not retry the same authorization repeatedly</p>
+<p>Ask the cardholder to contact the issuer and use another payment method</p>
+<p>Follow processor/acquirer guidance for card-retain instructions (policies vary)</p>
+<p>Related error codes</p>
+<p>41 — Lost card</p>
+<p>43 — Stolen card</p>
+<p>05 — Do not honor</p>
+<p>Notes and edge cases</p>
+<p>Handling of “retain card” responses is governed by merchant and acquirer policies; do not put staff at risk.</p>
+</div>
+

@@ -1,0 +1,47 @@
+---
+industry: "systems"
+subcategory: "pos-systems"
+code: "30"
+shortLabel: "Format error"
+summary: "The authorization request format was invalid or could not be parsed by the receiver." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: POS Systems</p>
+<p>CODE: 30</p>
+<p>Title</p>
+<p>(30 &mdash; Format error)</p>
+<p>One-sentence summary</p>
+<p>The authorization request format was invalid or could not be parsed by the receiver.</p>
+<p>What this code means</p>
+<p>Response code 30 indicates that the receiving system (issuer, network, or processor) could not process the request because the message format was invalid. This is often a technical/configuration issue with the terminal, gateway, or integration.</p>
+<p>Where users usually see this code</p>
+<p>New integrations or recently changed gateway settings</p>
+<p>Terminal software updates that alter field formats</p>
+<p>Processor logs showing message/field validation errors</p>
+<p>Why this code usually appears</p>
+<p>Missing or malformed required fields</p>
+<p>Incorrect message type or unsupported transaction type</p>
+<p>Encoding/field length mismatches</p>
+<p>What typically happens next</p>
+<p>Transaction declines until the message format is corrected</p>
+<p>Processor support may request raw message logs for diagnosis</p>
+<p>What this code is NOT</p>
+<p>It is not a customer account decline reason</p>
+<p>It is not a “do not honor” risk decision</p>
+<p>Troubleshooting checklist</p>
+<p>Confirm terminal/gateway configuration matches the processor specification</p>
+<p>Review recent changes to message mapping/fields</p>
+<p>Check for updates to the payment SDK/integration</p>
+<p>Contact processor support with timestamps and transaction IDs</p>
+<p>Related error codes</p>
+<p>12 — Invalid transaction</p>
+<p>58 — Transaction not permitted to terminal</p>
+<p>96 — System malfunction</p>
+<p>Notes and edge cases</p>
+<p>Some systems use “format error” for multiple validation failures; extended logs are often required.</p>
+</div>
+

@@ -1,0 +1,45 @@
+---
+industry: "systems"
+subcategory: "bios-uefi"
+code: "BOOTMGR IS MISSING"
+shortLabel: "Boot loader missing"
+summary: "The system cannot find the Windows Boot Manager on the selected boot device." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: BIOS / UEFI</p>
+<p>CODE: BOOTMGR IS MISSING</p>
+<p>Title</p>
+<p>(BOOTMGR IS MISSING &mdash; Boot loader missing)</p>
+<p>One-sentence summary</p>
+<p>The system cannot find the Windows Boot Manager on the selected boot device.</p>
+<p>What this code means</p>
+<p>“BOOTMGR is missing” appears early in the boot process when firmware hands off to a bootloader, but the expected boot manager file is not present or cannot be read on the selected boot device. It can result from boot order issues, drive problems, or corruption of boot files.</p>
+<p>Where users usually see this code</p>
+<p>Immediately after powering on a PC</p>
+<p>After changing boot order, drives, or firmware settings</p>
+<p>After cloning or repartitioning a drive</p>
+<p>Why this code usually appears</p>
+<p>Boot device selection points to a non-bootable drive</p>
+<p>Boot files are missing or corrupted</p>
+<p>Drive or filesystem cannot be read reliably</p>
+<p>What typically happens next</p>
+<p>The system stops booting and waits for user action</p>
+<p>What this code is NOT</p>
+<p>It is not a Windows “login” problem</p>
+<p>It is not a GPU/monitor issue</p>
+<p>Troubleshooting checklist</p>
+<p>Check firmware boot order and select the correct system drive</p>
+<p>Remove external USB drives that may be taking boot priority</p>
+<p>Use official OS recovery media to repair boot configuration if needed</p>
+<p>Back up data before attempting repairs that modify partitions</p>
+<p>Related error codes</p>
+<p>NO BOOTABLE DEVICE — Boot device not found</p>
+<p>OPERATING SYSTEM NOT FOUND — OS not detected</p>
+<p>Notes and edge cases</p>
+<p>UEFI vs Legacy boot mode mismatches can cause bootloader errors after drive moves or reinstallations.</p>
+</div>
+

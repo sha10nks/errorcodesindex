@@ -1,0 +1,43 @@
+---
+industry: "systems"
+subcategory: "security-systems"
+code: "0x80092013"
+shortLabel: "Certificate revocation check failed"
+summary: "Windows could not complete certificate revocation checking, often because the revocation server could not be reached." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Security Systems</p>
+<p>CODE: 0x80092013</p>
+<p>Title</p>
+<p>(0x80092013 &mdash; Certificate revocation check failed)</p>
+<p>One-sentence summary</p>
+<p>Windows could not complete certificate revocation checking, often because the revocation server could not be reached.</p>
+<p>What this code means</p>
+<p>0x80092013 indicates a failure during certificate revocation checking. When validating certificates, Windows may attempt to check CRL/OCSP endpoints to confirm the certificate has not been revoked. If those endpoints are unreachable or blocked, validation can fail.</p>
+<p>Where users usually see this code</p>
+<p>TLS/SSL connections from Windows components</p>
+<p>Code signing and installer validation</p>
+<p>Smart card and certificate enrollment flows</p>
+<p>Why this code usually appears</p>
+<p>CRL/OCSP endpoints are blocked by firewall/proxy</p>
+<p>Network restrictions prevent outbound access</p>
+<p>Certificate chain contains unreachable revocation URLs</p>
+<p>What typically happens next</p>
+<p>The secure operation fails until revocation checking can complete</p>
+<p>What this code is NOT</p>
+<p>It is not a “wrong password” login error</p>
+<p>It is not always a bad certificate</p>
+<p>Troubleshooting checklist</p>
+<p>Verify system time/date</p>
+<p>Confirm the network allows access to revocation endpoints required by the certificate chain</p>
+<p>In managed environments, coordinate proxy/firewall allowances with IT</p>
+<p>Related error codes</p>
+<p>0x800B0109 — Certificate chain not trusted</p>
+<p>0x80072f8f — Secure channel error</p>
+<p>Notes and edge cases</p>
+<p>Security policies vary; some environments enforce revocation checks strictly and require outbound access for validation.</p>
+</div>

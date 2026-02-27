@@ -1,0 +1,44 @@
+---
+industry: "systems"
+subcategory: "pos-terminals"
+code: "EMV FALLBACK"
+shortLabel: "Chip fallback"
+summary: "The terminal could not complete a chip read and is requesting a fallback method per EMV rules." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: POS Terminals</p>
+<p>CODE: EMV FALLBACK</p>
+<p>Title</p>
+<p>(EMV FALLBACK &mdash; Chip fallback)</p>
+<p>One-sentence summary</p>
+<p>The terminal could not complete a chip read and is requesting a fallback method per EMV rules.</p>
+<p>What this code means</p>
+<p>“EMV fallback” indicates the chip read did not succeed and the terminal is attempting an alternative (such as swipe) when allowed by the processor/acquirer rules. Some environments restrict fallback to reduce fraud.</p>
+<p>Where users usually see this code</p>
+<p>During chip insert transactions</p>
+<p>When the card chip is damaged or dirty</p>
+<p>Why this code usually appears</p>
+<p>Chip read failed due to contact issues</p>
+<p>Reader contamination or wear</p>
+<p>Terminal configuration requires fallback after repeated failures</p>
+<p>What typically happens next</p>
+<p>Terminal prompts to retry insert or to swipe</p>
+<p>Transaction may be declined if fallback is not permitted</p>
+<p>What this code is NOT</p>
+<p>It is not the same as “declined”</p>
+<p>It is not a batch settlement issue</p>
+<p>Troubleshooting checklist</p>
+<p>Retry chip insert and ensure the card remains inserted until completion</p>
+<p>Clean the card and reader contacts per vendor guidance</p>
+<p>If fallback is blocked, request another payment method</p>
+<p>Related error codes</p>
+<p>DECLINED — Authorization declined</p>
+<p>CALL ISSUER — Issuer requests contact</p>
+<p>Notes and edge cases</p>
+<p>Fallback rules are compliance-sensitive; do not override processor settings.</p>
+</div>
+

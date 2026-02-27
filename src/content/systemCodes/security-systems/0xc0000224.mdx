@@ -1,0 +1,41 @@
+---
+industry: "systems"
+subcategory: "security-systems"
+code: "0xC0000224"
+shortLabel: "Password must change"
+summary: "The account requires the password to be changed before it can be used to log on." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Security Systems</p>
+<p>CODE: 0xC0000224</p>
+<p>Title</p>
+<p>(0xC0000224 &mdash; Password must change)</p>
+<p>One-sentence summary</p>
+<p>The account requires the password to be changed before it can be used to log on.</p>
+<p>What this code means</p>
+<p>0xC0000224 indicates the account is in a “must change password” state, such as after an admin reset or first login requirement. Authentication will not complete until the password is changed through an allowed flow.</p>
+<p>Where users usually see this code</p>
+<p>First login after password reset</p>
+<p>Service accounts accidentally configured to require password change</p>
+<p>Why this code usually appears</p>
+<p>Admin set “User must change password at next logon”</p>
+<p>Account provisioning workflows</p>
+<p>What typically happens next</p>
+<p>Login fails until password is changed</p>
+<p>What this code is NOT</p>
+<p>It is not an account lockout</p>
+<p>It is not an incorrect password indicator</p>
+<p>Troubleshooting checklist</p>
+<p>Change the password using an approved method (interactive logon or password change tools)</p>
+<p>For service accounts, remove “must change password” and set proper rotation controls</p>
+<p>Related error codes</p>
+<p>0xC0000071 — Password expired</p>
+<p>0xC000006A — Wrong password</p>
+<p>Notes and edge cases</p>
+<p>Service accounts cannot usually complete interactive password change flows; configuration must match usage.</p>
+</div>
+

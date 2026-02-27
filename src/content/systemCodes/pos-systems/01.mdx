@@ -1,0 +1,45 @@
+---
+industry: "systems"
+subcategory: "pos-systems"
+code: "01"
+shortLabel: "Refer to issuer"
+summary: "The transaction requires additional handling; the merchant may be instructed to contact the issuer." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: POS Systems</p>
+<p>CODE: 01</p>
+<p>Title</p>
+<p>(01 &mdash; Refer to issuer)</p>
+<p>One-sentence summary</p>
+<p>The transaction requires additional handling; the merchant may be instructed to contact the issuer.</p>
+<p>What this code means</p>
+<p>Response code 01 is an issuer response that typically indicates the issuer wants the merchant to refer the transaction for additional verification or instructions. In modern workflows, this often results in a decline or a request to use another payment method.</p>
+<p>Where users usually see this code</p>
+<p>Terminal decline messages like “Call issuer”</p>
+<p>Processor authorization logs</p>
+<p>Why this code usually appears</p>
+<p>Issuer risk checks flagged the transaction</p>
+<p>Account status requires manual review</p>
+<p>Transaction parameters appear unusual for the account</p>
+<p>What typically happens next</p>
+<p>The merchant is prompted to retry or request another form of payment</p>
+<p>Issuer may require the cardholder to contact the bank</p>
+<p>What this code is NOT</p>
+<p>It is not a technical terminal hardware error</p>
+<p>It is not a guaranteed fraud indicator</p>
+<p>Troubleshooting checklist</p>
+<p>Confirm amount, card entry method, and merchant settings</p>
+<p>Ask the customer to contact their issuer if the decline persists</p>
+<p>Do not attempt repeated retries if the issuer response remains the same</p>
+<p>Related error codes</p>
+<p>05 — Do not honor</p>
+<p>12 — Invalid transaction</p>
+<p>91 — Issuer or switch inoperative</p>
+<p>Notes and edge cases</p>
+<p>Some processors map 01 to a generic decline message; always use the processor’s mapped text where available.</p>
+</div>
+

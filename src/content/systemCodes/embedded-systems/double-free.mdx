@@ -1,0 +1,42 @@
+---
+industry: "systems"
+subcategory: "embedded-systems"
+code: "DOUBLE FREE"
+shortLabel: "Memory freed twice"
+summary: "The firmware attempted to free a heap pointer more than once, corrupting allocator state." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Embedded Systems</p>
+<p>CODE: DOUBLE FREE</p>
+<p>Title</p>
+<p>(DOUBLE FREE &mdash; Memory freed twice)</p>
+<p>One-sentence summary</p>
+<p>The firmware attempted to free a heap pointer more than once, corrupting allocator state.</p>
+<p>What this code means</p>
+<p>“Double free” indicates a programming error where the same heap allocation is released twice. In embedded systems this can lead to heap corruption, random crashes, and unpredictable behavior.</p>
+<p>Where users usually see this code</p>
+<p>Debug builds with heap checks enabled</p>
+<p>Crash logs that include allocator diagnostics</p>
+<p>Why this code usually appears</p>
+<p>Pointer ownership is unclear between modules</p>
+<p>Error-handling paths free memory twice</p>
+<p>Race conditions in multi-threaded code</p>
+<p>What typically happens next</p>
+<p>Heap corruption leading to crash/reset</p>
+<p>What this code is NOT</p>
+<p>It is not a normal field-service “hardware” error</p>
+<p>It is not a connectivity failure</p>
+<p>Troubleshooting checklist</p>
+<p>Capture the call stack and allocation/free trace if available</p>
+<p>Review code paths for ownership and lifetime rules</p>
+<p>Related error codes</p>
+<p>HEAP CORRUPTION — Allocator state corruption</p>
+<p>MALLOC FAILED — Heap allocation failed</p>
+<p>Notes and edge cases</p>
+<p>In production firmware, these issues often present as random reboots without clear “double free” text.</p>
+</div>
+

@@ -1,0 +1,42 @@
+---
+industry: "systems"
+subcategory: "bios-uefi"
+code: "PXE BOOT FAILED"
+shortLabel: "Network boot fallback"
+summary: "The system attempted to boot from the network (PXE) and failed, often after it couldn’t boot from local storage." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: BIOS / UEFI</p>
+<p>CODE: PXE BOOT FAILED</p>
+<p>Title</p>
+<p>(PXE BOOT FAILED &mdash; Network boot fallback)</p>
+<p>One-sentence summary</p>
+<p>The system attempted to boot from the network (PXE) and failed, often after it couldn’t boot from local storage.</p>
+<p>What this code means</p>
+<p>PXE boot failures indicate the firmware tried to boot from the network using PXE. This often happens when the boot order includes network boot and the system didn’t find a valid local boot device first.</p>
+<p>Where users usually see this code</p>
+<p>Enterprise-managed PCs with network boot enabled</p>
+<p>When the system drive is missing or not bootable</p>
+<p>Why this code usually appears</p>
+<p>No bootable local device was found, so firmware tried PXE</p>
+<p>Network boot infrastructure is not available on this network</p>
+<p>PXE settings are enabled unintentionally</p>
+<p>What typically happens next</p>
+<p>The system cannot boot and may prompt to select a boot device</p>
+<p>What this code is NOT</p>
+<p>It is not an internet browser error</p>
+<p>It is not a Windows Update issue</p>
+<p>Troubleshooting checklist</p>
+<p>Verify the internal drive is detected and set as first boot device</p>
+<p>Disable network boot if not required</p>
+<p>If the system is managed, contact IT for PXE server requirements</p>
+<p>Related error codes</p>
+<p>PXE-E61 MEDIA TEST FAILURE — Network boot failure</p>
+<p>NO BOOTABLE DEVICE — Boot device not found</p>
+<p>Notes and edge cases</p>
+<p>PXE messages are common when a machine is set to netboot in the absence of a valid local OS.</p>
+</div>

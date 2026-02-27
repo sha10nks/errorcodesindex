@@ -1,0 +1,45 @@
+---
+industry: "systems"
+subcategory: "security-systems"
+code: "0xC0000064"
+shortLabel: "No such user"
+summary: "The specified user name does not exist or could not be found by the authentication system." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Security Systems</p>
+<p>CODE: 0xC0000064</p>
+<p>Title</p>
+<p>(0xC0000064 &mdash; No such user)</p>
+<p>One-sentence summary</p>
+<p>The specified user name does not exist or could not be found by the authentication system.</p>
+<p>What this code means</p>
+<p>0xC0000064 is an NTSTATUS authentication result commonly observed in Windows security logs and authentication traces. It indicates the username provided could not be matched to an account in the authentication database (local SAM or directory service).</p>
+<p>Where users usually see this code</p>
+<p>Windows Security event logs (failed logons)</p>
+<p>RDP, SMB, or domain authentication attempts</p>
+<p>SIEM alerts and authentication monitoring</p>
+<p>Why this code usually appears</p>
+<p>Username mistyped</p>
+<p>Account was deleted/renamed</p>
+<p>Wrong domain/realm used</p>
+<p>What typically happens next</p>
+<p>Logon fails and access is denied</p>
+<p>What this code is NOT</p>
+<p>It is not a password-correctness indicator</p>
+<p>It is not proof of an intrusion by itself</p>
+<p>Troubleshooting checklist</p>
+<p>Verify the username and domain/tenant context</p>
+<p>Confirm the account exists and is enabled</p>
+<p>Review the source host and protocol to determine whether this is user error or automated traffic</p>
+<p>Related error codes</p>
+<p>0xC000006A — Wrong password</p>
+<p>0xC000006D — Logon failure</p>
+<p>0xC0000072 — Account disabled</p>
+<p>Notes and edge cases</p>
+<p>Automated scans and misconfigured services can generate many “no such user” events.</p>
+</div>
+

@@ -1,0 +1,42 @@
+---
+industry: "systems"
+subcategory: "routers"
+code: "Error 813"
+shortLabel: "Existing broadband connection detected"
+summary: "A broadband connection attempt was blocked because a connection is already established or configured as always-on." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Routers</p>
+<p>CODE: Error 813</p>
+<p>Title</p>
+<p>(Error 813 &mdash; Existing broadband connection detected)</p>
+<p>One-sentence summary</p>
+<p>A broadband connection attempt was blocked because a connection is already established or configured as always-on.</p>
+<p>What this code means</p>
+<p>Error 813 generally indicates that the connection attempt cannot proceed because a broadband/PPPoE session is already active or the system believes it is. In many home setups, PPPoE is configured on the router, making PC-based dial attempts unnecessary and potentially conflicting.</p>
+<p>Where users usually see this code</p>
+<p>PPPoE connections configured on Windows</p>
+<p>Environments where the router handles PPPoE sessions</p>
+<p>Why this code usually appears</p>
+<p>Router already maintains the PPPoE session</p>
+<p>A previous session is stuck/half-open</p>
+<p>Multiple devices trying to dial with the same credentials</p>
+<p>What typically happens next</p>
+<p>The connection attempt stops and the system remains in its current state</p>
+<p>What this code is NOT</p>
+<p>It is not an incorrect password error</p>
+<p>It is not a DNS resolver problem</p>
+<p>Troubleshooting checklist</p>
+<p>Confirm whether PPPoE should be configured on the router rather than the PC</p>
+<p>Restart router/modem to clear stale sessions</p>
+<p>Ensure only one device is using the PPPoE credentials at a time if the ISP restricts sessions</p>
+<p>Related error codes</p>
+<p>Error 651 — Modem/router error</p>
+<p>Error 691 — Access denied</p>
+<p>Notes and edge cases</p>
+<p>Some ISPs limit concurrent sessions; dialing from multiple devices can trigger disconnects or blocks.</p>
+</div>

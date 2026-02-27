@@ -1,0 +1,43 @@
+---
+industry: "systems"
+subcategory: "embedded-systems"
+code: "PENDSV"
+shortLabel: "PendSV exception"
+summary: "PendSV is commonly used for context switching; being reported as a fault usually indicates an exception handling or stack issue." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Embedded Systems</p>
+<p>CODE: PENDSV</p>
+<p>Title</p>
+<p>(PENDSV &mdash; PendSV exception)</p>
+<p>One-sentence summary</p>
+<p>PendSV is commonly used for context switching; being reported as a fault usually indicates an exception handling or stack issue.</p>
+<p>What this code means</p>
+<p>PendSV is an exception used by many RTOS kernels to perform context switching. If a device reports “PendSV” as an error, it typically means the system trapped unexpectedly during context switch logic or the crash reporter captured the system while in PendSV.</p>
+<p>Where users usually see this code</p>
+<p>RTOS-based devices with crash logs</p>
+<p>During heavy multitasking or interrupt load</p>
+<p>Why this code usually appears</p>
+<p>Stack overflow or corruption during context switching</p>
+<p>Incorrect interrupt priorities for RTOS constraints</p>
+<p>Invalid task control block state</p>
+<p>What typically happens next</p>
+<p>Device resets or halts in a fault loop</p>
+<p>What this code is NOT</p>
+<p>It is not a hardware sensor code</p>
+<p>It is not a network timeout</p>
+<p>Troubleshooting checklist</p>
+<p>Review RTOS stack sizes and high-water marks</p>
+<p>Validate interrupt priority configuration against RTOS documentation</p>
+<p>Capture crash dumps and task state if available</p>
+<p>Related error codes</p>
+<p>STACK OVERFLOW — Stack exhaustion</p>
+<p>HARDFAULT — CPU fault exception</p>
+<p>Notes and edge cases</p>
+<p>Crash reporters can capture the CPU inside PendSV even if the root cause happened earlier.</p>
+</div>
+

@@ -1,0 +1,46 @@
+---
+industry: "systems"
+subcategory: "pos-systems"
+code: "06"
+shortLabel: "Error"
+summary: "A generic issuer or network error occurred; the transaction could not be processed as submitted." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: POS Systems</p>
+<p>CODE: 06</p>
+<p>Title</p>
+<p>(06 &mdash; Error)</p>
+<p>One-sentence summary</p>
+<p>A generic issuer or network error occurred; the transaction could not be processed as submitted.</p>
+<p>What this code means</p>
+<p>Response code 06 is a generic error response used by some issuers/networks when they cannot process the authorization normally. It does not pinpoint a specific decline reason and may be transient.</p>
+<p>Where users usually see this code</p>
+<p>Intermittent processing failures at the terminal</p>
+<p>Processor logs during network instability</p>
+<p>Why this code usually appears</p>
+<p>Issuer processing error</p>
+<p>Network or switch issue during authorization routing</p>
+<p>Malformed or incomplete request data</p>
+<p>What typically happens next</p>
+<p>The transaction declines and may succeed on retry</p>
+<p>Some terminals prompt to retry or use another method</p>
+<p>What this code is NOT</p>
+<p>It is not a definitive “insufficient funds” code</p>
+<p>It is not always a card status issue</p>
+<p>Troubleshooting checklist</p>
+<p>Retry once after confirming network connectivity</p>
+<p>If repeated, try a different card or payment method</p>
+<p>Check processor/gateway logs for additional diagnostic text</p>
+<p>Contact processor support if errors cluster across many transactions</p>
+<p>Related error codes</p>
+<p>91 — Issuer or switch inoperative</p>
+<p>96 — System malfunction</p>
+<p>12 — Invalid transaction</p>
+<p>Notes and edge cases</p>
+<p>Some processors map 06 to a generic decline; the more specific reason may appear in extended response fields.</p>
+</div>
+

@@ -1,0 +1,42 @@
+---
+industry: "systems"
+subcategory: "security-systems"
+code: "0xC0000071"
+shortLabel: "Password expired"
+summary: "The account password has expired and must be changed before login can succeed." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Security Systems</p>
+<p>CODE: 0xC0000071</p>
+<p>Title</p>
+<p>(0xC0000071 &mdash; Password expired)</p>
+<p>One-sentence summary</p>
+<p>The account password has expired and must be changed before login can succeed.</p>
+<p>What this code means</p>
+<p>0xC0000071 indicates the user’s password has expired per policy. Authentication will fail until the password is updated using an allowed method.</p>
+<p>Where users usually see this code</p>
+<p>Domain logon failures for users with expired passwords</p>
+<p>Service accounts that were not rotated</p>
+<p>Why this code usually appears</p>
+<p>Password age policy reached</p>
+<p>Account not rotated/managed for long periods</p>
+<p>What typically happens next</p>
+<p>Login fails; user must change password</p>
+<p>Automations using that account fail until updated</p>
+<p>What this code is NOT</p>
+<p>It is not an account lockout (that is a different condition)</p>
+<p>It is not necessarily a wrong password attempt</p>
+<p>Troubleshooting checklist</p>
+<p>Change the password through approved channels</p>
+<p>Update stored credentials for services/scheduled tasks</p>
+<p>Related error codes</p>
+<p>0xC0000224 — Password must change</p>
+<p>0xC000006A — Wrong password</p>
+<p>Notes and edge cases</p>
+<p>Service accounts with expiring passwords require credential rotation practices to avoid outages.</p>
+</div>
+

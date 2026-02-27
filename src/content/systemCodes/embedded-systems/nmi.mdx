@@ -1,0 +1,43 @@
+---
+industry: "systems"
+subcategory: "embedded-systems"
+code: "NMI"
+shortLabel: "Non-maskable interrupt"
+summary: "A non-maskable interrupt occurred, often indicating a critical hardware or safety event." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Embedded Systems</p>
+<p>CODE: NMI</p>
+<p>Title</p>
+<p>(NMI &mdash; Non-maskable interrupt)</p>
+<p>One-sentence summary</p>
+<p>A non-maskable interrupt occurred, often indicating a critical hardware or safety event.</p>
+<p>What this code means</p>
+<p>NMI is a high-priority interrupt that typically cannot be disabled. In embedded systems it may be used for critical faults such as clock failure, watchdog early warning, brownout indications, or other safety mechanisms depending on the MCU and board design.</p>
+<p>Where users usually see this code</p>
+<p>Low-level crash logs</p>
+<p>Safety-critical device monitors</p>
+<p>Why this code usually appears</p>
+<p>Hardware fault or safety monitor triggered</p>
+<p>Clock/power anomalies</p>
+<p>Watchdog or system supervisor events</p>
+<p>What typically happens next</p>
+<p>Device may reset, log an event, or enter safe mode</p>
+<p>What this code is NOT</p>
+<p>It is not a typical application exception</p>
+<p>It is not safe to guess hardware repairs based on NMI alone</p>
+<p>Troubleshooting checklist</p>
+<p>Capture full system logs and any supervisor status flags</p>
+<p>Check power stability and supply tolerances</p>
+<p>Escalate to vendor diagnostics for safety-critical equipment</p>
+<p>Related error codes</p>
+<p>BROWNOUT RESET — Undervoltage event</p>
+<p>WATCHDOG RESET — Watchdog triggered</p>
+<p>Notes and edge cases</p>
+<p>The meaning of NMI depends heavily on how firmware maps the interrupt; consult the device’s firmware documentation.</p>
+</div>
+

@@ -1,0 +1,43 @@
+---
+industry: "systems"
+subcategory: "pos-systems"
+code: "43"
+shortLabel: "Stolen card"
+summary: "The issuer indicates the card is reported stolen; the authorization should be declined." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: POS Systems</p>
+<p>CODE: 43</p>
+<p>Title</p>
+<p>(43 &mdash; Stolen card)</p>
+<p>One-sentence summary</p>
+<p>The issuer indicates the card is reported stolen; the authorization should be declined.</p>
+<p>What this code means</p>
+<p>Response code 43 indicates the issuer has flagged the card as stolen. The transaction should not proceed and the cardholder needs to contact their issuer. Handling instructions (including any “retain” messaging) depend on merchant and acquirer policies.</p>
+<p>Where users usually see this code</p>
+<p>POS authorization declines on blocked cards</p>
+<p>Processor logs showing card status declines</p>
+<p>Why this code usually appears</p>
+<p>The issuer marked the card stolen</p>
+<p>Issuer security systems blocked the card</p>
+<p>What typically happens next</p>
+<p>The transaction is declined</p>
+<p>Customer uses another payment method</p>
+<p>What this code is NOT</p>
+<p>It is not a merchant ID/configuration problem</p>
+<p>It is not a temporary network error</p>
+<p>Troubleshooting checklist</p>
+<p>Do not retry the same transaction repeatedly</p>
+<p>Advise the customer to contact their issuer</p>
+<p>Follow acquirer guidance and prioritize staff safety</p>
+<p>Related error codes</p>
+<p>41 — Lost card</p>
+<p>04 — Pick up card</p>
+<p>05 — Do not honor</p>
+<p>Notes and edge cases</p>
+<p>Decline codes can be mis-mapped across processors; confirm with your acquirer’s documentation.</p>
+</div>

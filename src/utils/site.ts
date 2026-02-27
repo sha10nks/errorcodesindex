@@ -4,7 +4,7 @@ export const SITE = {
   baseUrl: 'https://errorcodesindex.com',
 };
 
-export type IndustryKey = 'healthcare' | 'irs-tax' | 'banking' | 'gaming' | 'appliances';
+export type IndustryKey = 'healthcare' | 'irs-tax' | 'banking' | 'gaming' | 'appliances' | 'systems';
 
 export const INDUSTRIES: Array<{ key: IndustryKey; label: string; href: string }> = [
   { key: 'healthcare', label: 'Healthcare', href: '/healthcare/' },
@@ -12,6 +12,7 @@ export const INDUSTRIES: Array<{ key: IndustryKey; label: string; href: string }
   { key: 'banking', label: 'Banking', href: '/banking/' },
   { key: 'gaming', label: 'Gaming', href: '/gaming/' },
   { key: 'appliances', label: 'Appliances', href: '/appliances/' },
+  { key: 'systems', label: 'Systems & Devices', href: '/systems/' },
 ];
 
 export const LEGAL_LINKS: Array<{ label: string; href: string }> = [
@@ -21,4 +22,3 @@ export const LEGAL_LINKS: Array<{ label: string; href: string }> = [
   { label: 'Disclaimer', href: '/disclaimer/' },
   { label: 'Contact', href: '/contact/' },
 ];
-

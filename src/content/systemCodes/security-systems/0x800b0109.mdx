@@ -1,0 +1,43 @@
+---
+industry: "systems"
+subcategory: "security-systems"
+code: "0x800B0109"
+shortLabel: "Certificate chain not trusted"
+summary: "Windows could not validate a certificate chain to a trusted root authority." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Security Systems</p>
+<p>CODE: 0x800B0109</p>
+<p>Title</p>
+<p>(0x800B0109 &mdash; Certificate chain not trusted)</p>
+<p>One-sentence summary</p>
+<p>Windows could not validate a certificate chain to a trusted root authority.</p>
+<p>What this code means</p>
+<p>0x800B0109 indicates a certificate validation failure where the certificate chain cannot be built to a trusted root. It often appears in TLS connections, code signing checks, and install/update scenarios that require trusted certificates.</p>
+<p>Where users usually see this code</p>
+<p>Application install/update validation</p>
+<p>TLS/SSL connection errors in Windows components</p>
+<p>Smart card/certificate enrollment flows</p>
+<p>Why this code usually appears</p>
+<p>Missing trusted root certificate in the system store</p>
+<p>Intercepting proxy replaces certificates (enterprise TLS inspection)</p>
+<p>System time is incorrect, breaking certificate validation</p>
+<p>What typically happens next</p>
+<p>The secure connection or validation step fails</p>
+<p>What this code is NOT</p>
+<p>It is not a username/password error</p>
+<p>It is not a “network is down” indicator by itself</p>
+<p>Troubleshooting checklist</p>
+<p>Verify system date/time</p>
+<p>Confirm the issuing CA is trusted on the machine (managed environments may use enterprise roots)</p>
+<p>Review whether a proxy/security product is intercepting TLS and ensure it is properly configured</p>
+<p>Related error codes</p>
+<p>0x80072f8f — Secure channel error</p>
+<p>0x8009030e — No credentials available (TLS)</p>
+<p>Notes and edge cases</p>
+<p>Do not bypass certificate validation in production systems; fix trust configuration instead.</p>
+</div>

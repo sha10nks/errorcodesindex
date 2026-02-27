@@ -1,0 +1,52 @@
+---
+industry: "systems"
+subcategory: "pos-terminals"
+code: "CALL ISSUER"
+shortLabel: "Issuer contact required"
+summary: "The terminal indicates the issuer requires the cardholder to contact them before approval."
+lastmod: "2026-02-27T20:30:06.358Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: POS Terminals</p>
+<p>CODE: CALL ISSUER</p>
+<p>Title</p>
+<p>(CALL ISSUER &mdash; Issuer contact required)</p>
+<p>One-sentence summary</p>
+<p>The terminal indicates the issuer requires the cardholder to contact them before approval.</p>
+<p>What this code means</p>
+<p>“CALL ISSUER” is a common terminal prompt indicating the issuer requires intervention before authorizing the transaction. It is not a technical terminal fault; it reflects an issuer decision that usually cannot be resolved by retrying immediately.</p>
+<p>Where users usually see this code</p>
+<p>Card-present checkout prompts</p>
+<p>Settlement and batch close operations</p>
+<p>Terminal pairing and configuration screens</p>
+<p>During terminal software or key updates</p>
+<p>Why this code usually appears</p>
+<p>A payment decision was returned by the issuer/processor</p>
+<p>Connectivity prevented reaching the host</p>
+<p>Device configuration or keys were incomplete</p>
+<p>A local device state blocked completion (paper out, update required)</p>
+<p>What typically happens next</p>
+<p>The terminal displays a prompt and aborts the flow</p>
+<p>The POS may ask to retry or use a different method</p>
+<p>Final status must be confirmed in the processor record</p>
+<p>What this code is NOT</p>
+<p>It is not always a decline</p>
+<p>It is not safe to re-run a card without checking for duplicates</p>
+<p>Troubleshooting checklist</p>
+<p>Determine whether the message is a decline or a technical failure</p>
+<p>Confirm connectivity (Ethernet/Wi‑Fi/cellular) and signal quality</p>
+<p>Check for required updates or key loading status</p>
+<p>Confirm batch/settlement state if the error appears at close</p>
+<p>Verify merchant configuration identifiers (TID/MID) if shown</p>
+<p>Escalate with logs/receipts to the terminal vendor or processor</p>
+<p>Related error codes</p>
+<p>DECLINED — Issuer declined</p>
+<p>COMMUNICATION ERROR — Host communication failed</p>
+<p>HOST UNAVAILABLE — Host unreachable</p>
+<p>TIMEOUT — Request timed out</p>
+<p>Notes and edge cases</p>
+<p>Terminal prompts vary by device and processor; the most reliable source of truth is the processor’s final record.</p>
+</div>

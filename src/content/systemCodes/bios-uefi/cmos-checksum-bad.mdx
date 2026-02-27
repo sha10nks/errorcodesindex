@@ -1,0 +1,52 @@
+---
+industry: "systems"
+subcategory: "bios-uefi"
+code: "CMOS CHECKSUM BAD"
+shortLabel: "Firmware settings invalid"
+summary: "Firmware reported that stored configuration data failed validation."
+lastmod: "2026-02-27T20:30:06.358Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: BIOS / UEFI</p>
+<p>CODE: CMOS CHECKSUM BAD</p>
+<p>Title</p>
+<p>(CMOS CHECKSUM BAD &mdash; Firmware settings invalid)</p>
+<p>One-sentence summary</p>
+<p>Firmware reported that stored configuration data failed validation.</p>
+<p>What this code means</p>
+<p>“CMOS CHECKSUM BAD” indicates the firmware detected that stored configuration data did not validate correctly. It often appears after resets, configuration loss, or invalid settings, and may prompt loading defaults.</p>
+<p>Where users usually see this code</p>
+<p>During POST at startup</p>
+<p>Firmware security checks (TPM/Secure Boot)</p>
+<p>Boot device selection and initialization</p>
+<p>Hardware monitoring screens</p>
+<p>Why this code usually appears</p>
+<p>A required component did not initialize correctly</p>
+<p>Boot configuration could not find a valid device</p>
+<p>Security policy blocked boot</p>
+<p>Firmware detected a health or configuration issue</p>
+<p>What typically happens next</p>
+<p>Boot may stop or loop at startup</p>
+<p>A firmware message is displayed</p>
+<p>The system may enter recovery or setup screens</p>
+<p>What this code is NOT</p>
+<p>It is not safe to guess at hardware fixes</p>
+<p>It is not always solved by a firmware update</p>
+<p>Troubleshooting checklist</p>
+<p>Record the exact message and the device model</p>
+<p>Check official documentation for the specific OEM mapping</p>
+<p>Confirm boot order and whether the expected drive is detected</p>
+<p>Verify date/time settings if security validation is failing</p>
+<p>Avoid hardware disassembly unless qualified and instructed</p>
+<p>Use vendor support pathways for repeat boot failures</p>
+<p>Related error codes</p>
+<p>CMOS BATTERY FAILURE — RTC/CMOS battery issue</p>
+<p>NO BOOTABLE DEVICE — Boot device missing</p>
+<p>SMART STATUS BAD — Drive health warning</p>
+<p>PXE-E61: MEDIA TEST FAILURE — Network boot attempted</p>
+<p>Notes and edge cases</p>
+<p>Firmware messages and beep codes vary significantly by vendor and model.</p>
+</div>

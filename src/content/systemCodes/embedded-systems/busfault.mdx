@@ -1,0 +1,43 @@
+---
+industry: "systems"
+subcategory: "embedded-systems"
+code: "BUSFAULT"
+shortLabel: "Bus fault exception"
+summary: "The CPU trapped on a bus access error when reading or writing memory or peripherals." 
+lastmod: "2026-02-27T22:20:00.000Z"
+source: "manual"
+---
+
+<div>
+<p>SECTION: Systems &amp; Devices</p>
+<p>SYSTEM: Embedded Systems</p>
+<p>CODE: BUSFAULT</p>
+<p>Title</p>
+<p>(BUSFAULT &mdash; Bus fault exception)</p>
+<p>One-sentence summary</p>
+<p>The CPU trapped on a bus access error when reading or writing memory or peripherals.</p>
+<p>What this code means</p>
+<p>Bus faults are raised on many Cortex‑M systems when a memory or peripheral bus access fails. Examples include accessing invalid addresses, misaligned accesses on constrained buses, or peripheral access while a clock is disabled.</p>
+<p>Where users usually see this code</p>
+<p>Fault handler logs</p>
+<p>During peripheral initialization or I/O operations</p>
+<p>Why this code usually appears</p>
+<p>Invalid pointer to peripheral/memory map</p>
+<p>Clock/gating configuration makes a peripheral inaccessible</p>
+<p>Misconfigured DMA or bus timing issues</p>
+<p>What typically happens next</p>
+<p>Device resets or enters fault handler state</p>
+<p>What this code is NOT</p>
+<p>It is not a user-facing “app error”</p>
+<p>It is not a safe basis for electrical repair without documentation</p>
+<p>Troubleshooting checklist</p>
+<p>Capture fault registers and last accessed address when available</p>
+<p>Validate memory map addresses and peripheral initialization order</p>
+<p>Review clock enable and power domain settings</p>
+<p>Related error codes</p>
+<p>HARDFAULT — CPU fault exception</p>
+<p>MEMMANAGE — Memory management fault</p>
+<p>Notes and edge cases</p>
+<p>Some bus faults are intermittent and may correlate with power instability or EMI in field devices.</p>
+</div>
+

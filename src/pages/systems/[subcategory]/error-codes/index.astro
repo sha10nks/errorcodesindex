@@ -1,0 +1,162 @@
+---
+import { getCollection } from 'astro:content';
+import SectionLayout from '../../../../layouts/SectionLayout.astro';
+import { breadcrumbSchema, collectionPageSchema } from '../../../../utils/schema';
+
+export async function getStaticPaths() {
+  return [
+    { params: { subcategory: 'operating-systems' } },
+    { params: { subcategory: 'business-systems' } },
+    { params: { subcategory: 'pos-systems' } },
+    { params: { subcategory: 'security-systems' } },
+    { params: { subcategory: 'printers' } },
+    { params: { subcategory: 'routers' } },
+    { params: { subcategory: 'pos-terminals' } },
+    { params: { subcategory: 'smart-devices' } },
+    { params: { subcategory: 'bios-uefi' } },
+    { params: { subcategory: 'embedded-systems' } },
+  ];
+}
+
+const SUB_LABELS: Record<string, string> = {
+  'operating-systems': 'Operating Systems',
+  'business-systems': 'Business Systems',
+  'pos-systems': 'POS Systems',
+  'security-systems': 'Security Systems',
+  printers: 'Printers',
+  routers: 'Routers',
+  'pos-terminals': 'POS Terminals',
+  'smart-devices': 'Smart Devices',
+  'bios-uefi': 'BIOS / UEFI',
+  'embedded-systems': 'Embedded Systems',
+};
+
+const { subcategory } = Astro.params;
+if (!subcategory) throw new Error('Missing subcategory');
+const label = SUB_LABELS[subcategory];
+if (!label) throw new Error('Unsupported subcategory');
+
+const entries = (await getCollection('systemCodes')).filter((e) => e.data.subcategory === subcategory);
+const sorted = entries
+  .slice()
+  .sort((a, b) => a.data.code.localeCompare(b.data.code, 'en', { numeric: true }));
+
+const title = `${label} Error Codes Directory`;
+const description = `Browse an index of ${label.toLowerCase()} error codes in Systems & Devices. Each page uses a stable canonical URL and structured sections.`;
+
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Systems & Devices', href: '/systems/' },
+  { label, href: `/systems/${subcategory}/` },
+  { label: 'Error Codes', href: `/systems/${subcategory}/error-codes/` },
+];
+
+const initialQuery = Astro.url.searchParams.get('q') ?? '';
+
+const canonicalPath = `/systems/${subcategory}/error-codes/`;
+const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
+const schema = [breadcrumbSchema(crumbs, canonicalUrl), collectionPageSchema({ name: title, canonicalUrl })];
+---
+
+<SectionLayout title={title} description={description} crumbs={crumbs} canonicalPath={canonicalPath} schema={schema}>
+  {sorted.length === 0 ? (
+    <p>
+      No codes have been added for this subcategory yet.
+    </p>
+  ) : (
+    <div class="not-prose" id="code-index">
+      <div class="mb-5 flex flex-col gap-3 rounded-2xl border border-brand-border bg-brand-surface/60 p-4 sm:flex-row sm:items-center">
+        <div class="flex-1">
+          <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">Filter</div>
+          <input
+            id="code-filter"
+            type="text"
+            value={initialQuery}
+            placeholder="Type a prefix or keyword (e.g., 0x8007, B200, Error 651)"
+            class="mt-2 w-full rounded-lg border border-brand-border bg-brand-dark/60 px-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-brand-primary focus:outline-none focus:ring-1 focus:ring-brand-primary"
+            autocomplete="off"
+          />
+        </div>
+        <div class="flex items-center justify-between gap-3 sm:flex-col sm:items-end">
+          <div id="filter-count" class="text-xs text-slate-500">{sorted.length} codes</div>
+          <button
+            id="clear-filter"
+            type="button"
+            class="rounded-lg border border-brand-border bg-brand-dark/60 px-4 py-2 text-sm text-slate-300 hover:border-brand-primary hover:text-slate-100 transition-colors"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-brand-border bg-brand-surface shadow-card">
+        <table class="w-full border-collapse text-sm">
+          <thead class="bg-brand-dark text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
+            <tr>
+              <th class="border-b border-brand-border px-4 py-3">Code</th>
+              <th class="border-b border-brand-border px-4 py-3">Short label</th>
+              <th class="border-b border-brand-border px-4 py-3">Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sorted.map((e) => {
+              const codeSlug = e.slug.split('/').slice(-1)[0];
+              return (
+                <tr class="hover:bg-brand-dark/50" data-code={e.data.code} data-label={e.data.shortLabel}>
+                  <td class="border-b border-brand-border px-4 py-3 font-mono text-xs text-slate-200">{e.data.code}</td>
+                  <td class="border-b border-brand-border px-4 py-3 text-slate-300">{e.data.shortLabel}</td>
+                  <td class="border-b border-brand-border px-4 py-3">
+                    <a class="text-brand-primary hover:text-brand-accent transition-colors" href={`/systems/${subcategory}/error-codes/${codeSlug}/`}>
+                      View
+                    </a>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )}
+</SectionLayout>
+
+<script>
+  const input = document.getElementById('code-filter');
+  const clearBtn = document.getElementById('clear-filter');
+  const countEl = document.getElementById('filter-count');
+  const rows = Array.from(document.querySelectorAll('tr[data-code]'));
+
+  function applyFilter() {
+    if (!input) return;
+    const q = (input.value || '').trim().toLowerCase();
+
+    let visible = 0;
+    for (const row of rows) {
+      const code = (row.getAttribute('data-code') || '').toLowerCase();
+      const label = (row.getAttribute('data-label') || '').toLowerCase();
+      const ok = !q || code.includes(q) || label.includes(q);
+      row.style.display = ok ? '' : 'none';
+      if (ok) visible += 1;
+    }
+
+    if (countEl) countEl.textContent = `${visible} / ${rows.length} codes`;
+
+    const url = new URL(window.location.href);
+    if (q) url.searchParams.set('q', input.value.trim());
+    else url.searchParams.delete('q');
+    window.history.replaceState({}, '', url.toString());
+  }
+
+  if (input) input.addEventListener('input', applyFilter);
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      if (!input) return;
+      input.value = '';
+      applyFilter();
+      input.focus();
+    });
+  }
+
+  applyFilter();
+</script>
+
