@@ -1,0 +1,67 @@
+---
+import type { RelatedItem } from './RelatedCodes.astro';
+
+export interface Props {
+  hubs: Array<{ label: string; href: string }>;
+  guides: Array<{ label: string; href: string }>;
+  related: RelatedItem[];
+}
+
+const { hubs, guides, related } = Astro.props;
+const relatedTop = related.slice(0, 5);
+---
+
+<section class="rounded-2xl border border-brand-border bg-brand-surface/40 p-6">
+  <div class="flex items-start justify-between gap-4">
+    <div>
+      <h2 class="text-lg font-bold text-slate-100">Learn More</h2>
+      <p class="mt-2 text-sm text-slate-400 max-w-3xl">
+        Use these links to pivot between the directory, a focused guide, and nearby related codes.
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div>
+      <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Hub</div>
+      <ul class="mt-3 space-y-2">
+        {hubs.map((h) => (
+          <li>
+            <a class="text-slate-300 hover:text-white hover:underline" href={h.href}>
+              {h.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Guides</div>
+      <ul class="mt-3 space-y-2">
+        {guides.map((g) => (
+          <li>
+            <a class="text-slate-300 hover:text-white hover:underline" href={g.href}>
+              {g.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Related Codes</div>
+      <ul class="mt-3 space-y-2">
+        {relatedTop.map((r) => (
+          <li>
+            <a class="text-slate-300 hover:text-white hover:underline" href={r.url}>
+              <span class="font-semibold text-brand-primary">{r.code}</span>
+              <span class="text-slate-500"> — </span>
+              <span>{r.shortLabel}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+

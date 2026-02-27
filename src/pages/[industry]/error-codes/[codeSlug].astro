@@ -4,6 +4,7 @@ import { INDUSTRIES } from '../../../utils/site';
 import { breadcrumbSchema, techArticleSchema } from '../../../utils/schema';
 import { pickRelatedEntries } from '../../../utils/related';
 import { parseAuthoritySectionsFromBody } from '../../../utils/authority';
+import { pickGuidesForCode, pickHubsForCode } from '../../../lib/guides/learnMore';
 import ErrorCodeDetailLayout from '../../../components/ErrorCodeDetailLayout.astro';
 
 export async function getStaticPaths() {
@@ -70,6 +71,9 @@ const relatedItems = relatedEntries.map((rel: any) => ({
   url: `/${industry}/error-codes/${rel.slug}/`,
 }));
 
+const learnMoreHubs = pickHubsForCode({ industryKey: industry as any });
+const learnMoreGuides = pickGuidesForCode({ industryKey: industry as any, code: entry.data.code });
+
 const schema = [
   breadcrumbSchema(crumbs, canonicalUrl),
   techArticleSchema({
@@ -112,4 +116,6 @@ const lastUpdatedLabel = new Date(entry.data.lastmod).toLocaleDateString('en-US'
   troubleshooting={parsed.troubleshooting}
   notes={parsed.notes}
   relatedItems={relatedItems}
+  learnMoreHubs={learnMoreHubs}
+  learnMoreGuides={learnMoreGuides}
 />

@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { GUIDE_CATEGORIES, getGuidesByCategory, type GuideCategoryKey } from '../../../lib/guides/registry';
+
+export async function getStaticPaths() {
+  return GUIDE_CATEGORIES.map((c) => ({ params: { category: c.key } }));
+}
+
+const { category } = Astro.params;
+if (!category) throw new Error('Missing category');
+const categoryKey = category as GuideCategoryKey;
+const categoryMeta = GUIDE_CATEGORIES.find((c) => c.key === categoryKey);
+if (!categoryMeta) throw new Error('Unknown guide category');
+
+const guides = getGuidesByCategory(categoryKey);
+const title = `${categoryMeta.label} Guides`;
+const description = `Browse ${categoryMeta.label.toLowerCase()} guides with safe troubleshooting steps and links to real code pages.`;
+const canonicalPath = `/guides/${categoryKey}/`;
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath}>
+  <div class="mx-auto max-w-7xl px-6 py-10 md:py-14">
+    <nav aria-label="Breadcrumb" class="text-xs text-slate-500">
+      <ol class="flex flex-wrap gap-x-2 gap-y-1">
+        <li class="flex items-center gap-2"><a class="hover:text-slate-300" href="/">Home</a></li>
+        <li class="flex items-center gap-2"><span class="opacity-50">/</span><a class="hover:text-slate-300" href="/guides/">Guides</a></li>
+        <li class="flex items-center gap-2"><span class="opacity-50">/</span><span>{categoryMeta.label}</span></li>
+      </ol>
+    </nav>
+
+    <header class="mt-6">
+      <h1 class="text-3xl md:text-4xl font-bold text-slate-100 tracking-tight">{categoryMeta.label} Guides</h1>
+      <p class="mt-4 text-slate-300 max-w-3xl">
+        Guides in this category are designed to be value-first: they explain the failure patterns, give safe fix steps, and link to real code pages
+        so you can drill down without guessing.
+      </p>
+    </header>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a
+        href={categoryMeta.hubHref}
+        class="rounded-full border border-brand-border bg-brand-surface/40 px-4 py-2 text-sm text-slate-300 hover:bg-brand-surface/60 hover:text-white transition-colors"
+      >
+        Explore {categoryMeta.label} Hub
+      </a>
+      <a
+        href={
+          categoryMeta.key === 'systems'
+            ? '/systems/'
+            : categoryMeta.key === 'appliances'
+              ? '/appliances/'
+              : `/${categoryMeta.key}/error-codes/`
+        }
+        class="rounded-full border border-brand-border bg-brand-surface/40 px-4 py-2 text-sm text-slate-300 hover:bg-brand-surface/60 hover:text-white transition-colors"
+      >
+        Browse Code Directory
+      </a>
+    </div>
+
+    <section class="mt-10 grid grid-cols-1 gap-6">
+      {guides.map((g) => (
+        <a
+          href={`/guides/${g.categoryKey}/${g.slug}/`}
+          class="group rounded-2xl border border-brand-border bg-brand-surface/40 p-6 hover:bg-brand-surface/60 transition-colors"
+        >
+          <div class="text-sm font-semibold text-slate-200">Guide</div>
+          <div class="mt-2 text-xl font-bold text-slate-100 group-hover:text-white">{g.title}</div>
+          <div class="mt-3 text-sm text-slate-400 max-w-4xl">{g.description}</div>
+          <div class="mt-5 text-sm font-semibold text-brand-primary">Read →</div>
+        </a>
+      ))}
+    </section>
+  </div>
+</BaseLayout>

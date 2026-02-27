@@ -48,35 +48,11 @@
     "url": "/healthcare/error-codes/co-109/"
   },
   {
-    "code": "OA-23",
-    "title": "Payment adjusted due to procedure overlap",
-    "description": "The payment has been reduced because the reported procedure overlaps with another procedure on the same date of service.",
-    "category": "Other Adjustments",
-    "publishDate": "2024-02-15",
-    "url": "/healthcare/error-codes/oa-23/"
-  },
-  {
-    "code": "PI-97",
-    "title": "The benefit for this service is included in the payment for another service",
-    "description": "Payment for this service is bundled with another service and is not separately reimbursable.",
-    "category": "Payer Initiated",
-    "publishDate": "2024-02-01",
-    "url": "/healthcare/error-codes/pi-97/"
-  },
-  {
     "code": "CO-29",
     "title": "The time limit for filing has expired",
     "description": "The claim was submitted after the payer's deadline for claim submission has passed.",
     "category": "Contractual Obligation",
     "publishDate": "2024-01-22",
     "url": "/healthcare/error-codes/co-29/"
-  },
-  {
-    "code": "PI-204",
-    "title": "Service not covered under patient's current benefit plan",
-    "description": "This service is specifically excluded from coverage under the patient's current benefit plan.",
-    "category": "Payer Initiated",
-    "publishDate": "2024-02-12",
-    "url": "/healthcare/error-codes/pi-204/"
   }
 ]

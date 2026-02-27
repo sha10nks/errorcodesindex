@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
 import AdSlot from './AdSlot.astro';
 import RelatedCodes, { type RelatedItem } from './RelatedCodes.astro';
+import LearnMoreBox from './LearnMoreBox.astro';
 
 export interface Props {
   pageTitle: string;
@@ -29,6 +30,9 @@ export interface Props {
   notes: string[];
 
   relatedItems: RelatedItem[];
+
+  learnMoreHubs?: Array<{ label: string; href: string }>;
+  learnMoreGuides?: Array<{ label: string; href: string }>;
 }
 
 const {
@@ -53,6 +57,8 @@ const {
   troubleshooting,
   notes,
   relatedItems,
+  learnMoreHubs = [],
+  learnMoreGuides = [],
 } = Astro.props;
 
 const splitParagraphs = (text: string): string[] => {
@@ -120,6 +126,10 @@ const meaningParagraphs = (whatMeans.length ? whatMeans : splitParagraphs(summar
       </div>
     </section>
 
+    {learnMoreHubs.length || learnMoreGuides.length ? (
+      <LearnMoreBox hubs={learnMoreHubs} guides={learnMoreGuides} related={relatedItems} />
+    ) : null}
+
     <AdSlot slot="after-summary" />
 
     <section class="space-y-10">
@@ -159,6 +169,8 @@ const meaningParagraphs = (whatMeans.length ? whatMeans : splitParagraphs(summar
           </ul>
         </section>
       ) : null}
+
+      <AdSlot slot="mid-content" />
 
       {happensNext.length ? (
         <section>
@@ -214,9 +226,8 @@ const meaningParagraphs = (whatMeans.length ? whatMeans : splitParagraphs(summar
       ) : null}
     </section>
 
-    <RelatedCodes title="Related Codes" items={relatedItems} />
-
     <AdSlot slot="near-bottom" />
+
+    <RelatedCodes title="Related Codes" items={relatedItems} />
   </div>
 </BaseLayout>
-

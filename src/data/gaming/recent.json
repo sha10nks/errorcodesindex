@@ -48,14 +48,6 @@
     "url": "/gaming/error-codes/error-code-100/"
   },
   {
-    "code": "SU-30746-0",
-    "title": "System software update error",
-    "description": "The PlayStation system software update failed. Try updating again or contact support.",
-    "category": "PlayStation System",
-    "publishDate": "2024-02-05",
-    "url": "/gaming/error-codes/su-30746-0/"
-  },
-  {
     "code": "WS-37403-7",
     "title": "Connection to server failed",
     "description": "Failed to connect to PlayStation Network servers. Check PSN status and your connection.",
@@ -94,14 +86,6 @@
     "category": "Windows System",
     "publishDate": "2024-01-22",
     "url": "/gaming/error-codes/0x80070005/"
-  },
-  {
-    "code": "Error Code 300",
-    "title": "Steam is not connected to the internet",
-    "description": "Steam cannot detect an internet connection. Check your network settings and firewall.",
-    "category": "Steam Platform",
-    "publishDate": "2024-01-20",
-    "url": "/gaming/error-codes/error-code-300/"
   },
   {
     "code": "NP-31837-2",

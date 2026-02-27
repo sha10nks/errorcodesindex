@@ -1,0 +1,55 @@
+---
+import type { GuideCodeRow } from '../lib/guides/resolveCodeDirectory';
+
+export interface Props {
+  title: string;
+  notes?: string[];
+  rows: GuideCodeRow[];
+}
+
+const { title, notes = [], rows } = Astro.props;
+---
+
+<section id="code-directory" class="border-t border-brand-border/60 pt-12 scroll-mt-28">
+  <h2 class="text-2xl font-bold text-slate-100">{title}</h2>
+  {notes.length ? (
+    <ul class="mt-4 space-y-2 text-sm text-slate-400">
+      {notes.map((n) => (
+        <li class="flex items-start gap-3">
+          <span class="text-brand-primary mt-1">✓</span>
+          <span>{n}</span>
+        </li>
+      ))}
+    </ul>
+  ) : null}
+
+  <div class="mt-6 overflow-x-auto rounded-xl border border-brand-border/60 bg-brand-surface/30">
+    <table class="min-w-[820px] w-full text-sm">
+      <thead>
+        <tr class="border-b border-brand-border/60 bg-brand-surface/60">
+          <th class="px-4 py-3 text-left font-semibold text-slate-200">Code</th>
+          <th class="px-4 py-3 text-left font-semibold text-slate-200">Meaning</th>
+          <th class="px-4 py-3 text-left font-semibold text-slate-200">Next step</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((r) => (
+          <tr class="border-b border-brand-border/50 last:border-b-0">
+            <td class="px-4 py-3 align-top">
+              <a class="font-semibold text-brand-primary hover:underline" href={r.href}>
+                {r.code}
+              </a>
+            </td>
+            <td class="px-4 py-3 text-slate-300 align-top">{r.meaning}</td>
+            <td class="px-4 py-3 text-slate-300 align-top">{r.nextStep}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="mt-4 text-sm text-slate-500">
+    Tip: If your exact code isn’t listed, use the closest hub link above and browse related prefixes or message patterns.
+  </p>
+</section>
+

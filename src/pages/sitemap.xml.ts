@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { GUIDE_CATEGORIES, GUIDES } from '../lib/guides/registry';
 
 export const prerender = true;
 
@@ -31,6 +32,7 @@ export const GET: APIRoute = async ({ site }) => {
     '/privacy-policy/',
     '/terms-of-use/',
     '/disclaimer/',
+    '/guides/',
     '/healthcare/',
     '/healthcare/error-codes/',
     '/irs-tax/',
@@ -53,6 +55,13 @@ export const GET: APIRoute = async ({ site }) => {
   const urls: Array<{ loc: string; lastmod: string }> = [];
   for (const p of staticPaths) {
     urls.push({ loc: `${base}${p}`, lastmod: isoDate() });
+  }
+
+  for (const c of GUIDE_CATEGORIES) {
+    urls.push({ loc: `${base}${c.href}`, lastmod: isoDate() });
+  }
+  for (const g of GUIDES) {
+    urls.push({ loc: `${base}/guides/${g.categoryKey}/${g.slug}/`, lastmod: isoDate(g.lastUpdated) });
   }
 
   for (const e of healthcare) {

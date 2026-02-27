@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { GUIDE_CATEGORIES } from '../../lib/guides/registry';
+
+const title = 'Guides';
+const description = 'SEO-first guides that explain error code families, safe troubleshooting steps, and the fastest paths to resolution.';
+const canonicalPath = '/guides/';
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath}>
+  <div class="mx-auto max-w-7xl px-6 py-10 md:py-14">
+    <h1 class="text-4xl font-bold text-slate-100 tracking-tight">Guides</h1>
+
+    <div class="mt-5 max-w-3xl space-y-4 text-slate-300">
+      <p>
+        These guides are written to help you interpret real-world error code families and choose safe, high-signal next steps.
+        Each guide stands on its own, and also links into the relevant hubs and code pages for deeper diagnosis.
+      </p>
+      <p>
+        Every guide follows the same structure: symptoms, root causes, prioritized fixes, what to avoid, escalation checklists, and a curated code directory.
+      </p>
+    </div>
+
+    <ul class="mt-6 space-y-2 text-slate-300">
+      <li class="flex items-start gap-3">
+        <span class="text-brand-primary mt-1">✓</span>
+        <span>Fast triage for the most common failure patterns</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="text-brand-primary mt-1">✓</span>
+        <span>Safe steps first (no risky or invasive advice)</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="text-brand-primary mt-1">✓</span>
+        <span>Code directories that link to real pages on this site</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="text-brand-primary mt-1">✓</span>
+        <span>Internal linking loop: code ↔ hub ↔ guide ↔ code</span>
+      </li>
+    </ul>
+
+    <section class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {GUIDE_CATEGORIES.map((c) => (
+        <a
+          href={c.href}
+          class="group rounded-2xl border border-brand-border bg-brand-surface/40 p-6 hover:bg-brand-surface/60 transition-colors"
+        >
+          <div class="text-sm font-semibold text-slate-200">Category</div>
+          <div class="mt-2 text-xl font-bold text-slate-100 group-hover:text-white">{c.label}</div>
+          <div class="mt-3 text-sm text-slate-400">Browse guides and jump into the most relevant hubs and code directories.</div>
+          <div class="mt-5 text-sm font-semibold text-brand-primary">Explore →</div>
+        </a>
+      ))}
+    </section>
+  </div>
+</BaseLayout>
+

@@ -48,14 +48,6 @@
     "url": "/gaming/error-codes/0x87dd0006/"
   },
   {
-    "code": "SU-30746-0",
-    "title": "System software update error",
-    "description": "The PlayStation system software update failed. Try updating again or contact support.",
-    "category": "PlayStation System",
-    "publishDate": "2024-02-05",
-    "url": "/gaming/error-codes/su-30746-0/"
-  },
-  {
     "code": "0xC000007B",
     "title": "Application was unable to start correctly",
     "description": "Windows error indicating the game cannot start due to missing or corrupted system files.",
@@ -86,13 +78,5 @@
     "category": "Windows System",
     "publishDate": "2024-01-22",
     "url": "/gaming/error-codes/0x80070005/"
-  },
-  {
-    "code": "Error Code 300",
-    "title": "Steam is not connected to the internet",
-    "description": "Steam cannot detect an internet connection. Check your network settings and firewall.",
-    "category": "Steam Platform",
-    "publishDate": "2024-01-20",
-    "url": "/gaming/error-codes/error-code-300/"
   }
 ]

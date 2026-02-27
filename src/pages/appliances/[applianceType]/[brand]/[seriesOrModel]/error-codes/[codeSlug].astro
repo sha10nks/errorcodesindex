@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { breadcrumbSchema, techArticleSchema } from '../../../../../../utils/schema';
 import { pickRelatedEntries } from '../../../../../../utils/related';
 import { parseAuthoritySectionsFromBody } from '../../../../../../utils/authority';
+import { pickGuidesForCode, pickHubsForCode } from '../../../../../../lib/guides/learnMore';
 import ErrorCodeDetailLayout from '../../../../../../components/ErrorCodeDetailLayout.astro';
 
 export async function getStaticPaths() {
@@ -68,6 +69,9 @@ const relatedItems = relatedEntries.map((rel: any) => {
   };
 });
 
+const learnMoreHubs = pickHubsForCode({ industryKey: 'appliances', applianceType, brand, seriesOrModel });
+const learnMoreGuides = pickGuidesForCode({ industryKey: 'appliances', code: entry.data.code, applianceType });
+
 const schema = [
   breadcrumbSchema(crumbs, canonicalUrl),
   techArticleSchema({
@@ -110,4 +114,6 @@ const lastUpdatedLabel = new Date(entry.data.lastmod).toLocaleDateString('en-US'
   troubleshooting={parsed.troubleshooting}
   notes={parsed.notes}
   relatedItems={relatedItems}
+  learnMoreHubs={learnMoreHubs}
+  learnMoreGuides={learnMoreGuides}
 />

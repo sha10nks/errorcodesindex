@@ -1,0 +1,39 @@
+---
+import { GUIDES, type GuideCategoryKey } from '../../../lib/guides/registry';
+import { buildGuideModel } from '../../../lib/guides/buildGuide';
+import { resolveGuideCodeDirectory } from '../../../lib/guides/resolveCodeDirectory';
+import GuideLayout from '../../../components/GuideLayout.astro';
+import GuideCodeDirectory from '../../../components/GuideCodeDirectory.astro';
+
+export async function getStaticPaths() {
+  return GUIDES.map((g) => ({ params: { category: g.categoryKey, slug: g.slug } }));
+}
+
+const { category, slug } = Astro.params;
+if (!category || !slug) throw new Error('Missing guide params');
+
+const categoryKey = category as GuideCategoryKey;
+const meta = GUIDES.find((g) => g.categoryKey === categoryKey && g.slug === slug);
+if (!meta) throw new Error('Guide not found');
+
+const model = buildGuideModel(meta, GUIDES);
+const codeRows = await resolveGuideCodeDirectory(model.codeDirectory.sources);
+const canonicalPath = `/guides/${categoryKey}/${meta.slug}/`;
+---
+
+<GuideLayout model={model} canonicalPath={canonicalPath} codeRowsCount={codeRows.length}>
+  <GuideCodeDirectory slot="code-directory" title={model.codeDirectory.title} notes={model.codeDirectory.notes} rows={codeRows} />
+
+  <section slot="faq" id="faq" class="border-t border-brand-border/60 pt-12 scroll-mt-28">
+    <h2 class="text-2xl font-bold text-slate-100">FAQ</h2>
+    <div class="mt-6 space-y-4">
+      {model.faq.map((f) => (
+        <details class="rounded-xl border border-brand-border bg-brand-surface/30 p-4">
+          <summary class="cursor-pointer text-slate-100 font-semibold">{f.question}</summary>
+          <p class="mt-3 text-slate-300">{f.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+</GuideLayout>
+

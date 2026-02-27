@@ -78,3 +78,50 @@ export function techArticleSchema(opts: {
     },
   };
 }
+
+export function articleSchema(opts: {
+  headline: string;
+  description: string;
+  canonicalUrl: string;
+  dateModified?: string;
+  articleSection?: string;
+  keywords?: string[];
+}) {
+  const org = {
+    '@type': 'Organization',
+    name: SITE.name,
+    url: SITE.baseUrl,
+  };
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: opts.headline,
+    description: opts.description,
+    author: org,
+    publisher: org,
+    mainEntityOfPage: opts.canonicalUrl,
+    ...(opts.articleSection ? { articleSection: opts.articleSection } : {}),
+    ...(opts.dateModified ? { dateModified: opts.dateModified } : {}),
+    ...(opts.keywords && opts.keywords.length ? { keywords: opts.keywords.join(', ') } : {}),
+  };
+}
+
+export function faqPageSchema(opts: {
+  canonicalUrl: string;
+  items: Array<{ question: string; answer: string }>;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    url: opts.canonicalUrl,
+    mainEntity: opts.items.map((it) => ({
+      '@type': 'Question',
+      name: it.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: it.answer,
+      },
+    })),
+  };
+}

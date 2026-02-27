@@ -4,6 +4,7 @@ import QuickNav from './QuickNav.astro';
 import ContentGrid from './ContentGrid.astro';
 import AdBlock from './AdBlock.astro';
 import FAQ from './FAQ.astro';
+import { GUIDES } from '../lib/guides/registry';
 
 export interface Props {
   title: string;
@@ -91,6 +92,9 @@ const featuredList = featuredItems.slice(0, 12);
 
 const hasGridContent = recentList.length > 0 || featuredList.length > 0;
 const hasFaq = faqItems.length > 0;
+
+const guidesCategoryKey = industryKey;
+const popularGuides = GUIDES.filter((g) => g.categoryKey === guidesCategoryKey).slice(0, 6);
 ---
 
 <SectionLayout title={title} description={description} crumbs={crumbs}>
@@ -225,6 +229,29 @@ const hasFaq = faqItems.length > 0;
               </>
             )}
           </ul>
+        </div>
+
+        <div class="mt-8 p-6 rounded-xl border border-brand-border bg-brand-surface/50">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-semibold text-slate-100">Popular Guides</h2>
+              <p class="mt-2 text-sm text-slate-400">Fast, high-signal walkthroughs that link back into the directory.</p>
+            </div>
+            <a href={`/guides/${guidesCategoryKey}/`} class="hidden sm:inline-flex text-sm font-semibold text-brand-primary hover:underline">
+              View all
+            </a>
+          </div>
+          <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-3">
+            {popularGuides.map((g) => (
+              <a
+                href={`/guides/${g.categoryKey}/${g.slug}/`}
+                class="rounded-xl border border-brand-border/70 bg-brand-dark/30 px-4 py-3 text-slate-200 hover:bg-brand-dark/50 transition-colors"
+              >
+                <div class="text-sm font-semibold">{g.title}</div>
+                <div class="mt-1 text-xs text-slate-400 line-clamp-2">{g.description}</div>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>

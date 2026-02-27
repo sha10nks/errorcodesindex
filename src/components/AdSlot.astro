@@ -1,4 +1,6 @@
 ---
+import AdBlock from './AdBlock.astro';
+
 export interface Props {
   slot: 'after-summary' | 'mid-content' | 'near-bottom';
   height?: number;
@@ -7,14 +9,4 @@ export interface Props {
 const { slot, height = 260 } = Astro.props;
 ---
 
-<div class="my-10" data-ad-slot={slot} style={`--ad-h:${height}px;`}>
-  <div class="mx-auto max-w-3xl rounded-2xl border border-brand-border bg-brand-surface px-6 py-6 text-center shadow-card">
-    <div class="flex items-center justify-between">
-      <span class="text-xs uppercase tracking-wider text-slate-500">Advertisement</span>
-      <span class="text-xs text-slate-600">{slot}</span>
-    </div>
-    <div class="mt-4 w-full rounded-xl bg-brand-dark/50 border border-dashed border-brand-border/50 flex items-center justify-center" style="height: var(--ad-h);">
-      <span class="text-slate-600 text-sm">Ad Space</span>
-    </div>
-  </div>
-</div>
+<AdBlock adSlot={`code-${slot}`} height={height} responsiveHeight={Math.max(120, Math.floor(height * 0.86))} className="my-10" />

@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AdBlock from './AdBlock.astro';
+import type { GuideHubLink, GuidePageModel } from '../lib/guides/buildGuide';
+import { articleSchema, breadcrumbSchema, faqPageSchema } from '../utils/schema';
+import { toCanonical } from '../utils/urls';
+
+export interface Props {
+  model: GuidePageModel;
+  canonicalPath: string;
+  codeRowsCount: number;
+}
+
+const { model, canonicalPath, codeRowsCount } = Astro.props;
+
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Guides', href: '/guides/' },
+  { label: model.meta.categoryKey === 'irs-tax' ? 'IRS / Tax' : model.meta.categoryKey[0].toUpperCase() + model.meta.categoryKey.slice(1), href: `/guides/${model.meta.categoryKey}/` },
+  { label: model.meta.title, href: canonicalPath },
+];
+
+const categoryLabel =
+  model.meta.categoryKey === 'irs-tax'
+    ? 'IRS / Tax'
+    : model.meta.categoryKey === 'systems'
+      ? 'Systems & Devices'
+      : model.meta.categoryKey[0].toUpperCase() + model.meta.categoryKey.slice(1);
+
+const canonicalUrl = toCanonical(canonicalPath);
+const schema = [
+  breadcrumbSchema(crumbs, canonicalUrl),
+  articleSchema({
+    headline: model.meta.title,
+    description: model.meta.description,
+    canonicalUrl,
+    dateModified: model.meta.lastUpdated,
+    articleSection: categoryLabel,
+    keywords: [model.meta.categoryKey, 'guides', 'error codes'],
+  }),
+  ...(model.faq.length ? [faqPageSchema({ canonicalUrl, items: model.faq })] : []),
+];
+
+const adBase = `guide-${model.meta.categoryKey}-${model.meta.slug}`;
+
+const relatedHubs: GuideHubLink[] = model.relatedHubs.slice(0, 4);
+---
+
+<BaseLayout title={model.meta.title} description={model.meta.description} canonicalPath={canonicalPath} schema={schema}>
+  <div class="mx-auto max-w-7xl px-6 py-10 md:py-14">
+    <nav aria-label="Breadcrumb" class="text-xs text-slate-500">
+      <ol class="flex flex-wrap gap-x-2 gap-y-1">
+        {crumbs.map((c, idx) => (
+          <li class="flex items-center gap-2">
+            {idx > 0 ? <span class="opacity-50">/</span> : null}
+            <a class="hover:text-slate-300" href={c.href}>
+              {c.label}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <header class="mt-6">
+      <h1 class="text-3xl md:text-4xl font-bold text-slate-100 tracking-tight">{model.meta.title}</h1>
+      <p class="mt-4 text-base md:text-lg text-slate-300 max-w-3xl">{model.promise}</p>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+        <a
+          href={`/guides/${model.meta.categoryKey}/`}
+          class="rounded-full border border-brand-border bg-brand-surface/40 px-3 py-2 text-sm text-slate-300 hover:bg-brand-surface/60 hover:text-white transition-colors"
+        >
+          More {model.meta.categoryKey === 'irs-tax' ? 'IRS / Tax' : model.meta.categoryKey} guides
+        </a>
+        {relatedHubs.slice(0, 2).map((h) => (
+          <a
+            href={h.href}
+            class="rounded-full border border-brand-border bg-brand-surface/40 px-3 py-2 text-sm text-slate-300 hover:bg-brand-surface/60 hover:text-white transition-colors"
+          >
+            {h.label}
+          </a>
+        ))}
+      </div>
+    </header>
+
+    <section class="mt-8 rounded-2xl border border-brand-border bg-brand-surface/40 p-5 md:p-6">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h2 class="text-sm font-semibold text-slate-200">TL;DR</h2>
+          <ul class="mt-3 space-y-2 text-sm text-slate-300">
+            {model.tldr.map((it) => (
+              <li class="flex items-start gap-3">
+                <span class="text-brand-primary mt-1">✓</span>
+                <span>{it}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <AdBlock adSlot={`${adBase}-1`} height={120} responsiveHeight={140} className="mt-8" />
+
+    <section class="mt-10 border-t border-brand-border/60 pt-10">
+      <h2 class="text-xl font-bold text-slate-100">Quick Navigation</h2>
+      <div class="mt-4 flex flex-wrap gap-2">
+        {model.quickNav.map((it) => (
+          <a
+            href={`#${it.id}`}
+            class="text-sm rounded-full border border-brand-border/70 bg-brand-surface/40 px-3 py-2 text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
+          >
+            {it.label}
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <main class="mt-10 space-y-12">
+      {model.sections.map((s) => (
+        <section id={s.id} class="scroll-mt-28">
+          <h2 class="text-2xl font-bold text-slate-100">{s.title}</h2>
+          {s.intro ? <p class="mt-3 text-slate-400 max-w-4xl">{s.intro}</p> : null}
+          {s.paragraphs?.map((p) => (
+            <p class="mt-4 text-slate-300 max-w-4xl">{p}</p>
+          ))}
+          {s.bullets?.length ? (
+            <ul class="mt-4 space-y-2 text-slate-300 max-w-4xl">
+              {s.bullets.map((b) => (
+                <li class="flex items-start gap-3">
+                  <span class="text-brand-primary mt-1">✓</span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          {s.id === 'fix-steps' ? <AdBlock adSlot={`${adBase}-2`} height={140} responsiveHeight={160} className="mt-8" /> : null}
+        </section>
+      ))}
+
+      <slot name="code-directory" />
+
+      <AdBlock adSlot={`${adBase}-3`} height={140} responsiveHeight={160} className="mt-10" />
+
+      <section id="related" class="border-t border-brand-border/60 pt-12 scroll-mt-28">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-100">Related Guides</h2>
+            <ul class="mt-4 space-y-2">
+              {model.relatedGuides.map((g) => (
+                <li>
+                  <a class="text-slate-300 hover:text-white hover:underline" href={`/guides/${g.categoryKey}/${g.slug}/`}>
+                    {g.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-slate-100">Related Sections / Hubs</h2>
+            <ul class="mt-4 space-y-2">
+              {relatedHubs.map((h) => (
+                <li>
+                  <a class="text-slate-300 hover:text-white hover:underline" href={h.href}>
+                    {h.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <slot name="faq" />
+
+      <section id="references" class="border-t border-brand-border/60 pt-12 scroll-mt-28">
+        <h2 class="text-2xl font-bold text-slate-100">References / Notes</h2>
+        <ul class="mt-4 space-y-2 text-slate-300">
+          {model.references.map((r) => (
+            <li class="flex items-start gap-3">
+              <span class="text-brand-primary mt-1">✓</span>
+              <span>{r}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
+  </div>
+</BaseLayout>

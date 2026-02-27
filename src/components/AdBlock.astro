@@ -2,19 +2,20 @@
 export interface Props {
   adSlot: string;
   height?: number;
-  responsive?: boolean;
+  responsiveHeight?: number;
+  className?: string;
 }
 
-const { adSlot, height = 280, responsive = true } = Astro.props;
+const { adSlot, height = 280, responsiveHeight, className = '' } = Astro.props;
 
 const desktopHeight = height;
-const mobileHeight = responsive ? Math.max(250, Math.floor(height * 0.82)) : height;
+const mobileHeight = responsiveHeight ?? Math.max(250, Math.floor(height * 0.82));
 ---
 
-<div class="ad-container mx-auto my-8" data-ad-slot={adSlot}>
+<div class={`ad-container mx-auto ${className}`} data-ad-slot={adSlot}>
   <div class="ad-block relative rounded-xl border border-brand-border bg-brand-surface p-6 text-center">
     <div class="ad-label absolute top-3 right-3">
-      <span class="text-xs text-slate-500 font-medium">Sponsored</span>
+      <span class="text-[11px] tracking-widest uppercase text-slate-500 font-semibold">ADVERTISEMENT</span>
     </div>
     
     <div
@@ -51,8 +52,6 @@ const mobileHeight = responsive ? Math.max(250, Math.floor(height * 0.82)) : hei
   @media (max-width: 767px) {
     .ad-container {
       max-width: 100%;
-      margin-left: -1rem;
-      margin-right: -1rem;
     }
   }
   
