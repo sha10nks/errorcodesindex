@@ -2,21 +2,17 @@ import type { APIRoute } from 'astro';
 
 export const prerender = true;
 
-export const GET: APIRoute = ({ site }) => {
+export const GET: APIRoute = async ({ site }) => {
   const base = (site || new URL('https://errorcodesindex.com')).toString().replace(/\/+$/, '');
-  const body = [
+  const lines = [
     'User-agent: *',
     'Allow: /',
-    'Disallow: /search/',
-    'Disallow: /search-index.json',
+    '',
     `Sitemap: ${base}/sitemap.xml`,
     '',
-  ].join('\n');
-
-  return new Response(body, {
-    headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
-    },
+  ];
+  return new Response(lines.join('\n'), {
+    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
   });
 };
 

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "build": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro build",
-    "postbuild": "node scripts/validate-internal-links.mjs",
+    "postbuild": "node scripts/validate-internal-links.mjs && node scripts/ping-sitemaps.mjs",
     "preview": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro preview",
     "astro": "astro"
   },
