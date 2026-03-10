@@ -47,9 +47,12 @@ function assertCanonical(html, expectedUrl) {
 function assertIndexable(html) {
   const root = parse(html)
   const robots = root.querySelector('meta[name="robots"]')
-  if (!robots) return { ok: true } // treat missing as indexable by default
+  if (!robots) return { ok: false, reason: 'missing_robots_meta' }
   const content = (robots.getAttribute('content') || '').toLowerCase()
   if (content.includes('noindex')) return { ok: false, reason: 'noindex' }
+  const hasIndex = /\bindex\b/.test(content)
+  const hasFollow = /\bfollow\b/.test(content)
+  if (!hasIndex || !hasFollow) return { ok: false, reason: 'robots_not_index_follow' }
   return { ok: true }
 }
 
@@ -112,4 +115,3 @@ function main() {
 }
 
 main()
-
