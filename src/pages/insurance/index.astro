@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+import IndustryHubLayout from '../../components/IndustryHubLayout.astro';
+import Intro from '../../content/hubs/insurance/intro.md';
+import Guide from '../../content/hubs/insurance/guide.md';
+import faqContent from '../../content/hubs/insurance/faq.md?raw';
+import { parseFaqMarkdown } from '../../utils/faq';
+
+const title = 'Insurance Error Codes Directory';
+const description =
+  'A structured directory of insurance claim, billing, policy, and processing error codes organized by category with practical fix steps.';
+
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Insurance', href: '/insurance/' },
+];
+
+const SUBCATEGORIES: Array<{ key: string; name: string; icon: string; url: string }> = [
+  { key: 'healthcare', name: 'Healthcare', icon: '🏥', url: '/insurance/healthcare/' },
+  { key: 'auto-insurance', name: 'Auto Insurance', icon: '🚗', url: '/insurance/auto-insurance/' },
+  { key: 'property-insurance', name: 'Property Insurance', icon: '🏠', url: '/insurance/property-insurance/' },
+  { key: 'renters-insurance', name: 'Renters Insurance', icon: '🗝️', url: '/insurance/renters-insurance/' },
+  { key: 'life-insurance', name: 'Life Insurance', icon: '🧾', url: '/insurance/life-insurance/' },
+  { key: 'claims-processing', name: 'Claims Processing', icon: '🧠', url: '/insurance/claims-processing/' },
+  { key: 'billing-codes', name: 'Billing Codes', icon: '🧮', url: '/insurance/billing-codes/' },
+  { key: 'medicare-medicaid', name: 'Medicare / Medicaid', icon: '🏛️', url: '/insurance/medicare-medicaid/' },
+];
+
+const insuranceEntries = await getCollection('insuranceCodes');
+const counts = new Map<string, number>();
+for (const e of insuranceEntries) {
+  const k = e.data.subcategory;
+  counts.set(k, (counts.get(k) ?? 0) + 1);
+}
+
+const categoryData = SUBCATEGORIES.filter((s) => s.key !== 'healthcare').map((s) => ({
+  name: s.name,
+  icon: s.icon,
+  count: counts.get(s.key) ?? 0,
+  url: s.url,
+}));
+
+const byLastmodDesc = insuranceEntries
+  .slice()
+  .sort((a, b) => Date.parse(b.data.lastmod) - Date.parse(a.data.lastmod));
+
+const toGridItem = (e: any) => {
+  const codeSlug = e.slug.split('/').slice(-1)[0];
+  const sub = SUBCATEGORIES.find((s) => s.key === e.data.subcategory);
+  return {
+    code: e.data.code,
+    title: e.data.shortLabel,
+    description: e.data.summary || e.data.shortLabel,
+    category: sub?.name ?? 'Insurance',
+    publishDate: e.data.lastmod,
+    url: `/insurance/${e.data.subcategory}/error-codes/${codeSlug}/`,
+  };
+};
+
+const recentItems = byLastmodDesc.slice(0, 18).map(toGridItem);
+
+const featuredWanted: Array<{ subcategory: string; slug: string }> = [
+  { subcategory: 'auto-insurance', slug: 'clm-01' },
+  { subcategory: 'property-insurance', slug: 'prp-03' },
+  { subcategory: 'renters-insurance', slug: 'rnt-04' },
+  { subcategory: 'life-insurance', slug: 'lif-06' },
+  { subcategory: 'claims-processing', slug: 'cp-03' },
+  { subcategory: 'billing-codes', slug: 'bil-01' },
+  { subcategory: 'medicare-medicaid', slug: 'mcr-04' },
+];
+
+const featuredItems = featuredWanted
+  .map((w) => insuranceEntries.find((e) => e.data.subcategory === w.subcategory && e.slug.split('/').slice(-1)[0] === w.slug))
+  .filter(Boolean)
+  .slice(0, 12)
+  .map(toGridItem);
+
+const faqItems = parseFaqMarkdown(faqContent);
+---
+
+<IndustryHubLayout
+  title={title}
+  description={description}
+  industryKey="insurance"
+  categoryData={categoryData}
+  showQuickNav={false}
+  Intro={Intro}
+  Guide={Guide}
+  faqItems={faqItems}
+  recentItems={recentItems}
+  featuredItems={featuredItems}
+  crumbs={crumbs}
+/>
+

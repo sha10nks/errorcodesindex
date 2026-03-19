@@ -1,0 +1,45 @@
+---
+import IndustryHubLayout from '../../../components/IndustryHubLayout.astro';
+import recentData from '../../../data/healthcare/recent.json';
+import featuredData from '../../../data/healthcare/featured.json';
+import Intro from '../../../content/hubs/healthcare/intro.md';
+import Guide from '../../../content/hubs/healthcare/guide.md';
+import faqContent from '../../../content/hubs/healthcare/faq.md?raw';
+import { parseFaqMarkdown } from '../../../utils/faq';
+
+const title = 'Healthcare Error Codes Directory';
+const description =
+  'A reference for medical, insurance, and claim-related error codes including denial reasons, eligibility failures, and authorization codes.';
+
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Insurance', href: '/insurance/' },
+  { label: 'Healthcare', href: '/insurance/healthcare/' },
+];
+
+const faqItems = parseFaqMarkdown(faqContent);
+
+const remapItem = (it: any) => ({
+  ...it,
+  url: String(it.url || '').startsWith('/healthcare/error-codes/')
+    ? String(it.url).replace('/healthcare/error-codes/', '/insurance/healthcare/error-codes/')
+    : it.url,
+});
+
+const recentItems = Array.isArray(recentData) ? recentData.map(remapItem) : [];
+const featuredItems = Array.isArray(featuredData) ? featuredData.map(remapItem) : [];
+---
+
+<IndustryHubLayout
+  title={title}
+  description={description}
+  industryKey="healthcare"
+  quickNavBasePath="/insurance/healthcare/error-codes/"
+  Intro={Intro}
+  Guide={Guide}
+  faqItems={faqItems}
+  recentItems={recentItems}
+  featuredItems={featuredItems}
+  crumbs={crumbs}
+/>
+

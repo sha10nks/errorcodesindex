@@ -11,7 +11,8 @@ const title = 'Healthcare Error Codes Directory';
 const description = 'A reference for medical, insurance, and claim-related error codes including denial reasons, eligibility failures, and authorization codes.';
 const crumbs = [
   { label: 'Home', href: '/' },
-  { label: 'Healthcare', href: '/healthcare/' },
+  { label: 'Insurance', href: '/insurance/' },
+  { label: 'Healthcare', href: '/insurance/healthcare/' },
 ];
 
 const faqItems = parseFaqMarkdown(faqContent);
@@ -21,6 +22,7 @@ const faqItems = parseFaqMarkdown(faqContent);
   title={title}
   description={description}
   industryKey="healthcare"
+  canonicalPath="/insurance/healthcare/"
   Intro={Intro}
   Guide={Guide}
   faqItems={faqItems}

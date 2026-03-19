@@ -78,6 +78,16 @@ const systemCodes = defineCollection({
   ),
 });
 
+const insuranceCodes = defineCollection({
+  type: 'content',
+  schema: withGoogleDocValidation(
+    baseCodeSchema.extend({
+      industry: z.literal('insurance'),
+      subcategory: z.string().min(1),
+    })
+  ),
+});
+
 export const collections = {
   healthcareCodes,
   irsTaxCodes,
@@ -85,4 +95,5 @@ export const collections = {
   gamingCodes,
   applianceCodes,
   systemCodes,
+  insuranceCodes,
 };

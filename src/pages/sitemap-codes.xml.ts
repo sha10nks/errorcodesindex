@@ -30,12 +30,22 @@ export const GET: APIRoute = async ({ site }) => {
   const gaming = await getCollection('gamingCodes');
   const appliances = await getCollection('applianceCodes');
   const systems = await getCollection('systemCodes');
+  const insurance = await getCollection('insuranceCodes');
 
   const urls: Array<{ loc: string; lastmod: string }> = [];
   for (const e of healthcare) urls.push({ loc: `${base}/healthcare/error-codes/${e.slug}/`, lastmod: isoDate(e.data.lastmod) });
+  for (const e of healthcare) urls.push({ loc: `${base}/insurance/healthcare/error-codes/${e.slug}/`, lastmod: isoDate(e.data.lastmod) });
   for (const e of irsTax) urls.push({ loc: `${base}/irs-tax/error-codes/${e.slug}/`, lastmod: isoDate(e.data.lastmod) });
   for (const e of banking) urls.push({ loc: `${base}/banking/error-codes/${e.slug}/`, lastmod: isoDate(e.data.lastmod) });
   for (const e of gaming) urls.push({ loc: `${base}/gaming/error-codes/${e.slug}/`, lastmod: isoDate(e.data.lastmod) });
+
+  for (const e of insurance) {
+    const codeSlug = e.slug.split('/').slice(-1)[0];
+    urls.push({
+      loc: `${base}/insurance/${e.data.subcategory}/error-codes/${codeSlug}/`,
+      lastmod: isoDate(e.data.lastmod),
+    });
+  }
 
   const typeSet = new Set<string>();
   const brandSet = new Set<string>();
@@ -74,4 +84,3 @@ export const GET: APIRoute = async ({ site }) => {
 
   return new Response(body, { headers: { 'Content-Type': 'application/xml; charset=utf-8' } });
 };
-

@@ -18,6 +18,7 @@ export async function getSearchIndexItems(): Promise<SearchIndexItem[]> {
   const gaming = await getCollection('gamingCodes');
   const appliances = await getCollection('applianceCodes');
   const systems = await getCollection('systemCodes');
+  const insurance = await getCollection('insuranceCodes');
 
   const items: SearchIndexItem[] = [];
 
@@ -27,7 +28,18 @@ export async function getSearchIndexItems(): Promise<SearchIndexItem[]> {
       code: e.data.code,
       shortLabel: e.data.shortLabel,
       lastmod: e.data.lastmod,
-      url: `/healthcare/error-codes/${e.slug}/`,
+      url: `/insurance/healthcare/error-codes/${e.slug}/`,
+    });
+  }
+
+  for (const e of insurance) {
+    const codeSlug = e.slug.split('/').slice(-1)[0];
+    items.push({
+      industry: 'insurance',
+      code: e.data.code,
+      shortLabel: e.data.shortLabel,
+      lastmod: e.data.lastmod,
+      url: `/insurance/${e.data.subcategory}/error-codes/${codeSlug}/`,
     });
   }
 

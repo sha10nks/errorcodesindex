@@ -1,0 +1,108 @@
+---
+import { getCollection } from 'astro:content';
+import { breadcrumbSchema, techArticleSchema } from '../../../../utils/schema';
+import { pickRelatedEntries } from '../../../../utils/related';
+import { parseAuthoritySectionsFromBody } from '../../../../utils/authority';
+import ErrorCodeDetailLayout from '../../../../components/ErrorCodeDetailLayout.astro';
+import { pickGuidesForCode } from '../../../../lib/guides/learnMore';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('healthcareCodes');
+  return entries.map((e) => ({ params: { codeSlug: e.slug }, props: { entryId: e.id } }));
+}
+
+const { codeSlug } = Astro.params;
+const { entryId } = Astro.props;
+if (!codeSlug) throw new Error('Missing route params');
+
+const entries = await getCollection('healthcareCodes');
+const entry = entries.find((e) => e.id === entryId || e.slug === codeSlug);
+if (!entry) throw new Error('Missing entry');
+
+const pageTitle = `${entry.data.code} — Meaning (Healthcare Error Code)`;
+
+const parsed = parseAuthoritySectionsFromBody(entry.body);
+const summaryText = (entry.data.summary || parsed.whatMeans[0] || entry.data.shortLabel).trim();
+const description = summaryText.length > 10 ? summaryText : `What ${entry.data.code} means in Healthcare.`;
+
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Insurance', href: '/insurance/' },
+  { label: 'Healthcare', href: '/insurance/healthcare/' },
+  { label: 'Error Codes', href: '/insurance/healthcare/error-codes/' },
+  { label: entry.data.code, href: `/insurance/healthcare/error-codes/${entry.slug}/` },
+];
+
+const canonicalPath = `/insurance/healthcare/error-codes/${entry.slug}/`;
+const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
+
+const currentText = `${entry.data.shortLabel} ${entry.data.summary || ''} ${(parsed.whatMeans[0] || '').slice(0, 220)}`;
+const relatedEntries = pickRelatedEntries(entries as any, {
+  industryKey: 'healthcare',
+  currentSlug: entry.slug,
+  currentCode: entry.data.code,
+  currentText,
+  mentionedCodes: parsed.mentionedRelatedCodes,
+  max: 8,
+});
+
+const relatedItems = relatedEntries.map((rel: any) => ({
+  code: rel.data.code,
+  shortLabel: rel.data.shortLabel,
+  url: `/insurance/healthcare/error-codes/${rel.slug}/`,
+}));
+
+const learnMoreGuides = pickGuidesForCode({
+  industryKey: 'insurance',
+  insuranceSubcategory: 'healthcare',
+  code: entry.data.code,
+});
+
+const schema = [
+  breadcrumbSchema(crumbs, canonicalUrl),
+  techArticleSchema({
+    headline: `${entry.data.code} — ${entry.data.shortLabel}`,
+    description,
+    canonicalUrl,
+    industryLabel: 'Insurance',
+    code: entry.data.code,
+    dateModified: entry.data.lastmod,
+    keywords: [entry.data.code, 'Healthcare', 'insurance', 'healthcare'],
+  }),
+];
+
+const lastUpdatedLabel = new Date(entry.data.lastmod).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<ErrorCodeDetailLayout
+  pageTitle={pageTitle}
+  description={description}
+  canonicalPath={canonicalPath}
+  crumbs={crumbs}
+  schema={schema}
+  industryLabel="Insurance"
+  industryBadge="Healthcare Error Code"
+  code={entry.data.code}
+  shortLabel={entry.data.shortLabel}
+  sectionLabel={parsed.sectionLabel}
+  systemLabel={parsed.systemLabel}
+  lastUpdatedLabel={lastUpdatedLabel}
+  summary={summaryText}
+  whatMeans={parsed.whatMeans}
+  whereSeen={parsed.whereSeen}
+  whyAppears={parsed.whyAppears}
+  happensNext={parsed.happensNext}
+  notThis={parsed.notThis}
+  troubleshooting={parsed.troubleshooting}
+  notes={parsed.notes}
+  relatedItems={relatedItems}
+  learnMoreHubs={[
+    { label: 'Insurance', href: '/insurance/' },
+    { label: 'Healthcare', href: '/insurance/healthcare/' },
+  ]}
+  learnMoreGuides={learnMoreGuides}
+/>

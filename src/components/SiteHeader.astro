@@ -1,5 +1,5 @@
 ---
-import { INDUSTRIES } from '../utils/site';
+import { INDUSTRY_NAV } from '../utils/site';
 import { GUIDE_CATEGORIES, getGuidesByCategory } from '../lib/guides/registry';
 
 export interface Props {
@@ -25,7 +25,7 @@ const guidesByCategory = GUIDE_CATEGORIES.map((category) => ({
 }));
 
 // Column configuration for mega menu
-const col1Categories = ['healthcare', 'gaming'];
+const col1Categories = ['insurance', 'healthcare', 'gaming'];
 const col2Categories = ['irs-tax', 'banking', 'appliances'];
 const col3Categories = ['systems'];
 
@@ -68,15 +68,40 @@ const menuColumns = [
               Browse by Industry
             </div>
             <ul class="space-y-1">
-              {INDUSTRIES.map((it) => (
-                <li>
-                  <a class="block rounded-lg px-2 py-2 text-sm font-semibold text-slate-200 hover:text-white hover:bg-white/5 transition-all duration-200 group" href={it.href}>
-                    <span class="group-hover:translate-x-1 transition-transform inline-block">
-                      {it.label}
-                    </span>
-                  </a>
-                </li>
-              ))}
+              {INDUSTRY_NAV.map((it) =>
+                it.children ? (
+                  <li class="relative group/insurance">
+                    <a
+                      class="flex items-center justify-between gap-3 rounded-lg px-2 py-2 text-sm font-semibold text-slate-200 hover:text-white hover:bg-white/5 transition-all duration-200"
+                      href={it.href}
+                    >
+                      <span class="group-hover/insurance:translate-x-1 transition-transform inline-block">{it.label}</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 opacity-60">
+                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.06.02z" clip-rule="evenodd" />
+                      </svg>
+                    </a>
+
+                    <div class="absolute left-full top-0 ml-2 w-72 origin-top-left rounded-2xl border border-brand-border/50 bg-[#0A0A0B]/95 backdrop-blur-2xl shadow-2xl ring-1 ring-white/5 z-50 p-4 opacity-0 pointer-events-none translate-x-1 transition-all duration-150 group-hover/insurance:opacity-100 group-hover/insurance:pointer-events-auto group-hover/insurance:translate-x-0 group-focus-within/insurance:opacity-100 group-focus-within/insurance:pointer-events-auto group-focus-within/insurance:translate-x-0">
+                      <div class="block text-xs font-bold uppercase tracking-widest text-brand-primary mb-2 px-2">{it.label}</div>
+                      <ul class="space-y-1">
+                        {it.children.map((sub) => (
+                          <li>
+                            <a class="block rounded-lg px-2 py-2 text-sm font-semibold text-slate-200 hover:text-white hover:bg-white/5 transition-all duration-200 group" href={sub.href}>
+                              <span class="group-hover:translate-x-1 transition-transform inline-block">{sub.label}</span>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </li>
+                ) : (
+                  <li>
+                    <a class="block rounded-lg px-2 py-2 text-sm font-semibold text-slate-200 hover:text-white hover:bg-white/5 transition-all duration-200 group" href={it.href}>
+                      <span class="group-hover:translate-x-1 transition-transform inline-block">{it.label}</span>
+                    </a>
+                  </li>
+                )
+              )}
             </ul>
           </div>
         </div>
@@ -191,13 +216,36 @@ const menuColumns = [
           <li class="space-y-3">
             <div class="text-xs font-bold uppercase tracking-widest text-slate-500">Industries</div>
             <ul class="space-y-2 pl-4 border-l border-brand-border/50">
-              {INDUSTRIES.map((it) => (
-                <li>
-                  <a href={it.href} class="block py-2 text-base text-slate-300 hover:text-brand-primary transition-colors focus:outline-none focus:text-brand-primary">
-                    {it.label}
-                  </a>
-                </li>
-              ))}
+              {INDUSTRY_NAV.map((it) =>
+                it.children ? (
+                  <li>
+                    <details class="group">
+                      <summary class="flex cursor-pointer list-none items-center justify-between gap-3 py-2 text-base text-slate-300 hover:text-brand-primary transition-colors">
+                        <span class="flex-1">{it.label}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 transition-transform group-open:rotate-180 opacity-60">
+                          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                        </svg>
+                      </summary>
+                      <div class="mt-1 space-y-2 pl-3 border-l border-brand-border/30">
+                        <a href={it.href} class="block py-1.5 text-sm font-semibold text-brand-primary hover:text-brand-accent transition-colors focus:outline-none focus:text-brand-primary">
+                          {it.label} hub
+                        </a>
+                        {it.children.map((sub) => (
+                          <a href={sub.href} class="block py-1.5 text-sm text-slate-300 hover:text-brand-primary transition-colors focus:outline-none focus:text-brand-primary">
+                            {sub.label}
+                          </a>
+                        ))}
+                      </div>
+                    </details>
+                  </li>
+                ) : (
+                  <li>
+                    <a href={it.href} class="block py-2 text-base text-slate-300 hover:text-brand-primary transition-colors focus:outline-none focus:text-brand-primary">
+                      {it.label}
+                    </a>
+                  </li>
+                )
+              )}
             </ul>
           </li>
 

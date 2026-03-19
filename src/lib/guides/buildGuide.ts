@@ -6,6 +6,7 @@ export type GuideFaqItem = { question: string; answer: string };
 
 export type GuideCodeSource =
   | { kind: 'industry'; industry: 'healthcare' | 'irs-tax' | 'banking' | 'gaming'; patterns?: string[]; limit?: number }
+  | { kind: 'insurance'; subcategory?: string; patterns?: string[]; limit?: number }
   | {
       kind: 'appliances';
       applianceType: string;
@@ -57,6 +58,7 @@ function defaultQuickNav() {
 function baseHubLinks(categoryKey: GuideCategoryKey): GuideHubLink[] {
   if (categoryKey === 'systems') return [{ label: 'Systems & Devices hub', href: '/systems/' }];
   if (categoryKey === 'irs-tax') return [{ label: 'IRS / Tax hub', href: '/irs-tax/' }];
+  if (categoryKey === 'insurance') return [{ label: 'Insurance hub', href: '/insurance/' }];
   return [{ label: `${categoryKey[0].toUpperCase()}${categoryKey.slice(1)} hub`, href: `/${categoryKey}/` }];
 }
 
@@ -106,7 +108,355 @@ function systemsSubHub(topicKey: GuideTopicKey): GuideHubLink[] {
   return map[topicKey] ?? [];
 }
 
-function getTopicModel(topicKey: GuideTopicKey) {
+function insuranceSubHubFromSlug(slug: string): GuideHubLink[] {
+  const map: Record<string, GuideHubLink[]> = {
+    'auto-insurance-claim-errors-top-codes-causes-and-fixes': [
+      { label: 'Auto Insurance hub', href: '/insurance/auto-insurance/' },
+      { label: 'Auto Insurance code directory', href: '/insurance/auto-insurance/error-codes/' },
+    ],
+    'property-insurance-claim-denials-explained-with-real-examples': [
+      { label: 'Property Insurance hub', href: '/insurance/property-insurance/' },
+      { label: 'Property Insurance code directory', href: '/insurance/property-insurance/error-codes/' },
+    ],
+    'renters-insurance-claim-errors-what-causes-rejections-and-fixes': [
+      { label: 'Renters Insurance hub', href: '/insurance/renters-insurance/' },
+      { label: 'Renters Insurance code directory', href: '/insurance/renters-insurance/error-codes/' },
+    ],
+    'life-insurance-claim-denial-codes-and-payout-issues-explained': [
+      { label: 'Life Insurance hub', href: '/insurance/life-insurance/' },
+      { label: 'Life Insurance code directory', href: '/insurance/life-insurance/error-codes/' },
+    ],
+    'full-guide-to-insurance-billing-errors-and-how-to-resolve-them': [
+      { label: 'Billing Codes hub', href: '/insurance/billing-codes/' },
+      { label: 'Billing Codes directory', href: '/insurance/billing-codes/error-codes/' },
+    ],
+    'top-billing-code-mistakes-in-insurance-claims-and-fixes': [
+      { label: 'Billing Codes hub', href: '/insurance/billing-codes/' },
+      { label: 'Billing Codes directory', href: '/insurance/billing-codes/error-codes/' },
+    ],
+    'insurance-payment-errors-and-adjustment-codes-explained': [
+      { label: 'Billing Codes hub', href: '/insurance/billing-codes/' },
+      { label: 'Claims Processing hub', href: '/insurance/claims-processing/' },
+    ],
+    'insurance-claims-processing-errors-causes-codes-and-solutions': [
+      { label: 'Claims Processing hub', href: '/insurance/claims-processing/' },
+      { label: 'Claims Processing directory', href: '/insurance/claims-processing/error-codes/' },
+    ],
+    'insurance-claims-processing-workflow-errors-at-every-stage': [
+      { label: 'Claims Processing hub', href: '/insurance/claims-processing/' },
+      { label: 'Claims Processing directory', href: '/insurance/claims-processing/error-codes/' },
+    ],
+    'insurance-claim-status-codes-explained-from-submission-to-payment': [
+      { label: 'Claims Processing hub', href: '/insurance/claims-processing/' },
+      { label: 'Insurance hub', href: '/insurance/' },
+    ],
+    'out-of-network-and-authorization-errors-in-insurance-claims': [
+      { label: 'Claims Processing hub', href: '/insurance/claims-processing/' },
+      { label: 'Insurance hub', href: '/insurance/' },
+    ],
+    'insurance-coverage-errors-eligibility-limits-and-policy-issues': [
+      { label: 'Insurance hub', href: '/insurance/' },
+      { label: 'Auto Insurance hub', href: '/insurance/auto-insurance/' },
+      { label: 'Property Insurance hub', href: '/insurance/property-insurance/' },
+    ],
+    'insurance-fraud-flags-and-investigation-codes-explained': [
+      { label: 'Auto Insurance hub', href: '/insurance/auto-insurance/' },
+      { label: 'Property Insurance hub', href: '/insurance/property-insurance/' },
+    ],
+    'high-value-claim-errors-in-insurance-large-claims-and-disputes': [
+      { label: 'Property Insurance hub', href: '/insurance/property-insurance/' },
+      { label: 'Auto Insurance hub', href: '/insurance/auto-insurance/' },
+    ],
+    'insurance-system-errors-api-failures-submission-errors-and-fixes': [
+      { label: 'Claims Processing hub', href: '/insurance/claims-processing/' },
+      { label: 'Claims Processing directory', href: '/insurance/claims-processing/error-codes/' },
+    ],
+    'end-to-end-insurance-claim-lifecycle-errors-full-technical-guide': [
+      { label: 'Insurance hub', href: '/insurance/' },
+      { label: 'Claims Processing hub', href: '/insurance/claims-processing/' },
+    ],
+  };
+
+  return map[slug] ?? [{ label: 'Insurance hub', href: '/insurance/' }];
+}
+
+function insuranceGuideSourcesFromSlug(slug: string): GuideCodeSource[] {
+  const auto = { kind: 'insurance', subcategory: 'auto-insurance', patterns: ['^CLM-'], limit: 24 } as const;
+  const property = { kind: 'insurance', subcategory: 'property-insurance', patterns: ['^PRP-'], limit: 24 } as const;
+  const renters = { kind: 'insurance', subcategory: 'renters-insurance', patterns: ['^RNT-'], limit: 24 } as const;
+  const life = { kind: 'insurance', subcategory: 'life-insurance', patterns: ['^LIF-'], limit: 24 } as const;
+  const processing = { kind: 'insurance', subcategory: 'claims-processing', patterns: ['^CP-'], limit: 30 } as const;
+  const billing = { kind: 'insurance', subcategory: 'billing-codes', patterns: ['^BIL-'], limit: 30 } as const;
+  const medicare = { kind: 'insurance', subcategory: 'medicare-medicaid', patterns: ['^MCR-'], limit: 30 } as const;
+  const healthcareCanonical = { kind: 'industry', industry: 'healthcare', patterns: ['^CO-', '^PR-', '^OA-', '^PI-', '^CARC', '^RARC'], limit: 20 } as const;
+
+  const map: Record<string, GuideCodeSource[]> = {
+    'auto-insurance-claim-errors-top-codes-causes-and-fixes': [auto, processing, billing],
+    'property-insurance-claim-denials-explained-with-real-examples': [property, processing, billing],
+    'renters-insurance-claim-errors-what-causes-rejections-and-fixes': [renters, processing, billing],
+    'life-insurance-claim-denial-codes-and-payout-issues-explained': [life, processing, medicare],
+    'full-guide-to-insurance-billing-errors-and-how-to-resolve-them': [billing, processing, medicare],
+    'top-billing-code-mistakes-in-insurance-claims-and-fixes': [billing, processing, medicare],
+    'insurance-claims-processing-errors-causes-codes-and-solutions': [processing, billing, medicare],
+    'insurance-claims-processing-workflow-errors-at-every-stage': [processing, billing, medicare],
+    'edi-837-and-835-errors-in-insurance-complete-troubleshooting-guide': [processing, billing, medicare, healthcareCanonical],
+    'insurance-policy-errors-and-validation-codes-full-guide': [auto, property, renters, life],
+    'insurance-coverage-errors-eligibility-limits-and-policy-issues': [auto, property, renters, life, medicare],
+    'insurance-fraud-flags-and-investigation-codes-explained': [auto, property, life],
+    'duplicate-claims-missing-data-and-invalid-submissions-full-error-guide': [processing, billing, auto],
+    'insurance-documentation-errors-that-cause-claim-rejections': [auto, property, renters, life, processing],
+    'out-of-network-and-authorization-errors-in-insurance-claims': [billing, processing, medicare, healthcareCanonical],
+    'insurance-claim-delays-all-error-codes-that-cause-slow-processing': [processing, billing, auto, property],
+    'insurance-system-errors-api-failures-submission-errors-and-fixes': [processing, billing],
+    'end-to-end-insurance-claim-lifecycle-errors-full-technical-guide': [processing, billing, auto, property, medicare],
+    'insurance-error-codes-by-category-claims-billing-policy-processing': [auto, property, renters, life, processing, billing, medicare],
+    'beginner-to-advanced-guide-to-insurance-error-codes-full-breakdown': [auto, property, renters, life, processing, billing, medicare],
+    'insurance-claim-resubmission-guide-fixing-errors-and-getting-approved': [processing, billing, auto, property],
+  };
+
+  return map[slug] ?? [processing, billing, auto, property, renters, life, medicare];
+}
+
+function insuranceGuideQuickNav() {
+  return [
+    { id: 'intro', label: 'Introduction' },
+    { id: 'claims-errors', label: 'Claims errors' },
+    { id: 'billing-errors', label: 'Billing errors' },
+    { id: 'policy-errors', label: 'Policy errors' },
+    { id: 'processing-errors', label: 'Processing & system errors' },
+    { id: 'causes', label: 'Causes' },
+    { id: 'fix-steps', label: 'Step-by-step fixes' },
+    { id: 'prevention', label: 'Prevention' },
+    { id: 'code-directory', label: 'Code directory' },
+    { id: 'related', label: 'Related guides & hubs' },
+    { id: 'faq', label: 'FAQ' },
+    { id: 'references', label: 'References' },
+  ];
+}
+
+function insuranceGuideFaq(): GuideFaqItem[] {
+  return [
+    {
+      question: 'Should I resubmit or appeal?',
+      answer:
+        'Resubmit when the code points to correctable inputs (missing fields, mismatched identifiers, missing documents) and the payer supports corrected/supplemental workflows. Appeal when you disagree with a coverage/policy determination. If you are unsure, confirm the carrier’s workflow first so you do not create duplicates.',
+    },
+    {
+      question: 'Why do “duplicate” errors keep happening?',
+      answer:
+        'Duplicates are usually workflow issues: a corrected claim indicator is required, an existing claim is still open, or key identifiers match a prior submission. Before resubmitting, confirm claim status and the carrier’s correction process.',
+    },
+    {
+      question: 'What is the fastest way to identify the real cause behind an error code?',
+      answer:
+        'Use the claim notes or audit trail to find which rule fired (what field, document, or eligibility check failed). The short label alone is often too broad.',
+    },
+    {
+      question: 'Does “not covered” always mean excluded?',
+      answer:
+        'Not always. It can also mean the wrong coverage type was selected, the date falls outside the effective window, authorization is missing, or the claim data does not match the policy. Validate the basics before concluding exclusion.',
+    },
+    {
+      question: 'What should I collect before contacting support or escalating?',
+      answer:
+        'Claim ID, policy number, loss/service date, the exact code message, timestamps, and any submission/batch identifiers. If documents are involved, list what you provided and what is still requested.',
+    },
+    {
+      question: 'How can I prevent repeat rejections?',
+      answer:
+        'Use a pre-submit checklist: verify policy status for the date, confirm identifiers, attach required documents, and follow the carrier’s corrected/supplemental workflow when making changes.',
+    },
+    {
+      question: 'Are these codes universal across all carriers?',
+      answer:
+        'Carriers vary in wording and enforcement. These guides group the most common operational patterns and safe fixes that apply broadly, but you should confirm final rules in the carrier’s published guidance or claim notes.',
+    },
+    {
+      question: 'Why can the same code have different fixes?',
+      answer:
+        'Because the code often labels a category (eligibility, documentation, policy status, processing failure). The correct fix depends on the scenario and the specific rule that triggered the message.',
+    },
+  ];
+}
+
+function insuranceGuideReferences() {
+  return [
+    'Carrier claim submission manuals and correction/reopen policies',
+    'EDI companion guides and remittance guidance (when applicable)',
+    'Government payer eligibility and enrollment guidance (Medicare/Medicaid)',
+    'Internal claim workflow audit trails and system validation logs',
+  ];
+}
+
+function buildInsuranceTopicModel(meta: GuideMeta) {
+  const title = meta.title;
+  const slug = meta.slug;
+
+  const promise = `Use this guide to understand ${title.toLowerCase()}, spot the highest-signal failure bucket first, and apply safe fixes before you resubmit or escalate.`;
+
+  const tldr = [
+    'Treat codes as workflow checkpoints: identify the bucket (policy, documentation, billing, processing) before taking action.',
+    'Fix the root cause before resubmitting; repeated submits with unchanged data are the fastest path to duplicates and delays.',
+    'Escalate with a short timeline plus the minimum supporting artifacts the reviewer needs to confirm the rule or exception.',
+    'Use the code directory to jump into specific pages and compare related codes with similar fixes.',
+  ];
+
+  const introParagraphs = [
+    'Insurance code messages look like “errors,” but in practice many of them are decision checkpoints. A claim can stop because a policy is inactive, a document is missing, a billing rule failed, or a workflow queue requires manual review.',
+    'The most common mistake is treating the short label as the full diagnosis. Two claims can show the same code while requiring completely different fixes. The safe method is: confirm context, confirm identifiers and dates, confirm the exact rule that fired, then change only what the rule requires.',
+    'This guide is built for high-intent troubleshooting. It prioritizes actions that reduce rework: fewer duplicate submissions, fewer back-and-forth requests, and faster movement from “pending” to a final decision.',
+    'Use the table in the code directory section to jump directly to detailed pages. Each code page includes causes, step-by-step fixes, prevention tips, and related-code links so you can quickly move between similar failures.',
+  ];
+
+  const commonClaimsBullets = [
+    'Missing required fields (loss date, incident details, claim type, coverage selection)',
+    'Duplicate submission or wrong correction workflow (new vs corrected vs supplemental)',
+    'Documentation gaps (reports, photos, estimates, inventories, certificates)',
+    'Coverage verification failures (eligibility, limits, exclusions, endorsements)',
+    'Manual review flags (investigation, high value, fraud screening, liability disputes)',
+  ];
+
+  const commonBillingBullets = [
+    'Invalid code format or obsolete code set',
+    'Modifier or bundling/unbundling validation failures',
+    'Provider identifier mismatches (NPI, taxonomy, provider ID)',
+    'Diagnosis/service linkage mismatches and line-item validation errors',
+    'Out-of-network billing edits and authorization prerequisites',
+  ];
+
+  const commonPolicyBullets = [
+    'Policy not active for the relevant date (expired, lapsed, cancelled, suspended)',
+    'Coverage limit or deductible rules not satisfied',
+    'Excluded events or excluded uses (commercial use, disaster exclusions, unlisted driver/items)',
+    'Eligibility conflicts and payer sequencing problems (especially government payers)',
+  ];
+
+  const commonProcessingBullets = [
+    'Submission timeouts, API failures, or batch processing issues',
+    'Routing errors into the wrong queue or “stuck pending” states',
+    'Data mismatch between systems (portal vs internal, TPA vs carrier)',
+    'Attachment upload failures and unsupported formats',
+  ];
+
+  const fixStepsBullets = [
+    'Confirm where the code was generated (carrier portal, billing system, clearinghouse, TPA platform, internal workflow).',
+    'Check policy status and effective dates for the loss/service date before changing anything else.',
+    'Validate the identifiers that drive matching: policy number, insured name, loss date, address/VIN, claim ID.',
+    'If the code suggests missing information, compare the carrier’s required list to what is actually attached or filled in.',
+    'If it is a duplicate-type error, confirm whether you must submit as corrected, supplemental, reopened, or appealed.',
+    'If the claim is under review/investigation, stop resubmitting and instead respond with the requested artifacts or timeline.',
+    'For billing edits, correct format/modifier/linkage issues first, then re-run validation to avoid cascading errors.',
+    'If out-of-network or authorization-related, confirm network status and the specific authorization parameters required (dates, services, units).',
+    'Resubmit once with the corrected inputs and keep a change log (what changed, when, and why).',
+    'Escalate with a concise packet: code, timestamps, claim identifiers, the rule that failed, and the evidence that satisfies it.',
+  ];
+
+  const preventionBullets = [
+    'Use a pre-submit checklist aligned to the claim type (documents, identifiers, eligibility checks).',
+    'Standardize correction workflows so staff do not accidentally submit duplicates.',
+    'Validate attachments early: acceptable formats, required pages, and readable scans.',
+    'Track deadlines (timely filing, reopen windows, documentation response windows).',
+    'When integrating via API/batches, log submission IDs, timestamps, and validation responses for fast support cases.',
+  ];
+
+  const codeDirectorySources = insuranceGuideSourcesFromSlug(slug);
+  const directoryTitle = 'Common insurance error codes linked from this guide';
+
+  const notes = [
+    'These code pages focus on practical meaning and safe fix order. Carrier wording can vary; always confirm the exact rule in claim notes.',
+    'If you do not see your exact code, use the closest category hub and browse by prefix; many carriers reuse similar labels across workflows.',
+  ];
+
+  const sections: GuideSection[] = [
+    { id: 'intro', title: 'Introduction', paragraphs: introParagraphs },
+    {
+      id: 'claims-errors',
+      title: 'Claims errors (intake, duplicates, documentation)',
+      intro: 'These are the errors that stop a claim before it can be evaluated fairly:',
+      bullets: commonClaimsBullets,
+      paragraphs: [
+        'Claims errors are usually fixable. The key is to avoid “guess-and-resubmit.” If a document is missing, attach the specific item and confirm it is readable and complete. If a field is missing, correct the field once and keep a record of what changed.',
+        'Duplicate errors are often workflow problems, not user mistakes. Many systems require a corrected/supplemental transaction type so the carrier can attach changes to the existing claim record. Resubmitting as new can create multiple open records and delays.',
+        'When a claim is labeled incomplete, the fastest path is to compare the carrier’s minimum requirement list against what you provided, then fill the smallest gap first. Large “kitchen sink” uploads slow down review and increase mismatch risk.',
+      ],
+    },
+    {
+      id: 'billing-errors',
+      title: 'Billing errors (format, edits, linkage)',
+      intro: 'Billing errors are validation failures that can look like denials but are often correctable edits:',
+      bullets: commonBillingBullets,
+      paragraphs: [
+        'Billing failures frequently cascade: one invalid field can cause several downstream messages. Start with the first failing edit in the workflow output and correct that before touching secondary errors.',
+        'When the message suggests an invalid code or format, confirm the required code set and formatting rules for that payer or workflow. Small differences (leading zeros, modifiers, separators) matter.',
+        'If the message references bundling/unbundling or linkage, treat it as a rules problem. Use the payer’s published guidance (or contract rules) to determine whether the billed structure is permitted before resubmitting.',
+      ],
+    },
+    {
+      id: 'policy-errors',
+      title: 'Policy errors (eligibility, limits, exclusions)',
+      intro: 'Policy errors can be either correctable (data mismatch) or decisions (true exclusions). Validate in order:',
+      bullets: commonPolicyBullets,
+      paragraphs: [
+        'Start by validating dates. A large share of “policy expired” or “lapsed” messages are caused by date mismatches: wrong loss date, incorrect effective period, or an incorrect policy number that points to a different record.',
+        'Limit and deductible messages are often about thresholds. Confirm the deductible amount, what counts toward it, and whether prior payments apply. For coverage limits, verify whether the limit is per event, per period, or per item.',
+        'For exclusions, do not assume intent. Confirm that the event category actually matches the exclusion described. Misclassification (e.g., “flood” vs “water damage,” “commercial use” vs personal use) is a common fix path when supported by facts.',
+      ],
+    },
+    {
+      id: 'processing-errors',
+      title: 'Processing & system errors (routing, API, review queues)',
+      intro: 'These errors occur when the system cannot move the claim forward, even if the claim is otherwise valid:',
+      bullets: commonProcessingBullets,
+      paragraphs: [
+        'Processing errors require different tactics than coverage errors. If the system cannot find the claim or cannot route it, the best fix is often a support ticket with the right identifiers, not repeated submissions.',
+        'When attachments fail to upload, verify file type and size limits and confirm the portal accepted the upload (not just that you clicked “submit”). Screenshot or export confirmation receipts when possible.',
+        'If an API/batch process is involved, preserve correlation IDs, timestamps, and request payload validation outputs. Those artifacts reduce resolution time dramatically when vendor support is involved.',
+      ],
+    },
+    {
+      id: 'causes',
+      title: 'Root causes (what triggers codes in real workflows)',
+      paragraphs: [
+        'In practice, most insurance code failures are triggered by one of three things: a mismatch (your data does not match the carrier’s record), a missing prerequisite (document/eligibility/auth), or a workflow state conflict (duplicate or closed claim).',
+        'Mismatch errors are usually solved by confirming the authoritative source: the carrier’s policy record, the enrollment/eligibility system, or the original claim record. Fix the upstream source when needed; changing downstream fields can be overwritten by sync jobs.',
+        'Missing prerequisite errors are solved by narrowing the requested item to a minimal checklist. For example: a police report number and incident date, an inspection report, a death certificate, a repair estimate, or an inventory list.',
+        'Workflow state conflicts require you to follow the carrier’s process. A reopened claim, supplemental filing, or appeal often uses a different pathway than a new submission. Using the wrong pathway is how teams create duplicates and delays.',
+      ],
+    },
+    {
+      id: 'fix-steps',
+      title: 'Step-by-step fixes (safe, prioritized)',
+      intro: 'Use this sequence to reduce retries and get to a stable resolution path:',
+      bullets: fixStepsBullets,
+      paragraphs: [
+        'If you only do one thing: write down the exact code, timestamp, and context, then confirm the rule that fired. Everything else becomes faster after you identify whether this is policy/eligibility, documentation, billing edits, or a processing state issue.',
+      ],
+    },
+    {
+      id: 'prevention',
+      title: 'Prevention strategies (reduce rejections and rework)',
+      intro: 'Prevention is mostly about standardization and checks at the right stage:',
+      bullets: preventionBullets,
+    },
+  ];
+
+  return {
+    promise,
+    tldr,
+    quickNav: insuranceGuideQuickNav(),
+    sections,
+    codeDirectory: {
+      title: directoryTitle,
+      notes,
+      sources: codeDirectorySources,
+    },
+    references: insuranceGuideReferences(),
+    faq: insuranceGuideFaq(),
+  };
+}
+
+function getTopicModel(meta: GuideMeta) {
+  const topicKey = meta.topicKey;
   switch (topicKey) {
     case 'healthcare-denials':
       return {
@@ -225,6 +575,9 @@ function getTopicModel(topicKey: GuideTopicKey) {
           },
         ],
       };
+
+    case 'insurance':
+      return buildInsuranceTopicModel(meta);
 
     case 'gaming-xbox':
       return {
@@ -1023,12 +1376,13 @@ function getTopicModel(topicKey: GuideTopicKey) {
 }
 
 export function buildGuideModel(meta: GuideMeta, allGuides: GuideMeta[]): GuidePageModel {
-  const topic = getTopicModel(meta.topicKey);
+  const topic: any = getTopicModel(meta);
 
   const relatedHubs = [
     ...baseHubLinks(meta.categoryKey),
     ...(meta.categoryKey === 'systems' ? systemsSubHub(meta.topicKey) : []),
-    ...(meta.categoryKey === 'healthcare' ? [{ label: 'Healthcare code directory', href: '/healthcare/error-codes/' }] : []),
+    ...(meta.categoryKey === 'insurance' ? insuranceSubHubFromSlug(meta.slug) : []),
+    ...(meta.categoryKey === 'healthcare' ? [{ label: 'Healthcare code directory', href: '/insurance/healthcare/error-codes/' }] : []),
     ...(meta.categoryKey === 'gaming' ? [{ label: 'Gaming code directory', href: '/gaming/error-codes/' }] : []),
     ...(meta.categoryKey === 'irs-tax' ? [{ label: 'IRS / Tax code directory', href: '/irs-tax/error-codes/' }] : []),
     ...(meta.categoryKey === 'banking' ? [{ label: 'Banking code directory', href: '/banking/error-codes/' }] : []),
@@ -1039,7 +1393,7 @@ export function buildGuideModel(meta: GuideMeta, allGuides: GuideMeta[]): GuideP
     meta,
     promise: topic.promise,
     tldr: topic.tldr,
-    quickNav: defaultQuickNav(),
+    quickNav: topic.quickNav ?? defaultQuickNav(),
     sections: topic.sections,
     codeDirectory: topic.codeDirectory,
     relatedHubs,
@@ -1048,4 +1402,3 @@ export function buildGuideModel(meta: GuideMeta, allGuides: GuideMeta[]): GuideP
     references: topic.references,
   };
 }
-

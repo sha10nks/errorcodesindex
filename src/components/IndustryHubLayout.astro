@@ -9,7 +9,8 @@ import { GUIDES } from '../lib/guides/registry';
 export interface Props {
   title: string;
   description: string;
-  industryKey: 'healthcare' | 'irs-tax' | 'banking' | 'gaming' | 'appliances' | 'systems';
+  industryKey: 'healthcare' | 'irs-tax' | 'banking' | 'gaming' | 'appliances' | 'systems' | 'insurance';
+  canonicalPath?: string;
   categoryData?: Array<{
     name: string;
     icon: string;
@@ -53,6 +54,7 @@ const {
   title, 
   description, 
   industryKey, 
+  canonicalPath,
   categoryData, 
   prefixesOverride,
   quickNavBasePath,
@@ -73,7 +75,8 @@ const prefixes = {
   'banking': ['05', '12', '14', '51', '54', '91', 'R0-'],
   'gaming': ['WS-', 'NP-', 'SU-', 'CE-', 'Numeric Codes'],
   'appliances': ['Dishwashers', 'Refrigerators', 'Washers', 'General Appliances'],
-  'systems': ['0x', 'Error', 'POST', 'TPM', 'DHCP', 'B200']
+  'systems': ['0x', 'Error', 'POST', 'TPM', 'DHCP', 'B200'],
+  'insurance': ['CLM-', 'PRP-', 'RNT-', 'LIF-', 'CP-', 'BIL-', 'MCR-']
 };
 
 const quickNavPrefixes = prefixesOverride ?? prefixes[industryKey];
@@ -97,7 +100,7 @@ const guidesCategoryKey = industryKey;
 const popularGuides = GUIDES.filter((g) => g.categoryKey === guidesCategoryKey).slice(0, 6);
 ---
 
-<SectionLayout title={title} description={description} crumbs={crumbs}>
+<SectionLayout title={title} description={description} crumbs={crumbs} canonicalPath={canonicalPath}>
   <div class="not-prose space-y-14">
     <section>
       <div class="max-w-4xl mx-auto">
@@ -228,6 +231,26 @@ const popularGuides = GUIDES.filter((g) => g.categoryKey === guidesCategoryKey).
                 </li>
               </>
             )}
+            {industryKey === 'insurance' && (
+              <>
+                <li class="flex items-start gap-3">
+                  <span class="text-brand-primary mt-1">✓</span>
+                  <span>Claim, billing, and policy validation codes grouped by real workflow stages</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-brand-primary mt-1">✓</span>
+                  <span>Step-by-step fix checklists to resolve rejections, missing data, and processing errors</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-brand-primary mt-1">✓</span>
+                  <span>Related-code links to move between similar denial reasons and system failures</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-brand-primary mt-1">✓</span>
+                  <span>Insurance guides that link back into the code directory for fast navigation</span>
+                </li>
+              </>
+            )}
           </ul>
         </div>
 
@@ -262,7 +285,7 @@ const popularGuides = GUIDES.filter((g) => g.categoryKey === guidesCategoryKey).
       ) : null}
     </section>
 
-    {(industryKey === 'appliances' || industryKey === 'systems') && categoryData && (
+    {(industryKey === 'appliances' || industryKey === 'systems' || industryKey === 'insurance') && categoryData && (
       <section id="browse-by-category" class="border-t border-brand-border/60 pt-14 scroll-mt-28">
         <div class="max-w-6xl mx-auto">
           <div class="flex items-end justify-between mb-8">
@@ -271,7 +294,9 @@ const popularGuides = GUIDES.filter((g) => g.categoryKey === guidesCategoryKey).
               <p class="mt-3 text-slate-400 max-w-3xl">
                 {industryKey === 'appliances'
                   ? 'Start with an appliance type, then drill into brand and model/series hubs. Every link is crawlable and organized to keep troubleshooting fast.'
-                  : 'Start with a systems or device subcategory, then browse the most common codes and the newest additions. Every link is crawlable and designed for fast troubleshooting.'}
+                  : industryKey === 'systems'
+                    ? 'Start with a systems or device subcategory, then browse the most common codes and the newest additions. Every link is crawlable and designed for fast troubleshooting.'
+                    : 'Start with an insurance category (auto, property, renters, life, claims processing, billing, or Medicare/Medicaid). Each hub links to a directory and detailed code pages.'}
               </p>
             </div>
           </div>

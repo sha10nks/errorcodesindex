@@ -47,12 +47,17 @@ const description = summaryText.length > 10 ? summaryText : `What ${entry.data.c
 
 const crumbs = [
   { label: 'Home', href: '/' },
-  { label: industryMeta.label, href: industryMeta.href },
+  ...(industry === 'healthcare'
+    ? [
+        { label: 'Insurance', href: '/insurance/' },
+        { label: 'Healthcare', href: '/insurance/healthcare/' },
+      ]
+    : [{ label: industryMeta.label, href: industryMeta.href }]),
   { label: 'Error Codes', href: `/${industry}/error-codes/` },
   { label: entry.data.code, href: `/${industry}/error-codes/${entry.slug}/` },
 ];
 
-const canonicalPath = `/${industry}/error-codes/${entry.slug}/`;
+const canonicalPath = industry === 'healthcare' ? `/insurance/healthcare/error-codes/${entry.slug}/` : `/${industry}/error-codes/${entry.slug}/`;
 const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
 
 const currentText = `${entry.data.shortLabel} ${entry.data.summary || ''} ${(parsed.whatMeans[0] || '').slice(0, 220)}`;
@@ -68,11 +73,14 @@ const relatedEntries = pickRelatedEntries(entries as any, {
 const relatedItems = relatedEntries.map((rel: any) => ({
   code: rel.data.code,
   shortLabel: rel.data.shortLabel,
-  url: `/${industry}/error-codes/${rel.slug}/`,
+  url: industry === 'healthcare' ? `/insurance/healthcare/error-codes/${rel.slug}/` : `/${industry}/error-codes/${rel.slug}/`,
 }));
 
 const learnMoreHubs = pickHubsForCode({ industryKey: industry as any });
-const learnMoreGuides = pickGuidesForCode({ industryKey: industry as any, code: entry.data.code });
+const learnMoreGuides =
+  industry === 'healthcare'
+    ? pickGuidesForCode({ industryKey: 'insurance', insuranceSubcategory: 'healthcare', code: entry.data.code })
+    : pickGuidesForCode({ industryKey: industry as any, code: entry.data.code });
 
 const schema = [
   breadcrumbSchema(crumbs, canonicalUrl),

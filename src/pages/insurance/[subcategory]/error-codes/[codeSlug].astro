@@ -1,0 +1,122 @@
+---
+import { getCollection } from 'astro:content';
+import { breadcrumbSchema, techArticleSchema } from '../../../../utils/schema';
+import { pickRelatedEntries } from '../../../../utils/related';
+import { parseAuthoritySectionsFromBody } from '../../../../utils/authority';
+import ErrorCodeDetailLayout from '../../../../components/ErrorCodeDetailLayout.astro';
+import catalog from '../../../../lib/insurance/catalog.json';
+import { pickGuidesForCode } from '../../../../lib/guides/learnMore';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('insuranceCodes');
+  return entries.map((e) => {
+    const codeSlug = e.slug.split('/').slice(-1)[0];
+    return {
+      params: { subcategory: e.data.subcategory, codeSlug },
+      props: { entryId: e.id },
+    };
+  });
+}
+
+const { subcategory, codeSlug } = Astro.params;
+const { entryId } = Astro.props;
+if (!subcategory || !codeSlug) throw new Error('Missing route params');
+
+const subs = Array.isArray(catalog?.subcategories) ? catalog.subcategories : [];
+const meta = subs.find((s: any) => s.key === subcategory);
+if (!meta) throw new Error('Unsupported subcategory');
+
+const entries = (await getCollection('insuranceCodes')).filter((e) => e.data.subcategory === subcategory);
+const entry = entries.find((e) => e.id === entryId || e.slug.split('/').slice(-1)[0] === codeSlug);
+if (!entry) throw new Error('Missing entry');
+
+const pageTitle = `${entry.data.code} — Meaning (${meta.label} Error Code)`;
+
+const parsed = parseAuthoritySectionsFromBody(entry.body);
+const summaryText = (entry.data.summary || parsed.whatMeans[0] || entry.data.shortLabel).trim();
+const description = summaryText.length > 10 ? summaryText : `What ${entry.data.code} means in ${meta.label}.`;
+
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Insurance', href: '/insurance/' },
+  { label: meta.label, href: `/insurance/${subcategory}/` },
+  { label: 'Error Codes', href: `/insurance/${subcategory}/error-codes/` },
+  { label: entry.data.code, href: `/insurance/${subcategory}/error-codes/${codeSlug}/` },
+];
+
+const canonicalPath = `/insurance/${subcategory}/error-codes/${codeSlug}/`;
+const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
+
+const currentText = `${entry.data.shortLabel} ${entry.data.summary || ''} ${(parsed.whatMeans[0] || '').slice(0, 220)}`;
+const relatedEntries = pickRelatedEntries(entries as any, {
+  industryKey: 'insurance',
+  currentSlug: entry.slug,
+  currentCode: entry.data.code,
+  currentText,
+  mentionedCodes: parsed.mentionedRelatedCodes,
+  max: 8,
+});
+
+const relatedItems = relatedEntries.map((rel: any) => {
+  const relCodeSlug = rel.slug.split('/').slice(-1)[0];
+  return {
+    code: rel.data.code,
+    shortLabel: rel.data.shortLabel,
+    url: `/insurance/${subcategory}/error-codes/${relCodeSlug}/`,
+  };
+});
+
+const learnMoreGuides = pickGuidesForCode({
+  industryKey: 'insurance',
+  insuranceSubcategory: subcategory,
+  code: entry.data.code,
+});
+
+const schema = [
+  breadcrumbSchema(crumbs, canonicalUrl),
+  techArticleSchema({
+    headline: `${entry.data.code} — ${entry.data.shortLabel}`,
+    description,
+    canonicalUrl,
+    industryLabel: 'Insurance',
+    code: entry.data.code,
+    dateModified: entry.data.lastmod,
+    keywords: [entry.data.code, meta.label, 'insurance', subcategory],
+  }),
+];
+
+const lastUpdatedLabel = new Date(entry.data.lastmod).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<ErrorCodeDetailLayout
+  pageTitle={pageTitle}
+  description={description}
+  canonicalPath={canonicalPath}
+  crumbs={crumbs}
+  schema={schema}
+  industryLabel="Insurance"
+  industryBadge={`${meta.label} Error Code`}
+  code={entry.data.code}
+  shortLabel={entry.data.shortLabel}
+  sectionLabel={parsed.sectionLabel}
+  systemLabel={parsed.systemLabel}
+  lastUpdatedLabel={lastUpdatedLabel}
+  summary={summaryText}
+  whatMeans={parsed.whatMeans}
+  whereSeen={parsed.whereSeen}
+  whyAppears={parsed.whyAppears}
+  happensNext={parsed.happensNext}
+  notThis={parsed.notThis}
+  troubleshooting={parsed.troubleshooting}
+  notes={parsed.notes}
+  relatedItems={relatedItems}
+  learnMoreHubs={[
+    { label: 'Insurance', href: '/insurance/' },
+    { label: meta.label, href: `/insurance/${subcategory}/` },
+  ]}
+  learnMoreGuides={learnMoreGuides}
+/>

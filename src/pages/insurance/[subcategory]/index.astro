@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import IndustryHubLayout from '../../../components/IndustryHubLayout.astro';
+import { parseFaqMarkdown } from '../../../utils/faq';
+import catalog from '../../../lib/insurance/catalog.json';
+
+export async function getStaticPaths() {
+  const subs = Array.isArray(catalog?.subcategories) ? catalog.subcategories : [];
+  return subs.map((s: any) => ({ params: { subcategory: s.key } }));
+}
+
+const { subcategory } = Astro.params;
+if (!subcategory) throw new Error('Missing subcategory');
+
+const subs = Array.isArray(catalog?.subcategories) ? catalog.subcategories : [];
+const meta = subs.find((s: any) => s.key === subcategory);
+if (!meta) throw new Error('Unsupported subcategory');
+
+const entries = (await getCollection('insuranceCodes')).filter((e) => e.data.subcategory === subcategory);
+const byLastmodDesc = entries
+  .slice()
+  .sort((a, b) => Date.parse(b.data.lastmod) - Date.parse(a.data.lastmod));
+
+const toGridItem = (e: any) => {
+  const codeSlug = e.slug.split('/').slice(-1)[0];
+  return {
+    code: e.data.code,
+    title: e.data.shortLabel,
+    description: e.data.summary || e.data.shortLabel,
+    category: meta.label,
+    publishDate: e.data.lastmod,
+    url: `/insurance/${subcategory}/error-codes/${codeSlug}/`,
+  };
+};
+
+const recentItems = byLastmodDesc.slice(0, 18).map(toGridItem);
+const featuredItems = byLastmodDesc.slice(0, 12).map(toGridItem);
+
+const introModules = import.meta.glob('/src/content/hubs/insurance/*/intro.md');
+const guideModules = import.meta.glob('/src/content/hubs/insurance/*/guide.md');
+const faqModules = import.meta.glob('/src/content/hubs/insurance/*/faq.md', { query: '?raw', import: 'default' });
+
+const introKey = `/src/content/hubs/insurance/${subcategory}/intro.md`;
+const guideKey = `/src/content/hubs/insurance/${subcategory}/guide.md`;
+const faqKey = `/src/content/hubs/insurance/${subcategory}/faq.md`;
+
+const Intro = (await (introModules[introKey] as any)?.())?.default;
+const Guide = (await (guideModules[guideKey] as any)?.())?.default;
+const faqContent = (await (faqModules[faqKey] as any)?.()) as string;
+const faqItems = parseFaqMarkdown(faqContent || '');
+
+const title = `${meta.label} Error Codes`;
+const description = meta.description;
+
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Insurance', href: '/insurance/' },
+  { label: meta.label, href: `/insurance/${subcategory}/` },
+];
+---
+
+<IndustryHubLayout
+  title={title}
+  description={description}
+  industryKey="insurance"
+  prefixesOverride={meta.prefixes}
+  quickNavBasePath={`/insurance/${subcategory}/error-codes/`}
+  Intro={Intro}
+  Guide={Guide}
+  faqItems={faqItems}
+  recentItems={recentItems}
+  featuredItems={featuredItems}
+  crumbs={crumbs}
+/>
+

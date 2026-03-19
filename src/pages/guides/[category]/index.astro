@@ -49,7 +49,11 @@ const canonicalPath = `/guides/${categoryKey}/`;
             ? '/systems/'
             : categoryMeta.key === 'appliances'
               ? '/appliances/'
-              : `/${categoryMeta.key}/error-codes/`
+              : categoryMeta.key === 'insurance'
+                ? '/insurance/'
+                : categoryMeta.key === 'healthcare'
+                  ? '/insurance/healthcare/error-codes/'
+                  : `/${categoryMeta.key}/error-codes/`
         }
         class="rounded-full border border-brand-border bg-brand-surface/40 px-4 py-2 text-sm text-slate-300 hover:bg-brand-surface/60 hover:text-white transition-colors"
       >

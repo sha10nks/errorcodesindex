@@ -1,5 +1,5 @@
 ---
-import { INDUSTRIES, LEGAL_LINKS } from '../utils/site';
+import { INDUSTRY_NAV, LEGAL_LINKS } from '../utils/site';
 import SocialButtons3D from './SocialButtons3D.astro';
 ---
 
@@ -39,7 +39,7 @@ import SocialButtons3D from './SocialButtons3D.astro';
     <div>
       <div class="text-sm font-semibold tracking-wide text-slate-100 uppercase">Industries</div>
       <ul class="mt-6 space-y-3 text-sm">
-        {INDUSTRIES.map((it) => {
+        {INDUSTRY_NAV.map((it) => {
           return (
             <li>
               <a class="block text-slate-400 hover:text-brand-primary transition-colors hover:translate-x-1 duration-200" href={it.href}>

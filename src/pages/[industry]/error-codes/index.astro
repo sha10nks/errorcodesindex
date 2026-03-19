@@ -31,15 +31,23 @@ const sorted = entries
 
 const title = `${industryMeta.label} Error Codes Directory`;
 const description = `Browse a complete index of ${industryMeta.label.toLowerCase()} error codes. Each page uses a stable canonical URL and verbatim source content.`;
-const crumbs = [
-  { label: 'Home', href: '/' },
-  { label: industryMeta.label, href: industryMeta.href },
-  { label: 'Error Codes', href: `/${industry}/error-codes/` },
-];
+const crumbs =
+  industry === 'healthcare'
+    ? [
+        { label: 'Home', href: '/' },
+        { label: 'Insurance', href: '/insurance/' },
+        { label: 'Healthcare', href: '/insurance/healthcare/' },
+        { label: 'Error Codes', href: `/${industry}/error-codes/` },
+      ]
+    : [
+        { label: 'Home', href: '/' },
+        { label: industryMeta.label, href: industryMeta.href },
+        { label: 'Error Codes', href: `/${industry}/error-codes/` },
+      ];
 
 const initialQuery = Astro.url.searchParams.get('q') ?? '';
 
-const canonicalPath = `/${industry}/error-codes/`;
+const canonicalPath = industry === 'healthcare' ? `/insurance/healthcare/error-codes/` : `/${industry}/error-codes/`;
 const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
 const schema = [breadcrumbSchema(crumbs, canonicalUrl), collectionPageSchema({ name: title, canonicalUrl })];
 ---

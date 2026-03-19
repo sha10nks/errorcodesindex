@@ -34,6 +34,23 @@ export const GET: APIRoute = async ({ site }) => {
     '/guides/',
     '/healthcare/',
     '/healthcare/error-codes/',
+    '/insurance/',
+    '/insurance/healthcare/',
+    '/insurance/healthcare/error-codes/',
+    '/insurance/auto-insurance/',
+    '/insurance/auto-insurance/error-codes/',
+    '/insurance/property-insurance/',
+    '/insurance/property-insurance/error-codes/',
+    '/insurance/renters-insurance/',
+    '/insurance/renters-insurance/error-codes/',
+    '/insurance/life-insurance/',
+    '/insurance/life-insurance/error-codes/',
+    '/insurance/claims-processing/',
+    '/insurance/claims-processing/error-codes/',
+    '/insurance/billing-codes/',
+    '/insurance/billing-codes/error-codes/',
+    '/insurance/medicare-medicaid/',
+    '/insurance/medicare-medicaid/error-codes/',
     '/irs-tax/',
     '/irs-tax/error-codes/',
     '/banking/',
@@ -72,4 +89,3 @@ export const GET: APIRoute = async ({ site }) => {
 
   return new Response(body, { headers: { 'Content-Type': 'application/xml; charset=utf-8' } });
 };
-

@@ -1,7 +1,8 @@
-export type GuideCategoryKey = 'healthcare' | 'gaming' | 'irs-tax' | 'banking' | 'appliances' | 'systems';
+export type GuideCategoryKey = 'healthcare' | 'insurance' | 'gaming' | 'irs-tax' | 'banking' | 'appliances' | 'systems';
 
 export type GuideTopicKey =
   | 'healthcare-denials'
+  | 'insurance'
   | 'gaming-xbox'
   | 'gaming-playstation'
   | 'gaming-nintendo-switch'
@@ -35,7 +36,8 @@ export type GuideMeta = {
 };
 
 export const GUIDE_CATEGORIES: Array<{ key: GuideCategoryKey; label: string; href: string; hubHref: string }> = [
-  { key: 'healthcare', label: 'Healthcare', href: '/guides/healthcare/', hubHref: '/healthcare/' },
+  { key: 'healthcare', label: 'Healthcare', href: '/guides/healthcare/', hubHref: '/insurance/healthcare/' },
+  { key: 'insurance', label: 'Insurance', href: '/guides/insurance/', hubHref: '/insurance/' },
   { key: 'gaming', label: 'Gaming', href: '/guides/gaming/', hubHref: '/gaming/' },
   { key: 'irs-tax', label: 'IRS / Tax', href: '/guides/irs-tax/', hubHref: '/irs-tax/' },
   { key: 'banking', label: 'Banking', href: '/guides/banking/', hubHref: '/banking/' },
@@ -44,6 +46,246 @@ export const GUIDE_CATEGORIES: Array<{ key: GuideCategoryKey; label: string; hre
 ];
 
 export const GUIDES: GuideMeta[] = [
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'the-complete-insurance-claim-denial-codes-directory-2026-edition',
+    title: 'The Complete Insurance Claim Denial Codes Directory (2026 Edition)',
+    description: 'A comprehensive, practical directory of insurance claim denial codes with fix checklists and links to canonical code pages.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: '150-plus-insurance-claim-rejection-reasons-explained-with-fixes',
+    title: '150+ Insurance Claim Rejection Reasons Explained (With Fixes)',
+    description: 'Breaks down the most common rejection reasons by category and shows the safest fix order to get claims moving again.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'ultimate-guide-to-fixing-insurance-claim-errors-step-by-step',
+    title: 'Ultimate Guide to Fixing Insurance Claim Errors Step-by-Step',
+    description: 'A step-by-step playbook for triaging and fixing insurance claim errors without creating duplicates or missing deadlines.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'insurance-claims-processing-errors-causes-codes-and-solutions',
+    title: 'Insurance Claims Processing Errors: Causes, Codes & Solutions',
+    description: 'Explains the claims processing failure buckets and links to the most common codes with actionable resolution steps.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'full-guide-to-insurance-billing-errors-and-how-to-resolve-them',
+    title: 'Full Guide to Insurance Billing Errors and How to Resolve Them',
+    description: 'A practical guide to billing validation failures and how to correct the underlying cause before resubmitting.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'edi-837-and-835-errors-in-insurance-complete-troubleshooting-guide',
+    title: 'EDI 837 & 835 Errors in Insurance: Complete Troubleshooting Guide',
+    description: 'A workflow-first troubleshooting guide for common EDI submission and remittance error patterns with safe fix steps.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'top-100-insurance-claim-errors-that-delay-payments-and-how-to-fix-them',
+    title: 'Top 100 Insurance Claim Errors That Delay Payments (And How to Fix Them)',
+    description: 'The highest-impact delay causes across claims, billing, and processing—plus fixes that reduce rework and time to payment.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'insurance-claim-status-codes-explained-from-submission-to-payment',
+    title: 'Insurance Claim Status Codes Explained (From Submission to Payment)',
+    description: 'A plain-language map of claim status checkpoints and what to do next at each stage of the lifecycle.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'why-insurance-claims-get-denied-complete-breakdown-by-code-type',
+    title: 'Why Insurance Claims Get Denied: Complete Breakdown by Code Type',
+    description: 'Explains denial logic by code family so you can separate correctable issues from policy decisions quickly.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'insurance-policy-errors-and-validation-codes-full-guide',
+    title: 'Insurance Policy Errors & Validation Codes: Full Guide',
+    description: 'Covers policy status, eligibility, limits, and validation mismatches with prevention and escalation guidance.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'auto-insurance-claim-errors-top-codes-causes-and-fixes',
+    title: 'Auto Insurance Claim Errors: Top Codes, Causes & Fixes',
+    description: 'Focuses on auto claim rejection patterns—documentation, VIN issues, coverage disputes—and how to resolve them safely.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'property-insurance-claim-denials-explained-with-real-examples',
+    title: 'Property Insurance Claim Denials Explained (With Real Examples)',
+    description: 'Real-world property claim scenarios with coverage scope, inspection, valuation, and settlement dispute fix steps.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'renters-insurance-claim-errors-what-causes-rejections-and-fixes',
+    title: 'Renters Insurance Claim Errors: What Causes Rejections & Fixes',
+    description: 'Explains renters claim rejections—proof, inventory, exclusions, sublease violations—and the fastest safe fixes.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'life-insurance-claim-denial-codes-and-payout-issues-explained',
+    title: 'Life Insurance Claim Denial Codes & Payout Issues Explained',
+    description: 'A practical guide to life claim payout delays, beneficiary disputes, contestability issues, and documentation fixes.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'insurance-claims-processing-workflow-errors-at-every-stage',
+    title: 'Insurance Claims Processing Workflow: Errors at Every Stage',
+    description: 'Walks the full claims workflow and highlights the most common errors at intake, routing, adjudication, and payment.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'insurance-fraud-flags-and-investigation-codes-explained',
+    title: 'Insurance Fraud Flags & Investigation Codes Explained',
+    description: 'Explains investigation triggers and how to respond with documentation without making your situation worse.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'duplicate-claims-missing-data-and-invalid-submissions-full-error-guide',
+    title: 'Duplicate Claims, Missing Data & Invalid Submissions: Full Error Guide',
+    description: 'A focused guide on the three biggest operational blockers and how to correct them without repeat rejections.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'insurance-coverage-errors-eligibility-limits-and-policy-issues',
+    title: 'Insurance Coverage Errors: Eligibility, Limits & Policy Issues',
+    description: 'Covers eligibility checks, coverage limits, lapse/expiration rules, and what to verify before disputing a denial.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'claims-adjudication-errors-explained-how-decisions-are-made',
+    title: 'Claims Adjudication Errors Explained (How Decisions Are Made)',
+    description: 'Shows how adjudication decisions happen and where errors occur—from data quality to policy rules and system edits.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'insurance-payment-errors-and-adjustment-codes-explained',
+    title: 'Insurance Payment Errors & Adjustment Codes Explained',
+    description: 'A guide to payment calculation, adjustments, and downstream billing errors that stall settlement.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'top-billing-code-mistakes-in-insurance-claims-and-fixes',
+    title: 'Top Billing Code Mistakes in Insurance Claims (And Fixes)',
+    description: 'The most common billing mistakes (format, modifiers, bundling, provider identifiers) and the safest correction approach.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'insurance-documentation-errors-that-cause-claim-rejections',
+    title: 'Insurance Documentation Errors That Cause Claim Rejections',
+    description: 'A documentation-first guide to fixing missing/insufficient evidence, mismatched forms, and verification delays.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'out-of-network-and-authorization-errors-in-insurance-claims',
+    title: 'Out-of-Network & Authorization Errors in Insurance Claims',
+    description: 'Explains network and authorization failures, how they are checked, and what to correct before resubmitting.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'insurance-claim-delays-all-error-codes-that-cause-slow-processing',
+    title: 'Insurance Claim Delays: All Error Codes That Cause Slow Processing',
+    description: 'A practical playbook for reducing delays by targeting the code families that hold claims in pending or review states.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'high-value-claim-errors-in-insurance-large-claims-and-disputes',
+    title: 'High-Value Claim Errors in Insurance (Large Claims & Disputes)',
+    description: 'High-value claims attract extra scrutiny. This guide covers disputes, investigations, and documentation expectations.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'insurance-system-errors-api-failures-submission-errors-and-fixes',
+    title: 'Insurance System Errors: API Failures, Submission Errors & Fixes',
+    description: 'A technical guide to submission failures, API errors, batch issues, and how to escalate with the right artifacts.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'end-to-end-insurance-claim-lifecycle-errors-full-technical-guide',
+    title: 'End-to-End Insurance Claim Lifecycle Errors (Full Technical Guide)',
+    description: 'Covers errors end-to-end from intake to payment with lifecycle checkpoints and fix sequencing.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'insurance-error-codes-by-category-claims-billing-policy-processing',
+    title: 'Insurance Error Codes by Category: Claims, Billing, Policy, Processing',
+    description: 'Organizes insurance error codes by category and links each bucket to actionable code pages and guides.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'beginner-to-advanced-guide-to-insurance-error-codes-full-breakdown',
+    title: 'Beginner to Advanced Guide to Insurance Error Codes (Full Breakdown)',
+    description: 'A from-scratch breakdown that teaches how to read codes, spot patterns, and fix common failures without guesswork.',
+    lastUpdated: '2026-03-19',
+  },
+  {
+    categoryKey: 'insurance',
+    topicKey: 'insurance',
+    slug: 'insurance-claim-resubmission-guide-fixing-errors-and-getting-approved',
+    title: 'Insurance Claim Resubmission Guide: Fixing Errors and Getting Approved',
+    description: 'A practical resubmission workflow: how to correct errors, choose the right resubmit type, and avoid repeat rejections.',
+    lastUpdated: '2026-03-19',
+  },
   {
     categoryKey: 'healthcare',
     topicKey: 'healthcare-denials',
@@ -243,4 +485,3 @@ export function getGuidesByCategory(categoryKey: GuideCategoryKey) {
 export function getGuideByRoute(categoryKey: string, slug: string) {
   return GUIDES.find((g) => g.categoryKey === (categoryKey as any) && g.slug === slug);
 }
-

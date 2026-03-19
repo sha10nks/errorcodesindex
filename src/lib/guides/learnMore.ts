@@ -15,13 +15,40 @@ export function pickGuidesForCode(args: {
   code: string;
   systemSubcategory?: string;
   applianceType?: string;
+  insuranceSubcategory?: string;
 }) {
   const code = args.code;
   const upper = code.toUpperCase();
 
   const topics: GuideTopicKey[] = [];
 
+  const insuranceGuidesBySlug = (slugs: string[]) =>
+    slugs
+      .map((s) => GUIDES.find((g) => g.categoryKey === 'insurance' && g.slug === s))
+      .filter((g): g is GuideMeta => Boolean(g))
+      .map(guideHref);
+
   if (args.industryKey === 'healthcare') topics.push('healthcare-denials');
+
+  if (args.industryKey === 'insurance') {
+    const sub = (args.insuranceSubcategory ?? '').toLowerCase();
+
+    const slugs: string[] = ['the-complete-insurance-claim-denial-codes-directory-2026-edition'];
+    if (/^CLM-/.test(upper) || sub === 'auto-insurance') slugs.unshift('auto-insurance-claim-errors-top-codes-causes-and-fixes');
+    else if (/^PRP-/.test(upper) || sub === 'property-insurance') slugs.unshift('property-insurance-claim-denials-explained-with-real-examples');
+    else if (/^RNT-/.test(upper) || sub === 'renters-insurance') slugs.unshift('renters-insurance-claim-errors-what-causes-rejections-and-fixes');
+    else if (/^LIF-/.test(upper) || sub === 'life-insurance') slugs.unshift('life-insurance-claim-denial-codes-and-payout-issues-explained');
+    else if (/^BIL-/.test(upper) || sub === 'billing-codes') slugs.unshift('full-guide-to-insurance-billing-errors-and-how-to-resolve-them');
+    else if (/^MCR-/.test(upper) || sub === 'medicare-medicaid') slugs.unshift('insurance-coverage-errors-eligibility-limits-and-policy-issues');
+    else if (/^CP-/.test(upper) || sub === 'claims-processing') slugs.unshift('insurance-claims-processing-errors-causes-codes-and-solutions');
+
+    if (/^CP-/.test(upper)) slugs.push('insurance-claim-resubmission-guide-fixing-errors-and-getting-approved');
+    if (/^BIL-/.test(upper)) slugs.push('top-billing-code-mistakes-in-insurance-claims-and-fixes');
+    if (/^MCR-/.test(upper)) slugs.push('insurance-claim-status-codes-explained-from-submission-to-payment');
+
+    const unique = Array.from(new Set(slugs)).slice(0, 2);
+    return insuranceGuidesBySlug(unique);
+  }
 
   if (args.industryKey === 'irs-tax') {
     if (/^(CP|LT)/i.test(upper)) topics.push('irs-notices');
@@ -65,11 +92,18 @@ export function pickGuidesForCode(args: {
   }
 
   const unique = Array.from(new Set(topics));
-  return unique
+  const byTopic = unique
     .map((t) => guideByTopic(t))
     .filter((g): g is GuideMeta => Boolean(g))
     .slice(0, 2)
     .map(guideHref);
+
+  if (args.industryKey === 'healthcare') {
+    const insuranceFallback = insuranceGuidesBySlug(['the-complete-insurance-claim-denial-codes-directory-2026-edition']).slice(0, 1);
+    return [...byTopic, ...insuranceFallback].slice(0, 2);
+  }
+
+  return byTopic;
 }
 
 export function pickHubsForCode(args: {
@@ -78,8 +112,19 @@ export function pickHubsForCode(args: {
   applianceType?: string;
   brand?: string;
   seriesOrModel?: string;
+  insuranceSubcategory?: string;
 }) {
   const hubs: LearnMoreLink[] = [];
+
+  if (args.industryKey === 'insurance') {
+    hubs.push({ label: 'Insurance', href: '/insurance/' });
+    if (args.insuranceSubcategory) {
+      const sub = args.insuranceSubcategory;
+      if (sub === 'healthcare') hubs.push({ label: 'Healthcare', href: '/insurance/healthcare/' });
+      else hubs.push({ label: sub.replace(/-/g, ' '), href: `/insurance/${sub}/` });
+    }
+    return hubs.slice(0, 2);
+  }
 
   if (args.industryKey === 'systems') {
     hubs.push({ label: 'Systems & Devices', href: '/systems/' });
@@ -98,9 +143,14 @@ export function pickHubsForCode(args: {
     return hubs.slice(0, 2);
   }
 
+  if (args.industryKey === 'healthcare') {
+    hubs.push({ label: 'Insurance', href: '/insurance/' });
+    hubs.push({ label: 'Healthcare', href: '/insurance/healthcare/' });
+    return hubs.slice(0, 2);
+  }
+
   const label = args.industryKey === 'irs-tax' ? 'IRS / Tax' : args.industryKey[0].toUpperCase() + args.industryKey.slice(1);
   hubs.push({ label, href: `/${args.industryKey}/` });
   hubs.push({ label: 'Error Codes directory', href: `/${args.industryKey}/error-codes/` });
   return hubs.slice(0, 2);
 }
-

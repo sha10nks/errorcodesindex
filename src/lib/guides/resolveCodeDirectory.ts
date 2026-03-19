@@ -40,7 +40,12 @@ function pickNextStepFromText(text: string) {
 }
 
 function industryUrl(industry: string, slug: string) {
+  if (industry === 'healthcare') return `/insurance/healthcare/error-codes/${slug}/`;
   return `/${industry}/error-codes/${slug}/`;
+}
+
+function insuranceUrl(subcategory: string, slug: string) {
+  return `/insurance/${subcategory}/error-codes/${slug}/`;
 }
 
 function systemsUrl(subcategory: string, slug: string) {
@@ -95,6 +100,27 @@ export async function resolveGuideCodeDirectory(sources: GuideCodeSource[]): Pro
             href,
           }),
         );
+      }
+    }
+
+    if (src.kind === 'insurance') {
+      const entries = await getCollection('insuranceCodes');
+      const rx = asRegexList(src.patterns);
+      const matched = entries.filter((e: any) => {
+        if (src.subcategory && e.data.subcategory !== src.subcategory) return false;
+        return matchesAny(`${e.data.code} ${e.slug} ${e.data.shortLabel ?? ''} ${e.data.summary ?? ''}`, rx);
+      });
+      const limited = matched
+        .slice()
+        .sort((a: any, b: any) => String(a.data.code ?? '').localeCompare(String(b.data.code ?? ''), 'en', { numeric: true }))
+        .slice(0, src.limit ?? 30);
+
+      for (const e of limited) {
+        const codeSlug = e.slug.split('/').slice(-1)[0];
+        const href = insuranceUrl(e.data.subcategory, codeSlug);
+        if (seen.has(href)) continue;
+        seen.add(href);
+        rows.push(toRow({ code: e.data.code, meaning: pickMeaning(e.data), href }));
       }
     }
 
