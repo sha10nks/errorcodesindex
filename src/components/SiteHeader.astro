@@ -70,28 +70,32 @@ const menuColumns = [
             <ul class="space-y-1">
               {INDUSTRY_NAV.map((it) =>
                 it.children ? (
-                  <li class="relative group/insurance">
-                    <a
-                      class="flex items-center justify-between gap-3 rounded-lg px-2 py-2 text-sm font-semibold text-slate-200 hover:text-white hover:bg-white/5 transition-all duration-200"
-                      href={it.href}
-                    >
-                      <span class="group-hover/insurance:translate-x-1 transition-transform inline-block">{it.label}</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 opacity-60">
-                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.06.02z" clip-rule="evenodd" />
-                      </svg>
-                    </a>
+                  <li>
+                    <div class="relative group/insurance">
+                      <a
+                        class="flex items-center justify-between gap-3 rounded-lg px-2 py-2 text-sm font-semibold text-slate-200 hover:text-white hover:bg-white/5 transition-all duration-200"
+                        href={it.href}
+                      >
+                        <span class="group-hover/insurance:translate-x-1 transition-transform inline-block">{it.label}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 opacity-60">
+                          <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.06.02z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
 
-                    <div class="absolute left-full top-0 ml-2 w-72 origin-top-left rounded-2xl border border-brand-border/50 bg-[#0A0A0B]/95 backdrop-blur-2xl shadow-2xl ring-1 ring-white/5 z-50 p-4 opacity-0 pointer-events-none translate-x-1 transition-all duration-150 group-hover/insurance:opacity-100 group-hover/insurance:pointer-events-auto group-hover/insurance:translate-x-0 group-focus-within/insurance:opacity-100 group-focus-within/insurance:pointer-events-auto group-focus-within/insurance:translate-x-0">
-                      <div class="block text-xs font-bold uppercase tracking-widest text-brand-primary mb-2 px-2">{it.label}</div>
-                      <ul class="space-y-1">
-                        {it.children.map((sub) => (
-                          <li>
-                            <a class="block rounded-lg px-2 py-2 text-sm font-semibold text-slate-200 hover:text-white hover:bg-white/5 transition-all duration-200 group" href={sub.href}>
-                              <span class="group-hover:translate-x-1 transition-transform inline-block">{sub.label}</span>
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
+                      <div class="absolute left-full top-0 h-full w-3" aria-hidden="true"></div>
+
+                      <div class="absolute left-full top-0 w-72 origin-top-left translate-x-2 rounded-2xl border border-brand-border/50 bg-[#0A0A0B]/95 backdrop-blur-2xl shadow-2xl ring-1 ring-white/5 z-50 p-4 opacity-0 pointer-events-none translate-y-0 transition-all duration-150 group-hover/insurance:opacity-100 group-hover/insurance:pointer-events-auto group-focus-within/insurance:opacity-100 group-focus-within/insurance:pointer-events-auto">
+                        <div class="block text-xs font-bold uppercase tracking-widest text-brand-primary mb-2 px-2">{it.label}</div>
+                        <ul class="space-y-1">
+                          {it.children.map((sub) => (
+                            <li>
+                              <a class="block rounded-lg px-2 py-2 text-sm font-semibold text-slate-200 hover:text-white hover:bg-white/5 transition-all duration-200 group" href={sub.href}>
+                                <span class="group-hover:translate-x-1 transition-transform inline-block">{sub.label}</span>
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </li>
                 ) : (
