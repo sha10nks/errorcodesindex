@@ -1,0 +1,37 @@
+---
+industry: "insurance"
+subcategory: "claims-processing"
+code: "AK9-R"
+shortLabel: "Functional Group Rejected"
+summary: "AK9-R means the X12 functional group (GS/GE) was rejected due to syntax errors."
+lastmod: "2026-04-16T00:00:00.000Z"
+source: "manual"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Insurance / Claims Processing</span></p>
+<p class="c1"><span class="c0">SYSTEM: X12 EDI Acknowledgments (AK9)</span></p>
+<p class="c1"><span class="c0">CODE: AK9-R</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(AK9-R — Functional Group Rejected)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">AK9-R indicates the functional group failed syntax validation and was rejected.</span></p>
+
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">When AK9 reports “R,” the receiver rejected the entire functional group (GS/GE). In most workflows, that means none of the transaction sets inside the group should be considered delivered for processing, even if the interchange (ISA/IEA) was received.</span></p>
+
+<p class="c1"><span class="c0">Common causes</span></p>
+<p class="c1"><span class="c0">Functional group not supported (wrong GS01) or version not supported</span></p>
+<p class="c1"><span class="c0">Group control numbers mismatch (GS06/GE02) or trailer missing</span></p>
+<p class="c1"><span class="c0">Sender/receiver codes invalid for the trading partner agreement</span></p>
+
+<p class="c1"><span class="c0">Step-by-step troubleshooting/fix</span></p>
+<p class="c1"><span class="c0">1) Review AK9 detail error codes (AK905–AK909) if present, and your translator log.</span></p>
+<p class="c1"><span class="c0">2) Confirm you are sending the correct functional group type and version agreed with the trading partner.</span></p>
+<p class="c1"><span class="c0">3) Validate group control numbers and counts (AK902–AK904) for consistency.</span></p>
+<p class="c1"><span class="c0">4) Correct configuration/mapping and resend a small test group before larger batches.</span></p>
+
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">AK9-P — Partially Accepted</span></p>
+<p class="c1"><span class="c0">AK5-R — Transaction Set Rejected</span></p>
+</div>

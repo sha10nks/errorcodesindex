@@ -1,0 +1,32 @@
+---
+industry: "insurance"
+subcategory: "claims-processing"
+code: "AK5-M"
+shortLabel: "Rejected (MAC Failed)"
+summary: "AK5-M means the 997 transaction set was rejected because the message authentication code (MAC) failed."
+lastmod: "2026-04-16T00:00:00.000Z"
+source: "manual"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Insurance / Claims Processing</span></p>
+<p class="c1"><span class="c0">SYSTEM: X12 EDI 997 Acknowledgment (AK5)</span></p>
+<p class="c1"><span class="c0">CODE: AK5-M</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(AK5-M — Rejected, Message Authentication Code Failed)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">AK5-M indicates the transaction set was rejected because authentication validation failed.</span></p>
+
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">AK5 “M” is a rejection condition tied to message authentication. In practical payer/clearinghouse workflows, this usually points to transport/security configuration problems rather than claim content.</span></p>
+
+<p class="c1"><span class="c0">Step-by-step fix</span></p>
+<p class="c1"><span class="c0">1) Confirm you are using the correct secure transport method required by the trading partner (SFTP/AS2/VPN, certificates, keys).</span></p>
+<p class="c1"><span class="c0">2) Check certificate validity dates and whether the partner rotated keys/certs.</span></p>
+<p class="c1"><span class="c0">3) Compare the partner profile configuration (IDs, cert fingerprints) against the current companion guide or onboarding details.</span></p>
+<p class="c1"><span class="c0">4) Re-send a small test transaction after updating credentials.</span></p>
+
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">AK5-R — Transaction Set Rejected</span></p>
+<p class="c1"><span class="c0">AK9-M — Functional Group Rejected (MAC Failed)</span></p>
+</div>

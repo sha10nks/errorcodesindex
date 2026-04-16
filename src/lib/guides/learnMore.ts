@@ -34,6 +34,7 @@ export function pickGuidesForCode(args: {
     const sub = (args.insuranceSubcategory ?? '').toLowerCase();
 
     const slugs: string[] = ['the-complete-insurance-claim-denial-codes-directory-2026-edition'];
+    if (/^(AK5|AK9|IK5|IK3|IK4|TA1)(-|$)/.test(upper)) slugs.unshift('edi-837-and-835-errors-in-insurance-complete-troubleshooting-guide');
     if (/^CLM-/.test(upper) || sub === 'auto-insurance') slugs.unshift('auto-insurance-claim-errors-top-codes-causes-and-fixes');
     else if (/^PRP-/.test(upper) || sub === 'property-insurance') slugs.unshift('property-insurance-claim-denials-explained-with-real-examples');
     else if (/^RNT-/.test(upper) || sub === 'renters-insurance') slugs.unshift('renters-insurance-claim-errors-what-causes-rejections-and-fixes');

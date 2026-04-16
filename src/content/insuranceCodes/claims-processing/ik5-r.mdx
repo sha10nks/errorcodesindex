@@ -1,0 +1,37 @@
+---
+industry: "insurance"
+subcategory: "claims-processing"
+code: "IK5-R"
+shortLabel: "Implementation Rejected"
+summary: "IK5-R means the X12 999 Implementation Acknowledgment rejected the transaction set due to implementation/syntax errors."
+lastmod: "2026-04-16T00:00:00.000Z"
+source: "manual"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Insurance / Claims Processing</span></p>
+<p class="c1"><span class="c0">SYSTEM: X12 EDI 999 Implementation Acknowledgment (IK5)</span></p>
+<p class="c1"><span class="c0">CODE: IK5-R</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(IK5-R — Implementation Rejected)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">IK5-R indicates the transaction set did not pass implementation/syntax validation and was rejected in a 999 acknowledgment.</span></p>
+
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">When IK5 is “R,” the receiver rejected the transaction set at the implementation acknowledgement stage. In most claim workflows, the transaction set will not proceed into claim intake or adjudication until you correct the reported errors.</span></p>
+
+<p class="c1"><span class="c0">Real-world causes</span></p>
+<p class="c1"><span class="c0">Missing required segments/elements per the HIPAA implementation guide</span></p>
+<p class="c1"><span class="c0">Invalid code list values (e.g., qualifier/ID not allowed)</span></p>
+<p class="c1"><span class="c0">Invalid date formats or lengths that violate implementation rules</span></p>
+
+<p class="c1"><span class="c0">Step-by-step troubleshooting/fix</span></p>
+<p class="c1"><span class="c0">1) Pull the 999 detail segments (IK3/IK4) to identify the failing segment/element and the reported error condition.</span></p>
+<p class="c1"><span class="c0">2) Fix the mapping in your export/EDI translator and validate against the correct version/implementation guide.</span></p>
+<p class="c1"><span class="c0">3) Resend a small test and confirm IK5 returns “A”.</span></p>
+<p class="c1"><span class="c0">4) Only then resubmit the full batch to avoid repeated rejections and delays.</span></p>
+
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">IK5-E — Accepted With Errors</span></p>
+<p class="c1"><span class="c0">AK5-R — Transaction Set Rejected (997)</span></p>
+</div>

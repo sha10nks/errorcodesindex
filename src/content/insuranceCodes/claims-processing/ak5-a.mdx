@@ -1,0 +1,49 @@
+---
+industry: "insurance"
+subcategory: "claims-processing"
+code: "AK5-A"
+shortLabel: "Transaction Set Accepted"
+summary: "AK5-A means the X12 997 Transaction Set Response indicates the transaction set was accepted."
+lastmod: "2026-04-16T00:00:00.000Z"
+source: "manual"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Insurance / Claims Processing</span></p>
+<p class="c1"><span class="c0">SYSTEM: X12 EDI 997 Acknowledgment (AK5)</span></p>
+<p class="c1"><span class="c0">CODE: AK5-A</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(AK5-A — Transaction Set Accepted)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">AK5-A indicates the transaction set was accepted at the X12 syntax level in a 997 acknowledgment.</span></p>
+
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">AK5 is the Transaction Set Response Trailer in an X12 997. When AK5 reports code “A” (Accepted), it means the receiver’s translator validated the envelope/transaction structure and did not find transaction set syntax errors that require rejection at the 997 stage.</span></p>
+<p class="c1"><span class="c0">Important: “Accepted” here is about X12 syntax editing—not whether the claim will adjudicate or pay. A later response (like a 277CA for claim-level acceptance/rejection, or an 835 remittance) can still reject individual claims for business or data reasons.</span></p>
+
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">In a clearinghouse or payer EDI mailbox as part of a 997 response</span></p>
+<p class="c1"><span class="c0">On EDI dashboards that summarize “accepted / accepted with errors / rejected” status</span></p>
+
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">The transaction set is structurally valid for the agreed X12 version and implementation</span></p>
+<p class="c1"><span class="c0">Control numbers match (ST/SE) and segment counts are consistent</span></p>
+<p class="c1"><span class="c0">No disqualifying syntax issues were detected at the 997 validation stage</span></p>
+
+<p class="c1"><span class="c0">What typically happens next</span></p>
+<p class="c1"><span class="c0">The file/transaction continues into downstream processing (e.g., claim validation, edits, routing)</span></p>
+<p class="c1"><span class="c0">You may still receive a 277CA with claim-level rejections, or later an 835 with denials/adjustments</span></p>
+
+<p class="c1"><span class="c0">Step-by-step fix / What to do</span></p>
+<p class="c1"><span class="c0">1) Treat AK5-A as a “syntax OK” checkpoint, not a payment guarantee.</span></p>
+<p class="c1"><span class="c0">2) Confirm you also receive the downstream response your trading partner uses (often 277CA and/or payer acceptance reports).</span></p>
+<p class="c1"><span class="c0">3) If claims still fail later, troubleshoot at the next layer: subscriber/member data, provider identifiers, billing/coding rules, authorization, and payer edits.</span></p>
+
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">AK5-E — Accepted But Errors Were Noted</span></p>
+<p class="c1"><span class="c0">AK5-R — Rejected</span></p>
+<p class="c1"><span class="c0">AK9-A — Functional Group Accepted</span></p>
+
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">If you only see a 997/999 but never get a 277CA or payer response, the transaction may be stuck in routing/partner delivery. Validate acknowledgments at each layer (TA1/999/277CA/835) based on your partner’s workflow.</span></p>
+</div>

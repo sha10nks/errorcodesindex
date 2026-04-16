@@ -1,0 +1,32 @@
+---
+industry: "insurance"
+subcategory: "claims-processing"
+code: "AK5-W"
+shortLabel: "Rejected (Assurance Failed)"
+summary: "AK5-W means the 997 transaction set was rejected because assurance failed validity tests."
+lastmod: "2026-04-16T00:00:00.000Z"
+source: "manual"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Insurance / Claims Processing</span></p>
+<p class="c1"><span class="c0">SYSTEM: X12 EDI 997 Acknowledgment (AK5)</span></p>
+<p class="c1"><span class="c0">CODE: AK5-W</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(AK5-W — Rejected, Assurance Failed Validity Tests)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">AK5-W indicates the transaction set was rejected due to security/assurance validation failure.</span></p>
+
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">AK5 “W” is a rejection tied to assurance/security validity checks. In real workflows, treat it as a transport/security problem until proven otherwise.</span></p>
+
+<p class="c1"><span class="c0">Step-by-step fix</span></p>
+<p class="c1"><span class="c0">1) Confirm you are sending through the correct secure channel and partner endpoint.</span></p>
+<p class="c1"><span class="c0">2) Validate certificates/keys and any signing/encryption settings required by the partner.</span></p>
+<p class="c1"><span class="c0">3) Review translator/security logs for exact validation failure details.</span></p>
+<p class="c1"><span class="c0">4) Coordinate with the trading partner to confirm expected security configuration.</span></p>
+
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">AK5-X — Rejected, Content After Decryption Could Not Be Analyzed</span></p>
+<p class="c1"><span class="c0">AK9-W — Functional Group Rejected (Assurance Failed)</span></p>
+</div>

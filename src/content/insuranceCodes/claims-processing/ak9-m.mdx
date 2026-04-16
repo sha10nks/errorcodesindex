@@ -1,0 +1,31 @@
+---
+industry: "insurance"
+subcategory: "claims-processing"
+code: "AK9-M"
+shortLabel: "Group Rejected (MAC Failed)"
+summary: "AK9-M means the functional group was rejected because the message authentication code (MAC) failed."
+lastmod: "2026-04-16T00:00:00.000Z"
+source: "manual"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Insurance / Claims Processing</span></p>
+<p class="c1"><span class="c0">SYSTEM: X12 EDI Acknowledgments (AK9)</span></p>
+<p class="c1"><span class="c0">CODE: AK9-M</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(AK9-M — Rejected, Message Authentication Code Failed)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">AK9-M indicates the group was rejected due to an authentication validation failure.</span></p>
+
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">AK9 “M” is a group-level rejection condition tied to message authentication. Treat it as a security/transport issue until you confirm otherwise.</span></p>
+
+<p class="c1"><span class="c0">Step-by-step fix</span></p>
+<p class="c1"><span class="c0">1) Confirm certificates/keys are current and correctly configured for the trading partner endpoint.</span></p>
+<p class="c1"><span class="c0">2) Validate signing/encryption settings against the partner’s onboarding profile.</span></p>
+<p class="c1"><span class="c0">3) Re-send a small test group and compare security logs.</span></p>
+
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">AK5-M — Transaction Set Rejected (MAC Failed)</span></p>
+<p class="c1"><span class="c0">AK9-R — Functional Group Rejected</span></p>
+</div>

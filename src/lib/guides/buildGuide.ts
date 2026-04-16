@@ -175,6 +175,38 @@ function insuranceSubHubFromSlug(slug: string): GuideHubLink[] {
       { label: 'Insurance hub', href: '/insurance/' },
       { label: 'Claims Processing hub', href: '/insurance/claims-processing/' },
     ],
+    'top-healthcare-claim-denial-codes-explained': [
+      { label: 'Healthcare hub', href: '/insurance/healthcare/' },
+      { label: 'Healthcare code directory', href: '/insurance/healthcare/error-codes/' },
+    ],
+    'prior-authorization-and-eligibility-errors-in-healthcare-claims': [
+      { label: 'Healthcare hub', href: '/insurance/healthcare/' },
+      { label: 'Healthcare code directory', href: '/insurance/healthcare/error-codes/' },
+    ],
+    'auto-insurance-claim-denial-reasons-coverage-liability-and-fraud': [
+      { label: 'Auto Insurance hub', href: '/insurance/auto-insurance/' },
+      { label: 'Auto Insurance code directory', href: '/insurance/auto-insurance/error-codes/' },
+    ],
+    'property-insurance-claim-denial-reasons-and-how-to-appeal': [
+      { label: 'Property Insurance hub', href: '/insurance/property-insurance/' },
+      { label: 'Property Insurance code directory', href: '/insurance/property-insurance/error-codes/' },
+    ],
+    'renters-insurance-claim-denials-top-reasons-and-fixes': [
+      { label: 'Renters Insurance hub', href: '/insurance/renters-insurance/' },
+      { label: 'Renters Insurance code directory', href: '/insurance/renters-insurance/error-codes/' },
+    ],
+    'life-insurance-claim-delay-and-denial-guide': [
+      { label: 'Life Insurance hub', href: '/insurance/life-insurance/' },
+      { label: 'Life Insurance code directory', href: '/insurance/life-insurance/error-codes/' },
+    ],
+    'medicare-claim-denials-carc-rarc-codes-and-fixes': [
+      { label: 'Medicare & Medicaid hub', href: '/insurance/medicare-medicaid/' },
+      { label: 'Medicare & Medicaid directory', href: '/insurance/medicare-medicaid/error-codes/' },
+    ],
+    'medicaid-eligibility-and-billing-errors-guide': [
+      { label: 'Medicare & Medicaid hub', href: '/insurance/medicare-medicaid/' },
+      { label: 'Medicare & Medicaid directory', href: '/insurance/medicare-medicaid/error-codes/' },
+    ],
   };
 
   return map[slug] ?? [{ label: 'Insurance hub', href: '/insurance/' }];
@@ -185,21 +217,29 @@ function insuranceGuideSourcesFromSlug(slug: string): GuideCodeSource[] {
   const property = { kind: 'insurance', subcategory: 'property-insurance', patterns: ['^PRP-'], limit: 24 } as const;
   const renters = { kind: 'insurance', subcategory: 'renters-insurance', patterns: ['^RNT-'], limit: 24 } as const;
   const life = { kind: 'insurance', subcategory: 'life-insurance', patterns: ['^LIF-'], limit: 24 } as const;
-  const processing = { kind: 'insurance', subcategory: 'claims-processing', patterns: ['^CP-'], limit: 30 } as const;
+  const processing = { kind: 'insurance', subcategory: 'claims-processing', patterns: ['^CP-', '^(AK5|AK9|IK5|IK3|IK4|TA1)(-|$)'], limit: 30 } as const;
   const billing = { kind: 'insurance', subcategory: 'billing-codes', patterns: ['^BIL-'], limit: 30 } as const;
   const medicare = { kind: 'insurance', subcategory: 'medicare-medicaid', patterns: ['^MCR-'], limit: 30 } as const;
   const healthcareCanonical = { kind: 'industry', industry: 'healthcare', patterns: ['^CO-', '^PR-', '^OA-', '^PI-', '^CARC', '^RARC'], limit: 20 } as const;
 
   const map: Record<string, GuideCodeSource[]> = {
     'auto-insurance-claim-errors-top-codes-causes-and-fixes': [auto, processing, billing],
+    'auto-insurance-claim-denial-reasons-coverage-liability-and-fraud': [auto, processing, billing],
     'property-insurance-claim-denials-explained-with-real-examples': [property, processing, billing],
+    'property-insurance-claim-denial-reasons-and-how-to-appeal': [property, processing, billing],
     'renters-insurance-claim-errors-what-causes-rejections-and-fixes': [renters, processing, billing],
+    'renters-insurance-claim-denials-top-reasons-and-fixes': [renters, processing, billing],
     'life-insurance-claim-denial-codes-and-payout-issues-explained': [life, processing, medicare],
+    'life-insurance-claim-delay-and-denial-guide': [life, processing, medicare],
     'full-guide-to-insurance-billing-errors-and-how-to-resolve-them': [billing, processing, medicare],
     'top-billing-code-mistakes-in-insurance-claims-and-fixes': [billing, processing, medicare],
     'insurance-claims-processing-errors-causes-codes-and-solutions': [processing, billing, medicare],
     'insurance-claims-processing-workflow-errors-at-every-stage': [processing, billing, medicare],
     'edi-837-and-835-errors-in-insurance-complete-troubleshooting-guide': [processing, billing, medicare, healthcareCanonical],
+    'top-healthcare-claim-denial-codes-explained': [healthcareCanonical, processing, billing],
+    'prior-authorization-and-eligibility-errors-in-healthcare-claims': [healthcareCanonical, medicare, processing],
+    'medicare-claim-denials-carc-rarc-codes-and-fixes': [medicare, healthcareCanonical, billing],
+    'medicaid-eligibility-and-billing-errors-guide': [medicare, healthcareCanonical, processing],
     'insurance-policy-errors-and-validation-codes-full-guide': [auto, property, renters, life],
     'insurance-coverage-errors-eligibility-limits-and-policy-issues': [auto, property, renters, life, medicare],
     'insurance-fraud-flags-and-investigation-codes-explained': [auto, property, life],

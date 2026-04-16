@@ -1,0 +1,32 @@
+---
+industry: "insurance"
+subcategory: "claims-processing"
+code: "IK5-A"
+shortLabel: "Implementation Accepted"
+summary: "IK5-A means the X12 999 Implementation Acknowledgment accepted the transaction set."
+lastmod: "2026-04-16T00:00:00.000Z"
+source: "manual"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Insurance / Claims Processing</span></p>
+<p class="c1"><span class="c0">SYSTEM: X12 EDI 999 Implementation Acknowledgment (IK5)</span></p>
+<p class="c1"><span class="c0">CODE: IK5-A</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(IK5-A — Implementation Accepted)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">IK5-A indicates the transaction set is accepted at the implementation/syntax level in a 999 acknowledgment.</span></p>
+
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">The X12 999 is commonly used in HIPAA workflows to report implementation acknowledgement results. IK5 provides the transaction set response. Code “A” indicates accepted (no implementation-level errors that cause rejection).</span></p>
+<p class="c1"><span class="c0">Acceptance at the 999 layer does not mean a claim is payable. It means the receiver can process the transaction set structurally and against implementation rules.</span></p>
+
+<p class="c1"><span class="c0">Step-by-step next actions</span></p>
+<p class="c1"><span class="c0">1) Confirm whether you will also receive a 277CA for claim-level acceptance/rejection.</span></p>
+<p class="c1"><span class="c0">2) Monitor for an 835 remittance or payer response to confirm adjudication outcomes.</span></p>
+
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">IK5-E — Implementation Accepted, But Errors Were Noted</span></p>
+<p class="c1"><span class="c0">IK5-R — Implementation Rejected</span></p>
+<p class="c1"><span class="c0">AK5-A — Transaction Set Accepted (997)</span></p>
+</div>

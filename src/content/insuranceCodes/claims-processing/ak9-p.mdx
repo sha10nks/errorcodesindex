@@ -1,0 +1,31 @@
+---
+industry: "insurance"
+subcategory: "claims-processing"
+code: "AK9-P"
+shortLabel: "Partially Accepted"
+summary: "AK9-P means the functional group was partially accepted and at least one transaction set was rejected."
+lastmod: "2026-04-16T00:00:00.000Z"
+source: "manual"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Insurance / Claims Processing</span></p>
+<p class="c1"><span class="c0">SYSTEM: X12 EDI Acknowledgments (AK9)</span></p>
+<p class="c1"><span class="c0">CODE: AK9-P</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(AK9-P — Partially Accepted)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">AK9-P indicates the functional group was partially accepted and at least one transaction set within the group was rejected.</span></p>
+
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">AK9 “P” is used when the receiver can accept part of the functional group but rejects one or more transaction sets inside it. This usually means the envelope itself is readable, but some transactions fail syntax or implementation guide checks and do not proceed.</span></p>
+
+<p class="c1"><span class="c0">Step-by-step troubleshooting/fix</span></p>
+<p class="c1"><span class="c0">1) Identify which transaction sets were rejected by reviewing the transaction-level acknowledgments (AK5/IK5).</span></p>
+<p class="c1"><span class="c0">2) Compare the rejected ST/SE transactions to accepted ones to isolate what differs (loops, segment order, required elements).</span></p>
+<p class="c1"><span class="c0">3) Validate implementation guide compliance for the rejected transaction sets, then resend only after corrections.</span></p>
+
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">AK9-R — Functional Group Rejected</span></p>
+<p class="c1"><span class="c0">AK5-R — Transaction Set Rejected</span></p>
+</div>

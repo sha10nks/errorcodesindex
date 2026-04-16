@@ -1,0 +1,32 @@
+---
+industry: "insurance"
+subcategory: "claims-processing"
+code: "AK9-X"
+shortLabel: "Group Rejected (Decryption Content Unreadable)"
+summary: "AK9-X means the functional group was rejected because content after decryption could not be analyzed."
+lastmod: "2026-04-16T00:00:00.000Z"
+source: "manual"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Insurance / Claims Processing</span></p>
+<p class="c1"><span class="c0">SYSTEM: X12 EDI Acknowledgments (AK9)</span></p>
+<p class="c1"><span class="c0">CODE: AK9-X</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(AK9-X — Rejected, Content After Decryption Could Not Be Analyzed)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">AK9-X indicates the receiver could not parse the decrypted content for the group, so the functional group was rejected.</span></p>
+
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">AK9 “X” is a group-level rejection tied to encryption/decryption handling or post-decryption parsing. It usually indicates mismatched encryption settings, a corrupted payload, or an incompatible security configuration.</span></p>
+
+<p class="c1"><span class="c0">Step-by-step fix</span></p>
+<p class="c1"><span class="c0">1) Confirm you encrypted to the partner’s current public key/certificate.</span></p>
+<p class="c1"><span class="c0">2) Verify signing/encryption algorithms and any compression settings required by the partner.</span></p>
+<p class="c1"><span class="c0">3) Re-send a small test interchange/group and compare security logs on both ends.</span></p>
+<p class="c1"><span class="c0">4) If you use an intermediary clearinghouse, confirm which hop is rejecting the payload.</span></p>
+
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">AK5-X — Transaction Set Rejected (Decryption Content Unreadable)</span></p>
+<p class="c1"><span class="c0">AK9-W — Group Rejected (Assurance Failed)</span></p>
+</div>

@@ -1,0 +1,38 @@
+---
+industry: "insurance"
+subcategory: "claims-processing"
+code: "AK9-E"
+shortLabel: "Functional Group Accepted, But Errors Were Noted"
+summary: "AK9-E means the functional group was accepted, but errors were noted during syntax editing (AK9 segment)."
+lastmod: "2026-04-16T00:00:00.000Z"
+source: "manual"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Insurance / Claims Processing</span></p>
+<p class="c1"><span class="c0">SYSTEM: X12 EDI Acknowledgments (AK9)</span></p>
+<p class="c1"><span class="c0">CODE: AK9-E</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(AK9-E — Functional Group Accepted, But Errors Were Noted)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">AK9-E indicates the group envelope was accepted, but the receiver detected errors and reported them (often at the transaction set level).</span></p>
+
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">AK9 reports the functional group response. Code “E” means the group is accepted, but errors were noted. In practice, this often pairs with transaction set acknowledgments (AK5/IK5) that may show “accepted with errors” or rejections for specific ST/SE transactions inside the group.</span></p>
+
+<p class="c1"><span class="c0">Real-world causes</span></p>
+<p class="c1"><span class="c0">One or more transaction sets in the group contain syntax problems</span></p>
+<p class="c1"><span class="c0">Control counts do not match expectations, but the receiver still processed what it could</span></p>
+<p class="c1"><span class="c0">Receiver uses “E” to signal that you should inspect the detail codes (AK905–AK909) and transaction-level responses</span></p>
+
+<p class="c1"><span class="c0">Step-by-step troubleshooting/fix</span></p>
+<p class="c1"><span class="c0">1) Confirm whether AK9-E is paired with AK5/IK5 values of “E” or “R” for any transaction sets.</span></p>
+<p class="c1"><span class="c0">2) Review any group syntax error codes (AK905–AK909) and translator logs.</span></p>
+<p class="c1"><span class="c0">3) Fix the underlying formatting/IG compliance issue, then resend a test batch.</span></p>
+<p class="c1"><span class="c0">4) Verify downstream results stabilize (277CA/835) after the correction.</span></p>
+
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">AK9-A — Functional Group Accepted</span></p>
+<p class="c1"><span class="c0">AK9-P — Partially Accepted</span></p>
+<p class="c1"><span class="c0">AK9-R — Functional Group Rejected</span></p>
+</div>

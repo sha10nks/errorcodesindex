@@ -1,0 +1,47 @@
+---
+industry: "insurance"
+subcategory: "claims-processing"
+code: "AK5-E"
+shortLabel: "Accepted But Errors Were Noted"
+summary: "AK5-E means the X12 997 Transaction Set Response accepted the transaction set but noted syntax errors."
+lastmod: "2026-04-16T00:00:00.000Z"
+source: "manual"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Insurance / Claims Processing</span></p>
+<p class="c1"><span class="c0">SYSTEM: X12 EDI 997 Acknowledgment (AK5)</span></p>
+<p class="c1"><span class="c0">CODE: AK5-E</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(AK5-E — Accepted But Errors Were Noted)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">AK5-E indicates the transaction set was accepted at the 997 level, but syntax errors were detected and reported.</span></p>
+
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">In an X12 997 acknowledgment, AK5 reports acceptance or rejection based on syntax editing of the transaction set. Code “E” means the receiver accepted the transaction set for further processing, but identified one or more syntax problems. Those problems are typically described using additional acknowledgment detail segments or codes, depending on the trading partner’s implementation.</span></p>
+<p class="c1"><span class="c0">Operationally, “accepted with errors” is a warning: the file made it past the front door, but you should review and correct the root cause because it can lead to downstream claim-level rejections (e.g., 277CA) or failed edits.</span></p>
+
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">Clearinghouse/payer EDI mailbox message for a 997</span></p>
+<p class="c1"><span class="c0">EDI translator logs showing transaction-level acceptance with warnings</span></p>
+
+<p class="c1"><span class="c0">Why this code usually appears</span></p>
+<p class="c1"><span class="c0">Segment count mismatch warnings, optional segment issues, or minor structural inconsistencies</span></p>
+<p class="c1"><span class="c0">A segment or element is present but fails a syntax rule that does not force immediate rejection</span></p>
+<p class="c1"><span class="c0">Trading partner allows the transaction to proceed but flags issues for correction</span></p>
+
+<p class="c1"><span class="c0">Step-by-step fix</span></p>
+<p class="c1"><span class="c0">1) Pull the full 997 and identify which transaction set (ST/SE) the AK5 applies to.</span></p>
+<p class="c1"><span class="c0">2) Locate any accompanying syntax error codes (AK502–AK506) or translator-specific diagnostics.</span></p>
+<p class="c1"><span class="c0">3) Fix the structural issue in your claim generation/export logic (segment order, required elements, control counts).</span></p>
+<p class="c1"><span class="c0">4) Re-test with a single clean transaction set before sending large batches.</span></p>
+<p class="c1"><span class="c0">5) Confirm downstream responses (277CA/835) stabilize after the fix.</span></p>
+
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">AK5-A — Accepted</span></p>
+<p class="c1"><span class="c0">AK5-R — Rejected</span></p>
+<p class="c1"><span class="c0">AK9-E — Functional Group Accepted, But Errors Were Noted</span></p>
+
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">Do not confuse “accepted with errors” with claim acceptance. A file can be syntactically accepted while still failing payer edits or business rules later.</span></p>
+</div>

@@ -1,0 +1,46 @@
+---
+industry: "insurance"
+subcategory: "claims-processing"
+code: "AK5-R"
+shortLabel: "Transaction Set Rejected"
+summary: "AK5-R means the X12 997 Transaction Set Response rejected the transaction set due to syntax errors."
+lastmod: "2026-04-16T00:00:00.000Z"
+source: "manual"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Insurance / Claims Processing</span></p>
+<p class="c1"><span class="c0">SYSTEM: X12 EDI 997 Acknowledgment (AK5)</span></p>
+<p class="c1"><span class="c0">CODE: AK5-R</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(AK5-R — Transaction Set Rejected)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">AK5-R indicates the transaction set failed X12 syntax validation and was rejected in the 997 acknowledgment.</span></p>
+
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">AK5 is used in the 997 to report the transaction set-level acknowledgement result. Code “R” means the receiver could not accept the transaction set for processing because the structure did not comply with the X12 rules or the agreed implementation. When AK5 is “R,” you should assume the transaction set did not move forward into downstream processing.</span></p>
+
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">997 acknowledgments returned by a clearinghouse or payer</span></p>
+<p class="c1"><span class="c0">EDI translator reports for inbound/outbound validation failures</span></p>
+
+<p class="c1"><span class="c0">Real-world causes</span></p>
+<p class="c1"><span class="c0">ST/SE control number mismatch or missing transaction trailer</span></p>
+<p class="c1"><span class="c0">Required segments missing or out of order for the implementation guide</span></p>
+<p class="c1"><span class="c0">Element values violate syntax (invalid IDs, invalid dates, invalid lengths)</span></p>
+<p class="c1"><span class="c0">Wrong transaction set identifier/version not supported by the receiver</span></p>
+
+<p class="c1"><span class="c0">Step-by-step troubleshooting/fix</span></p>
+<p class="c1"><span class="c0">1) Identify the exact transaction set (ST/SE) referenced by the 997 and the AK5 that reports “R”.</span></p>
+<p class="c1"><span class="c0">2) Review any syntax error codes (AK502–AK506) and your translator’s detailed error log.</span></p>
+<p class="c1"><span class="c0">3) Validate version/implementation agreement (e.g., 005010 for HIPAA) and ensure you are sending the correct TR3/IG subset.</span></p>
+<p class="c1"><span class="c0">4) Fix the generator/mapping and re-run validation locally with a test harness.</span></p>
+<p class="c1"><span class="c0">5) Resubmit only after the transaction set validates clean; repeated rejections can trigger partner throttles.</span></p>
+
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">AK5-E — Accepted But Errors Were Noted</span></p>
+<p class="c1"><span class="c0">AK9-R — Functional Group Rejected</span></p>
+
+<p class="c1"><span class="c0">Notes and edge cases</span></p>
+<p class="c1"><span class="c0">A 997 rejection is different from a claim denial. It’s a transport/format problem. Fix format first; do not “rebill” with altered codes as a workaround.</span></p>
+</div>

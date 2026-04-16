@@ -1,0 +1,36 @@
+---
+industry: "insurance"
+subcategory: "claims-processing"
+code: "AK9-A"
+shortLabel: "Functional Group Accepted"
+summary: "AK9-A means the X12 functional group was accepted in the AK9 segment of a 997/999-style response."
+lastmod: "2026-04-16T00:00:00.000Z"
+source: "manual"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Insurance / Claims Processing</span></p>
+<p class="c1"><span class="c0">SYSTEM: X12 EDI Acknowledgments (AK9)</span></p>
+<p class="c1"><span class="c0">CODE: AK9-A</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(AK9-A — Functional Group Accepted)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">AK9-A indicates the functional group (GS/GE envelope) was accepted based on syntax editing.</span></p>
+
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">AK9 is the Functional Group Response Trailer. The AK901 element contains a “Functional Group Acknowledge Code” that indicates whether the receiver accepted or rejected the functional group after syntax checking. Code “A” means accepted.</span></p>
+<p class="c1"><span class="c0">This is a structural checkpoint for the group, not a statement that individual claims are valid or payable. Claim-level acceptance/rejection is usually communicated later (e.g., 277CA) and payment/denials come later (e.g., 835).</span></p>
+
+<p class="c1"><span class="c0">Where users usually see this code</span></p>
+<p class="c1"><span class="c0">997/999 acknowledgments returned to confirm receipt and syntax validation</span></p>
+<p class="c1"><span class="c0">Clearinghouse transaction dashboards showing group-level status</span></p>
+
+<p class="c1"><span class="c0">What to do next</span></p>
+<p class="c1"><span class="c0">1) Confirm transaction set-level status as well (AK5/IK5).</span></p>
+<p class="c1"><span class="c0">2) Track downstream responses for claim-level results (277CA) and adjudication (835/EOB).</span></p>
+
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">AK9-E — Accepted, But Errors Were Noted</span></p>
+<p class="c1"><span class="c0">AK9-P — Partially Accepted</span></p>
+<p class="c1"><span class="c0">AK9-R — Rejected</span></p>
+</div>

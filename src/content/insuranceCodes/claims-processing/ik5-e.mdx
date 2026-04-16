@@ -1,0 +1,32 @@
+---
+industry: "insurance"
+subcategory: "claims-processing"
+code: "IK5-E"
+shortLabel: "Accepted With Errors"
+summary: "IK5-E means the X12 999 accepted the transaction set but reported implementation errors."
+lastmod: "2026-04-16T00:00:00.000Z"
+source: "manual"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Insurance / Claims Processing</span></p>
+<p class="c1"><span class="c0">SYSTEM: X12 EDI 999 Implementation Acknowledgment (IK5)</span></p>
+<p class="c1"><span class="c0">CODE: IK5-E</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(IK5-E — Accepted, But Errors Were Noted)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">IK5-E indicates the transaction set was accepted but the receiver detected implementation errors that should be corrected.</span></p>
+
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">In a 999 acknowledgment, IK5 reports the transaction set response. Code “E” is used when the receiver allows the transaction to proceed but flags errors. The 999 will usually include detail segments (IK3/IK4) pointing to the exact segment/element that failed an implementation rule.</span></p>
+
+<p class="c1"><span class="c0">Step-by-step troubleshooting/fix</span></p>
+<p class="c1"><span class="c0">1) Use the 999 detail to locate the failing segment/element (IK3/IK4 context) and the reported syntax/implementation issue.</span></p>
+<p class="c1"><span class="c0">2) Correct mapping/export logic (loop placement, required element presence, valid code lists, date formats).</span></p>
+<p class="c1"><span class="c0">3) Resend a small test and confirm IK5 returns “A” before scaling up.</span></p>
+
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">IK5-A — Implementation Accepted</span></p>
+<p class="c1"><span class="c0">IK5-R — Implementation Rejected</span></p>
+<p class="c1"><span class="c0">AK5-E — Accepted But Errors Were Noted (997)</span></p>
+</div>

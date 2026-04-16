@@ -1,0 +1,32 @@
+---
+industry: "insurance"
+subcategory: "claims-processing"
+code: "AK5-X"
+shortLabel: "Rejected (Decryption Content Unreadable)"
+summary: "AK5-X means the 997 transaction set was rejected because content after decryption could not be analyzed."
+lastmod: "2026-04-16T00:00:00.000Z"
+source: "manual"
+---
+
+<div>
+<p class="c1"><span class="c0">SECTION: Insurance / Claims Processing</span></p>
+<p class="c1"><span class="c0">SYSTEM: X12 EDI 997 Acknowledgment (AK5)</span></p>
+<p class="c1"><span class="c0">CODE: AK5-X</span></p>
+<p class="c1"><span class="c0">Title</span></p>
+<p class="c1"><span class="c0">(AK5-X — Rejected, Content After Decryption Could Not Be Analyzed)</span></p>
+<p class="c1"><span class="c0">One-sentence summary</span></p>
+<p class="c1"><span class="c0">AK5-X indicates the receiver could not parse the decrypted content, so the transaction set was rejected.</span></p>
+
+<p class="c1"><span class="c0">What this code means</span></p>
+<p class="c1"><span class="c0">AK5 “X” is a rejection tied to encryption/decryption handling. It typically indicates a mismatch in encryption settings, corrupted payload, or a partner-side parsing failure after decryption.</span></p>
+
+<p class="c1"><span class="c0">Step-by-step fix</span></p>
+<p class="c1"><span class="c0">1) Confirm encryption settings match the partner’s requirements (algorithm, key/cert, signing vs encryption).</span></p>
+<p class="c1"><span class="c0">2) Verify certificate chains and that the correct public key was used for encryption.</span></p>
+<p class="c1"><span class="c0">3) Re-send a small test payload and compare logs on both sides if possible.</span></p>
+<p class="c1"><span class="c0">4) If the transport is AS2 or similar, confirm MIC/signature verification results.</span></p>
+
+<p class="c1"><span class="c0">Related error codes</span></p>
+<p class="c1"><span class="c0">AK5-W — Rejected, Assurance Failed Validity Tests</span></p>
+<p class="c1"><span class="c0">AK9-X — Functional Group Rejected (Decryption Content Unreadable)</span></p>
+</div>
