@@ -10,9 +10,15 @@ export type GuideTopicKey =
   | 'gaming-epic-fortnite'
   | 'irs-notices'
   | 'irs-transcripts'
+  | 'irs-refund-delays'
+  | 'irs-identity-letters'
+  | 'irs-collections'
   | 'banking-ach'
   | 'banking-card-declines'
   | 'banking-transfer-failures'
+  | 'banking-iso8583'
+  | 'banking-atm-declines'
+  | 'banking-processor-errors'
   | 'appliances-washer'
   | 'appliances-dryer'
   | 'appliances-dishwasher'
@@ -417,6 +423,30 @@ export const GUIDES: GuideMeta[] = [
     description: 'A plain-language map of common transcript transaction codes (TC) with safe interpretation and timeline guidance.',
     lastUpdated: '2026-02-27',
   },
+  {
+    categoryKey: 'irs-tax',
+    topicKey: 'irs-refund-delays',
+    slug: 'irs-refund-delay-codes-explained-846-570-810-971-what-to-do-next',
+    title: 'IRS Refund Delay Codes Explained: 846, 570, 810, 971 + What To Do Next',
+    description: 'A practical guide to refund delays: what common transcript and notice codes mean, and the safest next step sequence.',
+    lastUpdated: '2026-04-16',
+  },
+  {
+    categoryKey: 'irs-tax',
+    topicKey: 'irs-identity-letters',
+    slug: 'irs-identity-verification-letters-5071c-4883c-5747c-12c-explained',
+    title: 'IRS Identity Verification Letters (5071C, 4883C, 5747C, 12C) Explained',
+    description: 'What IRS identity/verification letters usually mean, what to prepare, and how to respond using only official channels.',
+    lastUpdated: '2026-04-16',
+  },
+  {
+    categoryKey: 'irs-tax',
+    topicKey: 'irs-collections',
+    slug: 'irs-balance-due-notices-cp501-cp503-cp504-cp90-lt11-explained',
+    title: 'IRS Balance Due Notices (CP501, CP503, CP504, CP90, LT11) Explained',
+    description: 'A deadline-first guide to common IRS balance due and final notice letters, with safe response options and escalation checklists.',
+    lastUpdated: '2026-04-16',
+  },
 
   {
     categoryKey: 'banking',
@@ -441,6 +471,30 @@ export const GUIDES: GuideMeta[] = [
     title: 'Bank Transfer & Payment Failure Codes: Wire/SEPA/Swift Errors + Resolution Flow',
     description: 'A safe, scenario-first guide to transfer failure patterns and resolution flow without creating duplicates.',
     lastUpdated: '2026-02-27',
+  },
+  {
+    categoryKey: 'banking',
+    topicKey: 'banking-iso8583',
+    slug: 'iso-8583-response-codes-explained-00-05-51-54-91-96-hard-vs-soft-declines',
+    title: 'ISO 8583 Response Codes Explained: 00, 05, 51, 54, 91, 96 + Hard vs Soft Declines',
+    description: 'A practical guide to card authorization response codes, what they actually indicate, and the safest fix path for each bucket.',
+    lastUpdated: '2026-04-16',
+  },
+  {
+    categoryKey: 'banking',
+    topicKey: 'banking-atm-declines',
+    slug: 'atm-decline-codes-explained-55-41-43-04-07-what-to-do',
+    title: 'ATM Decline Codes Explained: 55, 41, 43, 04, 07 + What To Do',
+    description: 'A focused guide to ATM and PIN-based decline patterns (PIN, lost/stolen, capture codes) and safe next steps.',
+    lastUpdated: '2026-04-16',
+  },
+  {
+    categoryKey: 'banking',
+    topicKey: 'banking-processor-errors',
+    slug: 'payment-processing-format-timeout-and-system-errors-code-30-06-68-96-fixes',
+    title: 'Payment Processing Format, Timeout & System Errors: Code 30, 06, 68, 96 + Fixes',
+    description: 'How to troubleshoot processing-layer failures (format errors, timeouts, switch issues) without creating duplicates or double charges.',
+    lastUpdated: '2026-04-16',
   },
 
   {

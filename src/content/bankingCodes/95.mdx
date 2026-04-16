@@ -1,0 +1,42 @@
+---
+industry: "banking"
+code: "95"
+shortLabel: "Reconciliation error"
+summary: "Response code 95 indicates a reconciliation or settlement-related error prevented completion."
+lastmod: "2026-04-16T07:41:45.212Z"
+source: "manual"
+---
+
++<div>
++<p class="c1"><span class="c0">SECTION: Banking / Card &amp; Payment Processing</span></p>
++<p class="c1"><span class="c0">SYSTEM: Authorization Response Codes (ISO 8583 / Network Response)</span></p>
++<p class="c1"><span class="c0">CODE: 95</span></p>
++<p class="c1"><span class="c0">Title</span></p>
++<p class="c1"><span class="c0">(95 &mdash; Reconciliation error)</span></p>
++<p class="c1"><span class="c0">One-sentence summary</span></p>
++<p class="c1"><span class="c0">Response code 95 indicates a reconciliation or settlement-related error prevented completion.</span></p>
++<p class="c1"><span class="c0">What this code means</span></p>
++<p class="c1"><span class="c0">Response code 95 indicates a reconciliation/settlement-related error prevented the transaction from completing normally. In practice, it is often treated as a processing error that requires processor support to diagnose, especially if it affects many transactions.</span></p>
++<p class="c1"><span class="c0">Where users usually see this code</span></p>
++<p class="c1"><span class="c0">Merchant payment gateway decline logs</span></p>
+<p class="c1"><span class="c0">POS terminal receipts or terminal response text</span></p>
+<p class="c1"><span class="c0">Processor/acquirer dashboards (issuer response codes)</span></p>
++<p class="c1"><span class="c0">Why this code usually appears</span></p>
++<p class="c1"><span class="c0">Issuer policy/risk rules or account state determined the outcome</span></p>
+<p class="c1"><span class="c0">Data validation or format checks failed upstream</span></p>
+<p class="c1"><span class="c0">Network/processor routing conditions influenced the response</span></p>
++<p class="c1"><span class="c0">Step-by-step troubleshooting/fix</span></p>
++<p class="c1"><span class="c0">Confirm the transaction details (amount, currency, merchant descriptor, entry method) before retrying.</span></p>
+<p class="c1"><span class="c0">Check processor status and reconcile settlement batches; escalate to processor support with timestamps and trace IDs.</span></p>
+<p class="c1"><span class="c0">If many different cards fail with similar codes at once, treat it as a processor/network incident and escalate with timestamps and logs.</span></p>
++<p class="c1"><span class="c0">Related error codes</span></p>
++<p class="c1"><span class="c0">05 — Do not honor</span></p>
+<p class="c1"><span class="c0">12 — Invalid transaction</span></p>
+<p class="c1"><span class="c0">14 — Invalid card number</span></p>
+<p class="c1"><span class="c0">51 — Insufficient funds</span></p>
+<p class="c1"><span class="c0">54 — Expired card</span></p>
+<p class="c1"><span class="c0">91 — Issuer or switch inoperative</span></p>
+<p class="c1"><span class="c0">96 — System malfunction</span></p>
++<p class="c1"><span class="c0">Notes and edge cases</span></p>
++<p class="c1"><span class="c0">Response code meaning is broadly standardized, but exact wording and recommended next steps can vary by network and processor. Always pair the code with the response text and the transaction context (entry method, MCC, and location) when troubleshooting.</span></p>
++</div>

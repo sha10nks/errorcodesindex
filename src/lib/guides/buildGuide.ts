@@ -864,6 +864,161 @@ function getTopicModel(meta: GuideMeta) {
         ],
       };
 
+    case 'irs-refund-delays':
+      return {
+        promise:
+          'Use this guide to separate normal refund processing steps from holds, offsets, and verification requests—then take the safest next action without triggering duplicate filings.',
+        tldr: [
+          'Start with the newest transcript/notice entries and the tax year they reference.',
+          'Refund delays usually fall into: processing review, identity verification, offsets, or balance due adjustments.',
+          'Avoid duplicate filings; they often slow resolution.',
+          'Respond only through official IRS channels listed on your notice/account tools.',
+        ],
+        sections: [
+          {
+            id: 'symptoms',
+            title: 'Symptoms / When you see this',
+            bullets: [
+              '“Refund still processing”, “refund delayed”, or pending status for longer than expected.',
+              'Transcript shows hold/freezes or notice issuance codes.',
+              'You receive a verification/review letter and refund timing changes.',
+            ],
+          },
+          {
+            id: 'root-causes',
+            title: 'Root causes (grouped)',
+            bullets: [
+              'Normal processing and mismatch review (income/withholding/credits).',
+              'Identity verification or fraud screening letters.',
+              'Refund offsets for eligible debts or balance due adjustments.',
+              'Account holds/freezes pending additional action.',
+            ],
+          },
+          {
+            id: 'fix-steps',
+            title: 'Step-by-step fixes (safe, prioritized)',
+            bullets: [
+              'Confirm the tax year, filing status, and the newest transcript entries first.',
+              'If a notice/letter exists, follow its instructions and deadlines exactly.',
+              'If identity verification is required, complete it using official IRS methods only.',
+              'If an offset is indicated, reconcile the offset source; do not refile to “force” a refund.',
+              'Avoid resubmitting the same return unless the IRS instructs it; duplicates create delays.',
+            ],
+          },
+          {
+            id: 'dont',
+            title: 'What NOT to do',
+            bullets: [
+              'Do not file duplicate returns “just in case”.',
+              'Do not follow third-party links or phone numbers to “verify” identity.',
+              'Do not send unsolicited documents unless requested by a notice/letter.',
+            ],
+          },
+          {
+            id: 'escalation',
+            title: 'If it persists (escalation checklist)',
+            bullets: [
+              'Collect: notice copies, transcript snapshots, return copy, W-2/1099 data, and dates.',
+              'Document every submission with proof of delivery/submission confirmation.',
+              'Use official IRS support paths when the timeline exceeds typical ranges for your situation.',
+            ],
+          },
+        ],
+        codeDirectory: {
+          title: 'Code directory within this guide',
+          notes: ['Use transcript/notice codes as a timeline, then confirm with the notice text and your filing facts.'],
+          sources: [
+            {
+              kind: 'industry',
+              industry: 'irs-tax',
+              patterns: ['^(846|810|570|571|572|766|768|898|971|977|150|152|154)$', 'refund', 'freeze', 'offset', 'still processing', 'pending'],
+              limit: 30,
+            },
+          ],
+        },
+        references: ['IRS account tools', 'IRS notices and letters', 'Official IRS refund and transcript guidance'],
+        faq: [
+          { question: 'Does code 846 mean my refund is guaranteed?', answer: 'It indicates issuance at the transcript level, but timing and delivery method can still vary. Check dates and any later offsets/adjustments.' },
+          { question: 'Should I file again if nothing changes?', answer: 'Usually no. Duplicate filings can slow resolution. Follow official instructions or respond to the notice.' },
+          { question: 'What is the fastest way to know what the IRS needs?', answer: 'A specific notice/letter. If one exists, its instructions and deadline take priority.' },
+          { question: 'Can offsets reduce refunds?', answer: 'Yes. Refunds can be offset for certain debts. Transcript entries and notices often indicate offsets.' },
+          { question: 'If I verified identity, how long until updates show?', answer: 'It varies. Monitor your account/transcript for new entries; avoid duplicate verification attempts unless instructed.' },
+          { question: 'What should I keep for records?', answer: 'Notices, proof of verification/submission, transcript snapshots, and supporting filing documents.' },
+          { question: 'Are online “refund trackers” enough?', answer: 'They can be useful, but transcript entries and notices provide more precise signals when delays occur.' },
+          { question: 'When should I escalate?', answer: 'When a deadline is close, when final notice letters are involved, or when delays exceed normal ranges for your scenario.' },
+        ],
+      };
+
+    case 'irs-identity-letters':
+      return {
+        promise:
+          'Use this guide to understand common IRS identity/verification letters and complete verification safely without scams or duplicate filings.',
+        tldr: [
+          'Use only the contact methods and URLs printed on the IRS letter or official IRS account tools.',
+          'Prepare your prior-year and current-year return details; verification often asks for line items.',
+          'Identity letters commonly pause refunds until verification is completed.',
+          'Do not file another return unless the IRS instructs it.',
+        ],
+        sections: [
+          { id: 'symptoms', title: 'Symptoms / When you see this', bullets: ['You receive letters like 5071C, 4883C, 5747C, or 12C.', 'Refund processing stops or delays after the letter date.', 'IRS account tools prompt identity verification.'] },
+          { id: 'root-causes', title: 'Root causes (grouped)', bullets: ['Identity verification triggers from screening and mismatch checks.', 'Missing documents or incomplete return package requests.', 'Account access/verification prerequisites for online services.'] },
+          { id: 'fix-steps', title: 'Step-by-step fixes (safe, prioritized)', bullets: ['Read the letter instructions and deadline; follow the specified verification channel.', 'Gather: return copy, W-2/1099 data, and prior-year filing facts.', 'Complete verification once through official channels and keep confirmation.', 'Monitor transcript/account for updates; avoid duplicate submissions.'] },
+          { id: 'dont', title: 'What NOT to do', bullets: ['Do not use third-party phone numbers or links to verify identity.', 'Do not email sensitive documents.', 'Do not file duplicate returns to “restart” processing.'] },
+          { id: 'escalation', title: 'If it persists (escalation checklist)', bullets: ['Keep letter copies, confirmation IDs, and dates of verification.', 'If deadlines are involved, use official IRS escalation channels or tax professional help for complex cases.'] },
+        ],
+        codeDirectory: {
+          title: 'Code directory within this guide',
+          notes: ['Letter instructions vary. Always follow the letter’s official steps for your case.'],
+          sources: [{ kind: 'industry', industry: 'irs-tax', patterns: ['^(5071C|4883C|5747C|12C)$', 'identity', 'verification'], limit: 18 }],
+        },
+        references: ['IRS identity verification instructions on the letter', 'IRS account tools', 'Official IRS scam awareness guidance'],
+        faq: [
+          { question: 'Is an identity letter proof of fraud?', answer: 'Not necessarily. Screening can trigger verification even for legitimate returns.' },
+          { question: 'Should I call a number from a random email/text?', answer: 'No. Use only official IRS contact methods printed on your letter or official IRS sites.' },
+          { question: 'Can verification speed up my refund?', answer: 'Verification is often required before processing can continue; completing it correctly prevents additional delays.' },
+          { question: 'What documents should I prepare?', answer: 'Return copy, income forms (W-2/1099), and prior-year filing details.' },
+          { question: 'Should I send documents if the letter doesn’t ask?', answer: 'Usually no. Send only what is requested to avoid misrouting and delays.' },
+          { question: 'How do I know verification is complete?', answer: 'Use the confirmation from the verification process and monitor your account/transcript for updates.' },
+          { question: 'What if I already filed and then got a 12C letter?', answer: 'Respond with the specific missing items requested; do not refile unless instructed.' },
+          { question: 'When should I get help?', answer: 'When deadlines are near, when large amounts are involved, or when you can’t complete verification with official tools.' },
+        ],
+      };
+
+    case 'irs-collections':
+      return {
+        promise:
+          'Use this guide to prioritize deadlines and options for IRS balance due and final notice letters without missing appeal rights.',
+        tldr: [
+          'Confirm the tax year and amount; notices can reference older periods.',
+          'CP501/503 are reminders; CP504/CP90/LT11 are more urgent and deadline-driven.',
+          'If you disagree, respond with documentation before deadlines.',
+          'If you cannot pay in full, explore official payment options early.',
+        ],
+        sections: [
+          { id: 'symptoms', title: 'Symptoms / When you see this', bullets: ['You receive CP501/CP503/CP504/CP90 or LT11.', 'IRS account shows balance due and penalties/interest accruing.', 'You are warned about levy or hearing rights.'] },
+          { id: 'root-causes', title: 'Root causes (grouped)', bullets: ['Unpaid balance due after return processing.', 'Adjustments, penalties, or interest creating a new balance.', 'Unresolved disputes or missing documentation leading to assessments.'] },
+          { id: 'fix-steps', title: 'Step-by-step fixes (safe, prioritized)', bullets: ['Read the notice deadline and any hearing/appeal rights first.', 'Verify the amount and tax year in official account tools.', 'If you agree, pay or set up an official payment plan promptly.', 'If you disagree, submit a documented response using the notice instructions.', 'Avoid sending sensitive data to unverified addresses or numbers.'] },
+          { id: 'dont', title: 'What NOT to do', bullets: ['Do not ignore final notices; deadlines can affect your rights.', 'Do not rely on third-party “resolution” scams.', 'Do not assume reminder letters can be delayed without cost; penalties/interest can accrue.'] },
+          { id: 'escalation', title: 'If it persists (escalation checklist)', bullets: ['Collect: notice copies, proof of payments, transcript snapshots, and correspondence history.', 'Use official IRS contact methods for payment plan or dispute escalation.', 'Consider a tax professional for complex disputes or large balances.'] },
+        ],
+        codeDirectory: {
+          title: 'Code directory within this guide',
+          notes: ['Notice families and deadlines matter more than the label alone. Always verify with the notice text.'],
+          sources: [{ kind: 'industry', industry: 'irs-tax', patterns: ['^(CP501|CP503|CP504|CP90|LT11)$', 'balance due', 'levy', 'intent'], limit: 18 }],
+        },
+        references: ['IRS notices and letters', 'IRS payment options', 'Official IRS account tools'],
+        faq: [
+          { question: 'Is CP501 the same as CP504?', answer: 'No. CP501 is an early reminder; CP504 is typically more urgent and includes levy-related warnings.' },
+          { question: 'What if I already paid?', answer: 'Keep proof and verify posting on your account. If the notice is outdated, official channels can reconcile.' },
+          { question: 'Can I set up a payment plan?', answer: 'Often yes, depending on the balance and circumstances. Start early to reduce escalation risk.' },
+          { question: 'What if the amount is wrong?', answer: 'Respond with documentation and a clear explanation, and keep proof of submission.' },
+          { question: 'Do final notices affect appeal rights?', answer: 'Yes. Some notices have strict deadlines for hearings/appeals. Missing them can limit options.' },
+          { question: 'Should I call immediately?', answer: 'Follow the notice instructions. If a deadline is near or a hearing is involved, act quickly.' },
+          { question: 'How do I avoid scams?', answer: 'Use only official IRS contact methods and do not share sensitive data through unverified channels.' },
+          { question: 'When should I get professional help?', answer: 'When the balance is large, the case is complex, or deadlines are involved.' },
+        ],
+      };
+
     case 'banking-ach':
       return {
         promise:
@@ -966,6 +1121,111 @@ function getTopicModel(meta: GuideMeta) {
           { question: 'What if my platform shows no error code?', answer: 'Use the resolution flow: confirm transfer type and request trace details from the sender.' },
           { question: 'Do currencies matter?', answer: 'Yes. Correspondent routing and FX can add steps and delays.' },
           { question: 'Safest escalation path?', answer: 'Start with the sending bank and provide trace/reference IDs, then coordinate with the receiving bank if needed.' },
+        ],
+      };
+
+    case 'banking-iso8583':
+      return {
+        promise:
+          'Use this guide to interpret ISO 8583-style authorization response codes as buckets (issuer decision vs data vs network) and choose the safest next step without repeated retries.',
+        tldr: [
+          'Two-digit response codes are category signals; context determines the fix.',
+          'Hard declines (lost/stolen/capture) require issuer action—don’t retry.',
+          'Soft declines and processing errors may allow a single clean retry after correction.',
+          'Use idempotency/duplicate protection to avoid double charges during timeouts.',
+        ],
+        sections: [
+          { id: 'symptoms', title: 'Symptoms / When you see this', bullets: ['Gateway or terminal shows a two-digit response code.', 'Transactions decline or require issuer referral.', 'Timeouts or duplicates appear during retries.'] },
+          { id: 'root-causes', title: 'Root causes (grouped)', bullets: ['Issuer decisions (risk, account state, limits).', 'Data and validation problems (format, invalid identifiers).', 'Network/processor issues (timeouts, switch inoperative, routing).'] },
+          { id: 'fix-steps', title: 'Step-by-step fixes (safe, prioritized)', bullets: ['Classify the code as issuer decision vs validation vs network.', 'Retry at most once after correcting inputs and ensuring no duplicate submission.', 'For issuer referral/capture/lost-stolen patterns, stop and have cardholder contact issuer.', 'If many cards fail simultaneously, escalate as a processor/network incident.'] },
+          { id: 'dont', title: 'What NOT to do', bullets: ['Do not spam retries; it can trigger fraud controls and create duplicates.', 'Do not store sensitive card data beyond compliance scope.', 'Do not assume “approved” means “settled”; reconcile capture/settlement separately.'] },
+          { id: 'escalation', title: 'If it persists (escalation checklist)', bullets: ['Collect: code, timestamp, amount, entry method, and gateway request/response IDs.', 'Check processor status and routing.', 'Escalate with trace data if the issue is widespread.'] },
+        ],
+        codeDirectory: {
+          title: 'Code directory within this guide',
+          notes: ['Response mappings vary slightly by network/processor; pair code + response text + context.'],
+          sources: [{ kind: 'industry', industry: 'banking', patterns: ['^\\d{2}$'], limit: 36 }],
+        },
+        references: ['Processor response mappings', 'Issuer guidance and acquirer support', 'Gateway reconciliation logs'],
+        faq: [
+          { question: 'What’s the difference between a hard and soft decline?', answer: 'Hard declines require issuer action (lost/stolen/capture). Soft declines may allow correction and one clean retry.' },
+          { question: 'Can I auto-retry timeouts?', answer: 'Only with idempotency/duplicate protection; otherwise you risk double charges.' },
+          { question: 'Why do issuers return generic codes like 05?', answer: 'Issuers often do not disclose detailed reasons through response codes; risk and policy decisions are internal.' },
+          { question: 'What if the same card works elsewhere?', answer: 'Merchant category, routing, and risk scoring can change outcomes. Validate your inputs and try a different method if needed.' },
+          { question: 'Does code 00 guarantee payment?', answer: 'It indicates authorization approval, not final settlement. Confirm capture and settlement status.' },
+          { question: 'What’s the safest retry strategy?', answer: 'Fix inputs, retry once, then change method or escalate—and always prevent duplicates.' },
+          { question: 'When is it a processor incident?', answer: 'When many different cards fail with similar system/routing codes at the same time.' },
+          { question: 'What artifacts help support resolve it fast?', answer: 'Timestamps, request/response IDs, entry method, and full gateway logs.' },
+        ],
+      };
+
+    case 'banking-atm-declines':
+      return {
+        promise:
+          'Use this guide to troubleshoot ATM and PIN-based declines safely—with an emphasis on PIN, lost/stolen, and capture-style codes.',
+        tldr: [
+          'PIN errors usually resolve by correct PIN entry or issuer reset—retries can lock cards.',
+          'Lost/stolen/capture codes are hard declines; stop and contact issuer.',
+          'If declines persist across ATMs, issuer account state is the likely cause.',
+          'Avoid sharing sensitive information; use issuer channels.',
+        ],
+        sections: [
+          { id: 'symptoms', title: 'Symptoms / When you see this', bullets: ['ATM declines cash withdrawal or balance inquiry.', 'Terminal prompts to retain card or contact issuer.', 'PIN-based transactions fail repeatedly.'] },
+          { id: 'root-causes', title: 'Root causes (grouped)', bullets: ['Incorrect PIN or PIN lockouts.', 'Card reported lost/stolen or issuer capture instruction.', 'Issuer risk blocks or account restrictions.', 'ATM/network routing problems.'] },
+          { id: 'fix-steps', title: 'Step-by-step fixes (safe, prioritized)', bullets: ['Stop after repeated PIN failures to avoid lockouts; reset PIN through issuer if needed.', 'If you see lost/stolen/capture-style codes, contact issuer and use another card.', 'Try a different ATM/network only once after confirming account status.', 'If it follows the card everywhere, the issuer must resolve the block.'] },
+          { id: 'dont', title: 'What NOT to do', bullets: ['Do not keep retrying incorrect PIN—lockouts and captures can occur.', 'Do not accept help from strangers at ATMs.', 'Do not share PIN or full card details.'] },
+          { id: 'escalation', title: 'If it persists (escalation checklist)', bullets: ['Capture: code/message, ATM location, timestamp, and attempted transaction type.', 'Contact issuer with those details for fastest resolution.'] },
+        ],
+        codeDirectory: {
+          title: 'Code directory within this guide',
+          notes: ['ATM experiences vary by network. Use the code and ATM message together.'],
+          sources: [{ kind: 'industry', industry: 'banking', patterns: ['^(55|41|43|04|07|67)$'], limit: 18 }],
+        },
+        references: ['Issuer support and PIN reset guidance', 'ATM network support channels', 'Safe ATM security practices'],
+        faq: [
+          { question: 'Will retries lock my card?', answer: 'Yes. Multiple wrong PIN attempts can trigger lockouts or security blocks.' },
+          { question: 'What if the ATM keeps my card?', answer: 'Contact your issuer immediately; follow their replacement and fraud procedures.' },
+          { question: 'Are lost/stolen codes always accurate?', answer: 'They usually reflect issuer account state. The issuer is the authoritative source.' },
+          { question: 'Should I try another ATM?', answer: 'Once, after confirming basics. If it follows the card, the issuer needs to resolve it.' },
+          { question: 'Can network outages cause ATM declines?', answer: 'Yes. Switch/routing problems can cause declines even when the account is fine.' },
+          { question: 'What details help issuer support?', answer: 'ATM location, timestamp, and the exact message/code shown.' },
+          { question: 'Is this the same as an ACH return?', answer: 'No. ACH returns happen after submission; ATM declines happen at authorization.' },
+          { question: 'Safest next step for PIN issues?', answer: 'Stop retries and reset PIN via issuer channels.' },
+        ],
+      };
+
+    case 'banking-processor-errors':
+      return {
+        promise:
+          'Use this guide to troubleshoot processing-layer failures (format errors, timeouts, routing and switch issues) without creating duplicates or double charges.',
+        tldr: [
+          'First determine if the error is local (integration) or systemic (processor/network).',
+          'Use idempotency/duplicate controls for retries.',
+          'Format errors usually require fixing request fields—not retrying.',
+          'Time-based errors require reconciliation before resubmission.',
+        ],
+        sections: [
+          { id: 'symptoms', title: 'Symptoms / When you see this', bullets: ['Code 30/06/96-like processing errors.', 'Timeouts where final state is unclear.', 'Duplicate detection errors after retries.'] },
+          { id: 'root-causes', title: 'Root causes (grouped)', bullets: ['Integration/format problems in request payloads.', 'Processor routing/switch outages or congestion.', 'Timeout windows exceeded with unknown final state.', 'Duplicate submission due to retry logic without idempotency.'] },
+          { id: 'fix-steps', title: 'Step-by-step fixes (safe, prioritized)', bullets: ['Check whether failures spike across merchants/cards (systemic) vs one integration (local).', 'For format errors, fix request mapping (field lengths, required fields, transaction type).', 'For timeouts, reconcile transaction status before retrying to avoid duplicates.', 'Use idempotency keys or gateway duplicate protection for any retry path.', 'Escalate to processor with request/response IDs and timestamps for systemic incidents.'] },
+          { id: 'dont', title: 'What NOT to do', bullets: ['Do not resend blindly after timeouts.', 'Do not “fix” format errors by random retries; correct the payload instead.', 'Do not disable security controls to test and forget to revert.'] },
+          { id: 'escalation', title: 'If it persists (escalation checklist)', bullets: ['Collect: gateway request IDs, raw response fields, timestamps, and affected card/network info (non-sensitive).', 'Include correlation IDs from your API logs for fast support triage.'] },
+        ],
+        codeDirectory: {
+          title: 'Code directory within this guide',
+          notes: ['Processing errors are often context-driven. Use logs and reconciliation tools, not repeated retries.'],
+          sources: [{ kind: 'industry', industry: 'banking', patterns: ['^(06|19|30|68|90|91|92|94|95|96)$', '^ERR-', 'timeout', 'format', 'system', 'switch'], limit: 24 }],
+        },
+        references: ['Gateway reconciliation logs', 'Processor incident support channels', 'Integration documentation'],
+        faq: [
+          { question: 'Why is code 30 different from code 05?', answer: '30 is typically a message/format problem; 05 is an issuer decision category.' },
+          { question: 'Should I retry after a timeout?', answer: 'Only after reconciling status and using duplicate protection to avoid double charges.' },
+          { question: 'How do I know it’s systemic?', answer: 'If many cards or merchants fail simultaneously with similar system/routing codes, it’s likely systemic.' },
+          { question: 'What fixes format errors fastest?', answer: 'Field-level validation and alignment to the processor API requirements.' },
+          { question: 'What if I see duplicates?', answer: 'Stop retries and reconcile. Implement idempotency so resubmits don’t create new charges.' },
+          { question: 'Do processors expose detailed reasons?', answer: 'Sometimes via logs or extended fields. Support often needs correlation IDs.' },
+          { question: 'Can I prevent many of these errors?', answer: 'Yes—validate payloads, handle retries carefully, and monitor processor health.' },
+          { question: 'What should I send to support?', answer: 'Timestamps, request/response IDs, and reproducible steps with minimal sensitive data.' },
         ],
       };
 

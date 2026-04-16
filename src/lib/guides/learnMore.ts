@@ -52,13 +52,19 @@ export function pickGuidesForCode(args: {
   }
 
   if (args.industryKey === 'irs-tax') {
+    if (/^(5071C|4883C|5747C|12C)$/i.test(upper)) topics.push('irs-identity-letters');
+    if (/^(CP501|CP503|CP504|CP90|LT11)$/i.test(upper)) topics.push('irs-collections');
+    if (/^(846|810|570|571|572|766|768|898|971|977|150|152|154)$/i.test(upper)) topics.push('irs-refund-delays');
     if (/^(CP|LT)/i.test(upper)) topics.push('irs-notices');
     if (/^TC/i.test(upper)) topics.push('irs-transcripts');
-    if (topics.length === 0) topics.push('irs-notices', 'irs-transcripts');
+    if (topics.length === 0) topics.push('irs-refund-delays', 'irs-notices');
   }
 
   if (args.industryKey === 'banking') {
     if (/^R\d{2}/i.test(upper)) topics.push('banking-ach');
+    if (/^(55|41|43|04|07|67)$/.test(code)) topics.push('banking-atm-declines');
+    if (/^(06|19|30|68|90|91|92|94|95|96)$/.test(code)) topics.push('banking-processor-errors');
+    if (/^\d{2}$/.test(code)) topics.push('banking-iso8583');
     if (/^(05|12|13|14|51|54|57|58|61|62|65|75|85|91|96)$/.test(code)) topics.push('banking-card-declines');
     if (topics.length === 0) topics.push('banking-transfer-failures');
   }
