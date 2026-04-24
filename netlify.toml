@@ -2,6 +2,24 @@
   command = "npm run build"
   publish = "dist"
 
+[[redirects]]
+  from = "http://www.errorcodesindex.com/*"
+  to = "https://errorcodesindex.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.errorcodesindex.com/*"
+  to = "https://errorcodesindex.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://errorcodesindex.com/*"
+  to = "https://errorcodesindex.com/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
